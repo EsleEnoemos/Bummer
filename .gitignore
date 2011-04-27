@@ -1,7 +1,10 @@
 
-_ReSharper*
+_ReSharper*/
 Bummer.5.1.ReSharper.user
 Bummer.Client/obj
 Bummer.Common/obj
 Bummer.Schedules/obj/
 *.cache
+*.obj
+*.exe
+*.pdb

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -32,19 +31,35 @@ namespace Bummer.Schedules {
 
 		public string Execute( string config ) {
 			MSSQLDatabaseBackupConfig conf = MSSQLDatabaseBackupConfig.Load( config );
-			using( SQLLocalBackup lb = new SQLLocalBackup( conf.Server, conf.Username, conf.Password, conf.Database ) ) {
-				if( !lb.DoLocalBackup( conf.RemoteTempDir, @"C:\Temp" ) ) {
-					return @"{0} was backed up.
-Temporary files on the remote server was not deleted.
-Enable procedure xp_cmdshell to perform this".FillBlanks( conf.Database );
+			List<string> databases = conf.Databases;
+			if( databases == null || databases.Count == 0 ) {
+				databases = new List<string>();
+				List<string> tmp = MSSQLDatabaseBackupConfigGUI.GetDatabases( conf.Server, conf.Username, conf.Password );
+				foreach( string s in tmp ) {
+					if( !s.EqualsAny( StringComparison.OrdinalIgnoreCase, "master", "model", "msdb", "tempdb" ) ) {
+						databases.Add( s );
+					}
 				}
-				return "{0} was backed up".FillBlanks( conf.Database );
 			}
+			bool remoteCleanupOK = true;
+			foreach( string db in databases ) {
+				using( SQLLocalBackup lb = new SQLLocalBackup( conf.Server, conf.Username, conf.Password, db ) ) {
+					if( !lb.DoLocalBackup( conf.RemoteTempDir, @"C:\Temp" ) ) {
+						remoteCleanupOK = false;
+					}
+				}
+			}
+			if( !remoteCleanupOK ) {
+				return @"{0} was backed up.
+Temporary files on the remote server was not deleted.
+Enable procedure xp_cmdshell to perform this".FillBlanks( databases.ToString( ", " ) );
+			}
+			return "{0} was backuped.".FillBlanks( databases.ToString( ", " ) );
 		}
 
 		public void InitiateConfiguration( Control container, string config ) {
 			gui = new MSSQLDatabaseBackupConfigGUI( MSSQLDatabaseBackupConfig.Load( config ));
-			//gui.Dock = DockStyle.Fill;
+			gui.Dock = DockStyle.Fill;
 			//gui.MinimumSize = new Size(500,500);
 			container.Controls.Add( gui );
 		}
@@ -68,7 +83,21 @@ Enable procedure xp_cmdshell to perform this".FillBlanks( conf.Database );
 			public string Server;
 			public string Username;
 			public string Password;
-			public string Database;
+			#region public List<string> Databases
+			/// <summary>
+			/// Get/Sets the Databases of the MSSQLDatabaseBackupConfig
+			/// </summary>
+			/// <value></value>
+			public List<string> Databases {
+				get {
+					return _databases ?? (_databases = new List<string>());
+				}
+				set {
+					_databases = value;
+				}
+			}
+			#endregion
+			private List<string> _databases;
 			public SaveAsTypes SaveAs;
 			public string SaveToDir;
 			public string RemoteTempDir;
@@ -76,6 +105,8 @@ Enable procedure xp_cmdshell to perform this".FillBlanks( conf.Database );
 			public string FTPUsername;
 			public string FTPPassword;
 			public string FTPRemoteDirectory;
+			public string FTPLocalTempDirectory;
+			public int FTPPort;
 
 			#region public static ParameterSettings Load( string configuration )
 			/// <summary>

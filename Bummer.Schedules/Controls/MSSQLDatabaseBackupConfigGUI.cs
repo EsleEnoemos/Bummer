@@ -47,8 +47,9 @@ namespace Bummer.Schedules.Controls {
 				throw new Exception( "You have to specify a remote TEMP-directory" );
 			}
 			config.RemoteTempDir = tbRemoteTempDir.Text;
-			if( cbDatabase.SelectedIndex > 0 ) {
-				config.Database = cbDatabase.SelectedItem.ToString();
+			config.Databases = new List<string>();
+			foreach( string db in cblDatabases.CheckedItems ) {
+				config.Databases.Add( db );
 			}
 
 			config.SaveAs = (MSSQLDatabaseBackup.SaveAsTypes)cbSaveType.SelectedItem;
@@ -80,8 +81,19 @@ namespace Bummer.Schedules.Controls {
 						throw new Exception( "You have to specify a FTP password" );
 					}
 					config.FTPPassword = fs.Password;
+					if( string.IsNullOrEmpty( fs.LocalTemp ) ) {
+						throw new Exception( "You have to specify a local TEMP-directory" );
+					}
+					config.FTPLocalTempDirectory = fs.LocalTemp;
 					config.FTPRemoteDirectory = fs.RemoteDirectory;
-					
+					int p;
+					if( !int.TryParse( fs.Port, out p ) ) {
+						throw new Exception( "You have to specify a port" );
+					}
+					if( p < 1 || p > ushort.MaxValue ) {
+						throw new Exception( "Port must have a value between 1 and {0}".FillBlanks( ushort.MaxValue ) );
+					}
+					config.FTPPort = p;
 					break;
 				default:
 					throw new Exception( "Unknown save as type {0}".FillBlanks( config.SaveAs ) );
@@ -95,13 +107,25 @@ namespace Bummer.Schedules.Controls {
 		/// </summary>
 		/// <returns></returns>
 		private List<string> GetDatabases() {
-			if( string.IsNullOrEmpty( tbServer.Text ) || string.IsNullOrEmpty( tbUsername.Text ) || string.IsNullOrEmpty( tbPassword.Text ) ) {
+			return GetDatabases( tbServer.Text, tbUsername.Text, tbPassword.Text );
+		}
+		#endregion
+		#region internal static List<string> GetDatabases( string server, string username, string password )
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="server"></param>
+		/// <param name="username"></param>
+		/// <param name="password"></param>
+		/// <returns></returns>
+		internal static List<string> GetDatabases( string server, string username, string password ) {
+			if( string.IsNullOrEmpty( server ) || string.IsNullOrEmpty( username ) || string.IsNullOrEmpty( password ) ) {
 				return new List<string>();
 			}
 			SqlConnectionStringBuilder cb = new SqlConnectionStringBuilder();
-			cb.DataSource = tbServer.Text;
-			cb.UserID = tbUsername.Text;
-			cb.Password = tbPassword.Text;
+			cb.DataSource = server;
+			cb.UserID = username;
+			cb.Password = password;
 			SqlConnection con = new SqlConnection( cb.ToString() );
 			SqlDataReader reader = null;
 			List<string> list = new List<string>();
@@ -146,18 +170,12 @@ namespace Bummer.Schedules.Controls {
 		/// 
 		/// </summary>
 		private void RefreshDatabases() {
-			cbDatabase.Items.Clear();
-			cbDatabase.Items.Add( "(All databases)" );
+			cblDatabases.Items.Clear();
 			List<string> databases = GetDatabases();
-			int ind = 0;
 			for( int i = 0; i < databases.Count; i++ ) {
 				string db = databases[ i ];
-				cbDatabase.Items.Add( db );
-				if( string.Equals( db, Config.Database ) ) {
-					ind = i + 1;
-				}
+				cblDatabases.Items.Add( db, db.EqualsAny( StringComparison.OrdinalIgnoreCase, Config.Databases.ToArray() ) );
 			}
-			cbDatabase.SelectedIndex = ind;
 		}
 		#endregion
 

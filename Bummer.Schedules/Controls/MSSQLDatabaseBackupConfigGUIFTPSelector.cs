@@ -22,6 +22,16 @@ namespace Bummer.Schedules.Controls {
 				return tbRemoteDir.Text;
 			}
 		}
+		public string LocalTemp {
+			get {
+				return tbLocalTemp.Text;
+			}
+		}
+		public string Port {
+			get {
+				return tbPort.Text;
+			}
+		}
 
 		public MSSQLDatabaseBackupConfigGUIFTPSelector( MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig config ) {
 			InitializeComponent();
@@ -29,9 +39,19 @@ namespace Bummer.Schedules.Controls {
 			tbUsername.Text = config.FTPUsername;
 			tbPassword.Text = config.FTPPassword;
 			tbRemoteDir.Text = config.FTPRemoteDirectory;
+			tbLocalTemp.Text = config.FTPLocalTempDirectory;
+			tbPort.Text = config.FTPPort > 0 ? config.FTPPort.ToString() : "";
 		}
 		public MSSQLDatabaseBackupConfigGUIFTPSelector()
 			: this( new MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig() ) {
+		}
+
+		private void btnBrowseForLocalTempDirectory_Click( object sender, System.EventArgs e ) {
+			FolderBrowserDialog fd = new FolderBrowserDialog();
+			fd.SelectedPath = tbLocalTemp.Text;
+			if( fd.ShowDialog(this) == DialogResult.OK ) {
+				tbLocalTemp.Text = fd.SelectedPath;
+			}
 		}
 	}
 }

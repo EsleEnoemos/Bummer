@@ -31,6 +31,7 @@ namespace Bummer.Client {
 				if( !log.Success ) {
 					textBox1.ForeColor = Color.Red;
 				}
+				textBox1.Select( 0, 0 );
 			}
 		}
 

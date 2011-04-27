@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Bummer.Common {
@@ -34,6 +35,47 @@ namespace Bummer.Common {
 				}
 			}
 			return bb.GetBytes();
+		}
+		#endregion
+		#region public static bool EqualsAny( this string ths, StringComparison sc, params string[] args )
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ths"></param>
+		/// <param name="sc"></param>
+		/// <param name="args"></param>
+		/// <returns></returns>
+		public static bool EqualsAny( this string ths, StringComparison sc, params string[] args ) {
+			if( ths == null ) {
+				return false;
+			}
+			foreach( string s in args ) {
+				if( string.Equals( ths, s, sc ) ) {
+					return true;
+				}
+			}
+			return false;
+		}
+		#endregion
+		#region public static string ToString( this List<string> ths, string separator )
+		/// <summary>
+		/// Returns a <see cref="string"/> that represents the current <see cref="Bummer.Common.Extensions"/>.
+		/// </summary>
+		/// <param name="ths"></param>
+		/// <param name="separator"></param>
+		/// <returns>A <see cref="string"/> that represents the current <see cref="Bummer.Common.Extensions"/>.</returns>
+		public static string ToString( this List<string> ths, string separator ) {
+			if( ths == null ) {
+				return "";
+			}
+			StringBuilder sb = new StringBuilder();
+			for( int i = 0; i < ths.Count; i++ ) {
+				sb.Append( ths[ i ] );
+				if( (i + 1) < ths.Count ) {
+					sb.Append( separator );
+				}
+			}
+			return sb.ToString();
 		}
 		#endregion
 	}

@@ -64,13 +64,15 @@ namespace Bummer.Schedules {
 		/// </summary>
 		/// <param name="AremoteTempPath">You can specify what folder do you wish to be set for your backup</param>
 		/// <param name="AlocalPath">Local path where copy of your backup file</param>
-		public bool DoLocalBackup( string AremoteTempPath, string AlocalPath ) {
+		/// <param name="addDateToFilename"></param>
+		public MSSQLDatabaseBackup.BackupResult DoLocalBackup( string AremoteTempPath, string AlocalPath, bool addDateToFilename ) {
+			MSSQLDatabaseBackup.BackupResult ret = new MSSQLDatabaseBackup.BackupResult();
 			SqlCommand cmd = null;
 			try {
 				cmd = new SqlCommand();
 				cmd.Connection = con;
 				// nice filename on local side, so we know when backup was done
-				string fileName = _dbname + DateTime.Now.ToString(" yyyy-MM-dd HH.mm.ss") + ".bak";
+				string fileName = _dbname + (addDateToFilename ? DateTime.Now.ToString( " yyyy-MM-dd HH.mm.ss" ) : "") + ".bak";
 				// we invoke this method to ensure we didnt mess up with other programs
 				string temporaryTableName = FindUniqueTemporaryTableName();
 
@@ -96,7 +98,8 @@ namespace Bummer.Schedules {
 				DataRow dr = ds.Tables[ 0 ].Rows[ 0 ];
 				byte[] backupFromServer = (byte[])dr[ "bck" ];
 				int aSize = backupFromServer.GetUpperBound( 0 ) + 1;
-				FileStream fs = new FileStream( String.Format( "{0}\\{1}", AlocalPath, fileName ), FileMode.OpenOrCreate, FileAccess.Write );
+				ret.OutputFilename = String.Format( "{0}\\{1}", AlocalPath, fileName );
+				FileStream fs = new FileStream( ret.OutputFilename, FileMode.OpenOrCreate, FileAccess.Write );
 				fs.Write( backupFromServer, 0, aSize );
 				fs.Close();
 
@@ -108,15 +111,16 @@ namespace Bummer.Schedules {
 				cmd.CommandText = sql;
 				try {
 					cmd.ExecuteNonQuery();
+					ret.CleanupOK = true;
 				} catch( Exception ) {
-					return false;
+					ret.CleanupOK = false;
 				}
 			} finally {
 				if( cmd != null ) {
 					cmd.Dispose();
 				}
 			}
-			return true;
+			return ret;
 		}
 
 		public void Dispose() {

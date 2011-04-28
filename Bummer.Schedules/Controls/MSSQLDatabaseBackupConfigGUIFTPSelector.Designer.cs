@@ -23,6 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tbServer = new System.Windows.Forms.TextBox();
 			this.tbUsername = new System.Windows.Forms.TextBox();
@@ -36,6 +37,7 @@
 			this.btnBrowseForLocalTempDirectory = new System.Windows.Forms.Button();
 			this.tbPort = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.SuspendLayout();
 			// 
 			// label2
@@ -100,6 +102,8 @@
 			this.tbRemoteDir.Name = "tbRemoteDir";
 			this.tbRemoteDir.Size = new System.Drawing.Size(235, 20);
 			this.tbRemoteDir.TabIndex = 8;
+			this.toolTip1.SetToolTip(this.tbRemoteDir, "Make sure that the remote directory exists.\r\nIf not, uploading the file will fail" +
+        "");
 			// 
 			// label5
 			// 
@@ -157,6 +161,16 @@
 			this.label7.TabIndex = 12;
 			this.label7.Text = "Port";
 			// 
+			// toolTip1
+			// 
+			this.toolTip1.AutoPopDelay = 5000;
+			this.toolTip1.InitialDelay = 50;
+			this.toolTip1.IsBalloon = true;
+			this.toolTip1.ReshowDelay = 10;
+			this.toolTip1.ShowAlways = true;
+			this.toolTip1.StripAmpersands = true;
+			this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			// 
 			// MSSQLDatabaseBackupConfigGUIFTPSelector
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,5 +210,6 @@
 		private System.Windows.Forms.Button btnBrowseForLocalTempDirectory;
 		private System.Windows.Forms.TextBox tbPort;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.ToolTip toolTip1;
 	}
 }

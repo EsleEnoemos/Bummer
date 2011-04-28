@@ -23,6 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -38,6 +39,9 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.cblDatabases = new System.Windows.Forms.CheckedListBox();
 			this.label7 = new System.Windows.Forms.Label();
+			this.cbCompress = new System.Windows.Forms.CheckBox();
+			this.cbAddDateToFilename = new System.Windows.Forms.CheckBox();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.SuspendLayout();
 			// 
 			// label1
@@ -97,7 +101,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(3, 118);
+			this.label4.Location = new System.Drawing.Point(3, 167);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(58, 13);
 			this.label4.TabIndex = 6;
@@ -106,7 +110,7 @@
 			// btnRefreshDatabases
 			// 
 			this.btnRefreshDatabases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRefreshDatabases.Location = new System.Drawing.Point(373, 113);
+			this.btnRefreshDatabases.Location = new System.Drawing.Point(373, 162);
 			this.btnRefreshDatabases.Name = "btnRefreshDatabases";
 			this.btnRefreshDatabases.Size = new System.Drawing.Size(75, 23);
 			this.btnRefreshDatabases.TabIndex = 8;
@@ -117,7 +121,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(3, 261);
+			this.label5.Location = new System.Drawing.Point(3, 310);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(44, 13);
 			this.label5.TabIndex = 9;
@@ -129,7 +133,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbSaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbSaveType.FormattingEnabled = true;
-			this.cbSaveType.Location = new System.Drawing.Point(97, 258);
+			this.cbSaveType.Location = new System.Drawing.Point(97, 307);
 			this.cbSaveType.Name = "cbSaveType";
 			this.cbSaveType.Size = new System.Drawing.Size(270, 21);
 			this.cbSaveType.TabIndex = 10;
@@ -142,9 +146,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pnlSaveAsConfig.AutoScroll = true;
 			this.pnlSaveAsConfig.AutoSize = true;
-			this.pnlSaveAsConfig.Location = new System.Drawing.Point(6, 285);
+			this.pnlSaveAsConfig.Location = new System.Drawing.Point(6, 334);
 			this.pnlSaveAsConfig.Name = "pnlSaveAsConfig";
-			this.pnlSaveAsConfig.Size = new System.Drawing.Size(442, 153);
+			this.pnlSaveAsConfig.Size = new System.Drawing.Size(442, 173);
 			this.pnlSaveAsConfig.TabIndex = 11;
 			// 
 			// tbRemoteTempDir
@@ -170,7 +174,7 @@
 			this.cblDatabases.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.cblDatabases.FormattingEnabled = true;
-			this.cblDatabases.Location = new System.Drawing.Point(97, 113);
+			this.cblDatabases.Location = new System.Drawing.Point(97, 162);
 			this.cblDatabases.Name = "cblDatabases";
 			this.cblDatabases.Size = new System.Drawing.Size(270, 139);
 			this.cblDatabases.TabIndex = 14;
@@ -179,16 +183,49 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(3, 142);
+			this.label7.Location = new System.Drawing.Point(3, 191);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(94, 52);
 			this.label7.TabIndex = 15;
 			this.label7.Text = "Select none to\r\nbackup all\r\ndatabases except \r\nfor system db\'s";
 			// 
+			// cbCompress
+			// 
+			this.cbCompress.AutoSize = true;
+			this.cbCompress.Location = new System.Drawing.Point(6, 116);
+			this.cbCompress.Name = "cbCompress";
+			this.cbCompress.Size = new System.Drawing.Size(115, 17);
+			this.cbCompress.TabIndex = 16;
+			this.cbCompress.Text = "Compress files (zip)";
+			this.cbCompress.UseVisualStyleBackColor = true;
+			// 
+			// cbAddDateToFilename
+			// 
+			this.cbAddDateToFilename.AutoSize = true;
+			this.cbAddDateToFilename.Location = new System.Drawing.Point(6, 139);
+			this.cbAddDateToFilename.Name = "cbAddDateToFilename";
+			this.cbAddDateToFilename.Size = new System.Drawing.Size(123, 17);
+			this.cbAddDateToFilename.TabIndex = 17;
+			this.cbAddDateToFilename.Text = "Add date to filename";
+			this.toolTip1.SetToolTip(this.cbAddDateToFilename, "Date and time will be added to the filename.\r\nIf this is selected, each time a ba" +
+        "ckup is made it will produce a new file.");
+			this.cbAddDateToFilename.UseVisualStyleBackColor = true;
+			// 
+			// toolTip1
+			// 
+			this.toolTip1.AutoPopDelay = 5000;
+			this.toolTip1.InitialDelay = 50;
+			this.toolTip1.IsBalloon = true;
+			this.toolTip1.ReshowDelay = 10;
+			this.toolTip1.ShowAlways = true;
+			this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			// 
 			// MSSQLDatabaseBackupConfigGUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.cbAddDateToFilename);
+			this.Controls.Add(this.cbCompress);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.cblDatabases);
 			this.Controls.Add(this.tbRemoteTempDir);
@@ -205,7 +242,7 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Name = "MSSQLDatabaseBackupConfigGUI";
-			this.Size = new System.Drawing.Size(465, 454);
+			this.Size = new System.Drawing.Size(465, 523);
 			this.Load += new System.EventHandler(this.MSSQLDatabaseBackupConfigGUI_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -229,6 +266,9 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.CheckedListBox cblDatabases;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.CheckBox cbCompress;
+		private System.Windows.Forms.CheckBox cbAddDateToFilename;
+		private System.Windows.Forms.ToolTip toolTip1;
 
 	}
 }

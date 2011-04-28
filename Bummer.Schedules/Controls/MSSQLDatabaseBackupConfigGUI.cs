@@ -21,6 +21,8 @@ namespace Bummer.Schedules.Controls {
 			tbUsername.Text = Config.Username;
 			tbPassword.Text = Config.Password;
 			tbRemoteTempDir.Text = Config.RemoteTempDir;
+			cbCompress.Checked = Config.CompressFiles;
+			cbAddDateToFilename.Checked = Config.AddDateToFilename;
 			cbSaveType.Items.Add( MSSQLDatabaseBackup.SaveAsTypes.Directory );
 			cbSaveType.Items.Add( MSSQLDatabaseBackup.SaveAsTypes.FTP );
 			cbSaveType.SelectedIndex = Config.SaveAs == MSSQLDatabaseBackup.SaveAsTypes.FTP ? 1 : 0;
@@ -51,7 +53,8 @@ namespace Bummer.Schedules.Controls {
 			foreach( string db in cblDatabases.CheckedItems ) {
 				config.Databases.Add( db );
 			}
-
+			config.CompressFiles = cbCompress.Checked;
+			config.AddDateToFilename = cbAddDateToFilename.Checked;
 			config.SaveAs = (MSSQLDatabaseBackup.SaveAsTypes)cbSaveType.SelectedItem;
 			switch( config.SaveAs ) {
 				case MSSQLDatabaseBackup.SaveAsTypes.Directory:

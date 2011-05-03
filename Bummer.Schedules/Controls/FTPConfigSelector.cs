@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 
 namespace Bummer.Schedules.Controls {
-	public partial class MSSQLDatabaseBackupConfigGUIFTPSelector : UserControl {
+	public partial class FTPConfigSelector : UserControl {
 		public string Server {
 			get {
 				return tbServer.Text;
@@ -33,17 +33,20 @@ namespace Bummer.Schedules.Controls {
 			}
 		}
 
-		public MSSQLDatabaseBackupConfigGUIFTPSelector( MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig config ) {
+		public FTPConfigSelector( IFTPConfig config ) {
 			InitializeComponent();
-			tbServer.Text = config.FTPServer;
-			tbUsername.Text = config.FTPUsername;
-			tbPassword.Text = config.FTPPassword;
-			tbRemoteDir.Text = config.FTPRemoteDirectory;
-			tbLocalTemp.Text = config.FTPLocalTempDirectory;
-			tbPort.Text = config.FTPPort > 0 ? config.FTPPort.ToString() : "";
+			if( config != null ) {
+				tbServer.Text = config.FTPServer;
+				tbUsername.Text = config.FTPUsername;
+				tbPassword.Text = config.FTPPassword;
+				tbRemoteDir.Text = config.FTPRemoteDirectory;
+				tbLocalTemp.Text = config.FTPLocalTempDirectory;
+				tbPort.Text = config.FTPPort > 0 ? config.FTPPort.ToString() : "";
+			}
 		}
-		public MSSQLDatabaseBackupConfigGUIFTPSelector()
-			: this( new MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig() ) {
+
+		public FTPConfigSelector()
+			: this( null ) {
 		}
 
 		private void btnBrowseForLocalTempDirectory_Click( object sender, System.EventArgs e ) {

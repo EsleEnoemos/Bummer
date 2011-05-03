@@ -1,5 +1,5 @@
 ﻿namespace Bummer.Schedules.Controls {
-	partial class MSSQLDatabaseBackupConfigGUIFTPSelector {
+	partial class FTPConfigSelector {
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>
@@ -171,7 +171,7 @@
 			this.toolTip1.StripAmpersands = true;
 			this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			// 
-			// MSSQLDatabaseBackupConfigGUIFTPSelector
+			// FTPConfigSelector
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,7 +188,7 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.tbServer);
 			this.Controls.Add(this.label2);
-			this.Name = "MSSQLDatabaseBackupConfigGUIFTPSelector";
+			this.Name = "FTPConfigSelector";
 			this.Size = new System.Drawing.Size(376, 175);
 			this.ResumeLayout(false);
 			this.PerformLayout();

@@ -1,5 +1,5 @@
 ﻿namespace Bummer.Schedules.Controls {
-	partial class MSSQLDatabaseBackupConfigGUIDirectorySelector {
+	partial class DirectoryConfigSelector {
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>
@@ -57,14 +57,14 @@
 			this.btnSelectDirectory.UseVisualStyleBackColor = true;
 			this.btnSelectDirectory.Click += new System.EventHandler(this.btnSelectDirectory_Click);
 			// 
-			// MSSQLDatabaseBackupConfigGUIDirectorySelector
+			// DirectoryConfigSelector
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.btnSelectDirectory);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.label1);
-			this.Name = "MSSQLDatabaseBackupConfigGUIDirectorySelector";
+			this.Name = "DirectoryConfigSelector";
 			this.Size = new System.Drawing.Size(464, 32);
 			this.ResumeLayout(false);
 			this.PerformLayout();

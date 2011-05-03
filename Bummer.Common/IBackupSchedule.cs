@@ -6,6 +6,11 @@ namespace Bummer.Common {
 		string Name { get; }
 		string Description { get; }
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="container">Container to add controls for custom configuration</param>
+		/// <param name="config">The configuration stored for this job</param>
 		void InitiateConfiguration( Control container, string config );
 
 		/// <summary>
@@ -19,8 +24,17 @@ namespace Bummer.Common {
 		/// Executes the scheduel and returns a message telling of the results.
 		/// If something goes wrong, an <see cref="Exception"/> should be thrown telling what happened
 		/// </summary>
-		/// <param name="config"></param>
+		/// <param name="config">The configuration stored for this job</param>
+		/// <param name="jobID">The ID for this job</param>
 		/// <returns></returns>
-		string Execute( string config );
+		string Execute( string config, int jobID );
+
+		/// <summary>
+		/// Called when a job is deleted permanently.
+		/// Enabels the job to perform cleanup of any saved data, i.e. data stored on disk etc.
+		/// </summary>
+		/// <param name="config"></param>
+		/// <param name="jobID"></param>
+		void Delete( string config, int jobID );
 	}
 }

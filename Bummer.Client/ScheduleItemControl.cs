@@ -40,7 +40,9 @@ namespace Bummer.Client {
 			if( sf.ShowDialog( this ) == DialogResult.OK ) {
 				try {
 					sf.Job.Persist();
-					Form1.Instance.RefreshJobs();
+					if( !string.Equals( job.Name, sf.Job.Name ) ) {
+						Form1.Instance.RefreshJobs();
+					}
 				} catch( Exception ex ) {
 					MessageBox.Show( "Error saving schedule: {0}".FillBlanks( ex.Message ) );
 					return;

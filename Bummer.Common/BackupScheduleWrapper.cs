@@ -300,9 +300,14 @@ Schedule_ID = @Schedule_ID";
 		/// 
 		/// </summary>
 		public void Delete() {
+			try {
+				Job.Delete( Configuration, ID );
+			} catch {
+			}
 			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
 				cmd.CommandText = "DELETE FROM Schedules WHERE Schedule_ID = {0}".FillBlanks( ID );
 				cmd.ExecuteNonQuery();
+				cmd.CommandText = "DELETE FROM ScheduleLogs WHERE Schedule_ID = {0}".FillBlanks( ID );
 			}
 		}
 		#endregion
@@ -312,7 +317,7 @@ Schedule_ID = @Schedule_ID";
 			bool success = true;
 			string message = null;
 			try {
-				message = Job.Execute( Configuration );
+				message = Job.Execute( Configuration, ID );
 			} catch( Exception ex ) {
 				success = false;
 				message = ex.Message;

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SQLite;
 using System.IO;
 using System.Reflection;
 
@@ -33,12 +35,12 @@ namespace Bummer.Common {
 	#endregion
 
 	public static class Configuration {
-		#region public static List<IBackupSchedule> Plugins
+		#region internal static List<IBackupSchedule> Plugins
 		/// <summary>
 		/// Gets the Plugins of the Configuration
 		/// </summary>
 		/// <value></value>
-		public static List<IBackupSchedule> Plugins {
+		internal static List<IBackupSchedule> Plugins {
 			get {
 				if( _plugins == null ) {
 					_plugins = new List<IBackupSchedule>();
@@ -114,21 +116,21 @@ namespace Bummer.Common {
 		}
 		private static DirectoryInfo _dataDirectory;
 		#endregion
-		#region public static DBCommand GetCommand()
+		#region internal static DBCommand GetCommand()
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public static DBCommand GetCommand() {
+		internal static DBCommand GetCommand() {
 			return DBCommand.Create( string.Format( "{0}\\Schedules.s3db", DataDirectory.FullName ) );
 		}
 		#endregion
-		#region public static List<BackupScheduleWrapper> GetSchedules()
+		#region internal static List<BackupScheduleWrapper> GetSchedules()
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public static List<BackupScheduleWrapper> GetSchedules() {
+		internal static List<BackupScheduleWrapper> GetSchedules() {
 			List<BackupScheduleWrapper> list = new List<BackupScheduleWrapper>();
 			using( DBCommand cmd = GetCommand() ) {
 				cmd.CommandText = "SELECT * FROM Schedules";
@@ -137,11 +139,25 @@ namespace Bummer.Common {
 				}
 				if( list.Count > 1 ) {
 					list.Sort( delegate( BackupScheduleWrapper x, BackupScheduleWrapper y ) {
-					           	return string.Compare( x.Name, y.Name ) * -1;
-					           } );
+						return string.Compare( x.Name, y.Name ) * -1;
+					} );
 				}
 			}
 			return list;
+		}
+		#endregion
+		#region public static DBCommand CreateDBCommand( FileInfo sqLiteFile )
+		/// <summary>
+		/// Returns a <see cref="DBCommand"/> based on a <see cref="SQLiteConnection"/>
+		/// The returned <see cref="DBCommand"/> can be used to perform any kind of operations against the database, including table-creation, inserts, updates, deletes, etc.
+		/// </summary>
+		/// <param name="sqLiteFile"></param>
+		/// <returns></returns>
+		public static DBCommand CreateDBCommand( FileInfo sqLiteFile ) {
+			SQLiteConnectionStringBuilder cb = new SQLiteConnectionStringBuilder();
+			cb.DataSource = sqLiteFile.FullName;
+			cb.FailIfMissing = false;
+			return new DBCommand( new SQLiteConnection( cb.ToString() ), CommandType.Text );
 		}
 		#endregion
 	}

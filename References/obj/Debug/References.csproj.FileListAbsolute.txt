@@ -1,0 +1,5 @@
+D:\GIT\Bummer\References\bin\Debug\References.dll
+D:\GIT\Bummer\References\bin\Debug\References.pdb
+D:\GIT\Bummer\References\obj\Debug\ResolveAssemblyReference.cache
+D:\GIT\Bummer\References\obj\Debug\References.dll
+D:\GIT\Bummer\References\obj\Debug\References.pdb

@@ -82,6 +82,10 @@ namespace Bummer.Common {
 				return cmd.CommandText;
 			}
 			set {
+				if( currentReader != null && !currentReader.IsClosed ) {
+					currentReader.Close();
+					currentReader.Dispose();
+				}
 				cmd.CommandText = value;
 			}
 		}
@@ -184,13 +188,13 @@ namespace Bummer.Common {
 		}
 		#endregion
 
-		#region private DBCommand( SQLiteConnection con, CommandType commandType )
+		#region internal DBCommand( SQLiteConnection con, CommandType commandType )
 		/// <summary>
 		/// Initializes a new instance of the <b>DBCommand</b> class.
 		/// </summary>
 		/// <param name="con"></param>
 		/// <param name="commandType"></param>
-		private DBCommand( SQLiteConnection con, CommandType commandType )
+		internal DBCommand( SQLiteConnection con, CommandType commandType )
 			: this( con, commandType, null ) {
 		}
 		#endregion

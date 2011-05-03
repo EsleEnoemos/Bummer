@@ -11,34 +11,53 @@ using Ionic.Zip;
 
 namespace Bummer.Schedules {
 	public class MSSQLDatabaseBackup : IBackupSchedule {
-		private bool? passive = null;
+		private bool? passive;
 		private MSSQLDatabaseBackupConfigGUI gui;
+		#region public string Name
+		/// <summary>
+		/// Gets the Name of the MSSQLDatabaseBackup
+		/// </summary>
+		/// <value></value>
 		public string Name {
 			get {
 				return "Database backup";
 			}
 		}
-
+		#endregion
+		#region public string Description
+		/// <summary>
+		/// Gets the Description of the MSSQLDatabaseBackup
+		/// </summary>
+		/// <value></value>
 		public string Description {
 			get {
-				return "Backup a Microsoft SQL Server Database";
+				return _decription ?? (_decription="Backup a Microsoft SQL Server Database{0}The database can be located on a remote server, as long as it is reachable from the current computer.{0}Backups can be stored in a specified directory, or be uploaded to an FTP-server.".FillBlanks( Environment.NewLine ));
 			}
 		}
+		private string _decription;
+		#endregion
 
+		#region public string SaveConfiguration()
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		public string SaveConfiguration() {
 			if( gui == null ) {
 				throw new Exception( "GUI not initialized" );
 			}
 			return gui.Save().Save();
 		}
+		#endregion
 
-		#region public string Execute( string config )
+		#region public string Execute( string config, int jobID )
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="config"></param>
+		/// <param name="jobID"></param>
 		/// <returns></returns>
-		public string Execute( string config ) {
+		public string Execute( string config, int jobID ) {
 			MSSQLDatabaseBackupConfig conf = MSSQLDatabaseBackupConfig.Load( config );
 			List<string> databases = conf.Databases;
 			if( databases == null || databases.Count == 0 ) {
@@ -182,16 +201,22 @@ Enable procedure xp_cmdshell to perform this".FillBlanks( databases.ToString( ",
 		/// <param name="config"></param>
 		public void InitiateConfiguration( Control container, string config ) {
 			gui = new MSSQLDatabaseBackupConfigGUI( MSSQLDatabaseBackupConfig.Load( config ) );
-			gui.Dock = DockStyle.Fill;
+			//gui.Dock = DockStyle.Fill;
 			//gui.MinimumSize = new Size(500,500);
 			container.Controls.Add( gui );
 		}
 		#endregion
-		public enum SaveAsTypes {
-			Directory = 1,
-			FTP = 2
+		#region public void Delete( string config, int jobID )
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="config"></param>
+		/// <param name="jobID"></param>
+		public void Delete( string config, int jobID ) {
 		}
-		public class MSSQLDatabaseBackupConfig {
+		#endregion
+
+		public class MSSQLDatabaseBackupConfig : IFTPConfig {
 			#region private static XmlSerializer Serializer
 			/// <summary>
 			/// Gets the Serializer of the MSSQLDatabaseBackupConfig
@@ -225,12 +250,96 @@ Enable procedure xp_cmdshell to perform this".FillBlanks( databases.ToString( ",
 			public SaveAsTypes SaveAs;
 			public string SaveToDir;
 			public string RemoteTempDir;
-			public string FTPServer;
-			public string FTPUsername;
-			public string FTPPassword;
-			public string FTPRemoteDirectory;
-			public string FTPLocalTempDirectory;
-			public int FTPPort;
+			#region public string FTPServer
+			/// <summary>
+			/// Get/Sets the FTPServer of the MSSQLDatabaseBackupConfig
+			/// </summary>
+			/// <value></value>
+			public string FTPServer {
+				get {
+					return _fTPServer;
+				}
+				set {
+					_fTPServer = value;
+				}
+			}
+			private string _fTPServer;
+			#endregion
+			#region public string FTPUsername
+			/// <summary>
+			/// Get/Sets the FTPUsername of the MSSQLDatabaseBackupConfig
+			/// </summary>
+			/// <value></value>
+			public string FTPUsername {
+				get {
+					return _fTPUsername;
+				}
+				set {
+					_fTPUsername = value;
+				}
+			}
+			private string _fTPUsername;
+			#endregion
+			#region public string FTPPassword
+			/// <summary>
+			/// Get/Sets the FTPPassword of the MSSQLDatabaseBackupConfig
+			/// </summary>
+			/// <value></value>
+			public string FTPPassword {
+				get {
+					return _fTPPassword;
+				}
+				set {
+					_fTPPassword = value;
+				}
+			}
+			private string _fTPPassword;
+			#endregion
+			#region public string FTPRemoteDirectory
+			/// <summary>
+			/// Get/Sets the FTPRemoteDirectory of the MSSQLDatabaseBackupConfig
+			/// </summary>
+			/// <value></value>
+			public string FTPRemoteDirectory {
+				get {
+					return _fTPRemoteDirectory;
+				}
+				set {
+					_fTPRemoteDirectory = value;
+				}
+			}
+			private string _fTPRemoteDirectory;
+			#endregion
+			#region public string FTPLocalTempDirectory
+			/// <summary>
+			/// Get/Sets the FTPLocalTempDirectory of the MSSQLDatabaseBackupConfig
+			/// </summary>
+			/// <value></value>
+			public string FTPLocalTempDirectory {
+				get {
+					return _fTPLocalTempDirectory;
+				}
+				set {
+					_fTPLocalTempDirectory = value;
+				}
+			}
+			private string _fTPLocalTempDirectory;
+			#endregion
+			#region public int FTPPort
+			/// <summary>
+			/// Get/Sets the FTPPort of the MSSQLDatabaseBackupConfig
+			/// </summary>
+			/// <value></value>
+			public int FTPPort {
+				get {
+					return _fTPPort;
+				}
+				set {
+					_fTPPort = value;
+				}
+			}
+			private int _fTPPort;
+			#endregion
 			public bool CompressFiles;
 			public bool AddDateToFilename;
 

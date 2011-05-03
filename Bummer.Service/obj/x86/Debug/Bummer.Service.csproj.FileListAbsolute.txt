@@ -1,0 +1,6 @@
+D:\GIT\Bummer\Bummer.Service\bin\Debug\Bummer.Service.exe.config
+D:\GIT\Bummer\Bummer.Service\bin\Debug\Bummer.Service.exe
+D:\GIT\Bummer\Bummer.Service\bin\Debug\Bummer.Service.pdb
+D:\GIT\Bummer\Bummer.Service\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\GIT\Bummer\Bummer.Service\obj\x86\Debug\Bummer.Service.exe
+D:\GIT\Bummer\Bummer.Service\obj\x86\Debug\Bummer.Service.pdb

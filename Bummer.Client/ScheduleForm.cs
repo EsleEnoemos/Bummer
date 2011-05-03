@@ -70,6 +70,9 @@ namespace Bummer.Client {
 			}
 			if( ind > -1 ) {
 				cbJobType.SelectedIndex = ind;
+				if( Job.ID > 0 ) {
+					cbJobType.Enabled = false;
+				}
 			}
 		}
 		#endregion
@@ -77,16 +80,11 @@ namespace Bummer.Client {
 		private class PlugWrapper {
 			public IBackupSchedule job;
 
-			public string Name {
-				get {
-					return job.Name;
-				}
-			}
 			public PlugWrapper( IBackupSchedule job ) {
 				this.job = job;
 			}
 			public override string ToString() {
-				return Name;
+				return job.Name;
 			}
 		}
 
@@ -103,6 +101,7 @@ namespace Bummer.Client {
 				return;
 			}
 			Job.JobType = pw.job.GetType().FullName;
+			tbDescription.Text = pw.job.Description;
 			pw.job.InitiateConfiguration( pnlJobConfig, Job.Configuration );
 		}
 		#endregion

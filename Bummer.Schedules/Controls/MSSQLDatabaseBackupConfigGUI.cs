@@ -9,13 +9,31 @@ namespace Bummer.Schedules.Controls {
 	public partial class MSSQLDatabaseBackupConfigGUI : UserControl {
 		internal MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig Config;
 
+		#region public MSSQLDatabaseBackupConfigGUI( MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig config )
+		/// <summary>
+		/// Initializes a new instance of the <b>MSSQLDatabaseBackupConfigGUI</b> class.
+		/// </summary>
+		/// <param name="config"></param>
 		public MSSQLDatabaseBackupConfigGUI( MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig config ) {
 			InitializeComponent();
 			Config = config ?? new MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig();
 		}
-		public MSSQLDatabaseBackupConfigGUI() : this( null ) {
+		#endregion
+		#region public MSSQLDatabaseBackupConfigGUI()
+		/// <summary>
+		/// Initializes a new instance of the <b>MSSQLDatabaseBackupConfigGUI</b> class.
+		/// </summary>
+		public MSSQLDatabaseBackupConfigGUI()
+			: this( null ) {
 		}
+		#endregion
 
+		#region private void MSSQLDatabaseBackupConfigGUI_Load( object sender, EventArgs e )
+		/// <summary>
+		/// This method is called when the MSSQLDatabaseBackupConfigGUI's Load event has been fired.
+		/// </summary>
+		/// <param name="sender">The <see cref="object"/> that fired the event.</param>
+		/// <param name="e">The <see cref="EventArgs"/> of the event.</param>
 		private void MSSQLDatabaseBackupConfigGUI_Load( object sender, EventArgs e ) {
 			tbServer.Text = Config.Server;
 			tbUsername.Text = Config.Username;
@@ -23,15 +41,21 @@ namespace Bummer.Schedules.Controls {
 			tbRemoteTempDir.Text = Config.RemoteTempDir;
 			cbCompress.Checked = Config.CompressFiles;
 			cbAddDateToFilename.Checked = Config.AddDateToFilename;
-			cbSaveType.Items.Add( MSSQLDatabaseBackup.SaveAsTypes.Directory );
-			cbSaveType.Items.Add( MSSQLDatabaseBackup.SaveAsTypes.FTP );
-			cbSaveType.SelectedIndex = Config.SaveAs == MSSQLDatabaseBackup.SaveAsTypes.FTP ? 1 : 0;
+			cbSaveType.Items.Add( SaveAsTypes.Directory );
+			cbSaveType.Items.Add( SaveAsTypes.FTP );
+			cbSaveType.SelectedIndex = Config.SaveAs == SaveAsTypes.FTP ? 1 : 0;
 			RefreshDatabases();
 		}
+		#endregion
+		#region internal MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig Save()
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		internal MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig Save() {
 			MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig config = new MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig();
 			if( string.IsNullOrEmpty( tbServer.Text ) ) {
-				throw new Exception("You have to specify a database server");
+				throw new Exception( "You have to specify a database server" );
 			}
 			config.Server = tbServer.Text;
 			if( string.IsNullOrEmpty( tbUsername.Text ) ) {
@@ -55,10 +79,10 @@ namespace Bummer.Schedules.Controls {
 			}
 			config.CompressFiles = cbCompress.Checked;
 			config.AddDateToFilename = cbAddDateToFilename.Checked;
-			config.SaveAs = (MSSQLDatabaseBackup.SaveAsTypes)cbSaveType.SelectedItem;
+			config.SaveAs = (SaveAsTypes)cbSaveType.SelectedItem;
 			switch( config.SaveAs ) {
-				case MSSQLDatabaseBackup.SaveAsTypes.Directory:
-					MSSQLDatabaseBackupConfigGUIDirectorySelector ds = pnlSaveAsConfig.Controls[ 0 ] as MSSQLDatabaseBackupConfigGUIDirectorySelector;
+				case SaveAsTypes.Directory:
+					DirectoryConfigSelector ds = pnlSaveAsConfig.Controls[ 0 ] as DirectoryConfigSelector;
 					if( ds == null ) {
 						throw new Exception( "Unable to find directory selector" );
 					}
@@ -67,8 +91,8 @@ namespace Bummer.Schedules.Controls {
 					}
 					config.SaveToDir = ds.Directory;
 					break;
-				case MSSQLDatabaseBackup.SaveAsTypes.FTP:
-					MSSQLDatabaseBackupConfigGUIFTPSelector fs = pnlSaveAsConfig.Controls[ 0 ] as MSSQLDatabaseBackupConfigGUIFTPSelector;
+				case SaveAsTypes.FTP:
+					FTPConfigSelector fs = pnlSaveAsConfig.Controls[ 0 ] as FTPConfigSelector;
 					if( fs == null ) {
 						throw new Exception( "Unable to find FTP selector" );
 					}
@@ -103,6 +127,7 @@ namespace Bummer.Schedules.Controls {
 			}
 			return config;
 		}
+		#endregion
 
 		#region private List<string> GetDatabases()
 		/// <summary>
@@ -183,13 +208,13 @@ namespace Bummer.Schedules.Controls {
 		#endregion
 
 		private void cbSaveType_SelectedIndexChanged( object sender, EventArgs e ) {
-			MSSQLDatabaseBackup.SaveAsTypes st = (MSSQLDatabaseBackup.SaveAsTypes)cbSaveType.SelectedItem;
+			SaveAsTypes st = (SaveAsTypes)cbSaveType.SelectedItem;
 			pnlSaveAsConfig.Controls.Clear();
 			Control c;
-			if( st == MSSQLDatabaseBackup.SaveAsTypes.Directory ) {
-				c = new MSSQLDatabaseBackupConfigGUIDirectorySelector( Config );
+			if( st == SaveAsTypes.Directory ) {
+				c = new DirectoryConfigSelector( Config.SaveToDir );
 			} else {
-				c = new MSSQLDatabaseBackupConfigGUIFTPSelector( Config );
+				c = new FTPConfigSelector( Config );
 			}
 			c.Dock = DockStyle.Fill;
 			pnlSaveAsConfig.Controls.Add( c );

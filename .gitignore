@@ -8,3 +8,14 @@ Bummer.Schedules/obj/
 *.obj
 *.exe
 *.pdb
+Bummer.Client/bin/Debug/Bummer.Common.dll
+Bummer.Client/bin/Debug/System.Data.SQLite.dll
+Bummer.Schedules/bin/Debug/Bummer.Common.dll
+Bummer.Schedules/bin/Debug/Bummer.Schedules.dll
+Bummer.Schedules/bin/Debug/Ionic.Zip.dll
+Bummer.Common/bin/Debug/Bummer.Common.dll
+Bummer.Common/bin/Debug/System.Data.SQLite.DLL
+Bummer.Schedules/bin/Debug/Ionic.Zip.xml
+Bummer.Schedules/bin/Debug/System.Data.SQLite.dll
+References/bin/Debug/References.dll
+References/obj/Debug/References.dll

@@ -39,6 +39,7 @@
 			this.dpStartTo = new System.Windows.Forms.DateTimePicker();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
+			this.tbDescription = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.nuInterval)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -55,7 +56,7 @@
 			// 
 			this.tbName.Location = new System.Drawing.Point(84, 10);
 			this.tbName.Name = "tbName";
-			this.tbName.Size = new System.Drawing.Size(245, 20);
+			this.tbName.Size = new System.Drawing.Size(288, 20);
 			this.tbName.TabIndex = 1;
 			// 
 			// pnlJobConfig
@@ -76,7 +77,7 @@
 			this.cbJobType.FormattingEnabled = true;
 			this.cbJobType.Location = new System.Drawing.Point(84, 41);
 			this.cbJobType.Name = "cbJobType";
-			this.cbJobType.Size = new System.Drawing.Size(182, 21);
+			this.cbJobType.Size = new System.Drawing.Size(214, 21);
 			this.cbJobType.TabIndex = 4;
 			this.cbJobType.SelectedIndexChanged += new System.EventHandler(this.cbJobType_SelectedIndexChanged);
 			// 
@@ -95,7 +96,7 @@
 			this.cbIntervalType.FormattingEnabled = true;
 			this.cbIntervalType.Location = new System.Drawing.Point(84, 68);
 			this.cbIntervalType.Name = "cbIntervalType";
-			this.cbIntervalType.Size = new System.Drawing.Size(182, 21);
+			this.cbIntervalType.Size = new System.Drawing.Size(214, 21);
 			this.cbIntervalType.TabIndex = 6;
 			// 
 			// label3
@@ -120,7 +121,7 @@
 			// 
 			this.nuInterval.Location = new System.Drawing.Point(84, 99);
 			this.nuInterval.Name = "nuInterval";
-			this.nuInterval.Size = new System.Drawing.Size(182, 20);
+			this.nuInterval.Size = new System.Drawing.Size(214, 20);
 			this.nuInterval.TabIndex = 9;
 			// 
 			// label5
@@ -157,7 +158,7 @@
 			this.dpStartFrom.Location = new System.Drawing.Point(84, 126);
 			this.dpStartFrom.Name = "dpStartFrom";
 			this.dpStartFrom.ShowUpDown = true;
-			this.dpStartFrom.Size = new System.Drawing.Size(182, 20);
+			this.dpStartFrom.Size = new System.Drawing.Size(214, 20);
 			this.dpStartFrom.TabIndex = 15;
 			// 
 			// dpStartTo
@@ -167,7 +168,7 @@
 			this.dpStartTo.Location = new System.Drawing.Point(84, 153);
 			this.dpStartTo.Name = "dpStartTo";
 			this.dpStartTo.ShowUpDown = true;
-			this.dpStartTo.Size = new System.Drawing.Size(182, 20);
+			this.dpStartTo.Size = new System.Drawing.Size(214, 20);
 			this.dpStartTo.TabIndex = 16;
 			// 
 			// btnSave
@@ -192,6 +193,18 @@
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
+			// tbDescription
+			// 
+			this.tbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbDescription.Location = new System.Drawing.Point(323, 41);
+			this.tbDescription.Multiline = true;
+			this.tbDescription.Name = "tbDescription";
+			this.tbDescription.ReadOnly = true;
+			this.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.tbDescription.Size = new System.Drawing.Size(285, 132);
+			this.tbDescription.TabIndex = 19;
+			// 
 			// ScheduleForm
 			// 
 			this.AcceptButton = this.btnSave;
@@ -199,6 +212,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
 			this.ClientSize = new System.Drawing.Size(620, 431);
+			this.Controls.Add(this.tbDescription);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.dpStartTo);
@@ -245,5 +259,6 @@
 		private System.Windows.Forms.DateTimePicker dpStartTo;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.Button btnCancel;
+		private System.Windows.Forms.TextBox tbDescription;
 	}
 }

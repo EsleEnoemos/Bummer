@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 namespace Bummer.Schedules.Controls {
-	public partial class MSSQLDatabaseBackupConfigGUIDirectorySelector : UserControl {
+	public partial class DirectoryConfigSelector : UserControl {
 		public string Directory {
 			get {
 				return textBox1.Text;
@@ -12,11 +12,11 @@ namespace Bummer.Schedules.Controls {
 			}
 		}
 
-		public MSSQLDatabaseBackupConfigGUIDirectorySelector( MSSQLDatabaseBackup.MSSQLDatabaseBackupConfig config ) {
+		public DirectoryConfigSelector( string selectedDirectory ) {
 			InitializeComponent();
-			textBox1.Text = config.SaveToDir;
+			textBox1.Text = selectedDirectory;
 		}
-		public MSSQLDatabaseBackupConfigGUIDirectorySelector()
+		public DirectoryConfigSelector()
 			: this( null ) {
 		}
 

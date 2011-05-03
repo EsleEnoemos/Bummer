@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="BackupScheduleWrapper.cs" />
     <Compile Include="ByteBuffer.cs" />
+    <Compile Include="CommandWrapper.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="DBCommand.cs" />
     <Compile Include="Extensions.cs" />

@@ -14,6 +14,9 @@ namespace Bummer.Client {
 
 		private void Form1_Load( object sender, EventArgs e ) {
 			RefreshJobs();
+//            CommandWrapper.Parse( @"hej	hopp
+//hej igen	hopp	i	skogen
+//hejallabarn" );
 		}
 		#region internal void RefreshJobs()
 		/// <summary>

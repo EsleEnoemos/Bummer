@@ -1113,6 +1113,8 @@ namespace Bummer.Common {
 [Name] VARCHAR(255) NOT NULL,
 [CreatedDate] DATE DEFAULT CURRENT_DATE NOT NULL,
 [JobType] VARCHAR(1000) NOT NULL,
+[PreCommands] VARCHAR(8000) NULL,
+[PostCommands] VARCHAR(8000) NULL,
 [Configuration] VARCHAR(8000) NULL,
 [IntervalType] INT NOT NULL,
 [Interval] INT NOT NULL,

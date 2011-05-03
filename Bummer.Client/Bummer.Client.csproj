@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommandDialog.Designer.cs">
+      <DependentUpon>CommandDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="ScheduleItemControl.Designer.cs">
       <DependentUpon>ScheduleItemControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CommandDialog.resx">
+      <DependentUpon>CommandDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

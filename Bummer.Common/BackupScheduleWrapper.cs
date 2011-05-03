@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Xml.Serialization;
 
 namespace Bummer.Common {
@@ -60,6 +61,36 @@ namespace Bummer.Common {
 			}
 		}
 		private string _jobType;
+		#endregion
+		#region public string PreCommands
+		/// <summary>
+		/// Get/Sets the PreCommands of the BackupScheduleWrapper
+		/// </summary>
+		/// <value></value>
+		public string PreCommands {
+			get {
+				return _preCommands;
+			}
+			set {
+				_preCommands = value;
+			}
+		}
+		private string _preCommands;
+		#endregion
+		#region public string PostCommands
+		/// <summary>
+		/// Get/Sets the PostCommands of the BackupScheduleWrapper
+		/// </summary>
+		/// <value></value>
+		public string PostCommands {
+			get {
+				return _postCommands;
+			}
+			set {
+				_postCommands = value;
+			}
+		}
+		private string _postCommands;
 		#endregion
 		#region public string Configuration
 		/// <summary>
@@ -197,10 +228,10 @@ namespace Bummer.Common {
 				return _logs ?? (_logs = ScheduleJobLog.Load( ID ));
 			}
 		}
-		#endregion
 		private List<ScheduleJobLog> _logs;
+		#endregion
 
-		#region public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, SchduleIntervalTypes intervalType, int interval, DateTime startFromTime, DateTime startToTime, DateTime? lastStarted, DateTime? lastFinished )
+		#region public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startFromTime, DateTime startToTime, DateTime? lastStarted, DateTime? lastFinished )
 		/// <summary>
 		/// Initializes a new instance of the <b>BackupScheduleWrapper</b> class.
 		/// </summary>
@@ -209,17 +240,21 @@ namespace Bummer.Common {
 		/// <param name="createdDate"></param>
 		/// <param name="jobType"></param>
 		/// <param name="configuration"></param>
+		/// <param name="preCommands"></param>
+		/// <param name="postCommands"></param>
 		/// <param name="intervalType"></param>
 		/// <param name="interval"></param>
 		/// <param name="startFromTime"></param>
 		/// <param name="startToTime"></param>
 		/// <param name="lastStarted"></param>
 		/// <param name="lastFinished"></param>
-		public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, SchduleIntervalTypes intervalType, int interval, DateTime startFromTime, DateTime startToTime, DateTime? lastStarted, DateTime? lastFinished ) {
+		public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startFromTime, DateTime startToTime, DateTime? lastStarted, DateTime? lastFinished ) {
 			_iD = id;
 			_name = name;
 			_createdDate = createdDate;
 			_jobType = jobType;
+			_preCommands = preCommands;
+			_postCommands = postCommands;
 			_configuration = configuration;
 			_intervalType = intervalType;
 			_interval = interval;
@@ -243,7 +278,7 @@ namespace Bummer.Common {
 		/// </summary>
 		/// <returns>A new object that is a copy of this instance.</returns>
 		internal BackupScheduleWrapper Clone() {
-			return new BackupScheduleWrapper( ID, Name, CreatedDate, JobType, Configuration, IntervalType, Interval, StartFromTime, StartToTime, LastStarted, LastFinished );
+			return new BackupScheduleWrapper( ID, Name, CreatedDate, JobType, Configuration, PreCommands, PostCommands, IntervalType, Interval, StartFromTime, StartToTime, LastStarted, LastFinished );
 		}
 		#endregion
 
@@ -257,11 +292,13 @@ namespace Bummer.Common {
 			}
 			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
 				if( ID <= 0 ) {
-					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, Configuration, IntervalType, Interval, StartFromTime, StartToTime ) VALUES( @Name, @CreatedDate, @JobType, @Configuration, @IntervalType, @Interval, @StartFromTime, @StartToTime );";
+					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, Configuration, PreCommands, PostCommands, IntervalType, Interval, StartFromTime, StartToTime ) VALUES( @Name, @CreatedDate, @JobType, @Configuration, @PreCommands, @PostCommands, @IntervalType, @Interval, @StartFromTime, @StartToTime );";
 					cmd.AddWithValue( "@Name", Name );
 					cmd.AddWithValue( "@CreatedDate", CreatedDate );
 					cmd.AddWithValue( "@JobType", JobType );
 					cmd.AddWithValue( "@Configuration", Configuration );
+					cmd.AddWithValue( "@PreCommands", NZ( PreCommands ) );
+					cmd.AddWithValue( "@PostCommands", NZ( PostCommands ) );
 					cmd.AddWithValue( "@IntervalType", (int)IntervalType );
 					cmd.AddWithValue( "@Interval", Interval );
 					cmd.AddWithValue( "@StartFromTime", StartFromTime );
@@ -274,6 +311,8 @@ UPDATE Schedules
 SET
 Name = @Name,
 JobType = @JobType,
+PreCommands = @PreCommands,
+PostCommands = @PostCommands,
 Configuration = @Configuration,
 IntervalType = @IntervalType,
 Interval = @Interval,
@@ -283,6 +322,8 @@ WHERE
 Schedule_ID = @Schedule_ID";
 					cmd.AddWithValue( "@Name", Name );
 					cmd.AddWithValue( "@JobType", JobType );
+					cmd.AddWithValue( "@PreCommands", NZ( PreCommands ) );
+					cmd.AddWithValue( "@PostCommands", NZ( PostCommands ) );
 					cmd.AddWithValue( "@Configuration", Configuration );
 					cmd.AddWithValue( "@IntervalType", (int)IntervalType );
 					cmd.AddWithValue( "@Interval", Interval );
@@ -294,7 +335,12 @@ Schedule_ID = @Schedule_ID";
 			}
 		}
 		#endregion
-
+		private static object NZ( string that ) {
+			if( string.IsNullOrEmpty( that ) ) {
+				return DBNull.Value;
+			}
+			return that;
+		}
 		#region public void Delete()
 		/// <summary>
 		/// 
@@ -312,12 +358,22 @@ Schedule_ID = @Schedule_ID";
 		}
 		#endregion
 
+		#region public void Execute()
+		/// <summary>
+		/// 
+		/// </summary>
 		public void Execute() {
 			DateTime start = DateTime.Now;
 			bool success = true;
-			string message = null;
+			string message;
 			try {
+				if( !string.IsNullOrEmpty( PreCommands ) ) {
+					RunCommands( PreCommands );
+				}
 				message = Job.Execute( Configuration, ID );
+				if( !string.IsNullOrEmpty( PostCommands ) ) {
+					RunCommands( PostCommands );
+				}
 			} catch( Exception ex ) {
 				success = false;
 				message = ex.Message;
@@ -325,9 +381,9 @@ Schedule_ID = @Schedule_ID";
 			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
 				DateTime now = DateTime.Now;
 				try {
-				cmd.CommandText = "UPDATE Schedules SET LastStarted = @start, LastFinished = @now WHERE Schedule_ID = @ID";
-				cmd.AddWithValue( "@start", start );
-				cmd.AddWithValue( "@now", now );
+					cmd.CommandText = "UPDATE Schedules SET LastStarted = @start, LastFinished = @now WHERE Schedule_ID = @ID";
+					cmd.AddWithValue( "@start", start );
+					cmd.AddWithValue( "@now", now );
 					cmd.AddWithValue( "@ID", ID );
 					cmd.ExecuteNonQuery();
 					cmd.ClearParameters();
@@ -340,6 +396,22 @@ Schedule_ID = @Schedule_ID";
 					_logs = null;
 				} catch {
 				}
+			}
+		}
+		#endregion
+
+		public static void RunCommands( string commands ) {
+			if( string.IsNullOrEmpty( commands ) ) {
+				return;
+			}
+			List<CommandWrapper> cmds = CommandWrapper.Parse( commands );
+			foreach( CommandWrapper command in cmds ) {
+				Process p = new Process();
+				p.StartInfo = new ProcessStartInfo( command.Command, command.Arguments );
+				p.StartInfo.CreateNoWindow = true;
+				p.StartInfo.UseShellExecute = false;
+				p.Start();
+				p.WaitForExit();
 			}
 		}
 	}

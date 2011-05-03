@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Each command will be executed separatly.
-The commands will be executed in the given order.
-A command will have to exit before the next is executed.
-Make sure that no commands will ask for any kind of input</value>
-  </data>
 </root>

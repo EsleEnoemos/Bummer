@@ -135,7 +135,7 @@ namespace Bummer.Common {
 			using( DBCommand cmd = GetCommand() ) {
 				cmd.CommandText = "SELECT * FROM Schedules";
 				while( cmd.Read() ) {
-					list.Add( new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "Configuration" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartFromTime" ), cmd.GetDateTime( "StartToTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) ) );
+					list.Add( new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "Configuration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartFromTime" ), cmd.GetDateTime( "StartToTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) ) );
 				}
 				if( list.Count > 1 ) {
 					list.Sort( delegate( BackupScheduleWrapper x, BackupScheduleWrapper y ) {

@@ -2,16 +2,51 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Bummer.Common;
+using Bummer.ScheduleRunner;
 
 namespace Bummer.Client {
 	public partial class ScheduleItemControl : UserControl {
 		private BackupScheduleWrapper job;
+		private Timer timer;
+		private bool wasRunning;
+
 		public ScheduleItemControl( BackupScheduleWrapper job ) {
 			InitializeComponent();
 			this.job = job ?? new BackupScheduleWrapper();
+			Disposed += ScheduleItemControl_Disposed;
+			timer = new Timer();
+			timer.Interval = 1000;
+			timer.Tick += timer_Tick;
+			timer.Start();
 		}
 		public ScheduleItemControl()
 			: this( new BackupScheduleWrapper() ) {
+		}
+		void timer_Tick( object sender, EventArgs e ) {
+			bool isRunning = ScheduleJobSpawner.IsJobRunning( job );
+			if( isRunning ) {
+				wasRunning = true;
+			} else if( wasRunning ) {
+				wasRunning = true;
+				job.ReFresh();
+				lblLastStarted.Text = job.LastStarted.HasValue ? job.LastStarted.Value.ToString( "yyyy:MM:dd HH:mm" ) : "Never";
+				lblLastFinished.Text = job.LastFinished.HasValue ? job.LastFinished.Value.ToString( "yyyy:MM:dd HH:mm" ) : "Never";
+				if( job.Logs.Count > 0 ) {
+					ScheduleJobLog log = job.Logs[ 0 ];
+					textBox1.Text = log.Entry;
+					textBox1.ForeColor = !log.Success ? Color.Red : SystemColors.WindowText;
+					textBox1.Select( 0, 0 );
+				}
+			}
+			btnRunJob.Enabled = !isRunning;
+			btnEdit.Enabled = !isRunning;
+			btnDelete.Enabled = !isRunning;
+			lblLastResult.Visible = !isRunning;
+			lblIsRunning.Visible = isRunning;
+		}
+		void ScheduleItemControl_Disposed( object sender, EventArgs e ) {
+			timer.Stop();
+			timer.Dispose();
 		}
 
 		private void ScheduleItemControl_Load( object sender, EventArgs e ) {
@@ -70,13 +105,15 @@ namespace Bummer.Client {
 		#endregion
 
 		private void btnRunJob_Click( object sender, EventArgs e ) {
-			Enabled = false;
-			try {
-				job.Execute();
-				Form1.Instance.RefreshJobs();
-			} finally {
-				Enabled = true;
-			}
+			ScheduleJobSpawner.SpawAndRun( job );
+			timer_Tick( timer, new EventArgs() );
+			//Enabled = false;
+			//try {
+			//    job.Execute();
+			//    Form1.Instance.RefreshJobs();
+			//} finally {
+			//    Enabled = true;
+			//}
 		}
 	}
 }

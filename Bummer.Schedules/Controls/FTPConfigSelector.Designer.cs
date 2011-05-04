@@ -56,7 +56,7 @@
 			this.tbServer.Location = new System.Drawing.Point(122, 12);
 			this.tbServer.Name = "tbServer";
 			this.tbServer.Size = new System.Drawing.Size(235, 20);
-			this.tbServer.TabIndex = 2;
+			this.tbServer.TabIndex = 0;
 			// 
 			// tbUsername
 			// 
@@ -65,7 +65,7 @@
 			this.tbUsername.Location = new System.Drawing.Point(122, 64);
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.Size = new System.Drawing.Size(235, 20);
-			this.tbUsername.TabIndex = 4;
+			this.tbUsername.TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -83,7 +83,7 @@
 			this.tbPassword.Location = new System.Drawing.Point(122, 90);
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.Size = new System.Drawing.Size(235, 20);
-			this.tbPassword.TabIndex = 6;
+			this.tbPassword.TabIndex = 3;
 			// 
 			// label4
 			// 
@@ -101,7 +101,7 @@
 			this.tbRemoteDir.Location = new System.Drawing.Point(122, 116);
 			this.tbRemoteDir.Name = "tbRemoteDir";
 			this.tbRemoteDir.Size = new System.Drawing.Size(235, 20);
-			this.tbRemoteDir.TabIndex = 8;
+			this.tbRemoteDir.TabIndex = 4;
 			this.toolTip1.SetToolTip(this.tbRemoteDir, "Make sure that the remote directory exists.\r\nIf not, uploading the file will fail" +
         "");
 			// 
@@ -121,7 +121,7 @@
 			this.tbLocalTemp.Location = new System.Drawing.Point(122, 142);
 			this.tbLocalTemp.Name = "tbLocalTemp";
 			this.tbLocalTemp.Size = new System.Drawing.Size(200, 20);
-			this.tbLocalTemp.TabIndex = 10;
+			this.tbLocalTemp.TabIndex = 5;
 			// 
 			// label6
 			// 
@@ -138,7 +138,7 @@
 			this.btnBrowseForLocalTempDirectory.Location = new System.Drawing.Point(329, 142);
 			this.btnBrowseForLocalTempDirectory.Name = "btnBrowseForLocalTempDirectory";
 			this.btnBrowseForLocalTempDirectory.Size = new System.Drawing.Size(28, 23);
-			this.btnBrowseForLocalTempDirectory.TabIndex = 11;
+			this.btnBrowseForLocalTempDirectory.TabIndex = 6;
 			this.btnBrowseForLocalTempDirectory.Text = "...";
 			this.btnBrowseForLocalTempDirectory.UseVisualStyleBackColor = true;
 			this.btnBrowseForLocalTempDirectory.Click += new System.EventHandler(this.btnBrowseForLocalTempDirectory_Click);
@@ -150,7 +150,7 @@
 			this.tbPort.Location = new System.Drawing.Point(122, 38);
 			this.tbPort.Name = "tbPort";
 			this.tbPort.Size = new System.Drawing.Size(235, 20);
-			this.tbPort.TabIndex = 13;
+			this.tbPort.TabIndex = 1;
 			// 
 			// label7
 			// 

@@ -19,3 +19,7 @@ Bummer.Schedules/bin/Debug/Ionic.Zip.xml
 Bummer.Schedules/bin/Debug/System.Data.SQLite.dll
 References/bin/Debug/References.dll
 References/obj/Debug/References.dll
+Bummer.ScheduleRunner/bin/Debug/Bummer.Common.dll
+Bummer.ScheduleRunner/bin/Debug/Bummer.ScheduleRunner.exe.config
+Bummer.ScheduleRunner/bin/Debug/System.Data.SQLite.dll
+Bummer.ScheduleRunner/obj/x86/Debug/Bummer.ScheduleRunner.csproj.FileListAbsolute.txt

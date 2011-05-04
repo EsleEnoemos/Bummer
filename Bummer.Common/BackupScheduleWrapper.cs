@@ -282,6 +282,15 @@ namespace Bummer.Common {
 		}
 		#endregion
 
+		public void ReFresh() {
+			_logs = null;
+			BackupScheduleWrapper rf = Common.Configuration.GetSchedule( ID );
+			if( rf == null ) {
+				return;
+			}
+			_lastStarted = rf._lastStarted;
+			_lastFinished = rf._lastFinished;
+		}
 		#region public void Persist()
 		/// <summary>
 		/// 
@@ -335,12 +344,19 @@ Schedule_ID = @Schedule_ID";
 			}
 		}
 		#endregion
+		#region private static object NZ( string that )
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="that"></param>
+		/// <returns></returns>
 		private static object NZ( string that ) {
 			if( string.IsNullOrEmpty( that ) ) {
 				return DBNull.Value;
 			}
 			return that;
 		}
+		#endregion
 		#region public void Delete()
 		/// <summary>
 		/// 
@@ -366,6 +382,15 @@ Schedule_ID = @Schedule_ID";
 			DateTime start = DateTime.Now;
 			bool success = true;
 			string message;
+			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
+				try {
+					cmd.CommandText = "UPDATE Schedules SET LastStarted = @start WHERE Schedule_ID = @ID";
+					cmd.AddWithValue( "@start", start );
+					cmd.AddWithValue( "@ID", ID );
+					cmd.ExecuteNonQuery();
+				} catch {
+				}
+			}
 			try {
 				if( !string.IsNullOrEmpty( PreCommands ) ) {
 					RunCommands( PreCommands );
@@ -381,15 +406,11 @@ Schedule_ID = @Schedule_ID";
 			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
 				DateTime now = DateTime.Now;
 				try {
-					cmd.CommandText = "UPDATE Schedules SET LastStarted = @start, LastFinished = @now WHERE Schedule_ID = @ID";
-					cmd.AddWithValue( "@start", start );
-					cmd.AddWithValue( "@now", now );
+					cmd.CommandText = "UPDATE Schedules SET LastFinished = @now WHERE Schedule_ID = @ID";
 					cmd.AddWithValue( "@ID", ID );
+					cmd.AddWithValue( "@now", now );
 					cmd.ExecuteNonQuery();
-					cmd.ClearParameters();
 					cmd.CommandText = "INSERT INTO ScheduleLogs( Schedule_ID, Date, Success, Entry ) VALUES( @ID, @now, @Success, @Entry )";
-					cmd.AddWithValue( "@ID", ID );
-					cmd.AddWithValue( "@now", now );
 					cmd.AddWithValue( "@Success", success ? 1 : 0 );
 					cmd.AddWithValue( "@Entry", message ?? "" );
 					cmd.ExecuteNonQuery();

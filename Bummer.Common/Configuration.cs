@@ -146,6 +146,22 @@ namespace Bummer.Common {
 			return list;
 		}
 		#endregion
+		#region internal static BackupScheduleWrapper GetSchedule( int id )
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		internal static BackupScheduleWrapper GetSchedule( int id ) {
+			using( DBCommand cmd = GetCommand() ) {
+				cmd.CommandText = "SELECT * FROM Schedules WHERE Schedule_ID = {0}".FillBlanks( id );
+				while( cmd.Read() ) {
+					return new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "Configuration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartFromTime" ), cmd.GetDateTime( "StartToTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) );
+				}
+			}
+			return null;
+		}
+		#endregion
 		#region public static DBCommand CreateDBCommand( FileInfo sqLiteFile )
 		/// <summary>
 		/// Returns a <see cref="DBCommand"/> based on a <see cref="SQLiteConnection"/>

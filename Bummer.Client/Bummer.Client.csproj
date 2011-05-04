@@ -118,6 +118,10 @@
       <Project>{23120D68-66AE-4165-B345-0A4A2326A0E9}</Project>
       <Name>Bummer.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bummer.ScheduleRunner\Bummer.ScheduleRunner.csproj">
+      <Project>{253955C6-154C-4A48-ABBF-02CEB98D3351}</Project>
+      <Name>Bummer.ScheduleRunner</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Delete.png" />

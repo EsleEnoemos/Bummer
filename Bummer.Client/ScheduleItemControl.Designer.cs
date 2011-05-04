@@ -31,11 +31,12 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.lblLastFinished = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
+			this.lblLastResult = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.btnRunJob = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnEdit = new System.Windows.Forms.Button();
+			this.lblIsRunning = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -110,14 +111,14 @@
 			this.label6.TabIndex = 6;
 			this.label6.Text = "Last finished";
 			// 
-			// label2
+			// lblLastResult
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(280, 4);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(55, 13);
-			this.label2.TabIndex = 8;
-			this.label2.Text = "Last result";
+			this.lblLastResult.AutoSize = true;
+			this.lblLastResult.Location = new System.Drawing.Point(280, 4);
+			this.lblLastResult.Name = "lblLastResult";
+			this.lblLastResult.Size = new System.Drawing.Size(55, 13);
+			this.lblLastResult.TabIndex = 8;
+			this.lblLastResult.Text = "Last result";
 			// 
 			// textBox1
 			// 
@@ -130,6 +131,7 @@
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.textBox1.Size = new System.Drawing.Size(331, 58);
 			this.textBox1.TabIndex = 9;
+			this.textBox1.TabStop = false;
 			// 
 			// btnRunJob
 			// 
@@ -138,7 +140,7 @@
 			this.btnRunJob.Location = new System.Drawing.Point(529, -1);
 			this.btnRunJob.Name = "btnRunJob";
 			this.btnRunJob.Size = new System.Drawing.Size(24, 24);
-			this.btnRunJob.TabIndex = 12;
+			this.btnRunJob.TabIndex = 0;
 			this.btnRunJob.Text = "...";
 			this.btnRunJob.UseVisualStyleBackColor = true;
 			this.btnRunJob.Click += new System.EventHandler(this.btnRunJob_Click);
@@ -151,7 +153,7 @@
 			this.btnDelete.Location = new System.Drawing.Point(589, -1);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(24, 24);
-			this.btnDelete.TabIndex = 11;
+			this.btnDelete.TabIndex = 2;
 			this.btnDelete.Text = "...";
 			this.btnDelete.UseVisualStyleBackColor = true;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -163,10 +165,21 @@
 			this.btnEdit.Location = new System.Drawing.Point(559, -1);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(24, 24);
-			this.btnEdit.TabIndex = 10;
+			this.btnEdit.TabIndex = 1;
 			this.btnEdit.Text = "...";
 			this.btnEdit.UseVisualStyleBackColor = true;
 			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			// 
+			// lblIsRunning
+			// 
+			this.lblIsRunning.AutoSize = true;
+			this.lblIsRunning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblIsRunning.Location = new System.Drawing.Point(280, 4);
+			this.lblIsRunning.Name = "lblIsRunning";
+			this.lblIsRunning.Size = new System.Drawing.Size(139, 13);
+			this.lblIsRunning.TabIndex = 13;
+			this.lblIsRunning.Text = "Job is currently running";
+			this.lblIsRunning.Visible = false;
 			// 
 			// ScheduleItemControl
 			// 
@@ -178,7 +191,7 @@
 			this.Controls.Add(this.btnDelete);
 			this.Controls.Add(this.btnEdit);
 			this.Controls.Add(this.textBox1);
-			this.Controls.Add(this.label2);
+			this.Controls.Add(this.lblLastResult);
 			this.Controls.Add(this.lblLastFinished);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.lblLastStarted);
@@ -187,6 +200,7 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.lblName);
 			this.Controls.Add(this.label1);
+			this.Controls.Add(this.lblIsRunning);
 			this.Name = "ScheduleItemControl";
 			this.Size = new System.Drawing.Size(617, 94);
 			this.Load += new System.EventHandler(this.ScheduleItemControl_Load);
@@ -205,10 +219,11 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label lblLastFinished;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label lblLastResult;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button btnEdit;
 		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Button btnRunJob;
+		private System.Windows.Forms.Label lblIsRunning;
 	}
 }

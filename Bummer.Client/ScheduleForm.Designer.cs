@@ -44,19 +44,10 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.btnTryPreCommands = new System.Windows.Forms.Button();
-			this.btnTryPostCommand = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
-			this.lvPreCommands = new System.Windows.Forms.ListView();
-			this.btnAddPreCommand = new System.Windows.Forms.Button();
-			this.btnRemovePreCommand = new System.Windows.Forms.Button();
-			this.btnMoveUpPreCommand = new System.Windows.Forms.Button();
-			this.btnMoveDownPreCommand = new System.Windows.Forms.Button();
-			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.btnEditPreCommand = new System.Windows.Forms.Button();
+			this.btnTryPostCommand = new System.Windows.Forms.Button();
+			this.btnTryPreCommands = new System.Windows.Forms.Button();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.btnEditPostCommand = new System.Windows.Forms.Button();
 			this.btnMoveDownPostCommand = new System.Windows.Forms.Button();
 			this.btnMoveUpPostCommand = new System.Windows.Forms.Button();
@@ -65,12 +56,21 @@
 			this.lvPostCommands = new System.Windows.Forms.ListView();
 			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btnEditPreCommand = new System.Windows.Forms.Button();
+			this.btnMoveDownPreCommand = new System.Windows.Forms.Button();
+			this.btnMoveUpPreCommand = new System.Windows.Forms.Button();
+			this.btnRemovePreCommand = new System.Windows.Forms.Button();
+			this.btnAddPreCommand = new System.Windows.Forms.Button();
+			this.lvPreCommands = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			((System.ComponentModel.ISupportInitialize)(this.nuInterval)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
-			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -87,7 +87,7 @@
 			this.tbName.Location = new System.Drawing.Point(83, 11);
 			this.tbName.Name = "tbName";
 			this.tbName.Size = new System.Drawing.Size(288, 20);
-			this.tbName.TabIndex = 1;
+			this.tbName.TabIndex = 0;
 			// 
 			// pnlJobConfig
 			// 
@@ -99,7 +99,8 @@
 			this.pnlJobConfig.Location = new System.Drawing.Point(15, 203);
 			this.pnlJobConfig.Name = "pnlJobConfig";
 			this.pnlJobConfig.Size = new System.Drawing.Size(592, 288);
-			this.pnlJobConfig.TabIndex = 2;
+			this.pnlJobConfig.TabIndex = 6;
+			this.pnlJobConfig.TabStop = true;
 			// 
 			// cbJobType
 			// 
@@ -108,7 +109,7 @@
 			this.cbJobType.Location = new System.Drawing.Point(83, 42);
 			this.cbJobType.Name = "cbJobType";
 			this.cbJobType.Size = new System.Drawing.Size(214, 21);
-			this.cbJobType.TabIndex = 4;
+			this.cbJobType.TabIndex = 1;
 			this.cbJobType.SelectedIndexChanged += new System.EventHandler(this.cbJobType_SelectedIndexChanged);
 			// 
 			// label2
@@ -127,7 +128,7 @@
 			this.cbIntervalType.Location = new System.Drawing.Point(83, 69);
 			this.cbIntervalType.Name = "cbIntervalType";
 			this.cbIntervalType.Size = new System.Drawing.Size(214, 21);
-			this.cbIntervalType.TabIndex = 6;
+			this.cbIntervalType.TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -152,7 +153,7 @@
 			this.nuInterval.Location = new System.Drawing.Point(83, 100);
 			this.nuInterval.Name = "nuInterval";
 			this.nuInterval.Size = new System.Drawing.Size(214, 20);
-			this.nuInterval.TabIndex = 9;
+			this.nuInterval.TabIndex = 3;
 			// 
 			// label5
 			// 
@@ -189,7 +190,7 @@
 			this.dpStartFrom.Name = "dpStartFrom";
 			this.dpStartFrom.ShowUpDown = true;
 			this.dpStartFrom.Size = new System.Drawing.Size(214, 20);
-			this.dpStartFrom.TabIndex = 15;
+			this.dpStartFrom.TabIndex = 4;
 			// 
 			// dpStartTo
 			// 
@@ -199,7 +200,7 @@
 			this.dpStartTo.Name = "dpStartTo";
 			this.dpStartTo.ShowUpDown = true;
 			this.dpStartTo.Size = new System.Drawing.Size(214, 20);
-			this.dpStartTo.TabIndex = 16;
+			this.dpStartTo.TabIndex = 5;
 			// 
 			// btnSave
 			// 
@@ -208,7 +209,7 @@
 			this.btnSave.Location = new System.Drawing.Point(456, 575);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 17;
+			this.btnSave.TabIndex = 7;
 			this.btnSave.Text = "Save";
 			this.btnSave.UseVisualStyleBackColor = true;
 			// 
@@ -219,7 +220,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(537, 575);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 18;
+			this.btnCancel.TabIndex = 8;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
@@ -234,6 +235,7 @@
 			this.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.tbDescription.Size = new System.Drawing.Size(285, 132);
 			this.tbDescription.TabIndex = 19;
+			this.tbDescription.TabStop = false;
 			// 
 			// tabControl1
 			// 
@@ -265,7 +267,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(616, 497);
+			this.tabPage1.Size = new System.Drawing.Size(616, 540);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Settings";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -285,22 +287,37 @@
 			this.tabPage2.Text = "Pre- post commands";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// groupBox1
+			// label9
 			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox1.Controls.Add(this.btnEditPreCommand);
-			this.groupBox1.Controls.Add(this.btnMoveDownPreCommand);
-			this.groupBox1.Controls.Add(this.btnMoveUpPreCommand);
-			this.groupBox1.Controls.Add(this.btnRemovePreCommand);
-			this.groupBox1.Controls.Add(this.btnAddPreCommand);
-			this.groupBox1.Controls.Add(this.lvPreCommands);
-			this.groupBox1.Location = new System.Drawing.Point(8, 7);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(599, 212);
-			this.groupBox1.TabIndex = 0;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Pre-commands. These commands will be executed before running job";
+			this.label9.AutoSize = true;
+			this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label9.Location = new System.Drawing.Point(5, 472);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(280, 52);
+			this.label9.TabIndex = 5;
+			this.label9.Text = resources.GetString("label9.Text");
+			// 
+			// btnTryPostCommand
+			// 
+			this.btnTryPostCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnTryPostCommand.Location = new System.Drawing.Point(468, 475);
+			this.btnTryPostCommand.Name = "btnTryPostCommand";
+			this.btnTryPostCommand.Size = new System.Drawing.Size(139, 23);
+			this.btnTryPostCommand.TabIndex = 12;
+			this.btnTryPostCommand.Text = "Try post-commands";
+			this.btnTryPostCommand.UseVisualStyleBackColor = true;
+			this.btnTryPostCommand.Click += new System.EventHandler(this.btnTryPostCommand_Click);
+			// 
+			// btnTryPreCommands
+			// 
+			this.btnTryPreCommands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnTryPreCommands.Location = new System.Drawing.Point(468, 225);
+			this.btnTryPreCommands.Name = "btnTryPreCommands";
+			this.btnTryPreCommands.Size = new System.Drawing.Size(139, 23);
+			this.btnTryPreCommands.TabIndex = 6;
+			this.btnTryPreCommands.Text = "Try pre-commands";
+			this.btnTryPreCommands.UseVisualStyleBackColor = true;
+			this.btnTryPreCommands.Click += new System.EventHandler(this.btnTryPreCommands_Click);
 			// 
 			// groupBox2
 			// 
@@ -320,125 +337,6 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Post-commands. These commands will be executed after running job";
 			// 
-			// btnTryPreCommands
-			// 
-			this.btnTryPreCommands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnTryPreCommands.Location = new System.Drawing.Point(468, 225);
-			this.btnTryPreCommands.Name = "btnTryPreCommands";
-			this.btnTryPreCommands.Size = new System.Drawing.Size(139, 23);
-			this.btnTryPreCommands.TabIndex = 2;
-			this.btnTryPreCommands.Text = "Try pre-commands";
-			this.btnTryPreCommands.UseVisualStyleBackColor = true;
-			this.btnTryPreCommands.Click += new System.EventHandler(this.btnTryPreCommands_Click);
-			// 
-			// btnTryPostCommand
-			// 
-			this.btnTryPostCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnTryPostCommand.Location = new System.Drawing.Point(468, 475);
-			this.btnTryPostCommand.Name = "btnTryPostCommand";
-			this.btnTryPostCommand.Size = new System.Drawing.Size(139, 23);
-			this.btnTryPostCommand.TabIndex = 3;
-			this.btnTryPostCommand.Text = "Try post-commands";
-			this.btnTryPostCommand.UseVisualStyleBackColor = true;
-			this.btnTryPostCommand.Click += new System.EventHandler(this.btnTryPostCommand_Click);
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(5, 472);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(280, 52);
-			this.label9.TabIndex = 5;
-			this.label9.Text = resources.GetString("label9.Text");
-			// 
-			// lvPreCommands
-			// 
-			this.lvPreCommands.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.lvPreCommands.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-			this.lvPreCommands.FullRowSelect = true;
-			this.lvPreCommands.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.lvPreCommands.HideSelection = false;
-			this.lvPreCommands.Location = new System.Drawing.Point(6, 19);
-			this.lvPreCommands.Name = "lvPreCommands";
-			this.lvPreCommands.Size = new System.Drawing.Size(496, 187);
-			this.lvPreCommands.TabIndex = 0;
-			this.lvPreCommands.UseCompatibleStateImageBehavior = false;
-			this.lvPreCommands.View = System.Windows.Forms.View.Details;
-			this.lvPreCommands.SelectedIndexChanged += new System.EventHandler(this.lvPreCommands_SelectedIndexChanged);
-			// 
-			// btnAddPreCommand
-			// 
-			this.btnAddPreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAddPreCommand.Location = new System.Drawing.Point(508, 20);
-			this.btnAddPreCommand.Name = "btnAddPreCommand";
-			this.btnAddPreCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnAddPreCommand.TabIndex = 1;
-			this.btnAddPreCommand.Text = "Add...";
-			this.btnAddPreCommand.UseVisualStyleBackColor = true;
-			this.btnAddPreCommand.Click += new System.EventHandler(this.btnAddPreCommand_Click);
-			// 
-			// btnRemovePreCommand
-			// 
-			this.btnRemovePreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRemovePreCommand.Enabled = false;
-			this.btnRemovePreCommand.Location = new System.Drawing.Point(508, 78);
-			this.btnRemovePreCommand.Name = "btnRemovePreCommand";
-			this.btnRemovePreCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnRemovePreCommand.TabIndex = 2;
-			this.btnRemovePreCommand.Text = "Remove";
-			this.btnRemovePreCommand.UseVisualStyleBackColor = true;
-			this.btnRemovePreCommand.Click += new System.EventHandler(this.btnRemovePreCommand_Click);
-			// 
-			// btnMoveUpPreCommand
-			// 
-			this.btnMoveUpPreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnMoveUpPreCommand.Enabled = false;
-			this.btnMoveUpPreCommand.Location = new System.Drawing.Point(508, 154);
-			this.btnMoveUpPreCommand.Name = "btnMoveUpPreCommand";
-			this.btnMoveUpPreCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnMoveUpPreCommand.TabIndex = 3;
-			this.btnMoveUpPreCommand.Text = "Move up";
-			this.btnMoveUpPreCommand.UseVisualStyleBackColor = true;
-			this.btnMoveUpPreCommand.Click += new System.EventHandler(this.btnMoveUpPreCommand_Click);
-			// 
-			// btnMoveDownPreCommand
-			// 
-			this.btnMoveDownPreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnMoveDownPreCommand.Enabled = false;
-			this.btnMoveDownPreCommand.Location = new System.Drawing.Point(508, 183);
-			this.btnMoveDownPreCommand.Name = "btnMoveDownPreCommand";
-			this.btnMoveDownPreCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnMoveDownPreCommand.TabIndex = 4;
-			this.btnMoveDownPreCommand.Text = "Move down";
-			this.btnMoveDownPreCommand.UseVisualStyleBackColor = true;
-			this.btnMoveDownPreCommand.Click += new System.EventHandler(this.btnMoveDownPreCommand_Click);
-			// 
-			// columnHeader1
-			// 
-			this.columnHeader1.Text = "Command";
-			this.columnHeader1.Width = 222;
-			// 
-			// columnHeader2
-			// 
-			this.columnHeader2.Text = "Arguments";
-			this.columnHeader2.Width = 260;
-			// 
-			// btnEditPreCommand
-			// 
-			this.btnEditPreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnEditPreCommand.Enabled = false;
-			this.btnEditPreCommand.Location = new System.Drawing.Point(508, 49);
-			this.btnEditPreCommand.Name = "btnEditPreCommand";
-			this.btnEditPreCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnEditPreCommand.TabIndex = 5;
-			this.btnEditPreCommand.Text = "Edit...";
-			this.btnEditPreCommand.UseVisualStyleBackColor = true;
-			this.btnEditPreCommand.Click += new System.EventHandler(this.btnEditPreCommand_Click);
-			// 
 			// btnEditPostCommand
 			// 
 			this.btnEditPostCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -446,7 +344,7 @@
 			this.btnEditPostCommand.Location = new System.Drawing.Point(505, 48);
 			this.btnEditPostCommand.Name = "btnEditPostCommand";
 			this.btnEditPostCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnEditPostCommand.TabIndex = 11;
+			this.btnEditPostCommand.TabIndex = 8;
 			this.btnEditPostCommand.Text = "Edit...";
 			this.btnEditPostCommand.UseVisualStyleBackColor = true;
 			this.btnEditPostCommand.Click += new System.EventHandler(this.btnEditPostCommand_Click);
@@ -458,7 +356,7 @@
 			this.btnMoveDownPostCommand.Location = new System.Drawing.Point(505, 182);
 			this.btnMoveDownPostCommand.Name = "btnMoveDownPostCommand";
 			this.btnMoveDownPostCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnMoveDownPostCommand.TabIndex = 10;
+			this.btnMoveDownPostCommand.TabIndex = 11;
 			this.btnMoveDownPostCommand.Text = "Move down";
 			this.btnMoveDownPostCommand.UseVisualStyleBackColor = true;
 			this.btnMoveDownPostCommand.Click += new System.EventHandler(this.btnMoveDownPostCommand_Click);
@@ -470,7 +368,7 @@
 			this.btnMoveUpPostCommand.Location = new System.Drawing.Point(505, 153);
 			this.btnMoveUpPostCommand.Name = "btnMoveUpPostCommand";
 			this.btnMoveUpPostCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnMoveUpPostCommand.TabIndex = 9;
+			this.btnMoveUpPostCommand.TabIndex = 10;
 			this.btnMoveUpPostCommand.Text = "Move up";
 			this.btnMoveUpPostCommand.UseVisualStyleBackColor = true;
 			this.btnMoveUpPostCommand.Click += new System.EventHandler(this.btnMoveUpPostCommand_Click);
@@ -482,7 +380,7 @@
 			this.btnRemovePostCommand.Location = new System.Drawing.Point(505, 77);
 			this.btnRemovePostCommand.Name = "btnRemovePostCommand";
 			this.btnRemovePostCommand.Size = new System.Drawing.Size(85, 23);
-			this.btnRemovePostCommand.TabIndex = 8;
+			this.btnRemovePostCommand.TabIndex = 9;
 			this.btnRemovePostCommand.Text = "Remove";
 			this.btnRemovePostCommand.UseVisualStyleBackColor = true;
 			this.btnRemovePostCommand.Click += new System.EventHandler(this.btnRemovePostCommand_Click);
@@ -526,6 +424,110 @@
 			this.columnHeader4.Text = "Arguments";
 			this.columnHeader4.Width = 260;
 			// 
+			// groupBox1
+			// 
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.btnEditPreCommand);
+			this.groupBox1.Controls.Add(this.btnMoveDownPreCommand);
+			this.groupBox1.Controls.Add(this.btnMoveUpPreCommand);
+			this.groupBox1.Controls.Add(this.btnRemovePreCommand);
+			this.groupBox1.Controls.Add(this.btnAddPreCommand);
+			this.groupBox1.Controls.Add(this.lvPreCommands);
+			this.groupBox1.Location = new System.Drawing.Point(8, 7);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(599, 212);
+			this.groupBox1.TabIndex = 0;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Pre-commands. These commands will be executed before running job";
+			// 
+			// btnEditPreCommand
+			// 
+			this.btnEditPreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnEditPreCommand.Enabled = false;
+			this.btnEditPreCommand.Location = new System.Drawing.Point(508, 49);
+			this.btnEditPreCommand.Name = "btnEditPreCommand";
+			this.btnEditPreCommand.Size = new System.Drawing.Size(85, 23);
+			this.btnEditPreCommand.TabIndex = 2;
+			this.btnEditPreCommand.Text = "Edit...";
+			this.btnEditPreCommand.UseVisualStyleBackColor = true;
+			this.btnEditPreCommand.Click += new System.EventHandler(this.btnEditPreCommand_Click);
+			// 
+			// btnMoveDownPreCommand
+			// 
+			this.btnMoveDownPreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnMoveDownPreCommand.Enabled = false;
+			this.btnMoveDownPreCommand.Location = new System.Drawing.Point(508, 183);
+			this.btnMoveDownPreCommand.Name = "btnMoveDownPreCommand";
+			this.btnMoveDownPreCommand.Size = new System.Drawing.Size(85, 23);
+			this.btnMoveDownPreCommand.TabIndex = 5;
+			this.btnMoveDownPreCommand.Text = "Move down";
+			this.btnMoveDownPreCommand.UseVisualStyleBackColor = true;
+			this.btnMoveDownPreCommand.Click += new System.EventHandler(this.btnMoveDownPreCommand_Click);
+			// 
+			// btnMoveUpPreCommand
+			// 
+			this.btnMoveUpPreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnMoveUpPreCommand.Enabled = false;
+			this.btnMoveUpPreCommand.Location = new System.Drawing.Point(508, 154);
+			this.btnMoveUpPreCommand.Name = "btnMoveUpPreCommand";
+			this.btnMoveUpPreCommand.Size = new System.Drawing.Size(85, 23);
+			this.btnMoveUpPreCommand.TabIndex = 4;
+			this.btnMoveUpPreCommand.Text = "Move up";
+			this.btnMoveUpPreCommand.UseVisualStyleBackColor = true;
+			this.btnMoveUpPreCommand.Click += new System.EventHandler(this.btnMoveUpPreCommand_Click);
+			// 
+			// btnRemovePreCommand
+			// 
+			this.btnRemovePreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRemovePreCommand.Enabled = false;
+			this.btnRemovePreCommand.Location = new System.Drawing.Point(508, 78);
+			this.btnRemovePreCommand.Name = "btnRemovePreCommand";
+			this.btnRemovePreCommand.Size = new System.Drawing.Size(85, 23);
+			this.btnRemovePreCommand.TabIndex = 3;
+			this.btnRemovePreCommand.Text = "Remove";
+			this.btnRemovePreCommand.UseVisualStyleBackColor = true;
+			this.btnRemovePreCommand.Click += new System.EventHandler(this.btnRemovePreCommand_Click);
+			// 
+			// btnAddPreCommand
+			// 
+			this.btnAddPreCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAddPreCommand.Location = new System.Drawing.Point(508, 20);
+			this.btnAddPreCommand.Name = "btnAddPreCommand";
+			this.btnAddPreCommand.Size = new System.Drawing.Size(85, 23);
+			this.btnAddPreCommand.TabIndex = 1;
+			this.btnAddPreCommand.Text = "Add...";
+			this.btnAddPreCommand.UseVisualStyleBackColor = true;
+			this.btnAddPreCommand.Click += new System.EventHandler(this.btnAddPreCommand_Click);
+			// 
+			// lvPreCommands
+			// 
+			this.lvPreCommands.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lvPreCommands.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+			this.lvPreCommands.FullRowSelect = true;
+			this.lvPreCommands.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lvPreCommands.HideSelection = false;
+			this.lvPreCommands.Location = new System.Drawing.Point(6, 19);
+			this.lvPreCommands.Name = "lvPreCommands";
+			this.lvPreCommands.Size = new System.Drawing.Size(496, 187);
+			this.lvPreCommands.TabIndex = 0;
+			this.lvPreCommands.UseCompatibleStateImageBehavior = false;
+			this.lvPreCommands.View = System.Windows.Forms.View.Details;
+			this.lvPreCommands.SelectedIndexChanged += new System.EventHandler(this.lvPreCommands_SelectedIndexChanged);
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Command";
+			this.columnHeader1.Width = 222;
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "Arguments";
+			this.columnHeader2.Width = 260;
+			// 
 			// ScheduleForm
 			// 
 			this.AcceptButton = this.btnSave;
@@ -548,8 +550,8 @@
 			this.tabPage1.PerformLayout();
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage2.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
+			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}

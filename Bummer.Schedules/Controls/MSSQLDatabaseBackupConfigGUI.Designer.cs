@@ -78,7 +78,7 @@
 			this.tbServer.Location = new System.Drawing.Point(97, 7);
 			this.tbServer.Name = "tbServer";
 			this.tbServer.Size = new System.Drawing.Size(270, 20);
-			this.tbServer.TabIndex = 3;
+			this.tbServer.TabIndex = 0;
 			// 
 			// tbUsername
 			// 
@@ -87,7 +87,7 @@
 			this.tbUsername.Location = new System.Drawing.Point(97, 33);
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.Size = new System.Drawing.Size(270, 20);
-			this.tbUsername.TabIndex = 4;
+			this.tbUsername.TabIndex = 1;
 			// 
 			// tbPassword
 			// 
@@ -96,7 +96,7 @@
 			this.tbPassword.Location = new System.Drawing.Point(97, 60);
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.Size = new System.Drawing.Size(270, 20);
-			this.tbPassword.TabIndex = 5;
+			this.tbPassword.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -113,7 +113,7 @@
 			this.btnRefreshDatabases.Location = new System.Drawing.Point(373, 162);
 			this.btnRefreshDatabases.Name = "btnRefreshDatabases";
 			this.btnRefreshDatabases.Size = new System.Drawing.Size(75, 23);
-			this.btnRefreshDatabases.TabIndex = 8;
+			this.btnRefreshDatabases.TabIndex = 7;
 			this.btnRefreshDatabases.Text = "Refresh";
 			this.btnRefreshDatabases.UseVisualStyleBackColor = true;
 			this.btnRefreshDatabases.Click += new System.EventHandler(this.btnRefreshDatabases_Click);
@@ -136,7 +136,7 @@
 			this.cbSaveType.Location = new System.Drawing.Point(97, 307);
 			this.cbSaveType.Name = "cbSaveType";
 			this.cbSaveType.Size = new System.Drawing.Size(270, 21);
-			this.cbSaveType.TabIndex = 10;
+			this.cbSaveType.TabIndex = 8;
 			this.cbSaveType.SelectedIndexChanged += new System.EventHandler(this.cbSaveType_SelectedIndexChanged);
 			// 
 			// pnlSaveAsConfig
@@ -149,7 +149,8 @@
 			this.pnlSaveAsConfig.Location = new System.Drawing.Point(6, 334);
 			this.pnlSaveAsConfig.Name = "pnlSaveAsConfig";
 			this.pnlSaveAsConfig.Size = new System.Drawing.Size(442, 173);
-			this.pnlSaveAsConfig.TabIndex = 11;
+			this.pnlSaveAsConfig.TabIndex = 9;
+			this.pnlSaveAsConfig.TabStop = true;
 			// 
 			// tbRemoteTempDir
 			// 
@@ -158,7 +159,7 @@
 			this.tbRemoteTempDir.Location = new System.Drawing.Point(97, 86);
 			this.tbRemoteTempDir.Name = "tbRemoteTempDir";
 			this.tbRemoteTempDir.Size = new System.Drawing.Size(270, 20);
-			this.tbRemoteTempDir.TabIndex = 13;
+			this.tbRemoteTempDir.TabIndex = 3;
 			// 
 			// label6
 			// 
@@ -177,7 +178,7 @@
 			this.cblDatabases.Location = new System.Drawing.Point(97, 162);
 			this.cblDatabases.Name = "cblDatabases";
 			this.cblDatabases.Size = new System.Drawing.Size(270, 139);
-			this.cblDatabases.TabIndex = 14;
+			this.cblDatabases.TabIndex = 6;
 			// 
 			// label7
 			// 
@@ -195,7 +196,7 @@
 			this.cbCompress.Location = new System.Drawing.Point(6, 116);
 			this.cbCompress.Name = "cbCompress";
 			this.cbCompress.Size = new System.Drawing.Size(115, 17);
-			this.cbCompress.TabIndex = 16;
+			this.cbCompress.TabIndex = 4;
 			this.cbCompress.Text = "Compress files (zip)";
 			this.cbCompress.UseVisualStyleBackColor = true;
 			// 
@@ -205,7 +206,7 @@
 			this.cbAddDateToFilename.Location = new System.Drawing.Point(6, 139);
 			this.cbAddDateToFilename.Name = "cbAddDateToFilename";
 			this.cbAddDateToFilename.Size = new System.Drawing.Size(123, 17);
-			this.cbAddDateToFilename.TabIndex = 17;
+			this.cbAddDateToFilename.TabIndex = 5;
 			this.cbAddDateToFilename.Text = "Add date to filename";
 			this.toolTip1.SetToolTip(this.cbAddDateToFilename, "Date and time will be added to the filename.\r\nIf this is selected, each time a ba" +
         "ckup is made it will produce a new file.");

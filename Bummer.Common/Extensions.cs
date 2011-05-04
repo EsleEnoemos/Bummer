@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Bummer.Common {
@@ -76,6 +77,28 @@ namespace Bummer.Common {
 				}
 			}
 			return sb.ToString();
+		}
+		#endregion
+		#region public static void Copy( this DirectoryInfo self, string targetDirectory, bool recursive )
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="self"></param>
+		/// <param name="targetDirectory"></param>
+		/// <param name="recursive"></param>
+		public static void Copy( this DirectoryInfo self, string targetDirectory, bool recursive ) {
+			if( !Directory.Exists( targetDirectory ) ) {
+				Directory.CreateDirectory( targetDirectory );
+			}
+			DirectoryInfo td = new DirectoryInfo( targetDirectory );
+			foreach( FileInfo file in self.GetFiles() ) {
+				file.CopyTo( "{0}\\{1}".FillBlanks( td.FullName, file.Name ), true );
+			}
+			if( recursive ) {
+				foreach( DirectoryInfo sub in self.GetDirectories() ) {
+					sub.Copy( "{0}\\{1}".FillBlanks( td.FullName, sub.Name ), true );
+				}
+			}
 		}
 		#endregion
 	}

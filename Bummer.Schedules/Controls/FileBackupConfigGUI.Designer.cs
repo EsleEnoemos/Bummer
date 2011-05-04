@@ -52,7 +52,7 @@
 			this.cbCompress.Location = new System.Drawing.Point(13, 67);
 			this.cbCompress.Name = "cbCompress";
 			this.cbCompress.Size = new System.Drawing.Size(115, 17);
-			this.cbCompress.TabIndex = 33;
+			this.cbCompress.TabIndex = 4;
 			this.cbCompress.Text = "Compress files (zip)";
 			this.cbCompress.UseVisualStyleBackColor = true;
 			this.cbCompress.CheckedChanged += new System.EventHandler(this.cbCompress_CheckedChanged);
@@ -67,7 +67,8 @@
 			this.pnlSaveAsConfig.Location = new System.Drawing.Point(13, 349);
 			this.pnlSaveAsConfig.Name = "pnlSaveAsConfig";
 			this.pnlSaveAsConfig.Size = new System.Drawing.Size(442, 201);
-			this.pnlSaveAsConfig.TabIndex = 28;
+			this.pnlSaveAsConfig.TabIndex = 11;
+			this.pnlSaveAsConfig.TabStop = true;
 			// 
 			// cbSaveType
 			// 
@@ -78,7 +79,7 @@
 			this.cbSaveType.Location = new System.Drawing.Point(116, 322);
 			this.cbSaveType.Name = "cbSaveType";
 			this.cbSaveType.Size = new System.Drawing.Size(270, 21);
-			this.cbSaveType.TabIndex = 27;
+			this.cbSaveType.TabIndex = 10;
 			this.cbSaveType.SelectedIndexChanged += new System.EventHandler(this.cbSaveType_SelectedIndexChanged);
 			// 
 			// label5
@@ -115,7 +116,7 @@
 			this.tbDirectory.Location = new System.Drawing.Point(116, 14);
 			this.tbDirectory.Name = "tbDirectory";
 			this.tbDirectory.Size = new System.Drawing.Size(301, 20);
-			this.tbDirectory.TabIndex = 34;
+			this.tbDirectory.TabIndex = 1;
 			// 
 			// btnSelectDirectory
 			// 
@@ -123,7 +124,7 @@
 			this.btnSelectDirectory.Location = new System.Drawing.Point(423, 12);
 			this.btnSelectDirectory.Name = "btnSelectDirectory";
 			this.btnSelectDirectory.Size = new System.Drawing.Size(32, 23);
-			this.btnSelectDirectory.TabIndex = 35;
+			this.btnSelectDirectory.TabIndex = 2;
 			this.btnSelectDirectory.Text = "...";
 			this.btnSelectDirectory.UseVisualStyleBackColor = true;
 			this.btnSelectDirectory.Click += new System.EventHandler(this.btnSelectDirectory_Click);
@@ -137,7 +138,7 @@
 			this.cbBackupType.Location = new System.Drawing.Point(116, 40);
 			this.cbBackupType.Name = "cbBackupType";
 			this.cbBackupType.Size = new System.Drawing.Size(270, 21);
-			this.cbBackupType.TabIndex = 37;
+			this.cbBackupType.TabIndex = 3;
 			// 
 			// label1
 			// 
@@ -168,7 +169,7 @@
 			this.lvFileTypes.Location = new System.Drawing.Point(116, 139);
 			this.lvFileTypes.Name = "lvFileTypes";
 			this.lvFileTypes.Size = new System.Drawing.Size(270, 164);
-			this.lvFileTypes.TabIndex = 39;
+			this.lvFileTypes.TabIndex = 7;
 			this.lvFileTypes.UseCompatibleStateImageBehavior = false;
 			this.lvFileTypes.View = System.Windows.Forms.View.Details;
 			this.lvFileTypes.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -190,7 +191,7 @@
 			this.btnAddFileType.Location = new System.Drawing.Point(393, 139);
 			this.btnAddFileType.Name = "btnAddFileType";
 			this.btnAddFileType.Size = new System.Drawing.Size(62, 23);
-			this.btnAddFileType.TabIndex = 41;
+			this.btnAddFileType.TabIndex = 8;
 			this.btnAddFileType.Text = "Add...";
 			this.btnAddFileType.UseVisualStyleBackColor = true;
 			this.btnAddFileType.Click += new System.EventHandler(this.btnAddFileType_Click);
@@ -202,7 +203,7 @@
 			this.btnRemoveFileType.Location = new System.Drawing.Point(393, 168);
 			this.btnRemoveFileType.Name = "btnRemoveFileType";
 			this.btnRemoveFileType.Size = new System.Drawing.Size(62, 23);
-			this.btnRemoveFileType.TabIndex = 42;
+			this.btnRemoveFileType.TabIndex = 9;
 			this.btnRemoveFileType.Text = "Remove";
 			this.btnRemoveFileType.UseVisualStyleBackColor = true;
 			this.btnRemoveFileType.Click += new System.EventHandler(this.btnRemoveFileType_Click);
@@ -214,7 +215,7 @@
 			this.tbZipFilename.Location = new System.Drawing.Point(116, 90);
 			this.tbZipFilename.Name = "tbZipFilename";
 			this.tbZipFilename.Size = new System.Drawing.Size(270, 20);
-			this.tbZipFilename.TabIndex = 44;
+			this.tbZipFilename.TabIndex = 5;
 			// 
 			// label6
 			// 
@@ -231,7 +232,7 @@
 			this.cbAddDateToZip.Location = new System.Drawing.Point(13, 116);
 			this.cbAddDateToZip.Name = "cbAddDateToZip";
 			this.cbAddDateToZip.Size = new System.Drawing.Size(170, 17);
-			this.cbAddDateToZip.TabIndex = 45;
+			this.cbAddDateToZip.TabIndex = 6;
 			this.cbAddDateToZip.Text = "Add date + time to zip filename";
 			this.cbAddDateToZip.UseVisualStyleBackColor = true;
 			// 

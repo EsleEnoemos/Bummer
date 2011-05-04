@@ -67,7 +67,7 @@
 			this.tbArgs.Location = new System.Drawing.Point(76, 37);
 			this.tbArgs.Name = "tbArgs";
 			this.tbArgs.Size = new System.Drawing.Size(396, 20);
-			this.tbArgs.TabIndex = 4;
+			this.tbArgs.TabIndex = 3;
 			// 
 			// label2
 			// 
@@ -96,7 +96,7 @@
 			this.btnOK.Location = new System.Drawing.Point(316, 63);
 			this.btnOK.Name = "btnOK";
 			this.btnOK.Size = new System.Drawing.Size(75, 23);
-			this.btnOK.TabIndex = 6;
+			this.btnOK.TabIndex = 4;
 			this.btnOK.Text = "OK";
 			this.btnOK.UseVisualStyleBackColor = true;
 			// 

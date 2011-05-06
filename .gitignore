@@ -23,3 +23,9 @@ Bummer.ScheduleRunner/bin/Debug/Bummer.Common.dll
 Bummer.ScheduleRunner/bin/Debug/Bummer.ScheduleRunner.exe.config
 Bummer.ScheduleRunner/bin/Debug/System.Data.SQLite.dll
 Bummer.ScheduleRunner/obj/x86/Debug/Bummer.ScheduleRunner.csproj.FileListAbsolute.txt
+_BummerInstallation/BummerInstallation/Express/*
+Bummer.Service/bin/*
+Bummer.Service/obj/*
+Bummer.Service/obj/*
+Bummer.ServiceInstaller/obj/*
+BummerInstallation/Debug/*

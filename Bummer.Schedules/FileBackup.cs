@@ -441,7 +441,8 @@ namespace Bummer.Schedules {
 					return;
 				}
 				count++;
-				string path = fi.DirectoryName.Replace( backupDirPath, "" );
+				string dirName = fi.Directory.FullName + "\\";
+				string path = dirName.Replace( backupDirPath, "" );
 				Add( fi, path );
 			}
 			#endregion
@@ -465,6 +466,11 @@ namespace Bummer.Schedules {
 						}
 						string tn = "{0}\\{1}".FillBlanks( td.FullName, fi.Name );
 						if( File.Exists( tn ) ) {
+							FileInfo tf = new FileInfo( tn );
+							if( tf.LastWriteTime == fi.LastWriteTime && tf.Length == fi.Length ) {
+								// file already exist, is not modified, and is as large as the file being backup, so we consider it already copied
+								return;
+							}
 							File.SetAttributes( tn, FileAttributes.Normal );
 						}
 						File.Copy( fi.FullName, tn, true );

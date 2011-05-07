@@ -29,3 +29,6 @@ Bummer.Service/obj/*
 Bummer.Service/obj/*
 Bummer.ServiceInstaller/obj/*
 BummerInstallation/Debug/*
+Bummer.ServiceInstaller/bin/Debug/Interop.IWshRuntimeLibrary.dll
+Bummer.ServiceInstaller/bin/Debug/Interop.IWshRuntimeLibrary.dll
+Bummer.ServiceInstaller/bin/Debug/Interop.IWshRuntimeLibrary.dll

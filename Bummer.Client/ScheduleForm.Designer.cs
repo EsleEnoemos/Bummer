@@ -35,9 +35,7 @@
 			this.nuInterval = new System.Windows.Forms.NumericUpDown();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.dpStartFrom = new System.Windows.Forms.DateTimePicker();
-			this.dpStartTo = new System.Windows.Forms.DateTimePicker();
+			this.dpStartTime = new System.Windows.Forms.DateTimePicker();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.tbDescription = new System.Windows.Forms.TextBox();
@@ -96,9 +94,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pnlJobConfig.AutoScroll = true;
 			this.pnlJobConfig.BackColor = System.Drawing.SystemColors.Window;
-			this.pnlJobConfig.Location = new System.Drawing.Point(15, 203);
+			this.pnlJobConfig.Location = new System.Drawing.Point(15, 180);
 			this.pnlJobConfig.Name = "pnlJobConfig";
-			this.pnlJobConfig.Size = new System.Drawing.Size(592, 288);
+			this.pnlJobConfig.Size = new System.Drawing.Size(592, 311);
 			this.pnlJobConfig.TabIndex = 6;
 			this.pnlJobConfig.TabStop = true;
 			// 
@@ -158,7 +156,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(12, 187);
+			this.label5.Location = new System.Drawing.Point(12, 161);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(69, 13);
 			this.label5.TabIndex = 10;
@@ -173,34 +171,15 @@
 			this.label6.TabIndex = 11;
 			this.label6.Text = "Start from";
 			// 
-			// label7
+			// dpStartTime
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(12, 160);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(41, 13);
-			this.label7.TabIndex = 12;
-			this.label7.Text = "Start to";
-			// 
-			// dpStartFrom
-			// 
-			this.dpStartFrom.CustomFormat = "HH:mm";
-			this.dpStartFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dpStartFrom.Location = new System.Drawing.Point(83, 127);
-			this.dpStartFrom.Name = "dpStartFrom";
-			this.dpStartFrom.ShowUpDown = true;
-			this.dpStartFrom.Size = new System.Drawing.Size(214, 20);
-			this.dpStartFrom.TabIndex = 4;
-			// 
-			// dpStartTo
-			// 
-			this.dpStartTo.CustomFormat = "HH:mm";
-			this.dpStartTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dpStartTo.Location = new System.Drawing.Point(83, 154);
-			this.dpStartTo.Name = "dpStartTo";
-			this.dpStartTo.ShowUpDown = true;
-			this.dpStartTo.Size = new System.Drawing.Size(214, 20);
-			this.dpStartTo.TabIndex = 5;
+			this.dpStartTime.CustomFormat = "HH:mm";
+			this.dpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dpStartTime.Location = new System.Drawing.Point(83, 127);
+			this.dpStartTime.Name = "dpStartTime";
+			this.dpStartTime.ShowUpDown = true;
+			this.dpStartTime.Size = new System.Drawing.Size(214, 20);
+			this.dpStartTime.TabIndex = 4;
 			// 
 			// btnSave
 			// 
@@ -254,11 +233,9 @@
 			this.tabPage1.Controls.Add(this.tbName);
 			this.tabPage1.Controls.Add(this.pnlJobConfig);
 			this.tabPage1.Controls.Add(this.cbJobType);
-			this.tabPage1.Controls.Add(this.dpStartTo);
 			this.tabPage1.Controls.Add(this.label2);
-			this.tabPage1.Controls.Add(this.dpStartFrom);
+			this.tabPage1.Controls.Add(this.dpStartTime);
 			this.tabPage1.Controls.Add(this.cbIntervalType);
-			this.tabPage1.Controls.Add(this.label7);
 			this.tabPage1.Controls.Add(this.label3);
 			this.tabPage1.Controls.Add(this.label6);
 			this.tabPage1.Controls.Add(this.label4);
@@ -569,9 +546,7 @@
 		private System.Windows.Forms.NumericUpDown nuInterval;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.DateTimePicker dpStartFrom;
-		private System.Windows.Forms.DateTimePicker dpStartTo;
+		private System.Windows.Forms.DateTimePicker dpStartTime;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.TextBox tbDescription;

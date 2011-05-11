@@ -38,6 +38,7 @@ namespace Bummer.Schedules.Controls {
 			tbServer.Text = Config.Server;
 			tbUsername.Text = Config.Username;
 			tbPassword.Text = Config.Password;
+			cbIsLocalServer.Checked = Config.IsLocalServer;
 			tbRemoteTempDir.Text = Config.RemoteTempDir;
 			cbCompress.Checked = Config.CompressFiles;
 			cbAddDateToFilename.Checked = Config.AddDateToFilename;
@@ -69,10 +70,13 @@ namespace Bummer.Schedules.Controls {
 			if( cbSaveType.SelectedIndex < 0 ) {
 				throw new Exception( "You have to specify a save type" );
 			}
-			if( string.IsNullOrEmpty( tbRemoteTempDir.Text ) ) {
-				throw new Exception( "You have to specify a remote TEMP-directory" );
+			config.IsLocalServer = cbIsLocalServer.Checked;
+			if( !config.IsLocalServer ) {
+				if( string.IsNullOrEmpty( tbRemoteTempDir.Text ) ) {
+					throw new Exception( "You have to specify a remote TEMP-directory" );
+				}
+				config.RemoteTempDir = tbRemoteTempDir.Text;
 			}
-			config.RemoteTempDir = tbRemoteTempDir.Text;
 			config.Databases = new List<string>();
 			foreach( string db in cblDatabases.CheckedItems ) {
 				config.Databases.Add( db );
@@ -218,6 +222,11 @@ namespace Bummer.Schedules.Controls {
 			}
 			c.Dock = DockStyle.Fill;
 			pnlSaveAsConfig.Controls.Add( c );
+		}
+
+		private void cbIsLocalServer_CheckedChanged( object sender, EventArgs e ) {
+			label6.Enabled = !cbIsLocalServer.Checked;
+			tbRemoteTempDir.Enabled = !cbIsLocalServer.Checked;
 		}
 	}
 }

@@ -137,35 +137,20 @@ namespace Bummer.Common {
 		}
 		private int _interval;
 		#endregion
-		#region public DateTime StartFromTime
+		#region public DateTime StartTime
 		/// <summary>
-		/// Get/Sets the StartFromTime of the BackupScheduleWrapper
+		/// Get/Sets the StartTime of the BackupScheduleWrapper
 		/// </summary>
 		/// <value></value>
-		public DateTime StartFromTime {
+		public DateTime StartTime {
 			get {
-				return _startFromTime;
+				return _startTime;
 			}
 			set {
-				_startFromTime = value;
+				_startTime = value;
 			}
 		}
-		private DateTime _startFromTime;
-		#endregion
-		#region public DateTime StartToTime
-		/// <summary>
-		/// Get/Sets the StartToTime of the BackupScheduleWrapper
-		/// </summary>
-		/// <value></value>
-		public DateTime StartToTime {
-			get {
-				return _startToTime;
-			}
-			set {
-				_startToTime = value;
-			}
-		}
-		private DateTime _startToTime;
+		private DateTime _startTime;
 		#endregion
 		#region public DateTime? LastStarted
 		/// <summary>
@@ -231,7 +216,7 @@ namespace Bummer.Common {
 		private List<ScheduleJobLog> _logs;
 		#endregion
 
-		#region public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startFromTime, DateTime startToTime, DateTime? lastStarted, DateTime? lastFinished )
+		#region public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startTime, DateTime? lastStarted, DateTime? lastFinished )
 		/// <summary>
 		/// Initializes a new instance of the <b>BackupScheduleWrapper</b> class.
 		/// </summary>
@@ -244,11 +229,10 @@ namespace Bummer.Common {
 		/// <param name="postCommands"></param>
 		/// <param name="intervalType"></param>
 		/// <param name="interval"></param>
-		/// <param name="startFromTime"></param>
-		/// <param name="startToTime"></param>
+		/// <param name="startTime"></param>
 		/// <param name="lastStarted"></param>
 		/// <param name="lastFinished"></param>
-		public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startFromTime, DateTime startToTime, DateTime? lastStarted, DateTime? lastFinished ) {
+		public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startTime, DateTime? lastStarted, DateTime? lastFinished ) {
 			_iD = id;
 			_name = name;
 			_createdDate = createdDate;
@@ -258,8 +242,7 @@ namespace Bummer.Common {
 			_configuration = configuration;
 			_intervalType = intervalType;
 			_interval = interval;
-			_startFromTime = startFromTime;
-			_startToTime = startToTime;
+			_startTime = startTime;
 			_lastStarted = lastStarted;
 			_lastFinished = lastFinished;
 		}
@@ -278,7 +261,7 @@ namespace Bummer.Common {
 		/// </summary>
 		/// <returns>A new object that is a copy of this instance.</returns>
 		internal BackupScheduleWrapper Clone() {
-			return new BackupScheduleWrapper( ID, Name, CreatedDate, JobType, Configuration, PreCommands, PostCommands, IntervalType, Interval, StartFromTime, StartToTime, LastStarted, LastFinished );
+			return new BackupScheduleWrapper( ID, Name, CreatedDate, JobType, Configuration, PreCommands, PostCommands, IntervalType, Interval, StartTime, LastStarted, LastFinished );
 		}
 		#endregion
 
@@ -301,7 +284,7 @@ namespace Bummer.Common {
 			}
 			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
 				if( ID <= 0 ) {
-					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, Configuration, PreCommands, PostCommands, IntervalType, Interval, StartFromTime, StartToTime ) VALUES( @Name, @CreatedDate, @JobType, @Configuration, @PreCommands, @PostCommands, @IntervalType, @Interval, @StartFromTime, @StartToTime );";
+					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, Configuration, PreCommands, PostCommands, IntervalType, Interval, StartTime ) VALUES( @Name, @CreatedDate, @JobType, @Configuration, @PreCommands, @PostCommands, @IntervalType, @Interval, @StartTime );";
 					cmd.AddWithValue( "@Name", Name );
 					cmd.AddWithValue( "@CreatedDate", CreatedDate );
 					cmd.AddWithValue( "@JobType", JobType );
@@ -310,8 +293,7 @@ namespace Bummer.Common {
 					cmd.AddWithValue( "@PostCommands", NZ( PostCommands ) );
 					cmd.AddWithValue( "@IntervalType", (int)IntervalType );
 					cmd.AddWithValue( "@Interval", Interval );
-					cmd.AddWithValue( "@StartFromTime", StartFromTime );
-					cmd.AddWithValue( "@StartToTime", StartToTime );
+					cmd.AddWithValue( "@StartTime", StartTime );
 					cmd.ExecuteNonQuery();
 					ID = cmd.GetLastAutoIncrement();
 				} else {
@@ -325,8 +307,7 @@ PostCommands = @PostCommands,
 Configuration = @Configuration,
 IntervalType = @IntervalType,
 Interval = @Interval,
-StartFromTime = @StartFromTime,
-StartToTime = @StartToTime
+StartTime = @StartTime,
 WHERE
 Schedule_ID = @Schedule_ID";
 					cmd.AddWithValue( "@Name", Name );
@@ -336,8 +317,7 @@ Schedule_ID = @Schedule_ID";
 					cmd.AddWithValue( "@Configuration", Configuration );
 					cmd.AddWithValue( "@IntervalType", (int)IntervalType );
 					cmd.AddWithValue( "@Interval", Interval );
-					cmd.AddWithValue( "@StartFromTime", StartFromTime );
-					cmd.AddWithValue( "@StartToTime", StartToTime );
+					cmd.AddWithValue( "@StartTime", StartTime );
 					cmd.AddWithValue( "@Schedule_ID", ID );
 					cmd.ExecuteNonQuery();
 				}

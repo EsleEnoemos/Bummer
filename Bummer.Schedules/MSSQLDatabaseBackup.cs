@@ -31,7 +31,9 @@ namespace Bummer.Schedules {
 		/// <value></value>
 		public string Description {
 			get {
-				return _decription ?? (_decription="Backup a Microsoft SQL Server Database{0}The database can be located on a remote server, as long as it is reachable from the current computer.{0}Backups can be stored in a specified directory, or be uploaded to an FTP-server.".FillBlanks( Environment.NewLine ));
+				return _decription ?? (_decription=@"Backup one or mote Microsoft SQL Server Databases.
+The databases can be located on the same machine or a remote server, as long as it is reachable from the current computer.
+Backups can be stored in a specified directory, or be uploaded to an FTP-server.");
 			}
 		}
 		private string _decription;
@@ -71,10 +73,15 @@ namespace Bummer.Schedules {
 			}
 			bool remoteCleanupOK = true;
 			string outputDir = conf.SaveAs == SaveAsTypes.Directory ? conf.SaveToDir : conf.FTPLocalTempDirectory;
+			string remoteDir = conf.RemoteTempDir;
+			if( conf.IsLocalServer ) {
+				remoteDir = outputDir;
+				outputDir = null;
+			}
 			foreach( string db in databases ) {
 				BackupResult res;
 				using( SQLLocalBackup lb = new SQLLocalBackup( conf.Server, conf.Username, conf.Password, db ) ) {
-					res = lb.DoLocalBackup( conf.RemoteTempDir, outputDir, conf.AddDateToFilename );
+					res = lb.DoLocalBackup( remoteDir, outputDir, conf.AddDateToFilename );
 					if( !res.CleanupOK ) {
 						remoteCleanupOK = false;
 					}
@@ -342,6 +349,7 @@ Enable procedure xp_cmdshell to perform this".FillBlanks( databases.ToString( ",
 			#endregion
 			public bool CompressFiles;
 			public bool AddDateToFilename;
+			public bool IsLocalServer;
 
 			#region public static ParameterSettings Load( string configuration )
 			/// <summary>

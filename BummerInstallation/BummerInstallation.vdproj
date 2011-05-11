@@ -545,7 +545,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BUMmer"
         "ProductCode" = "8:{B29CA581-CF45-4F88-85EE-F73A049CE386}"
-        "PackageCode" = "8:{8B0E715F-CD03-4F74-A9E7-11E4DCED2216}"
+        "PackageCode" = "8:{B2247F36-592C-4EB1-9CB5-29F3A30C25D5}"
         "UpgradeCode" = "8:{C0AE34FC-D3B9-49A4-AAA3-CF3500D89D00}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

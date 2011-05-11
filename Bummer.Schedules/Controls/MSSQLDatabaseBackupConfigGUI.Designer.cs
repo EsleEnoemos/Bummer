@@ -42,6 +42,7 @@
 			this.cbCompress = new System.Windows.Forms.CheckBox();
 			this.cbAddDateToFilename = new System.Windows.Forms.CheckBox();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.cbIsLocalServer = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -101,7 +102,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(3, 167);
+			this.label4.Location = new System.Drawing.Point(3, 200);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(58, 13);
 			this.label4.TabIndex = 6;
@@ -110,7 +111,7 @@
 			// btnRefreshDatabases
 			// 
 			this.btnRefreshDatabases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRefreshDatabases.Location = new System.Drawing.Point(373, 162);
+			this.btnRefreshDatabases.Location = new System.Drawing.Point(373, 195);
 			this.btnRefreshDatabases.Name = "btnRefreshDatabases";
 			this.btnRefreshDatabases.Size = new System.Drawing.Size(75, 23);
 			this.btnRefreshDatabases.TabIndex = 7;
@@ -121,7 +122,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(3, 310);
+			this.label5.Location = new System.Drawing.Point(3, 353);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(44, 13);
 			this.label5.TabIndex = 9;
@@ -133,7 +134,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbSaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbSaveType.FormattingEnabled = true;
-			this.cbSaveType.Location = new System.Drawing.Point(97, 307);
+			this.cbSaveType.Location = new System.Drawing.Point(97, 340);
 			this.cbSaveType.Name = "cbSaveType";
 			this.cbSaveType.Size = new System.Drawing.Size(270, 21);
 			this.cbSaveType.TabIndex = 8;
@@ -146,9 +147,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pnlSaveAsConfig.AutoScroll = true;
 			this.pnlSaveAsConfig.AutoSize = true;
-			this.pnlSaveAsConfig.Location = new System.Drawing.Point(6, 334);
+			this.pnlSaveAsConfig.Location = new System.Drawing.Point(6, 369);
 			this.pnlSaveAsConfig.Name = "pnlSaveAsConfig";
-			this.pnlSaveAsConfig.Size = new System.Drawing.Size(442, 173);
+			this.pnlSaveAsConfig.Size = new System.Drawing.Size(442, 189);
 			this.pnlSaveAsConfig.TabIndex = 9;
 			this.pnlSaveAsConfig.TabStop = true;
 			// 
@@ -156,7 +157,7 @@
 			// 
 			this.tbRemoteTempDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRemoteTempDir.Location = new System.Drawing.Point(97, 86);
+			this.tbRemoteTempDir.Location = new System.Drawing.Point(97, 119);
 			this.tbRemoteTempDir.Name = "tbRemoteTempDir";
 			this.tbRemoteTempDir.Size = new System.Drawing.Size(270, 20);
 			this.tbRemoteTempDir.TabIndex = 3;
@@ -164,7 +165,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(3, 89);
+			this.label6.Location = new System.Drawing.Point(3, 122);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(91, 13);
 			this.label6.TabIndex = 12;
@@ -175,7 +176,7 @@
 			this.cblDatabases.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.cblDatabases.FormattingEnabled = true;
-			this.cblDatabases.Location = new System.Drawing.Point(97, 162);
+			this.cblDatabases.Location = new System.Drawing.Point(97, 195);
 			this.cblDatabases.Name = "cblDatabases";
 			this.cblDatabases.Size = new System.Drawing.Size(270, 139);
 			this.cblDatabases.TabIndex = 6;
@@ -184,7 +185,7 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(3, 191);
+			this.label7.Location = new System.Drawing.Point(3, 224);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(94, 52);
 			this.label7.TabIndex = 15;
@@ -193,7 +194,7 @@
 			// cbCompress
 			// 
 			this.cbCompress.AutoSize = true;
-			this.cbCompress.Location = new System.Drawing.Point(6, 116);
+			this.cbCompress.Location = new System.Drawing.Point(6, 149);
 			this.cbCompress.Name = "cbCompress";
 			this.cbCompress.Size = new System.Drawing.Size(115, 17);
 			this.cbCompress.TabIndex = 4;
@@ -203,7 +204,7 @@
 			// cbAddDateToFilename
 			// 
 			this.cbAddDateToFilename.AutoSize = true;
-			this.cbAddDateToFilename.Location = new System.Drawing.Point(6, 139);
+			this.cbAddDateToFilename.Location = new System.Drawing.Point(6, 172);
 			this.cbAddDateToFilename.Name = "cbAddDateToFilename";
 			this.cbAddDateToFilename.Size = new System.Drawing.Size(123, 17);
 			this.cbAddDateToFilename.TabIndex = 5;
@@ -221,10 +222,24 @@
 			this.toolTip1.ShowAlways = true;
 			this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			// 
+			// cbIsLocalServer
+			// 
+			this.cbIsLocalServer.AutoSize = true;
+			this.cbIsLocalServer.Location = new System.Drawing.Point(6, 96);
+			this.cbIsLocalServer.Name = "cbIsLocalServer";
+			this.cbIsLocalServer.Size = new System.Drawing.Size(99, 17);
+			this.cbIsLocalServer.TabIndex = 16;
+			this.cbIsLocalServer.Text = "Local database";
+			this.toolTip1.SetToolTip(this.cbIsLocalServer, "Check this if the sql-server is located on the local computer.\r\nThis will speed u" +
+        "p the backup process");
+			this.cbIsLocalServer.UseVisualStyleBackColor = true;
+			this.cbIsLocalServer.CheckedChanged += new System.EventHandler(this.cbIsLocalServer_CheckedChanged);
+			// 
 			// MSSQLDatabaseBackupConfigGUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.cbIsLocalServer);
 			this.Controls.Add(this.cbAddDateToFilename);
 			this.Controls.Add(this.cbCompress);
 			this.Controls.Add(this.label7);
@@ -243,7 +258,7 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Name = "MSSQLDatabaseBackupConfigGUI";
-			this.Size = new System.Drawing.Size(465, 523);
+			this.Size = new System.Drawing.Size(465, 574);
 			this.Load += new System.EventHandler(this.MSSQLDatabaseBackupConfigGUI_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -270,6 +285,7 @@
 		private System.Windows.Forms.CheckBox cbCompress;
 		private System.Windows.Forms.CheckBox cbAddDateToFilename;
 		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.CheckBox cbIsLocalServer;
 
 	}
 }

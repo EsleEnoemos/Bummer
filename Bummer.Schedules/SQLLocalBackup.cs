@@ -82,38 +82,45 @@ namespace Bummer.Schedules {
 				string sql = String.Format( "BACKUP DATABASE {0} TO DISK = N'{1}' WITH FORMAT, COPY_ONLY, INIT, NAME = N'{0} - Full Database Backup', SKIP ", _dbname, remoteFilename );
 				cmd.CommandText = sql;
 				cmd.ExecuteNonQuery();
-				sql = String.Format( "IF OBJECT_ID('tempdb..##{0}') IS NOT NULL DROP TABLE ##{0}", temporaryTableName );
-				cmd.CommandText = sql;
-				cmd.ExecuteNonQuery();
-				sql = String.Format( "CREATE TABLE ##{0} (bck VARBINARY(MAX))", temporaryTableName );
-				cmd.CommandText = sql;
-				cmd.ExecuteNonQuery();
-				sql = String.Format( "INSERT INTO ##{0} SELECT bck.* FROM OPENROWSET(BULK '{1}\\{2}.bak',SINGLE_BLOB) bck", temporaryTableName, AremoteTempPath, _dbname );
-				cmd.CommandText = sql;
-				cmd.ExecuteNonQuery();
-				sql = String.Format( "SELECT bck FROM ##{0}", temporaryTableName );
-				SqlDataAdapter da = new SqlDataAdapter( sql, con );
-				DataSet ds = new DataSet();
-				da.Fill( ds );
-				DataRow dr = ds.Tables[ 0 ].Rows[ 0 ];
-				byte[] backupFromServer = (byte[])dr[ "bck" ];
-				int aSize = backupFromServer.GetUpperBound( 0 ) + 1;
-				ret.OutputFilename = String.Format( "{0}\\{1}", AlocalPath, fileName );
-				FileStream fs = new FileStream( ret.OutputFilename, FileMode.OpenOrCreate, FileAccess.Write );
-				fs.Write( backupFromServer, 0, aSize );
-				fs.Close();
 
-				sql = String.Format( "DROP TABLE ##{0}", temporaryTableName );
-				cmd.CommandText = sql;
-				cmd.ExecuteNonQuery();
-				ds.Dispose();
-				sql = string.Format( "xp_cmdshell 'del {0}'", remoteFilename );
-				cmd.CommandText = sql;
-				try {
+				// If local path is null, then remote path is considered to be local path, i.e. the database is located on the current machine.
+				if( !string.IsNullOrEmpty( AlocalPath ) ) {
+					sql = String.Format( "IF OBJECT_ID('tempdb..##{0}') IS NOT NULL DROP TABLE ##{0}", temporaryTableName );
+					cmd.CommandText = sql;
 					cmd.ExecuteNonQuery();
+					sql = String.Format( "CREATE TABLE ##{0} (bck VARBINARY(MAX))", temporaryTableName );
+					cmd.CommandText = sql;
+					cmd.ExecuteNonQuery();
+					sql = String.Format( "INSERT INTO ##{0} SELECT bck.* FROM OPENROWSET(BULK '{1}\\{2}.bak',SINGLE_BLOB) bck", temporaryTableName, AremoteTempPath, _dbname );
+					cmd.CommandText = sql;
+					cmd.ExecuteNonQuery();
+					sql = String.Format( "SELECT bck FROM ##{0}", temporaryTableName );
+					SqlDataAdapter da = new SqlDataAdapter( sql, con );
+					DataSet ds = new DataSet();
+					da.Fill( ds );
+					DataRow dr = ds.Tables[ 0 ].Rows[ 0 ];
+					byte[] backupFromServer = (byte[])dr[ "bck" ];
+					int aSize = backupFromServer.GetUpperBound( 0 ) + 1;
+					ret.OutputFilename = String.Format( "{0}\\{1}", AlocalPath, fileName );
+					FileStream fs = new FileStream( ret.OutputFilename, FileMode.OpenOrCreate, FileAccess.Write );
+					fs.Write( backupFromServer, 0, aSize );
+					fs.Close();
+
+					sql = String.Format( "DROP TABLE ##{0}", temporaryTableName );
+					cmd.CommandText = sql;
+					cmd.ExecuteNonQuery();
+					ds.Dispose();
+					sql = string.Format( "xp_cmdshell 'del {0}'", remoteFilename );
+					cmd.CommandText = sql;
+					try {
+						cmd.ExecuteNonQuery();
+						ret.CleanupOK = true;
+					} catch( Exception ) {
+						ret.CleanupOK = false;
+					}
+				} else {
+					ret.OutputFilename = remoteFilename;
 					ret.CleanupOK = true;
-				} catch( Exception ) {
-					ret.CleanupOK = false;
 				}
 			} finally {
 				if( cmd != null ) {

@@ -33,14 +33,22 @@ namespace Bummer.Service {
 				if( schedule.Interval <= 0 ) {
 					continue;
 				}
+				DateTime startTime = schedule.StartTime;
+				DateTime now = DateTime.Now;
+				if( now.Hour != startTime.Hour ) {
+					continue;
+				}
+				if( now.Minute < startTime.Minute ) {
+					continue;
+				}
 				DateTime next = schedule.LastStarted.Value;
 				switch( schedule.IntervalType ) {
-					case SchduleIntervalTypes.Minute:
-						next = next.AddMinutes( schedule.Interval );
-						break;
-					case SchduleIntervalTypes.Hour:
-						next = next.AddHours( schedule.Interval );
-						break;
+					//case SchduleIntervalTypes.Minute:
+					//    next = next.AddMinutes( schedule.Interval );
+					//    break;
+					//case SchduleIntervalTypes.Hour:
+					//    next = next.AddHours( schedule.Interval );
+					//    break;
 					case SchduleIntervalTypes.Day:
 						next = next.AddDays( schedule.Interval );
 						break;
@@ -54,24 +62,22 @@ namespace Bummer.Service {
 						continue;
 				}
 				if( DateTime.Now > next ) {
-					if( StartTimeOK( schedule.StartFromTime, schedule.StartToTime ) ) {
-						ScheduleJobSpawner.SpawAndRun( schedule );
-					}
+					ScheduleJobSpawner.SpawAndRun( schedule );
 				}
 			}
 		}
-		private bool StartTimeOK( DateTime startFrom, DateTime startTo ) {
-			if( startFrom.Hour == startTo.Hour && startFrom.Minute == startTo.Minute ) {
-				return true;
-			}
-			DateTime start = DateTime.Now.AddHours( startFrom.Hour ).AddMinutes( startFrom.Minute );
-			DateTime stop = DateTime.Now.AddHours( startTo.Hour ).AddMinutes( startTo.Minute );
-			if( startFrom.Hour > startTo.Hour ) {
-				stop = stop.AddDays( 1 );
-			}
-			DateTime now = DateTime.Now;
-			return now >= start && now <= stop;
-		}
+		//private bool StartTimeOK( DateTime startFrom, DateTime startTo ) {
+		//    if( startFrom.Hour == startTo.Hour && startFrom.Minute == startTo.Minute ) {
+		//        return true;
+		//    }
+		//    DateTime start = DateTime.Now.AddHours( startFrom.Hour ).AddMinutes( startFrom.Minute );
+		//    DateTime stop = DateTime.Now.AddHours( startTo.Hour ).AddMinutes( startTo.Minute );
+		//    if( startFrom.Hour > startTo.Hour ) {
+		//        stop = stop.AddDays( 1 );
+		//    }
+		//    DateTime now = DateTime.Now;
+		//    return now >= start && now <= stop;
+		//}
 
 		protected override void OnStop() {
 			timer.Stop();

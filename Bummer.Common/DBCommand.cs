@@ -1118,8 +1118,7 @@ namespace Bummer.Common {
 [Configuration] VARCHAR(8000) NULL,
 [IntervalType] INT NOT NULL,
 [Interval] INT NOT NULL,
-[StartFromTime] DATE NOT NULL,
-[StartToTime] DATE NOT NULL,
+[StartTime] DATE NOT NULL,
 [LastStarted] DATE NULL,
 [LastFinished] DATE NULL
 );";

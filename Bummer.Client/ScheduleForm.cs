@@ -48,8 +48,7 @@ namespace Bummer.Client {
 		private void ScheduleForm_Load( object sender, EventArgs e ) {
 			tbName.Text = Job.Name;
 			nuInterval.Value = Job.Interval;
-			dpStartFrom.Value = new DateTime( 2000, 1, 1, Job.StartFromTime.Hour, Job.StartFromTime.Minute, 0 );
-			dpStartTo.Value = new DateTime( 2000, 1, 1, Job.StartToTime.Hour, Job.StartToTime.Minute, 0 );
+			dpStartTime.Value = new DateTime( 2000, 1, 1, Job.StartTime.Hour, Job.StartTime.Minute, 0 );
 			Array arr = Enum.GetValues( typeof( SchduleIntervalTypes ) );
 			int ind = -1;
 			for( int i = 0; i < arr.Length; i++ ) {
@@ -176,8 +175,7 @@ namespace Bummer.Client {
 			Job.Configuration = config;
 			Job.IntervalType = (SchduleIntervalTypes)cbIntervalType.SelectedItem;
 			Job.Interval = (int)nuInterval.Value;
-			Job.StartFromTime = dpStartFrom.Value;
-			Job.StartToTime = dpStartTo.Value;
+			Job.StartTime = dpStartTime.Value;
 			Job.PreCommands = null;
 			if( lvPreCommands.Items.Count > 0 ) {
 				List<string> list = new List<string>();

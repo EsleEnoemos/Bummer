@@ -26,8 +26,9 @@ namespace Bummer.Common {
 		/// </summary>
 		/// <param name="config">The configuration stored for this job</param>
 		/// <param name="jobID">The ID for this job</param>
+		/// <param name="target">The target to save files to</param>
 		/// <returns></returns>
-		string Execute( string config, int jobID );
+		string Execute( string config, int jobID, IBackupTarget target );
 
 		/// <summary>
 		/// Called when a job is deleted permanently.

@@ -52,14 +52,15 @@ Backups can be stored in a specified directory, or be uploaded to an FTP-server.
 		}
 		#endregion
 
-		#region public string Execute( string config, int jobID )
+		#region public string Execute( string config, int jobID, IBackupTarget target )
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="config"></param>
 		/// <param name="jobID"></param>
+		/// <param name="target"></param>
 		/// <returns></returns>
-		public string Execute( string config, int jobID ) {
+		public string Execute( string config, int jobID, IBackupTarget target ) {
 			MSSQLDatabaseBackupConfig conf = MSSQLDatabaseBackupConfig.Load( config );
 			List<string> databases = conf.Databases;
 			if( databases == null || databases.Count == 0 ) {
@@ -72,7 +73,7 @@ Backups can be stored in a specified directory, or be uploaded to an FTP-server.
 				}
 			}
 			bool remoteCleanupOK = true;
-			string outputDir = conf.SaveAs == SaveAsTypes.Directory ? conf.SaveToDir : conf.FTPLocalTempDirectory;
+			string outputDir = conf.LocalTempDirectory;
 			string remoteDir = conf.RemoteTempDir;
 			if( conf.IsLocalServer ) {
 				remoteDir = outputDir;
@@ -89,13 +90,14 @@ Backups can be stored in a specified directory, or be uploaded to an FTP-server.
 				if( conf.CompressFiles ) {
 					res.OutputFilename = ZipFile( res.OutputFilename );
 				}
-				if( conf.SaveAs == SaveAsTypes.FTP ) {
-					FTPFile( res.OutputFilename, conf );
-					try {
-						File.Delete( res.OutputFilename );
-					} catch {
-					}
-				}
+				target.Store( new FileInfo( res.OutputFilename ), "" );
+				//if( conf.SaveAs == SaveAsTypes.FTP ) {
+				//    FTPFile( res.OutputFilename, conf );
+				//    try {
+				//        File.Delete( res.OutputFilename );
+				//    } catch {
+				//    }
+				//}
 			}
 			if( !remoteCleanupOK ) {
 				return @"{0} was backed up.
@@ -130,76 +132,6 @@ Enable procedure xp_cmdshell to perform this".FillBlanks( databases.ToString( ",
 			return fn;
 		}
 		#endregion
-		#region private void FTPFile( string filename, MSSQLDatabaseBackupConfig conf )
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="filename"></param>
-		/// <param name="conf"></param>
-		private void FTPFile( string filename, MSSQLDatabaseBackupConfig conf ) {
-			string url = conf.FTPServer;
-			if( !url.Contains( "://" ) ) {
-				url = "ftp://{0}".FillBlanks( url );
-			}
-			url = "{0}:{1}".FillBlanks( url, conf.FTPPort );
-
-			if( !string.IsNullOrEmpty( conf.FTPRemoteDirectory ) ) {
-				string rd = conf.FTPRemoteDirectory;
-				if( !rd.StartsWith( "/" ) ) {
-					rd = "/{0}".FillBlanks( rd );
-				}
-				url = "{0}{1}".FillBlanks( url, rd );
-			}
-			if( !url.EndsWith( "/" ) ) {
-				url = "{0}/".FillBlanks( url );
-			}
-			FileInfo fi = new FileInfo( filename );
-			url = "{0}{1}".FillBlanks( url, fi.Name );
-
-			FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create( url );
-			req.Credentials = new NetworkCredential( conf.FTPUsername, conf.FTPPassword );
-			req.KeepAlive = false;
-			req.Method = WebRequestMethods.Ftp.UploadFile;
-			req.UseBinary = true;
-			req.ContentLength = fi.Length;
-			if( passive.HasValue ) {
-				req.UsePassive = passive.Value;
-			}
-			const int buffSize = 1024 * 1024;
-			byte[] bytes = new byte[ buffSize ];
-			Stream outStream = null;
-			try {
-				outStream = req.GetRequestStream();
-				passive = req.UsePassive;
-			} catch( Exception ex ) {
-				string ml = ex.Message.ToLower();
-				if( ml.Contains( "time" ) && ml.Contains( "out" ) ) {
-					req = (FtpWebRequest)FtpWebRequest.Create( req.RequestUri );
-					req.Credentials = new NetworkCredential( conf.FTPUsername, conf.FTPPassword );
-					req.KeepAlive = false;
-					req.Method = WebRequestMethods.Ftp.UploadFile;
-					req.UseBinary = true;
-					req.ContentLength = fi.Length;
-					req.UsePassive = !req.UsePassive;
-					outStream = req.GetRequestStream();
-					passive = req.UsePassive;
-				}
-			}
-			if( outStream == null ) {
-				throw new Exception( "Unable to upload file to FTP-server" );
-			}
-			FileStream fs = fi.OpenRead();
-			int read;
-			while( (read = fs.Read( bytes, 0, buffSize )) > 0 ) {
-				outStream.Write( bytes, 0, read );
-			}
-			outStream.Flush();
-			outStream.Close();
-			outStream.Dispose();
-			fs.Close();
-			fs.Dispose();
-		}
-		#endregion
 		#region public void InitiateConfiguration( Control container, string config )
 		/// <summary>
 		/// 
@@ -223,7 +155,7 @@ Enable procedure xp_cmdshell to perform this".FillBlanks( databases.ToString( ",
 		}
 		#endregion
 
-		public class MSSQLDatabaseBackupConfig : IFTPConfig {
+		public class MSSQLDatabaseBackupConfig {
 			#region private static XmlSerializer Serializer
 			/// <summary>
 			/// Gets the Serializer of the MSSQLDatabaseBackupConfig
@@ -254,99 +186,8 @@ Enable procedure xp_cmdshell to perform this".FillBlanks( databases.ToString( ",
 			}
 			#endregion
 			private List<string> _databases;
-			public SaveAsTypes SaveAs;
-			public string SaveToDir;
+			public string LocalTempDirectory;
 			public string RemoteTempDir;
-			#region public string FTPServer
-			/// <summary>
-			/// Get/Sets the FTPServer of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPServer {
-				get {
-					return _fTPServer;
-				}
-				set {
-					_fTPServer = value;
-				}
-			}
-			private string _fTPServer;
-			#endregion
-			#region public string FTPUsername
-			/// <summary>
-			/// Get/Sets the FTPUsername of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPUsername {
-				get {
-					return _fTPUsername;
-				}
-				set {
-					_fTPUsername = value;
-				}
-			}
-			private string _fTPUsername;
-			#endregion
-			#region public string FTPPassword
-			/// <summary>
-			/// Get/Sets the FTPPassword of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPPassword {
-				get {
-					return _fTPPassword;
-				}
-				set {
-					_fTPPassword = value;
-				}
-			}
-			private string _fTPPassword;
-			#endregion
-			#region public string FTPRemoteDirectory
-			/// <summary>
-			/// Get/Sets the FTPRemoteDirectory of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPRemoteDirectory {
-				get {
-					return _fTPRemoteDirectory;
-				}
-				set {
-					_fTPRemoteDirectory = value;
-				}
-			}
-			private string _fTPRemoteDirectory;
-			#endregion
-			#region public string FTPLocalTempDirectory
-			/// <summary>
-			/// Get/Sets the FTPLocalTempDirectory of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPLocalTempDirectory {
-				get {
-					return _fTPLocalTempDirectory;
-				}
-				set {
-					_fTPLocalTempDirectory = value;
-				}
-			}
-			private string _fTPLocalTempDirectory;
-			#endregion
-			#region public int FTPPort
-			/// <summary>
-			/// Get/Sets the FTPPort of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public int FTPPort {
-				get {
-					return _fTPPort;
-				}
-				set {
-					_fTPPort = value;
-				}
-			}
-			private int _fTPPort;
-			#endregion
 			public bool CompressFiles;
 			public bool AddDateToFilename;
 			public bool IsLocalServer;

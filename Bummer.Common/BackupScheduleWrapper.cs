@@ -92,20 +92,50 @@ namespace Bummer.Common {
 		}
 		private string _postCommands;
 		#endregion
-		#region public string Configuration
+		#region public string JobConfiguration
 		/// <summary>
-		/// Get/Sets the Configuration of the BackupScheduleWrapper
+		/// Get/Sets the JobConfiguration of the BackupScheduleWrapper
 		/// </summary>
 		/// <value></value>
-		public string Configuration {
+		public string JobConfiguration {
 			get {
-				return _configuration;
+				return _jobConfiguration;
 			}
 			set {
-				_configuration = value;
+				_jobConfiguration = value;
 			}
 		}
-		private string _configuration;
+		private string _jobConfiguration;
+		#endregion
+		#region public string TargetType
+		/// <summary>
+		/// Get/Sets the TargetType of the BackupScheduleWrapper
+		/// </summary>
+		/// <value></value>
+		public string TargetType {
+			get {
+				return _targetType;
+			}
+			set {
+				_targetType = value;
+			}
+		}
+		private string _targetType;
+		#endregion
+		#region public string TargetConfiguration
+		/// <summary>
+		/// Get/Sets the TargetConfiguration of the BackupScheduleWrapper
+		/// </summary>
+		/// <value></value>
+		public string TargetConfiguration {
+			get {
+				return _targetConfiguration;
+			}
+			set {
+				_targetConfiguration = value;
+			}
+		}
+		private string _targetConfiguration;
 		#endregion
 		#region public SchduleIntervalTypes IntervalType
 		/// <summary>
@@ -191,7 +221,7 @@ namespace Bummer.Common {
 		public IBackupSchedule Job {
 			get {
 				if( _job == null && JobType != null ) {
-					foreach( IBackupSchedule plug in Common.Configuration.Plugins ) {
+					foreach( IBackupSchedule plug in Configuration.JobPlugins ) {
 						if( string.Equals( plug.GetType().FullName, JobType ) ) {
 							_job = plug;
 							break;
@@ -202,6 +232,26 @@ namespace Bummer.Common {
 			}
 		}
 		private IBackupSchedule _job;
+		#endregion
+		#region public IBackupTarget Target
+		/// <summary>
+		/// Gets the Target of the BackupScheduleWrapper
+		/// </summary>
+		/// <value></value>
+		public IBackupTarget Target {
+			get {
+				if( _target == null && TargetType != null ) {
+					foreach( IBackupTarget tp in Configuration.TargetPlugins ) {
+						if( string.Equals( tp.GetType().FullName, TargetType ) ) {
+							_target = tp;
+							break;
+						}
+					}
+				}
+				return _target;
+			}
+		}
+		private IBackupTarget _target;
 		#endregion
 		#region public List<ScheduleJobLog> Logs
 		/// <summary>
@@ -216,7 +266,7 @@ namespace Bummer.Common {
 		private List<ScheduleJobLog> _logs;
 		#endregion
 
-		#region public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startTime, DateTime? lastStarted, DateTime? lastFinished )
+		#region public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string jobConfiguration, string targetType, string targetConfiguration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startTime, DateTime? lastStarted, DateTime? lastFinished )
 		/// <summary>
 		/// Initializes a new instance of the <b>BackupScheduleWrapper</b> class.
 		/// </summary>
@@ -224,7 +274,9 @@ namespace Bummer.Common {
 		/// <param name="name"></param>
 		/// <param name="createdDate"></param>
 		/// <param name="jobType"></param>
-		/// <param name="configuration"></param>
+		/// <param name="jobConfiguration"></param>
+		/// <param name="targetType"></param>
+		/// <param name="targetConfiguration"></param>
 		/// <param name="preCommands"></param>
 		/// <param name="postCommands"></param>
 		/// <param name="intervalType"></param>
@@ -232,14 +284,16 @@ namespace Bummer.Common {
 		/// <param name="startTime"></param>
 		/// <param name="lastStarted"></param>
 		/// <param name="lastFinished"></param>
-		public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string configuration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startTime, DateTime? lastStarted, DateTime? lastFinished ) {
+		public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string jobConfiguration, string targetType, string targetConfiguration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startTime, DateTime? lastStarted, DateTime? lastFinished ) {
 			_iD = id;
 			_name = name;
 			_createdDate = createdDate;
 			_jobType = jobType;
 			_preCommands = preCommands;
 			_postCommands = postCommands;
-			_configuration = configuration;
+			_jobConfiguration = jobConfiguration;
+			_targetType = targetType;
+			_targetConfiguration = targetConfiguration;
 			_intervalType = intervalType;
 			_interval = interval;
 			_startTime = startTime;
@@ -261,19 +315,24 @@ namespace Bummer.Common {
 		/// </summary>
 		/// <returns>A new object that is a copy of this instance.</returns>
 		internal BackupScheduleWrapper Clone() {
-			return new BackupScheduleWrapper( ID, Name, CreatedDate, JobType, Configuration, PreCommands, PostCommands, IntervalType, Interval, StartTime, LastStarted, LastFinished );
+			return new BackupScheduleWrapper( ID, Name, CreatedDate, JobType, JobConfiguration, TargetType, TargetConfiguration, PreCommands, PostCommands, IntervalType, Interval, StartTime, LastStarted, LastFinished );
 		}
 		#endregion
 
+		#region public void ReFresh()
+		/// <summary>
+		/// 
+		/// </summary>
 		public void ReFresh() {
 			_logs = null;
-			BackupScheduleWrapper rf = Common.Configuration.GetSchedule( ID );
+			BackupScheduleWrapper rf = Configuration.GetSchedule( ID );
 			if( rf == null ) {
 				return;
 			}
 			_lastStarted = rf._lastStarted;
 			_lastFinished = rf._lastFinished;
 		}
+		#endregion
 		#region public void Persist()
 		/// <summary>
 		/// 
@@ -282,13 +341,15 @@ namespace Bummer.Common {
 			if( ID <= 0 ) {
 				CreatedDate = DateTime.Now;
 			}
-			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
+			using( DBCommand cmd = Configuration.GetCommand() ) {
 				if( ID <= 0 ) {
-					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, Configuration, PreCommands, PostCommands, IntervalType, Interval, StartTime ) VALUES( @Name, @CreatedDate, @JobType, @Configuration, @PreCommands, @PostCommands, @IntervalType, @Interval, @StartTime );";
+					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, JobConfiguration, TargetType, TargetConfiguration PreCommands, PostCommands, IntervalType, Interval, StartTime ) VALUES( @Name, @CreatedDate, @JobType, @JobConfiguration, @TargetType, @TargetConfiguration, @PreCommands, @PostCommands, @IntervalType, @Interval, @StartTime );";
 					cmd.AddWithValue( "@Name", Name );
 					cmd.AddWithValue( "@CreatedDate", CreatedDate );
 					cmd.AddWithValue( "@JobType", JobType );
-					cmd.AddWithValue( "@Configuration", Configuration );
+					cmd.AddWithValue( "@JobConfiguration", JobConfiguration );
+					cmd.AddWithValue( "@TargetType", TargetType );
+					cmd.AddWithValue( "@TargetConfiguration", TargetConfiguration );
 					cmd.AddWithValue( "@PreCommands", NZ( PreCommands ) );
 					cmd.AddWithValue( "@PostCommands", NZ( PostCommands ) );
 					cmd.AddWithValue( "@IntervalType", (int)IntervalType );
@@ -304,7 +365,9 @@ Name = @Name,
 JobType = @JobType,
 PreCommands = @PreCommands,
 PostCommands = @PostCommands,
-Configuration = @Configuration,
+JobConfiguration = @JobConfiguration,
+TargetType = @TargetType,
+TargetConfiguration = @TargetConfiguration,
 IntervalType = @IntervalType,
 Interval = @Interval,
 StartTime = @StartTime,
@@ -314,7 +377,9 @@ Schedule_ID = @Schedule_ID";
 					cmd.AddWithValue( "@JobType", JobType );
 					cmd.AddWithValue( "@PreCommands", NZ( PreCommands ) );
 					cmd.AddWithValue( "@PostCommands", NZ( PostCommands ) );
-					cmd.AddWithValue( "@Configuration", Configuration );
+					cmd.AddWithValue( "@JobConfiguration", JobConfiguration );
+					cmd.AddWithValue( "@TargetType", TargetType );
+					cmd.AddWithValue( "@TargetConfiguration", TargetConfiguration );
 					cmd.AddWithValue( "@IntervalType", (int)IntervalType );
 					cmd.AddWithValue( "@Interval", Interval );
 					cmd.AddWithValue( "@StartTime", StartTime );
@@ -343,10 +408,10 @@ Schedule_ID = @Schedule_ID";
 		/// </summary>
 		public void Delete() {
 			try {
-				Job.Delete( Configuration, ID );
+				Job.Delete( JobConfiguration, ID );
 			} catch {
 			}
-			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
+			using( DBCommand cmd = Configuration.GetCommand() ) {
 				cmd.CommandText = "DELETE FROM Schedules WHERE Schedule_ID = {0}".FillBlanks( ID );
 				cmd.ExecuteNonQuery();
 				cmd.CommandText = "DELETE FROM ScheduleLogs WHERE Schedule_ID = {0}".FillBlanks( ID );
@@ -362,7 +427,7 @@ Schedule_ID = @Schedule_ID";
 			DateTime start = DateTime.Now;
 			bool success = true;
 			string message;
-			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
+			using( DBCommand cmd = Configuration.GetCommand() ) {
 				try {
 					cmd.CommandText = "UPDATE Schedules SET LastStarted = @start WHERE Schedule_ID = @ID";
 					cmd.AddWithValue( "@start", start );
@@ -375,7 +440,7 @@ Schedule_ID = @Schedule_ID";
 				if( !string.IsNullOrEmpty( PreCommands ) ) {
 					RunCommands( PreCommands );
 				}
-				message = Job.Execute( Configuration, ID );
+				message = Job.Execute( JobConfiguration, ID, Target );
 				if( !string.IsNullOrEmpty( PostCommands ) ) {
 					RunCommands( PostCommands );
 				}
@@ -383,7 +448,7 @@ Schedule_ID = @Schedule_ID";
 				success = false;
 				message = ex.Message;
 			}
-			using( DBCommand cmd = Common.Configuration.GetCommand() ) {
+			using( DBCommand cmd = Configuration.GetCommand() ) {
 				DateTime now = DateTime.Now;
 				try {
 					cmd.CommandText = "UPDATE Schedules SET LastFinished = @now WHERE Schedule_ID = @ID";
@@ -401,6 +466,11 @@ Schedule_ID = @Schedule_ID";
 		}
 		#endregion
 
+		#region public static void RunCommands( string commands )
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="commands"></param>
 		public static void RunCommands( string commands ) {
 			if( string.IsNullOrEmpty( commands ) ) {
 				return;
@@ -415,5 +485,6 @@ Schedule_ID = @Schedule_ID";
 				p.WaitForExit();
 			}
 		}
+		#endregion
 	}
 }

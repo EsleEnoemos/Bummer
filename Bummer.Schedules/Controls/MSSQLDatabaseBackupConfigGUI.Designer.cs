@@ -32,9 +32,6 @@
 			this.tbPassword = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.btnRefreshDatabases = new System.Windows.Forms.Button();
-			this.label5 = new System.Windows.Forms.Label();
-			this.cbSaveType = new System.Windows.Forms.ComboBox();
-			this.pnlSaveAsConfig = new System.Windows.Forms.Panel();
 			this.tbRemoteTempDir = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.cblDatabases = new System.Windows.Forms.CheckedListBox();
@@ -43,6 +40,9 @@
 			this.cbAddDateToFilename = new System.Windows.Forms.CheckBox();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.cbIsLocalServer = new System.Windows.Forms.CheckBox();
+			this.btnBrowseForLocalTemp = new System.Windows.Forms.Button();
+			this.tbLocalTempDir = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -76,7 +76,7 @@
 			// 
 			this.tbServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbServer.Location = new System.Drawing.Point(97, 7);
+			this.tbServer.Location = new System.Drawing.Point(109, 7);
 			this.tbServer.Name = "tbServer";
 			this.tbServer.Size = new System.Drawing.Size(270, 20);
 			this.tbServer.TabIndex = 0;
@@ -85,7 +85,7 @@
 			// 
 			this.tbUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbUsername.Location = new System.Drawing.Point(97, 33);
+			this.tbUsername.Location = new System.Drawing.Point(109, 33);
 			this.tbUsername.Name = "tbUsername";
 			this.tbUsername.Size = new System.Drawing.Size(270, 20);
 			this.tbUsername.TabIndex = 1;
@@ -94,7 +94,7 @@
 			// 
 			this.tbPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbPassword.Location = new System.Drawing.Point(97, 60);
+			this.tbPassword.Location = new System.Drawing.Point(109, 60);
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.Size = new System.Drawing.Size(270, 20);
 			this.tbPassword.TabIndex = 2;
@@ -102,7 +102,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(3, 200);
+			this.label4.Location = new System.Drawing.Point(3, 227);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(58, 13);
 			this.label4.TabIndex = 6;
@@ -111,7 +111,7 @@
 			// btnRefreshDatabases
 			// 
 			this.btnRefreshDatabases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRefreshDatabases.Location = new System.Drawing.Point(373, 195);
+			this.btnRefreshDatabases.Location = new System.Drawing.Point(385, 222);
 			this.btnRefreshDatabases.Name = "btnRefreshDatabases";
 			this.btnRefreshDatabases.Size = new System.Drawing.Size(75, 23);
 			this.btnRefreshDatabases.TabIndex = 7;
@@ -119,45 +119,11 @@
 			this.btnRefreshDatabases.UseVisualStyleBackColor = true;
 			this.btnRefreshDatabases.Click += new System.EventHandler(this.btnRefreshDatabases_Click);
 			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(3, 353);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(44, 13);
-			this.label5.TabIndex = 9;
-			this.label5.Text = "Save to";
-			// 
-			// cbSaveType
-			// 
-			this.cbSaveType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbSaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbSaveType.FormattingEnabled = true;
-			this.cbSaveType.Location = new System.Drawing.Point(97, 340);
-			this.cbSaveType.Name = "cbSaveType";
-			this.cbSaveType.Size = new System.Drawing.Size(270, 21);
-			this.cbSaveType.TabIndex = 8;
-			this.cbSaveType.SelectedIndexChanged += new System.EventHandler(this.cbSaveType_SelectedIndexChanged);
-			// 
-			// pnlSaveAsConfig
-			// 
-			this.pnlSaveAsConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pnlSaveAsConfig.AutoScroll = true;
-			this.pnlSaveAsConfig.AutoSize = true;
-			this.pnlSaveAsConfig.Location = new System.Drawing.Point(6, 369);
-			this.pnlSaveAsConfig.Name = "pnlSaveAsConfig";
-			this.pnlSaveAsConfig.Size = new System.Drawing.Size(442, 189);
-			this.pnlSaveAsConfig.TabIndex = 9;
-			this.pnlSaveAsConfig.TabStop = true;
-			// 
 			// tbRemoteTempDir
 			// 
 			this.tbRemoteTempDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbRemoteTempDir.Location = new System.Drawing.Point(97, 119);
+			this.tbRemoteTempDir.Location = new System.Drawing.Point(109, 119);
 			this.tbRemoteTempDir.Name = "tbRemoteTempDir";
 			this.tbRemoteTempDir.Size = new System.Drawing.Size(270, 20);
 			this.tbRemoteTempDir.TabIndex = 3;
@@ -176,7 +142,7 @@
 			this.cblDatabases.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.cblDatabases.FormattingEnabled = true;
-			this.cblDatabases.Location = new System.Drawing.Point(97, 195);
+			this.cblDatabases.Location = new System.Drawing.Point(109, 222);
 			this.cblDatabases.Name = "cblDatabases";
 			this.cblDatabases.Size = new System.Drawing.Size(270, 139);
 			this.cblDatabases.TabIndex = 6;
@@ -185,7 +151,7 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(3, 224);
+			this.label7.Location = new System.Drawing.Point(3, 251);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(94, 52);
 			this.label7.TabIndex = 15;
@@ -204,7 +170,7 @@
 			// cbAddDateToFilename
 			// 
 			this.cbAddDateToFilename.AutoSize = true;
-			this.cbAddDateToFilename.Location = new System.Drawing.Point(6, 172);
+			this.cbAddDateToFilename.Location = new System.Drawing.Point(6, 199);
 			this.cbAddDateToFilename.Name = "cbAddDateToFilename";
 			this.cbAddDateToFilename.Size = new System.Drawing.Size(123, 17);
 			this.cbAddDateToFilename.TabIndex = 5;
@@ -235,10 +201,42 @@
 			this.cbIsLocalServer.UseVisualStyleBackColor = true;
 			this.cbIsLocalServer.CheckedChanged += new System.EventHandler(this.cbIsLocalServer_CheckedChanged);
 			// 
+			// btnBrowseForLocalTemp
+			// 
+			this.btnBrowseForLocalTemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnBrowseForLocalTemp.Location = new System.Drawing.Point(416, 170);
+			this.btnBrowseForLocalTemp.Name = "btnBrowseForLocalTemp";
+			this.btnBrowseForLocalTemp.Size = new System.Drawing.Size(32, 23);
+			this.btnBrowseForLocalTemp.TabIndex = 51;
+			this.btnBrowseForLocalTemp.Text = "...";
+			this.btnBrowseForLocalTemp.UseVisualStyleBackColor = true;
+			this.btnBrowseForLocalTemp.Click += new System.EventHandler(this.btnBrowseForLocalTemp_Click);
+			// 
+			// tbLocalTempDir
+			// 
+			this.tbLocalTempDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLocalTempDir.Location = new System.Drawing.Point(109, 172);
+			this.tbLocalTempDir.Name = "tbLocalTempDir";
+			this.tbLocalTempDir.Size = new System.Drawing.Size(301, 20);
+			this.tbLocalTempDir.TabIndex = 50;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(3, 175);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(102, 13);
+			this.label5.TabIndex = 52;
+			this.label5.Text = "Local temp directory";
+			// 
 			// MSSQLDatabaseBackupConfigGUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.btnBrowseForLocalTemp);
+			this.Controls.Add(this.tbLocalTempDir);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.cbIsLocalServer);
 			this.Controls.Add(this.cbAddDateToFilename);
 			this.Controls.Add(this.cbCompress);
@@ -246,9 +244,6 @@
 			this.Controls.Add(this.cblDatabases);
 			this.Controls.Add(this.tbRemoteTempDir);
 			this.Controls.Add(this.label6);
-			this.Controls.Add(this.pnlSaveAsConfig);
-			this.Controls.Add(this.cbSaveType);
-			this.Controls.Add(this.label5);
 			this.Controls.Add(this.btnRefreshDatabases);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.tbPassword);
@@ -258,7 +253,7 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Name = "MSSQLDatabaseBackupConfigGUI";
-			this.Size = new System.Drawing.Size(465, 574);
+			this.Size = new System.Drawing.Size(465, 372);
 			this.Load += new System.EventHandler(this.MSSQLDatabaseBackupConfigGUI_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -275,9 +270,6 @@
 		private System.Windows.Forms.TextBox tbPassword;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Button btnRefreshDatabases;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.ComboBox cbSaveType;
-		private System.Windows.Forms.Panel pnlSaveAsConfig;
 		private System.Windows.Forms.TextBox tbRemoteTempDir;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.CheckedListBox cblDatabases;
@@ -286,6 +278,9 @@
 		private System.Windows.Forms.CheckBox cbAddDateToFilename;
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.CheckBox cbIsLocalServer;
+		private System.Windows.Forms.Button btnBrowseForLocalTemp;
+		private System.Windows.Forms.TextBox tbLocalTempDir;
+		private System.Windows.Forms.Label label5;
 
 	}
 }

@@ -35,15 +35,15 @@ namespace Bummer.Common {
 	#endregion
 
 	public static class Configuration {
-		#region internal static List<IBackupSchedule> Plugins
+		#region internal static List<IBackupSchedule> JobPlugins
 		/// <summary>
-		/// Gets the Plugins of the Configuration
+		/// Gets the <see cref="IBackupSchedule"/> of the Configuration
 		/// </summary>
 		/// <value></value>
-		internal static List<IBackupSchedule> Plugins {
+		internal static List<IBackupSchedule> JobPlugins {
 			get {
-				if( _plugins == null ) {
-					_plugins = new List<IBackupSchedule>();
+				if( _jobPlugins == null ) {
+					_jobPlugins = new List<IBackupSchedule>();
 					string pluginDir = "{0}\\Plugins".FillBlanks( DataDirectory.FullName );
 					if( Directory.Exists( pluginDir ) ) {
 						string[] files = Directory.GetFiles( pluginDir, "*.dll", SearchOption.AllDirectories );
@@ -58,7 +58,7 @@ namespace Bummer.Common {
 												if( typeof( IBackupSchedule ).IsAssignableFrom( type ) ) {
 													IBackupSchedule plug = ass.CreateInstance( type.FullName ) as IBackupSchedule;
 													if( plug != null ) {
-														_plugins.Add( plug );
+														_jobPlugins.Add( plug );
 													}
 												}
 											}
@@ -73,7 +73,7 @@ namespace Bummer.Common {
 												if( typeof( IBackupSchedule ).IsAssignableFrom( type ) ) {
 													IBackupSchedule plug = type.Assembly.CreateInstance( type.FullName ) as IBackupSchedule;
 													if( plug != null ) {
-														_plugins.Add( plug );
+														_jobPlugins.Add( plug );
 													}
 												}
 											}
@@ -84,17 +84,78 @@ namespace Bummer.Common {
 								}
 							}
 						}
-						if( _plugins.Count > 1 ) {
-							_plugins.Sort( delegate( IBackupSchedule x, IBackupSchedule y ) {
+						if( _jobPlugins.Count > 1 ) {
+							_jobPlugins.Sort( delegate( IBackupSchedule x, IBackupSchedule y ) {
 								return string.Compare( x.Name, y.Name );
 							} );
 						}
 					}
 				}
-				return _plugins;
+				return _jobPlugins;
 			}
 		}
-		private static List<IBackupSchedule> _plugins;
+		private static List<IBackupSchedule> _jobPlugins;
+		#endregion
+		#region internal static List<IBackupTarget> TargetPlugins
+		/// <summary>
+		/// Gets the TargetPlugins of the Configuration
+		/// </summary>
+		/// <value></value>
+		internal static List<IBackupTarget> TargetPlugins {
+			get {
+				if( _targetPlugins == null ) {
+					_targetPlugins = new List<IBackupTarget>();
+					string pluginDir = "{0}\\Plugins".FillBlanks( DataDirectory.FullName );
+					if( Directory.Exists( pluginDir ) ) {
+						string[] files = Directory.GetFiles( pluginDir, "*.dll", SearchOption.AllDirectories );
+						if( files.Length > 0 ) {
+							foreach( string file in files ) {
+								try {
+									Assembly ass = Assembly.LoadFrom( file );
+									Type[] types = ass.GetTypes();
+									foreach( Type type in types ) {
+										try {
+											if( !type.IsAbstract ) {
+												if( typeof( IBackupTarget ).IsAssignableFrom( type ) ) {
+													IBackupTarget plug = ass.CreateInstance( type.FullName ) as IBackupTarget;
+													if( plug != null ) {
+														_targetPlugins.Add( plug );
+													}
+												}
+											}
+										} catch( Exception ) {
+										}
+									}
+
+								} catch( ReflectionTypeLoadException rte ) {
+									foreach( Type type in rte.Types ) {
+										try {
+											if( !type.IsAbstract ) {
+												if( typeof( IBackupTarget ).IsAssignableFrom( type ) ) {
+													IBackupTarget plug = type.Assembly.CreateInstance( type.FullName ) as IBackupTarget;
+													if( plug != null ) {
+														_targetPlugins.Add( plug );
+													}
+												}
+											}
+										} catch( Exception ) {
+										}
+									}
+								} catch( Exception ) {
+								}
+							}
+						}
+						if( _targetPlugins.Count > 1 ) {
+							_targetPlugins.Sort( delegate( IBackupTarget x, IBackupTarget y ) {
+								return string.Compare( x.Name, y.Name );
+							} );
+						}
+					}
+				}
+				return _targetPlugins;
+			}
+		}
+		private static List<IBackupTarget> _targetPlugins;
 		#endregion
 		#region public static DirectoryInfo DataDirectory
 		/// <summary>
@@ -135,7 +196,7 @@ namespace Bummer.Common {
 			using( DBCommand cmd = GetCommand() ) {
 				cmd.CommandText = "SELECT * FROM Schedules";
 				while( cmd.Read() ) {
-					list.Add( new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "Configuration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) ) );
+					list.Add( new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "JobConfiguration" ), cmd.GetString( "TargetType" ), cmd.GetString( "TargetConfiguration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) ) );
 				}
 				if( list.Count > 1 ) {
 					list.Sort( delegate( BackupScheduleWrapper x, BackupScheduleWrapper y ) {
@@ -156,7 +217,7 @@ namespace Bummer.Common {
 			using( DBCommand cmd = GetCommand() ) {
 				cmd.CommandText = "SELECT * FROM Schedules WHERE Schedule_ID = {0}".FillBlanks( id );
 				while( cmd.Read() ) {
-					return new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "Configuration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) );
+					return new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "JobConfiguration" ), cmd.GetString( "TargetType" ), cmd.GetString( "TargetConfiguration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) );
 				}
 			}
 			return null;

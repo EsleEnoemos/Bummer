@@ -64,15 +64,16 @@ namespace Bummer.Schedules {
 		}
 		#endregion
 
-		#region public string Execute( string config, int jobID )
+		#region public string Execute( string config, int jobID, IBackupTarget target )
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="config"></param>
 		/// <param name="jobID"></param>
+		/// <param name="target"></param>
 		/// <returns></returns>
-		public string Execute( string config, int jobID ) {
-			using( BackupRunner br = new BackupRunner( FileBackupConfig.Load( config ), jobID ) ) {
+		public string Execute( string config, int jobID, IBackupTarget target ) {
+			using( BackupRunner br = new BackupRunner( FileBackupConfig.Load( config ), jobID, target ) ) {
 				int count = br.Run();
 				return "{0} files was backed up".FillBlanks( count );
 			}
@@ -90,7 +91,7 @@ namespace Bummer.Schedules {
 		}
 		#endregion
 
-		public class FileBackupConfig : IFTPConfig {
+		public class FileBackupConfig {
 			#region private static XmlSerializer Serializer
 			/// <summary>
 			/// Gets the Serializer of the MSSQLDatabaseBackupConfig
@@ -120,98 +121,7 @@ namespace Bummer.Schedules {
 			}
 			private List<string> _filetypes;
 			#endregion
-			public SaveAsTypes SaveAs;
-			public string SaveToDir;
-			#region public string FTPServer
-			/// <summary>
-			/// Get/Sets the FTPServer of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPServer {
-				get {
-					return _fTPServer;
-				}
-				set {
-					_fTPServer = value;
-				}
-			}
-			private string _fTPServer;
-			#endregion
-			#region public string FTPUsername
-			/// <summary>
-			/// Get/Sets the FTPUsername of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPUsername {
-				get {
-					return _fTPUsername;
-				}
-				set {
-					_fTPUsername = value;
-				}
-			}
-			private string _fTPUsername;
-			#endregion
-			#region public string FTPPassword
-			/// <summary>
-			/// Get/Sets the FTPPassword of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPPassword {
-				get {
-					return _fTPPassword;
-				}
-				set {
-					_fTPPassword = value;
-				}
-			}
-			private string _fTPPassword;
-			#endregion
-			#region public string FTPRemoteDirectory
-			/// <summary>
-			/// Get/Sets the FTPRemoteDirectory of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPRemoteDirectory {
-				get {
-					return _fTPRemoteDirectory;
-				}
-				set {
-					_fTPRemoteDirectory = value;
-				}
-			}
-			private string _fTPRemoteDirectory;
-			#endregion
-			#region public string FTPLocalTempDirectory
-			/// <summary>
-			/// Get/Sets the FTPLocalTempDirectory of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public string FTPLocalTempDirectory {
-				get {
-					return _fTPLocalTempDirectory;
-				}
-				set {
-					_fTPLocalTempDirectory = value;
-				}
-			}
-			private string _fTPLocalTempDirectory;
-			#endregion
-			#region public int FTPPort
-			/// <summary>
-			/// Get/Sets the FTPPort of the MSSQLDatabaseBackupConfig
-			/// </summary>
-			/// <value></value>
-			public int FTPPort {
-				get {
-					return _fTPPort;
-				}
-				set {
-					_fTPPort = value;
-				}
-			}
-			private int _fTPPort;
-			#endregion
+			public string LocalTempDirectory;
 			public bool CompressFiles;
 			public string ZipFilename;
 			public bool AddDateToFilename;
@@ -278,6 +188,7 @@ namespace Bummer.Schedules {
 			private int count;
 			private string backupDirPath;
 			private bool isDisposed;
+			IBackupTarget target;
 			#region private Hashtable ExtensionHash
 			/// <summary>
 			/// Gets the ExtensionHash of the BackupRunner
@@ -326,7 +237,7 @@ namespace Bummer.Schedules {
 			private ZipFile Zip {
 				get {
 					if( _zip == null ) {
-						DirectoryInfo dir = new DirectoryInfo( config.SaveAs == SaveAsTypes.Directory ? config.SaveToDir : config.FTPLocalTempDirectory );
+						DirectoryInfo dir = new DirectoryInfo( config.LocalTempDirectory );
 						string zn = config.ZipFilename;
 						if( config.AddDateToFilename ) {
 							zn = "{0} {1}".FillBlanks( zn, DateTime.Now.ToString( "yyyy-MM-dd HH.mm.ss" ) );
@@ -343,29 +254,19 @@ namespace Bummer.Schedules {
 			}
 			private ZipFile _zip;
 			#endregion
-			#region private FTPUploader FTPUploader
-			/// <summary>
-			/// Gets the FTPUploader of the BackupRunner
-			/// </summary>
-			/// <value></value>
-			private FTPUploader FTPUploader {
-				get {
-					return _fTPUploader ?? (_fTPUploader = new FTPUploader( config ));
-				}
-			}
-			private FTPUploader _fTPUploader;
-			#endregion
 
-			#region public BackupRunner( FileBackupConfig config, int jobID )
+			#region public BackupRunner( FileBackupConfig config, int jobID, IBackupTarget target )
 			/// <summary>
 			/// Initializes a new instance of the <b>BackupRunner</b> class.
 			/// </summary>
 			/// <param name="config"></param>
 			/// <param name="jobID"></param>
-			public BackupRunner( FileBackupConfig config, int jobID ) {
+			/// <param name="target"></param>
+			public BackupRunner( FileBackupConfig config, int jobID, IBackupTarget target ) {
 				this.config = config;
 				dbFile = new FileInfo( "{0}\\FileBackupDatabases\\{1}.s3db".FillBlanks( Configuration.DataDirectory.FullName, jobID ) );
 				backupDirPath = new DirectoryInfo( config.Directory ).FullName + "\\";
+				this.target = target;
 			}
 			#endregion
 			#region public static void Cleanup( int jobID )
@@ -456,33 +357,34 @@ namespace Bummer.Schedules {
 				if( config.CompressFiles ) {
 					Zip.AddFile( fi.FullName, path );
 				} else {
-					if( config.SaveAs == SaveAsTypes.Directory ) {
-						DirectoryInfo td = new DirectoryInfo( config.SaveToDir );
-						if( !string.IsNullOrEmpty( path ) ) {
-							td = new DirectoryInfo( "{0}\\{1}".FillBlanks( td.FullName, path ) );
-						}
-						if( !Directory.Exists( td.FullName ) ) {
-							Directory.CreateDirectory( td.FullName );
-						}
-						string tn = "{0}\\{1}".FillBlanks( td.FullName, fi.Name );
-						if( File.Exists( tn ) ) {
-							FileInfo tf = new FileInfo( tn );
-							if( tf.LastWriteTime == fi.LastWriteTime && tf.Length == fi.Length ) {
-								// file already exist, is not modified, and is as large as the file being backup, so we consider it already copied
-								return;
-							}
-							File.SetAttributes( tn, FileAttributes.Normal );
-						}
-						File.Copy( fi.FullName, tn, true );
-					} else {
-						string rd = config.FTPRemoteDirectory;
-						if( !rd.EndsWith( "/" ) ) {
-							rd += "/";
-						}
-						rd += path.Replace( "\\", "/" );
-						rd = rd.Replace( "//", "/" );
-						FTPUploader.UploadFile( fi.FullName, rd );
-					}
+					target.Store( fi, path );
+					//if( config.SaveAs == SaveAsTypes.Directory ) {
+					//    DirectoryInfo td = new DirectoryInfo( config.SaveToDir );
+					//    if( !string.IsNullOrEmpty( path ) ) {
+					//        td = new DirectoryInfo( "{0}\\{1}".FillBlanks( td.FullName, path ) );
+					//    }
+					//    if( !Directory.Exists( td.FullName ) ) {
+					//        Directory.CreateDirectory( td.FullName );
+					//    }
+					//    string tn = "{0}\\{1}".FillBlanks( td.FullName, fi.Name );
+					//    if( File.Exists( tn ) ) {
+					//        FileInfo tf = new FileInfo( tn );
+					//        if( tf.LastWriteTime == fi.LastWriteTime && tf.Length == fi.Length ) {
+					//            // file already exist, is not modified, and is as large as the file being backup, so we consider it already copied
+					//            return;
+					//        }
+					//        File.SetAttributes( tn, FileAttributes.Normal );
+					//    }
+					//    File.Copy( fi.FullName, tn, true );
+					//} else {
+					//    string rd = config.FTPRemoteDirectory;
+					//    if( !rd.EndsWith( "/" ) ) {
+					//        rd += "/";
+					//    }
+					//    rd += path.Replace( "\\", "/" );
+					//    rd = rd.Replace( "//", "/" );
+					//    FTPUploader.UploadFile( fi.FullName, rd );
+					//}
 				}
 			}
 			#endregion
@@ -554,7 +456,11 @@ namespace Bummer.Schedules {
 				}
 				if( _zip != null ) {
 					_zip.Save();
+					target.Store( new FileInfo( Zip.Name ), ""  );
 					_zip.Dispose();
+					try {
+						File.Delete( _zip.Name );
+					} catch {}
 				}
 			}
 			#endregion

@@ -62,8 +62,8 @@ namespace Bummer.Client {
 				cbIntervalType.SelectedIndex = ind;
 			}
 			ind = -1;
-			for( int i = 0; i < Configuration.Plugins.Count; i++ ) {
-				IBackupSchedule plug = Configuration.Plugins[ i ];
+			for( int i = 0; i < Configuration.JobPlugins.Count; i++ ) {
+				IBackupSchedule plug = Configuration.JobPlugins[ i ];
 				cbJobType.Items.Add( new PlugWrapper( plug ) );
 				if( string.Equals( Job.JobType, plug.GetType().FullName ) ) {
 					ind = i;
@@ -97,6 +97,17 @@ namespace Bummer.Client {
 				}
 				FixLVSize( lvPostCommands );
 			}
+			ind = -1;
+			for( int i = 0; i < Configuration.TargetPlugins.Count; i++ ) {
+				IBackupTarget target = Configuration.TargetPlugins[ i ];
+				cbTargetType.Items.Add( new TargetWrapper( target ) );
+				if( string.Equals( target.GetType().FullName, Job.TargetType ) ) {
+					ind = i;
+				}
+			}
+			if( ind > -1 ) {
+				cbTargetType.SelectedIndex = ind;
+			}
 		}
 		#endregion
 
@@ -104,6 +115,16 @@ namespace Bummer.Client {
 			public IBackupSchedule job;
 
 			public PlugWrapper( IBackupSchedule job ) {
+				this.job = job;
+			}
+			public override string ToString() {
+				return job.Name;
+			}
+		}
+		private class TargetWrapper {
+			public IBackupTarget job;
+
+			public TargetWrapper( IBackupTarget job ) {
 				this.job = job;
 			}
 			public override string ToString() {
@@ -125,7 +146,7 @@ namespace Bummer.Client {
 			}
 			Job.JobType = pw.job.GetType().FullName;
 			tbDescription.Text = pw.job.Description;
-			pw.job.InitiateConfiguration( pnlJobConfig, Job.Configuration );
+			pw.job.InitiateConfiguration( pnlJobConfig, Job.JobConfiguration );
 		}
 		#endregion
 
@@ -172,7 +193,7 @@ namespace Bummer.Client {
 			Job.Name = tbName.Text;
 			PlugWrapper pw = (PlugWrapper)cbJobType.SelectedItem;
 			Job.JobType = pw.job.GetType().FullName;
-			Job.Configuration = config;
+			Job.JobConfiguration = config;
 			Job.IntervalType = (SchduleIntervalTypes)cbIntervalType.SelectedItem;
 			Job.Interval = (int)nuInterval.Value;
 			Job.StartTime = dpStartTime.Value;
@@ -518,5 +539,16 @@ namespace Bummer.Client {
 			}
 		}
 		#endregion
+
+		private void cbTargetType_SelectedIndexChanged( object sender, EventArgs e ) {
+			TargetWrapper tw = cbTargetType.SelectedItem as TargetWrapper;
+			pnlTargetConfig.Controls.Clear();
+			if( tw == null || tw.job == null ) {
+				return;
+			}
+			Job.TargetType = tw.job.GetType().FullName;
+			tbTargetDescription.Text = tw.job.Description;
+			tw.job.InitiateConfiguration( pnlTargetConfig, Job.TargetConfiguration );
+		}
 	}
 }

@@ -26,22 +26,27 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScheduleForm));
 			this.label1 = new System.Windows.Forms.Label();
 			this.tbName = new System.Windows.Forms.TextBox();
-			this.pnlJobConfig = new System.Windows.Forms.Panel();
-			this.cbJobType = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
 			this.cbIntervalType = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.nuInterval = new System.Windows.Forms.NumericUpDown();
-			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.dpStartTime = new System.Windows.Forms.DateTimePicker();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
-			this.tbDescription = new System.Windows.Forms.TextBox();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.scheduleTab = new System.Windows.Forms.TabPage();
+			this.jobTab = new System.Windows.Forms.TabPage();
+			this.tbDescription = new System.Windows.Forms.TextBox();
+			this.pnlJobConfig = new System.Windows.Forms.Panel();
+			this.cbJobType = new System.Windows.Forms.ComboBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.tagetTab = new System.Windows.Forms.TabPage();
+			this.tbTargetDescription = new System.Windows.Forms.TextBox();
+			this.pnlTargetConfig = new System.Windows.Forms.Panel();
+			this.cbTargetType = new System.Windows.Forms.ComboBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.prePostCommandTab = new System.Windows.Forms.TabPage();
 			this.label9 = new System.Windows.Forms.Label();
 			this.btnTryPostCommand = new System.Windows.Forms.Button();
 			this.btnTryPreCommands = new System.Windows.Forms.Button();
@@ -65,8 +70,10 @@
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			((System.ComponentModel.ISupportInitialize)(this.nuInterval)).BeginInit();
 			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+			this.scheduleTab.SuspendLayout();
+			this.jobTab.SuspendLayout();
+			this.tagetTab.SuspendLayout();
+			this.prePostCommandTab.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -87,43 +94,11 @@
 			this.tbName.Size = new System.Drawing.Size(288, 20);
 			this.tbName.TabIndex = 0;
 			// 
-			// pnlJobConfig
-			// 
-			this.pnlJobConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pnlJobConfig.AutoScroll = true;
-			this.pnlJobConfig.BackColor = System.Drawing.SystemColors.Window;
-			this.pnlJobConfig.Location = new System.Drawing.Point(15, 180);
-			this.pnlJobConfig.Name = "pnlJobConfig";
-			this.pnlJobConfig.Size = new System.Drawing.Size(592, 311);
-			this.pnlJobConfig.TabIndex = 6;
-			this.pnlJobConfig.TabStop = true;
-			// 
-			// cbJobType
-			// 
-			this.cbJobType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbJobType.FormattingEnabled = true;
-			this.cbJobType.Location = new System.Drawing.Point(83, 42);
-			this.cbJobType.Name = "cbJobType";
-			this.cbJobType.Size = new System.Drawing.Size(214, 21);
-			this.cbJobType.TabIndex = 1;
-			this.cbJobType.SelectedIndexChanged += new System.EventHandler(this.cbJobType_SelectedIndexChanged);
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 45);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(31, 13);
-			this.label2.TabIndex = 5;
-			this.label2.Text = "Type";
-			// 
 			// cbIntervalType
 			// 
 			this.cbIntervalType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbIntervalType.FormattingEnabled = true;
-			this.cbIntervalType.Location = new System.Drawing.Point(83, 69);
+			this.cbIntervalType.Location = new System.Drawing.Point(83, 45);
 			this.cbIntervalType.Name = "cbIntervalType";
 			this.cbIntervalType.Size = new System.Drawing.Size(214, 21);
 			this.cbIntervalType.TabIndex = 2;
@@ -131,7 +106,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(12, 72);
+			this.label3.Location = new System.Drawing.Point(12, 48);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(65, 13);
 			this.label3.TabIndex = 7;
@@ -140,7 +115,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 102);
+			this.label4.Location = new System.Drawing.Point(12, 78);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(42, 13);
 			this.label4.TabIndex = 8;
@@ -148,24 +123,15 @@
 			// 
 			// nuInterval
 			// 
-			this.nuInterval.Location = new System.Drawing.Point(83, 100);
+			this.nuInterval.Location = new System.Drawing.Point(83, 76);
 			this.nuInterval.Name = "nuInterval";
 			this.nuInterval.Size = new System.Drawing.Size(214, 20);
 			this.nuInterval.TabIndex = 3;
 			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(12, 161);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(69, 13);
-			this.label5.TabIndex = 10;
-			this.label5.Text = "Configuration";
-			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(12, 133);
+			this.label6.Location = new System.Drawing.Point(12, 109);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(52, 13);
 			this.label6.TabIndex = 11;
@@ -175,7 +141,7 @@
 			// 
 			this.dpStartTime.CustomFormat = "HH:mm";
 			this.dpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dpStartTime.Location = new System.Drawing.Point(83, 127);
+			this.dpStartTime.Location = new System.Drawing.Point(83, 103);
 			this.dpStartTime.Name = "dpStartTime";
 			this.dpStartTime.ShowUpDown = true;
 			this.dpStartTime.Size = new System.Drawing.Size(214, 20);
@@ -203,66 +169,173 @@
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
-			// tbDescription
-			// 
-			this.tbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbDescription.Location = new System.Drawing.Point(322, 42);
-			this.tbDescription.Multiline = true;
-			this.tbDescription.Name = "tbDescription";
-			this.tbDescription.ReadOnly = true;
-			this.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.tbDescription.Size = new System.Drawing.Size(285, 132);
-			this.tbDescription.TabIndex = 19;
-			this.tbDescription.TabStop = false;
-			// 
 			// tabControl1
 			// 
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tabControl1.Controls.Add(this.scheduleTab);
+			this.tabControl1.Controls.Add(this.jobTab);
+			this.tabControl1.Controls.Add(this.tagetTab);
+			this.tabControl1.Controls.Add(this.prePostCommandTab);
 			this.tabControl1.Location = new System.Drawing.Point(1, 3);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(624, 566);
 			this.tabControl1.TabIndex = 20;
 			// 
-			// tabPage1
+			// scheduleTab
 			// 
-			this.tabPage1.Controls.Add(this.label1);
-			this.tabPage1.Controls.Add(this.tbDescription);
-			this.tabPage1.Controls.Add(this.tbName);
-			this.tabPage1.Controls.Add(this.pnlJobConfig);
-			this.tabPage1.Controls.Add(this.cbJobType);
-			this.tabPage1.Controls.Add(this.label2);
-			this.tabPage1.Controls.Add(this.dpStartTime);
-			this.tabPage1.Controls.Add(this.cbIntervalType);
-			this.tabPage1.Controls.Add(this.label3);
-			this.tabPage1.Controls.Add(this.label6);
-			this.tabPage1.Controls.Add(this.label4);
-			this.tabPage1.Controls.Add(this.label5);
-			this.tabPage1.Controls.Add(this.nuInterval);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(616, 540);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Settings";
-			this.tabPage1.UseVisualStyleBackColor = true;
+			this.scheduleTab.Controls.Add(this.label1);
+			this.scheduleTab.Controls.Add(this.tbName);
+			this.scheduleTab.Controls.Add(this.dpStartTime);
+			this.scheduleTab.Controls.Add(this.cbIntervalType);
+			this.scheduleTab.Controls.Add(this.label3);
+			this.scheduleTab.Controls.Add(this.label6);
+			this.scheduleTab.Controls.Add(this.label4);
+			this.scheduleTab.Controls.Add(this.nuInterval);
+			this.scheduleTab.Location = new System.Drawing.Point(4, 22);
+			this.scheduleTab.Name = "scheduleTab";
+			this.scheduleTab.Padding = new System.Windows.Forms.Padding(3);
+			this.scheduleTab.Size = new System.Drawing.Size(616, 540);
+			this.scheduleTab.TabIndex = 0;
+			this.scheduleTab.Text = "Schedule";
+			this.scheduleTab.UseVisualStyleBackColor = true;
 			// 
-			// tabPage2
+			// jobTab
 			// 
-			this.tabPage2.Controls.Add(this.label9);
-			this.tabPage2.Controls.Add(this.btnTryPostCommand);
-			this.tabPage2.Controls.Add(this.btnTryPreCommands);
-			this.tabPage2.Controls.Add(this.groupBox2);
-			this.tabPage2.Controls.Add(this.groupBox1);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(616, 540);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Pre- post commands";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.jobTab.Controls.Add(this.tbDescription);
+			this.jobTab.Controls.Add(this.pnlJobConfig);
+			this.jobTab.Controls.Add(this.cbJobType);
+			this.jobTab.Controls.Add(this.label2);
+			this.jobTab.Location = new System.Drawing.Point(4, 22);
+			this.jobTab.Name = "jobTab";
+			this.jobTab.Size = new System.Drawing.Size(616, 540);
+			this.jobTab.TabIndex = 2;
+			this.jobTab.Text = "Job";
+			this.jobTab.UseVisualStyleBackColor = true;
+			// 
+			// tbDescription
+			// 
+			this.tbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbDescription.Location = new System.Drawing.Point(10, 41);
+			this.tbDescription.Multiline = true;
+			this.tbDescription.Name = "tbDescription";
+			this.tbDescription.ReadOnly = true;
+			this.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.tbDescription.Size = new System.Drawing.Size(597, 106);
+			this.tbDescription.TabIndex = 21;
+			this.tbDescription.TabStop = false;
+			// 
+			// pnlJobConfig
+			// 
+			this.pnlJobConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnlJobConfig.AutoScroll = true;
+			this.pnlJobConfig.BackColor = System.Drawing.SystemColors.Window;
+			this.pnlJobConfig.Location = new System.Drawing.Point(10, 153);
+			this.pnlJobConfig.Name = "pnlJobConfig";
+			this.pnlJobConfig.Size = new System.Drawing.Size(597, 384);
+			this.pnlJobConfig.TabIndex = 20;
+			this.pnlJobConfig.TabStop = true;
+			// 
+			// cbJobType
+			// 
+			this.cbJobType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbJobType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbJobType.FormattingEnabled = true;
+			this.cbJobType.Location = new System.Drawing.Point(44, 12);
+			this.cbJobType.Name = "cbJobType";
+			this.cbJobType.Size = new System.Drawing.Size(563, 21);
+			this.cbJobType.TabIndex = 6;
+			this.cbJobType.SelectedIndexChanged += new System.EventHandler(this.cbJobType_SelectedIndexChanged);
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(7, 15);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(31, 13);
+			this.label2.TabIndex = 7;
+			this.label2.Text = "Type";
+			// 
+			// tagetTab
+			// 
+			this.tagetTab.Controls.Add(this.tbTargetDescription);
+			this.tagetTab.Controls.Add(this.pnlTargetConfig);
+			this.tagetTab.Controls.Add(this.cbTargetType);
+			this.tagetTab.Controls.Add(this.label5);
+			this.tagetTab.Location = new System.Drawing.Point(4, 22);
+			this.tagetTab.Name = "tagetTab";
+			this.tagetTab.Size = new System.Drawing.Size(616, 540);
+			this.tagetTab.TabIndex = 3;
+			this.tagetTab.Text = "Taget";
+			this.tagetTab.UseVisualStyleBackColor = true;
+			// 
+			// tbTargetDescription
+			// 
+			this.tbTargetDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbTargetDescription.Location = new System.Drawing.Point(11, 37);
+			this.tbTargetDescription.Multiline = true;
+			this.tbTargetDescription.Name = "tbTargetDescription";
+			this.tbTargetDescription.ReadOnly = true;
+			this.tbTargetDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.tbTargetDescription.Size = new System.Drawing.Size(597, 106);
+			this.tbTargetDescription.TabIndex = 25;
+			this.tbTargetDescription.TabStop = false;
+			// 
+			// pnlTargetConfig
+			// 
+			this.pnlTargetConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnlTargetConfig.AutoScroll = true;
+			this.pnlTargetConfig.BackColor = System.Drawing.SystemColors.Window;
+			this.pnlTargetConfig.Location = new System.Drawing.Point(11, 149);
+			this.pnlTargetConfig.Name = "pnlTargetConfig";
+			this.pnlTargetConfig.Size = new System.Drawing.Size(597, 384);
+			this.pnlTargetConfig.TabIndex = 24;
+			this.pnlTargetConfig.TabStop = true;
+			// 
+			// cbTargetType
+			// 
+			this.cbTargetType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbTargetType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbTargetType.FormattingEnabled = true;
+			this.cbTargetType.Location = new System.Drawing.Point(45, 8);
+			this.cbTargetType.Name = "cbTargetType";
+			this.cbTargetType.Size = new System.Drawing.Size(562, 21);
+			this.cbTargetType.TabIndex = 22;
+			this.cbTargetType.SelectedIndexChanged += new System.EventHandler(this.cbTargetType_SelectedIndexChanged);
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(8, 11);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(31, 13);
+			this.label5.TabIndex = 23;
+			this.label5.Text = "Type";
+			// 
+			// prePostCommandTab
+			// 
+			this.prePostCommandTab.Controls.Add(this.label9);
+			this.prePostCommandTab.Controls.Add(this.btnTryPostCommand);
+			this.prePostCommandTab.Controls.Add(this.btnTryPreCommands);
+			this.prePostCommandTab.Controls.Add(this.groupBox2);
+			this.prePostCommandTab.Controls.Add(this.groupBox1);
+			this.prePostCommandTab.Location = new System.Drawing.Point(4, 22);
+			this.prePostCommandTab.Name = "prePostCommandTab";
+			this.prePostCommandTab.Padding = new System.Windows.Forms.Padding(3);
+			this.prePostCommandTab.Size = new System.Drawing.Size(616, 540);
+			this.prePostCommandTab.TabIndex = 1;
+			this.prePostCommandTab.Text = "Pre- post commands";
+			this.prePostCommandTab.UseVisualStyleBackColor = true;
 			// 
 			// label9
 			// 
@@ -523,10 +596,14 @@
 			this.Load += new System.EventHandler(this.ScheduleForm_Load);
 			((System.ComponentModel.ISupportInitialize)(this.nuInterval)).EndInit();
 			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
-			this.tabPage2.ResumeLayout(false);
-			this.tabPage2.PerformLayout();
+			this.scheduleTab.ResumeLayout(false);
+			this.scheduleTab.PerformLayout();
+			this.jobTab.ResumeLayout(false);
+			this.jobTab.PerformLayout();
+			this.tagetTab.ResumeLayout(false);
+			this.tagetTab.PerformLayout();
+			this.prePostCommandTab.ResumeLayout(false);
+			this.prePostCommandTab.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -537,22 +614,17 @@
 
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox tbName;
-		private System.Windows.Forms.Panel pnlJobConfig;
-		private System.Windows.Forms.ComboBox cbJobType;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ComboBox cbIntervalType;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.NumericUpDown nuInterval;
-		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.DateTimePicker dpStartTime;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.Button btnCancel;
-		private System.Windows.Forms.TextBox tbDescription;
 		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage scheduleTab;
+		private System.Windows.Forms.TabPage prePostCommandTab;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Button btnTryPostCommand;
 		private System.Windows.Forms.Button btnTryPreCommands;
@@ -574,5 +646,15 @@
 		private System.Windows.Forms.ListView lvPostCommands;
 		private System.Windows.Forms.ColumnHeader columnHeader3;
 		private System.Windows.Forms.ColumnHeader columnHeader4;
+		private System.Windows.Forms.TabPage jobTab;
+		private System.Windows.Forms.TextBox tbDescription;
+		private System.Windows.Forms.Panel pnlJobConfig;
+		private System.Windows.Forms.ComboBox cbJobType;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.TabPage tagetTab;
+		private System.Windows.Forms.TextBox tbTargetDescription;
+		private System.Windows.Forms.Panel pnlTargetConfig;
+		private System.Windows.Forms.ComboBox cbTargetType;
+		private System.Windows.Forms.Label label5;
 	}
 }

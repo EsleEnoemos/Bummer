@@ -32,9 +32,6 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.tbRemoteDir = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
-			this.tbLocalTemp = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.btnBrowseForLocalTempDirectory = new System.Windows.Forms.Button();
 			this.tbPort = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -114,35 +111,6 @@
 			this.label5.TabIndex = 7;
 			this.label5.Text = "Remote directory";
 			// 
-			// tbLocalTemp
-			// 
-			this.tbLocalTemp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbLocalTemp.Location = new System.Drawing.Point(122, 142);
-			this.tbLocalTemp.Name = "tbLocalTemp";
-			this.tbLocalTemp.Size = new System.Drawing.Size(200, 20);
-			this.tbLocalTemp.TabIndex = 5;
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(7, 142);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(109, 13);
-			this.label6.TabIndex = 9;
-			this.label6.Text = "Local TEMP-directory";
-			// 
-			// btnBrowseForLocalTempDirectory
-			// 
-			this.btnBrowseForLocalTempDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnBrowseForLocalTempDirectory.Location = new System.Drawing.Point(329, 142);
-			this.btnBrowseForLocalTempDirectory.Name = "btnBrowseForLocalTempDirectory";
-			this.btnBrowseForLocalTempDirectory.Size = new System.Drawing.Size(28, 23);
-			this.btnBrowseForLocalTempDirectory.TabIndex = 6;
-			this.btnBrowseForLocalTempDirectory.Text = "...";
-			this.btnBrowseForLocalTempDirectory.UseVisualStyleBackColor = true;
-			this.btnBrowseForLocalTempDirectory.Click += new System.EventHandler(this.btnBrowseForLocalTempDirectory_Click);
-			// 
 			// tbPort
 			// 
 			this.tbPort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -177,9 +145,6 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.tbPort);
 			this.Controls.Add(this.label7);
-			this.Controls.Add(this.btnBrowseForLocalTempDirectory);
-			this.Controls.Add(this.tbLocalTemp);
-			this.Controls.Add(this.label6);
 			this.Controls.Add(this.tbRemoteDir);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.tbPassword);
@@ -189,7 +154,7 @@
 			this.Controls.Add(this.tbServer);
 			this.Controls.Add(this.label2);
 			this.Name = "FTPConfigSelector";
-			this.Size = new System.Drawing.Size(376, 175);
+			this.Size = new System.Drawing.Size(376, 152);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -205,9 +170,6 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox tbRemoteDir;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox tbLocalTemp;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Button btnBrowseForLocalTempDirectory;
 		private System.Windows.Forms.TextBox tbPort;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.ToolTip toolTip1;

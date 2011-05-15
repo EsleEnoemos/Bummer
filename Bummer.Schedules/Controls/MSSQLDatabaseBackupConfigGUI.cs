@@ -42,9 +42,6 @@ namespace Bummer.Schedules.Controls {
 			tbRemoteTempDir.Text = Config.RemoteTempDir;
 			cbCompress.Checked = Config.CompressFiles;
 			cbAddDateToFilename.Checked = Config.AddDateToFilename;
-			cbSaveType.Items.Add( SaveAsTypes.Directory );
-			cbSaveType.Items.Add( SaveAsTypes.FTP );
-			cbSaveType.SelectedIndex = Config.SaveAs == SaveAsTypes.FTP ? 1 : 0;
 			RefreshDatabases();
 		}
 		#endregion
@@ -67,9 +64,6 @@ namespace Bummer.Schedules.Controls {
 				throw new Exception( "You have to specify a database password" );
 			}
 			config.Password = tbPassword.Text;
-			if( cbSaveType.SelectedIndex < 0 ) {
-				throw new Exception( "You have to specify a save type" );
-			}
 			config.IsLocalServer = cbIsLocalServer.Checked;
 			if( !config.IsLocalServer ) {
 				if( string.IsNullOrEmpty( tbRemoteTempDir.Text ) ) {
@@ -83,52 +77,6 @@ namespace Bummer.Schedules.Controls {
 			}
 			config.CompressFiles = cbCompress.Checked;
 			config.AddDateToFilename = cbAddDateToFilename.Checked;
-			config.SaveAs = (SaveAsTypes)cbSaveType.SelectedItem;
-			switch( config.SaveAs ) {
-				case SaveAsTypes.Directory:
-					DirectoryConfigSelector ds = pnlSaveAsConfig.Controls[ 0 ] as DirectoryConfigSelector;
-					if( ds == null ) {
-						throw new Exception( "Unable to find directory selector" );
-					}
-					if( string.IsNullOrEmpty( ds.Directory ) ) {
-						throw new Exception( "You have to select a directory to save backup to" );
-					}
-					config.SaveToDir = ds.Directory;
-					break;
-				case SaveAsTypes.FTP:
-					FTPConfigSelector fs = pnlSaveAsConfig.Controls[ 0 ] as FTPConfigSelector;
-					if( fs == null ) {
-						throw new Exception( "Unable to find FTP selector" );
-					}
-					if( string.IsNullOrEmpty( fs.Server ) ) {
-						throw new Exception( "You have to specify an FTP server" );
-					}
-					config.FTPServer = fs.Server;
-					if( string.IsNullOrEmpty( fs.Username ) ) {
-						throw new Exception( "You have to specify a FTP username" );
-					}
-					config.FTPUsername = fs.Username;
-					if( string.IsNullOrEmpty( fs.Password ) ) {
-						throw new Exception( "You have to specify a FTP password" );
-					}
-					config.FTPPassword = fs.Password;
-					if( string.IsNullOrEmpty( fs.LocalTemp ) ) {
-						throw new Exception( "You have to specify a local TEMP-directory" );
-					}
-					config.FTPLocalTempDirectory = fs.LocalTemp;
-					config.FTPRemoteDirectory = fs.RemoteDirectory;
-					int p;
-					if( !int.TryParse( fs.Port, out p ) ) {
-						throw new Exception( "You have to specify a port" );
-					}
-					if( p < 1 || p > ushort.MaxValue ) {
-						throw new Exception( "Port must have a value between 1 and {0}".FillBlanks( ushort.MaxValue ) );
-					}
-					config.FTPPort = p;
-					break;
-				default:
-					throw new Exception( "Unknown save as type {0}".FillBlanks( config.SaveAs ) );
-			}
 			return config;
 		}
 		#endregion
@@ -211,22 +159,17 @@ namespace Bummer.Schedules.Controls {
 		}
 		#endregion
 
-		private void cbSaveType_SelectedIndexChanged( object sender, EventArgs e ) {
-			SaveAsTypes st = (SaveAsTypes)cbSaveType.SelectedItem;
-			pnlSaveAsConfig.Controls.Clear();
-			Control c;
-			if( st == SaveAsTypes.Directory ) {
-				c = new DirectoryConfigSelector( Config.SaveToDir );
-			} else {
-				c = new FTPConfigSelector( Config );
-			}
-			c.Dock = DockStyle.Fill;
-			pnlSaveAsConfig.Controls.Add( c );
-		}
-
 		private void cbIsLocalServer_CheckedChanged( object sender, EventArgs e ) {
 			label6.Enabled = !cbIsLocalServer.Checked;
 			tbRemoteTempDir.Enabled = !cbIsLocalServer.Checked;
+		}
+
+		private void btnBrowseForLocalTemp_Click( object sender, EventArgs e ) {
+			FolderBrowserDialog fd = new FolderBrowserDialog();
+			fd.SelectedPath = tbLocalTempDir.Text;
+			if( fd.ShowDialog( this ) == DialogResult.OK ) {
+				tbLocalTempDir.Text = fd.SelectedPath;
+			}
 		}
 	}
 }

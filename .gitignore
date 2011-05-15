@@ -32,3 +32,4 @@ BummerInstallation/Debug/*
 Bummer.ServiceInstaller/bin/Debug/Interop.IWshRuntimeLibrary.dll
 Bummer.ServiceInstaller/bin/Debug/Interop.IWshRuntimeLibrary.dll
 Bummer.ServiceInstaller/bin/Debug/Interop.IWshRuntimeLibrary.dll
+SSLCertificateGenerator/bin/Debug/SSLCertificateGenerator.vshost.exe.manifest

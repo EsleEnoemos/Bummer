@@ -25,9 +25,6 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			this.cbCompress = new System.Windows.Forms.CheckBox();
-			this.pnlSaveAsConfig = new System.Windows.Forms.Panel();
-			this.cbSaveType = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.tbDirectory = new System.Windows.Forms.TextBox();
@@ -44,6 +41,9 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.cbAddDateToZip = new System.Windows.Forms.CheckBox();
 			this.label7 = new System.Windows.Forms.Label();
+			this.btnBrowseForLocalTemp = new System.Windows.Forms.Button();
+			this.tbLocalTempDir = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// cbCompress
@@ -56,40 +56,6 @@
 			this.cbCompress.Text = "Compress files (zip)";
 			this.cbCompress.UseVisualStyleBackColor = true;
 			this.cbCompress.CheckedChanged += new System.EventHandler(this.cbCompress_CheckedChanged);
-			// 
-			// pnlSaveAsConfig
-			// 
-			this.pnlSaveAsConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pnlSaveAsConfig.AutoScroll = true;
-			this.pnlSaveAsConfig.AutoSize = true;
-			this.pnlSaveAsConfig.Location = new System.Drawing.Point(13, 349);
-			this.pnlSaveAsConfig.Name = "pnlSaveAsConfig";
-			this.pnlSaveAsConfig.Size = new System.Drawing.Size(442, 201);
-			this.pnlSaveAsConfig.TabIndex = 11;
-			this.pnlSaveAsConfig.TabStop = true;
-			// 
-			// cbSaveType
-			// 
-			this.cbSaveType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbSaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbSaveType.FormattingEnabled = true;
-			this.cbSaveType.Location = new System.Drawing.Point(116, 322);
-			this.cbSaveType.Name = "cbSaveType";
-			this.cbSaveType.Size = new System.Drawing.Size(270, 21);
-			this.cbSaveType.TabIndex = 10;
-			this.cbSaveType.SelectedIndexChanged += new System.EventHandler(this.cbSaveType_SelectedIndexChanged);
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(10, 325);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(44, 13);
-			this.label5.TabIndex = 26;
-			this.label5.Text = "Save to";
 			// 
 			// label4
 			// 
@@ -152,7 +118,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(10, 139);
+			this.label2.Location = new System.Drawing.Point(10, 165);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(51, 13);
 			this.label2.TabIndex = 38;
@@ -166,7 +132,7 @@
             this.columnHeader1});
 			this.lvFileTypes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvFileTypes.HideSelection = false;
-			this.lvFileTypes.Location = new System.Drawing.Point(116, 139);
+			this.lvFileTypes.Location = new System.Drawing.Point(116, 165);
 			this.lvFileTypes.Name = "lvFileTypes";
 			this.lvFileTypes.Size = new System.Drawing.Size(270, 164);
 			this.lvFileTypes.TabIndex = 7;
@@ -178,7 +144,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(10, 165);
+			this.label3.Location = new System.Drawing.Point(10, 191);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(89, 78);
 			this.label3.TabIndex = 40;
@@ -188,7 +154,7 @@
 			// btnAddFileType
 			// 
 			this.btnAddFileType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAddFileType.Location = new System.Drawing.Point(393, 139);
+			this.btnAddFileType.Location = new System.Drawing.Point(393, 165);
 			this.btnAddFileType.Name = "btnAddFileType";
 			this.btnAddFileType.Size = new System.Drawing.Size(62, 23);
 			this.btnAddFileType.TabIndex = 8;
@@ -200,7 +166,7 @@
 			// 
 			this.btnRemoveFileType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRemoveFileType.Enabled = false;
-			this.btnRemoveFileType.Location = new System.Drawing.Point(393, 168);
+			this.btnRemoveFileType.Location = new System.Drawing.Point(393, 194);
 			this.btnRemoveFileType.Name = "btnRemoveFileType";
 			this.btnRemoveFileType.Size = new System.Drawing.Size(62, 23);
 			this.btnRemoveFileType.TabIndex = 9;
@@ -246,10 +212,42 @@
 			this.label7.TabIndex = 46;
 			this.label7.Text = "without\r\nextension";
 			// 
+			// btnBrowseForLocalTemp
+			// 
+			this.btnBrowseForLocalTemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnBrowseForLocalTemp.Location = new System.Drawing.Point(423, 137);
+			this.btnBrowseForLocalTemp.Name = "btnBrowseForLocalTemp";
+			this.btnBrowseForLocalTemp.Size = new System.Drawing.Size(32, 23);
+			this.btnBrowseForLocalTemp.TabIndex = 48;
+			this.btnBrowseForLocalTemp.Text = "...";
+			this.btnBrowseForLocalTemp.UseVisualStyleBackColor = true;
+			this.btnBrowseForLocalTemp.Click += new System.EventHandler(this.btnBrowseForLocalTemp_Click);
+			// 
+			// tbLocalTempDir
+			// 
+			this.tbLocalTempDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbLocalTempDir.Location = new System.Drawing.Point(116, 139);
+			this.tbLocalTempDir.Name = "tbLocalTempDir";
+			this.tbLocalTempDir.Size = new System.Drawing.Size(301, 20);
+			this.tbLocalTempDir.TabIndex = 47;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(10, 142);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(102, 13);
+			this.label5.TabIndex = 49;
+			this.label5.Text = "Local temp directory";
+			// 
 			// FileBackupConfigGUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.btnBrowseForLocalTemp);
+			this.Controls.Add(this.tbLocalTempDir);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.cbAddDateToZip);
 			this.Controls.Add(this.tbZipFilename);
@@ -264,12 +262,9 @@
 			this.Controls.Add(this.btnSelectDirectory);
 			this.Controls.Add(this.tbDirectory);
 			this.Controls.Add(this.cbCompress);
-			this.Controls.Add(this.pnlSaveAsConfig);
-			this.Controls.Add(this.cbSaveType);
-			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label4);
 			this.Name = "FileBackupConfigGUI";
-			this.Size = new System.Drawing.Size(465, 566);
+			this.Size = new System.Drawing.Size(465, 346);
 			this.Load += new System.EventHandler(this.FileBackupConfigGUI_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -279,9 +274,6 @@
 		#endregion
 
 		private System.Windows.Forms.CheckBox cbCompress;
-		private System.Windows.Forms.Panel pnlSaveAsConfig;
-		private System.Windows.Forms.ComboBox cbSaveType;
-		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.TextBox tbDirectory;
@@ -298,5 +290,8 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.CheckBox cbAddDateToZip;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Button btnBrowseForLocalTemp;
+		private System.Windows.Forms.TextBox tbLocalTempDir;
+		private System.Windows.Forms.Label label5;
 	}
 }

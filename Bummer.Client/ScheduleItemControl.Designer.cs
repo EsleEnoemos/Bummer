@@ -37,6 +37,8 @@
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnEdit = new System.Windows.Forms.Button();
 			this.lblIsRunning = new System.Windows.Forms.Label();
+			this.lblTarget = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -78,7 +80,7 @@
 			// lblLastStarted
 			// 
 			this.lblLastStarted.AutoSize = true;
-			this.lblLastStarted.Location = new System.Drawing.Point(86, 49);
+			this.lblLastStarted.Location = new System.Drawing.Point(86, 71);
 			this.lblLastStarted.Name = "lblLastStarted";
 			this.lblLastStarted.Size = new System.Drawing.Size(35, 13);
 			this.lblLastStarted.TabIndex = 5;
@@ -87,7 +89,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(4, 49);
+			this.label4.Location = new System.Drawing.Point(4, 71);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(62, 13);
 			this.label4.TabIndex = 4;
@@ -96,7 +98,7 @@
 			// lblLastFinished
 			// 
 			this.lblLastFinished.AutoSize = true;
-			this.lblLastFinished.Location = new System.Drawing.Point(86, 71);
+			this.lblLastFinished.Location = new System.Drawing.Point(86, 93);
 			this.lblLastFinished.Name = "lblLastFinished";
 			this.lblLastFinished.Size = new System.Drawing.Size(35, 13);
 			this.lblLastFinished.TabIndex = 7;
@@ -105,7 +107,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(4, 71);
+			this.label6.Location = new System.Drawing.Point(4, 93);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(66, 13);
 			this.label6.TabIndex = 6;
@@ -129,7 +131,7 @@
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ReadOnly = true;
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBox1.Size = new System.Drawing.Size(331, 58);
+			this.textBox1.Size = new System.Drawing.Size(331, 80);
 			this.textBox1.TabIndex = 9;
 			this.textBox1.TabStop = false;
 			// 
@@ -181,12 +183,32 @@
 			this.lblIsRunning.Text = "Job is currently running";
 			this.lblIsRunning.Visible = false;
 			// 
+			// lblTarget
+			// 
+			this.lblTarget.AutoSize = true;
+			this.lblTarget.Location = new System.Drawing.Point(86, 50);
+			this.lblTarget.Name = "lblTarget";
+			this.lblTarget.Size = new System.Drawing.Size(35, 13);
+			this.lblTarget.TabIndex = 15;
+			this.lblTarget.Text = "Name";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(4, 50);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(38, 13);
+			this.label5.TabIndex = 14;
+			this.label5.Text = "Target";
+			// 
 			// ScheduleItemControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.Controls.Add(this.lblTarget);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.btnRunJob);
 			this.Controls.Add(this.btnDelete);
 			this.Controls.Add(this.btnEdit);
@@ -202,7 +224,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.lblIsRunning);
 			this.Name = "ScheduleItemControl";
-			this.Size = new System.Drawing.Size(617, 94);
+			this.Size = new System.Drawing.Size(617, 114);
 			this.Load += new System.EventHandler(this.ScheduleItemControl_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -225,5 +247,7 @@
 		private System.Windows.Forms.Button btnDelete;
 		private System.Windows.Forms.Button btnRunJob;
 		private System.Windows.Forms.Label lblIsRunning;
+		private System.Windows.Forms.Label lblTarget;
+		private System.Windows.Forms.Label label5;
 	}
 }

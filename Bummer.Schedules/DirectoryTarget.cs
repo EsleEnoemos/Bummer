@@ -29,10 +29,10 @@ namespace Bummer.Schedules {
 		}
 
 		public string SaveConfiguration() {
-			if(gui==null) {
+			if( gui == null ) {
 				throw new Exception( "GUI not initialized" );
 			}
-			if(string.IsNullOrEmpty( gui.Directory ) ) {
+			if( string.IsNullOrEmpty( gui.Directory ) ) {
 				throw new Exception( "You have to choose a target directory" );
 			}
 			return gui.Directory;
@@ -49,6 +49,9 @@ namespace Bummer.Schedules {
 					relativePath = relativePath.Substring( 1 );
 				}
 				baseDir = new DirectoryInfo( "{0}\\{1}".FillBlanks( baseDir.FullName, relativePath ) );
+			}
+			if( !Directory.Exists( baseDir.FullName ) ) {
+				Directory.CreateDirectory( baseDir.FullName );
 			}
 			string targetFile = "{0}\\{1}".FillBlanks( baseDir.FullName, file.Name );
 			if( File.Exists( targetFile ) ) {

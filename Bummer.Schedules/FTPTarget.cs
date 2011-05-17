@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -8,10 +9,10 @@ using Bummer.Common;
 using Bummer.Schedules.Controls;
 
 namespace Bummer.Schedules {
-	public class FTPUploader : IBackupTarget {
-		private bool? passive;
+	public class FTPTarget : IBackupTarget {
 		private FTPConfig config;
 		private FTPConfigSelector gui;
+		private Hashtable existingPaths = new Hashtable();
 
 		public string Name {
 			get {
@@ -29,7 +30,36 @@ namespace Bummer.Schedules {
 			config = FTPConfig.Load( configuration );
 			gui = new FTPConfigSelector( config );
 			gui.Dock = DockStyle.Fill;
+			gui.btnTestSettings.Click += btnTestSettings_Click;
 			container.Controls.Add( gui );
+		}
+
+		void btnTestSettings_Click( object sender, EventArgs e ) {
+			if( gui == null ) {
+				MessageBox.Show( "Strange... GUI could not be found..." );
+				return;
+			}
+			string tempFile = null;
+			try {
+				FTPConfig conf = gui.Save();
+				if( MessageBox.Show( @"A small text file will be uploaded to the specified server, to the specified directory.
+If the upload succeeds, the file will not be deleted by this test.
+Any directories specified in the remote path will be created.
+Are you sure you want to continue?", "Continue?",MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2 ) != DialogResult.Yes ) {
+					return;
+				}
+				FTPTarget t = new FTPTarget() {config = conf};
+				DirectoryInfo temp = new DirectoryInfo( Configuration.DataDirectory.FullName );
+				tempFile = temp.FullName + "\\FTPUploadTest.txt";
+				File.AppendAllText( tempFile, "Testfile for FTP Upload" );
+				t.Store( new FileInfo( tempFile ), "" );
+			} catch( Exception ex ) {
+				MessageBox.Show( ex.Message );
+			} finally {
+				if( tempFile != null && File.Exists( tempFile ) ) {
+					File.Delete( tempFile );
+				}
+			}
 		}
 
 		public string SaveConfiguration() {
@@ -40,7 +70,7 @@ namespace Bummer.Schedules {
 		}
 
 		public IBackupTarget Prepare( string configuration ) {
-			return new FTPUploader{config = FTPConfig.Load( configuration )};
+			return new FTPTarget{config = FTPConfig.Load( configuration )};
 		}
 
 		#region public void Store( FileInfo file, string relativePath )
@@ -59,6 +89,14 @@ namespace Bummer.Schedules {
 			}
 			url = "{0}:{1}".FillBlanks( url, config.Port );
 
+			if( !string.IsNullOrEmpty( config.RemoteDirectory ) ) {
+				string rd = config.RemoteDirectory;
+				if( !rd.StartsWith( "/" ) ) {
+					rd = "/{0}".FillBlanks( rd );
+				}
+				url = "{0}{1}".FillBlanks( url, rd );
+			}
+
 			if( !string.IsNullOrEmpty( relativePath ) ) {
 				string rd = relativePath;
 				if( !rd.StartsWith( "/" ) ) {
@@ -69,37 +107,22 @@ namespace Bummer.Schedules {
 			if( !url.EndsWith( "/" ) ) {
 				url = "{0}/".FillBlanks( url );
 			}
+			CheckFTPPath( url );
 			url = "{0}{1}".FillBlanks( url, file.Name );
-
 			FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create( url );
 			req.Credentials = new NetworkCredential( config.Username, config.Password );
 			req.KeepAlive = false;
 			req.Method = WebRequestMethods.Ftp.UploadFile;
 			req.UseBinary = true;
 			req.ContentLength = file.Length;
-			if( passive.HasValue ) {
-				req.UsePassive = passive.Value;
+			req.UsePassive = config.Passive;
+			req.EnableSsl = config.UseSSL;
+			if( config.UseSSL && config.IgnoreSSLErrors ) {
+				ServicePointManager.ServerCertificateValidationCallback = ( sender, certificate, chain, policyErrors ) => true;
 			}
 			const int buffSize = 1024 * 1024;
 			byte[] bytes = new byte[ buffSize ];
-			Stream outStream = null;
-			try {
-				outStream = req.GetRequestStream();
-				passive = req.UsePassive;
-			} catch( Exception ex ) {
-				string ml = ex.Message.ToLower();
-				if( ml.Contains( "time" ) && ml.Contains( "out" ) ) {
-					req = (FtpWebRequest)FtpWebRequest.Create( req.RequestUri );
-					req.Credentials = new NetworkCredential( config.Username, config.Password );
-					req.KeepAlive = false;
-					req.Method = WebRequestMethods.Ftp.UploadFile;
-					req.UseBinary = true;
-					req.ContentLength = file.Length;
-					req.UsePassive = !req.UsePassive;
-					outStream = req.GetRequestStream();
-					passive = req.UsePassive;
-				}
-			}
+			Stream outStream = req.GetRequestStream();
 			if( outStream == null ) {
 				throw new Exception( "Unable to upload file to FTP-server" );
 			}
@@ -115,6 +138,58 @@ namespace Bummer.Schedules {
 			fs.Dispose();
 		}
 		#endregion
+		private void CheckFTPPath( string uploadURL ) {
+			Uri u = new Uri( uploadURL );
+			string path = u.PathAndQuery;
+			if( string.IsNullOrEmpty( path ) || "/".Equals( path ) ) {
+				return;
+			}
+			if( existingPaths.ContainsKey( path ) ) {
+				return;
+			}
+			string[] segments = path.Split( new[] { '/' }, StringSplitOptions.RemoveEmptyEntries );
+			string url = config.Server;
+			if( !url.Contains( "://" ) ) {
+				url = "ftp://{0}".FillBlanks( url );
+			}
+			url = "{0}:{1}".FillBlanks( url, config.Port );
+			if( url.EndsWith( "/" ) ) {
+				url = url.Substring( 0, url.Length - 1 );
+			}
+			string currentDir = "";
+			foreach( string segment in segments ) {
+				currentDir += "/" + segment;
+				if( currentDir.Contains( "//" ) ) {
+					currentDir = currentDir.Replace( "//", "/" );
+				}
+				MakeDir( url + currentDir );
+			}
+
+			//WebRequestMethods.Ftp.ListDirectory
+		}
+		private void MakeDir( string url ) {
+			try {
+				FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create( url );
+				req.Credentials = new NetworkCredential( config.Username, config.Password );
+				req.KeepAlive = false;
+				req.Method = WebRequestMethods.Ftp.MakeDirectory;
+				req.UseBinary = true;
+				req.ContentLength = 0;
+				req.UsePassive = config.Passive;
+				req.EnableSsl = config.UseSSL;
+				if( config.UseSSL && config.IgnoreSSLErrors ) {
+					ServicePointManager.ServerCertificateValidationCallback = ( sender, certificate, chain, policyErrors ) => true;
+				}
+				FtpWebResponse res = (FtpWebResponse)req.GetResponse();
+				if( res != null ) {
+					res.Close();
+				}
+			} catch( WebException ex ) {
+				if( ex.Response != null ) {
+					ex.Response.Close();
+				}
+			}
+		}
 
 		public class FTPConfig {
 			#region private static XmlSerializer Serializer
@@ -204,6 +279,52 @@ namespace Bummer.Schedules {
 			}
 			private int _Port;
 			#endregion
+			#region public bool UseSSL
+			/// <summary>
+			/// Get/Sets the UseSSL of the FTPConfig
+			/// </summary>
+			/// <value></value>
+			public bool UseSSL {
+				get {
+					return _useSSL;
+				}
+				set {
+					_useSSL = value;
+				}
+			}
+			private bool _useSSL;
+			#endregion
+			#region public bool IgnoreSSLErrors
+			/// <summary>
+			/// Get/Sets the IgnoreSSLErrors of the FTPConfig
+			/// </summary>
+			/// <value></value>
+			public bool IgnoreSSLErrors {
+				get {
+					return _ignoreSSLErrors;
+				}
+				set {
+					_ignoreSSLErrors = value;
+				}
+			}
+			private bool _ignoreSSLErrors;
+			#endregion
+			#region public bool Passive
+			/// <summary>
+			/// Get/Sets the Passive of the FTPConfig
+			/// </summary>
+			/// <value></value>
+			public bool Passive {
+				get {
+					return _passive;
+				}
+				set {
+					_passive = value;
+				}
+			}
+			private bool _passive;
+			#endregion
+
 
 			#region public static FTPConfig Load( string configuration )
 			/// <summary>

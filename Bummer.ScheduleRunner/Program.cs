@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using Bummer.Common;
 
 namespace Bummer.ScheduleRunner {
@@ -38,10 +37,7 @@ namespace Bummer.ScheduleRunner {
 		public static bool IsJobRunning( BackupScheduleWrapper job ) {
 			string procName = "Bummer.ScheduleRunner.{0}".FillBlanks( job.ID );
 			Process[] processes = Process.GetProcessesByName( procName );
-			if( processes.Length > 0 ) {
-				return true;
-			}
-			return false;
+			return processes.Length > 0;
 		}
 		public static bool SpawAndRun( BackupScheduleWrapper job ) {
 			string procName = "Bummer.ScheduleRunner.{0}".FillBlanks( job.ID );

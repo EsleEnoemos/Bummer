@@ -95,8 +95,8 @@
     </Compile>
     <Compile Include="DirectoryTarget.cs" />
     <Compile Include="FileBackup.cs" />
-    <Compile Include="FTPUploader.cs" />
-    <Compile Include="HTTPUploader.cs" />
+    <Compile Include="FTPTarget.cs" />
+    <Compile Include="HTTPTarget.cs" />
     <Compile Include="MSSQLDatabaseBackup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared.cs" />

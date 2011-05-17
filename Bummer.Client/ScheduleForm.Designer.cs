@@ -115,33 +115,35 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 78);
+			this.label4.Location = new System.Drawing.Point(12, 100);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(42, 13);
 			this.label4.TabIndex = 8;
 			this.label4.Text = "Interval";
+			this.label4.Visible = false;
 			// 
 			// nuInterval
 			// 
-			this.nuInterval.Location = new System.Drawing.Point(83, 76);
+			this.nuInterval.Location = new System.Drawing.Point(83, 98);
 			this.nuInterval.Name = "nuInterval";
 			this.nuInterval.Size = new System.Drawing.Size(214, 20);
 			this.nuInterval.TabIndex = 3;
+			this.nuInterval.Visible = false;
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(12, 109);
+			this.label6.Location = new System.Drawing.Point(12, 78);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(52, 13);
+			this.label6.Size = new System.Drawing.Size(51, 13);
 			this.label6.TabIndex = 11;
-			this.label6.Text = "Start from";
+			this.label6.Text = "Start time";
 			// 
 			// dpStartTime
 			// 
 			this.dpStartTime.CustomFormat = "HH:mm";
 			this.dpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dpStartTime.Location = new System.Drawing.Point(83, 103);
+			this.dpStartTime.Location = new System.Drawing.Point(83, 72);
 			this.dpStartTime.Name = "dpStartTime";
 			this.dpStartTime.ShowUpDown = true;
 			this.dpStartTime.Size = new System.Drawing.Size(214, 20);

@@ -49,10 +49,10 @@
 			// cbCompress
 			// 
 			this.cbCompress.AutoSize = true;
-			this.cbCompress.Location = new System.Drawing.Point(13, 67);
+			this.cbCompress.Location = new System.Drawing.Point(13, 237);
 			this.cbCompress.Name = "cbCompress";
 			this.cbCompress.Size = new System.Drawing.Size(115, 17);
-			this.cbCompress.TabIndex = 4;
+			this.cbCompress.TabIndex = 7;
 			this.cbCompress.Text = "Compress files (zip)";
 			this.cbCompress.UseVisualStyleBackColor = true;
 			this.cbCompress.CheckedChanged += new System.EventHandler(this.cbCompress_CheckedChanged);
@@ -118,7 +118,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(10, 165);
+			this.label2.Location = new System.Drawing.Point(10, 67);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(51, 13);
 			this.label2.TabIndex = 38;
@@ -132,10 +132,10 @@
             this.columnHeader1});
 			this.lvFileTypes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvFileTypes.HideSelection = false;
-			this.lvFileTypes.Location = new System.Drawing.Point(116, 165);
+			this.lvFileTypes.Location = new System.Drawing.Point(116, 67);
 			this.lvFileTypes.Name = "lvFileTypes";
 			this.lvFileTypes.Size = new System.Drawing.Size(270, 164);
-			this.lvFileTypes.TabIndex = 7;
+			this.lvFileTypes.TabIndex = 4;
 			this.lvFileTypes.UseCompatibleStateImageBehavior = false;
 			this.lvFileTypes.View = System.Windows.Forms.View.Details;
 			this.lvFileTypes.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -144,7 +144,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(10, 191);
+			this.label3.Location = new System.Drawing.Point(10, 93);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(89, 78);
 			this.label3.TabIndex = 40;
@@ -154,10 +154,10 @@
 			// btnAddFileType
 			// 
 			this.btnAddFileType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAddFileType.Location = new System.Drawing.Point(393, 165);
+			this.btnAddFileType.Location = new System.Drawing.Point(393, 67);
 			this.btnAddFileType.Name = "btnAddFileType";
 			this.btnAddFileType.Size = new System.Drawing.Size(62, 23);
-			this.btnAddFileType.TabIndex = 8;
+			this.btnAddFileType.TabIndex = 5;
 			this.btnAddFileType.Text = "Add...";
 			this.btnAddFileType.UseVisualStyleBackColor = true;
 			this.btnAddFileType.Click += new System.EventHandler(this.btnAddFileType_Click);
@@ -166,10 +166,10 @@
 			// 
 			this.btnRemoveFileType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRemoveFileType.Enabled = false;
-			this.btnRemoveFileType.Location = new System.Drawing.Point(393, 194);
+			this.btnRemoveFileType.Location = new System.Drawing.Point(393, 96);
 			this.btnRemoveFileType.Name = "btnRemoveFileType";
 			this.btnRemoveFileType.Size = new System.Drawing.Size(62, 23);
-			this.btnRemoveFileType.TabIndex = 9;
+			this.btnRemoveFileType.TabIndex = 6;
 			this.btnRemoveFileType.Text = "Remove";
 			this.btnRemoveFileType.UseVisualStyleBackColor = true;
 			this.btnRemoveFileType.Click += new System.EventHandler(this.btnRemoveFileType_Click);
@@ -178,15 +178,15 @@
 			// 
 			this.tbZipFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbZipFilename.Location = new System.Drawing.Point(116, 90);
+			this.tbZipFilename.Location = new System.Drawing.Point(116, 260);
 			this.tbZipFilename.Name = "tbZipFilename";
 			this.tbZipFilename.Size = new System.Drawing.Size(270, 20);
-			this.tbZipFilename.TabIndex = 5;
+			this.tbZipFilename.TabIndex = 8;
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(10, 93);
+			this.label6.Location = new System.Drawing.Point(10, 263);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(67, 13);
 			this.label6.TabIndex = 43;
@@ -195,7 +195,7 @@
 			// cbAddDateToZip
 			// 
 			this.cbAddDateToZip.AutoSize = true;
-			this.cbAddDateToZip.Location = new System.Drawing.Point(13, 116);
+			this.cbAddDateToZip.Location = new System.Drawing.Point(13, 286);
 			this.cbAddDateToZip.Name = "cbAddDateToZip";
 			this.cbAddDateToZip.Size = new System.Drawing.Size(170, 17);
 			this.cbAddDateToZip.TabIndex = 6;
@@ -206,7 +206,7 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(388, 93);
+			this.label7.Location = new System.Drawing.Point(388, 263);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(52, 26);
 			this.label7.TabIndex = 46;
@@ -215,10 +215,10 @@
 			// btnBrowseForLocalTemp
 			// 
 			this.btnBrowseForLocalTemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnBrowseForLocalTemp.Location = new System.Drawing.Point(423, 137);
+			this.btnBrowseForLocalTemp.Location = new System.Drawing.Point(423, 307);
 			this.btnBrowseForLocalTemp.Name = "btnBrowseForLocalTemp";
 			this.btnBrowseForLocalTemp.Size = new System.Drawing.Size(32, 23);
-			this.btnBrowseForLocalTemp.TabIndex = 48;
+			this.btnBrowseForLocalTemp.TabIndex = 10;
 			this.btnBrowseForLocalTemp.Text = "...";
 			this.btnBrowseForLocalTemp.UseVisualStyleBackColor = true;
 			this.btnBrowseForLocalTemp.Click += new System.EventHandler(this.btnBrowseForLocalTemp_Click);
@@ -227,15 +227,15 @@
 			// 
 			this.tbLocalTempDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbLocalTempDir.Location = new System.Drawing.Point(116, 139);
+			this.tbLocalTempDir.Location = new System.Drawing.Point(116, 309);
 			this.tbLocalTempDir.Name = "tbLocalTempDir";
 			this.tbLocalTempDir.Size = new System.Drawing.Size(301, 20);
-			this.tbLocalTempDir.TabIndex = 47;
+			this.tbLocalTempDir.TabIndex = 9;
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(10, 142);
+			this.label5.Location = new System.Drawing.Point(10, 312);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(102, 13);
 			this.label5.TabIndex = 49;
@@ -264,7 +264,7 @@
 			this.Controls.Add(this.cbCompress);
 			this.Controls.Add(this.label4);
 			this.Name = "FileBackupConfigGUI";
-			this.Size = new System.Drawing.Size(465, 346);
+			this.Size = new System.Drawing.Size(465, 349);
 			this.Load += new System.EventHandler(this.FileBackupConfigGUI_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

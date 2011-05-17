@@ -34,7 +34,7 @@ namespace Bummer.Common {
 		string SaveConfiguration();
 
 		/// <summary>
-		/// Called when a job is edited, and before executing a job.
+		/// Called before executing a job.
 		/// A new instance of the target should be returned
 		/// </summary>
 		/// <param name="configuration"></param>

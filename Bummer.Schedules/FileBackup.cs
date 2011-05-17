@@ -33,7 +33,9 @@ namespace Bummer.Schedules {
 		/// <value></value>
 		public string Description {
 			get {
-				return _description ?? (_description = "Backup local files.{0}The files can be stored locally, or be uploaded to an FTP-server.{0}Both complete and modification based backups can be performed.{0}Filters can be configured to only backup specific file types".FillBlanks( Environment.NewLine ));
+				return _description ?? (_description = @"Backup local files.
+Both complete and modification based backups can be performed.
+Filters can be configured to only backup specific file types");
 			}
 		}
 		private string _description;
@@ -383,7 +385,7 @@ namespace Bummer.Schedules {
 					//    }
 					//    rd += path.Replace( "\\", "/" );
 					//    rd = rd.Replace( "//", "/" );
-					//    FTPUploader.UploadFile( fi.FullName, rd );
+					//    FTPTarget.UploadFile( fi.FullName, rd );
 					//}
 				}
 			}

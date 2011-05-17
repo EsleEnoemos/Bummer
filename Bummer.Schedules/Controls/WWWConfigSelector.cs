@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Bummer.Schedules.Controls {
 	public partial class WWWConfigSelector : UserControl {
-		public WWWConfigSelector( HTTPUploader.WWWConfig config ) {
+		public WWWConfigSelector( HTTPTarget.WWWConfig config ) {
 			InitializeComponent();
 			if( config != null ) {
 				tbURL.Text = config.URL;
@@ -15,8 +15,8 @@ namespace Bummer.Schedules.Controls {
 			: this( null ) {
 		}
 
-		public HTTPUploader.WWWConfig Save() {
-			HTTPUploader.WWWConfig config = new HTTPUploader.WWWConfig();
+		public HTTPTarget.WWWConfig Save() {
+			HTTPTarget.WWWConfig config = new HTTPTarget.WWWConfig();
 			if( string.IsNullOrEmpty( tbURL.Text ) ) {
 				throw new Exception( "You have to specify an URL for the target" );
 			}

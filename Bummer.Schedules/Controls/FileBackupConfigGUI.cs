@@ -12,6 +12,27 @@ namespace Bummer.Schedules.Controls {
 		public FileBackupConfigGUI( FileBackup.FileBackupConfig config ) {
 			InitializeComponent();
 			conf = config ?? new FileBackup.FileBackupConfig();
+			tbDirectory.Text = conf.Directory;
+			cbCompress.Checked = conf.CompressFiles;
+			tbZipFilename.Visible = cbCompress.Checked;
+			cbAddDateToZip.Visible = cbCompress.Checked;
+			label6.Visible = cbCompress.Checked;
+			label7.Visible = cbCompress.Checked;
+			label5.Visible = cbCompress.Checked;
+			tbLocalTempDir.Visible = cbCompress.Checked;
+			btnBrowseForLocalTemp.Visible = cbCompress.Checked;
+			if( cbCompress.Checked ) {
+				tbZipFilename.Text = conf.ZipFilename;
+				cbAddDateToZip.Checked = conf.AddDateToFilename;
+				tbLocalTempDir.Text = conf.LocalTempDirectory;
+			}
+			cbBackupType.Items.Add( BackupTypes.ModifiedOnly );
+			cbBackupType.Items.Add( BackupTypes.All );
+			cbBackupType.SelectedIndex = conf.BackupType == BackupTypes.All ? 1 : 0;
+			foreach( string ft in conf.Filetypes ) {
+				lvFileTypes.Items.Add( ft );
+			}
+			lvFileTypes.AutoResizeColumns( ColumnHeaderAutoResizeStyle.ColumnContent );
 		}
 		#endregion
 		#region public FileBackupConfigGUI()
@@ -56,23 +77,6 @@ namespace Bummer.Schedules.Controls {
 		/// <param name="sender">The <see cref="object"/> that fired the event.</param>
 		/// <param name="e">The <see cref="EventArgs"/> of the event.</param>
 		private void FileBackupConfigGUI_Load( object sender, EventArgs e ) {
-			tbDirectory.Text = conf.Directory;
-			cbCompress.Checked = conf.CompressFiles;
-			tbZipFilename.Visible = cbCompress.Checked;
-			cbAddDateToZip.Visible = cbCompress.Checked;
-			label6.Visible = cbCompress.Checked;
-			label7.Visible = cbCompress.Checked;
-			if( cbCompress.Checked ) {
-				tbZipFilename.Text = conf.ZipFilename;
-				cbAddDateToZip.Checked = conf.AddDateToFilename;
-			}
-			cbBackupType.Items.Add( BackupTypes.ModifiedOnly );
-			cbBackupType.Items.Add( BackupTypes.All );
-			cbBackupType.SelectedIndex = conf.BackupType == BackupTypes.All ? 1 : 0;
-			foreach( string ft in conf.Filetypes ) {
-				lvFileTypes.Items.Add( ft );
-			}
-			lvFileTypes.AutoResizeColumns( ColumnHeaderAutoResizeStyle.ColumnContent );
 		}
 		#endregion
 
@@ -96,6 +100,10 @@ namespace Bummer.Schedules.Controls {
 				if( string.IsNullOrEmpty( tbZipFilename.Text ) ) {
 					throw new Exception( "You have to specify a name for the zip-file" );
 				}
+				if( string.IsNullOrEmpty( tbLocalTempDir.Text ) ) {
+					throw new Exception( "You have to specify a local temp-directory" );
+				}
+				config.LocalTempDirectory = tbLocalTempDir.Text;
 				config.ZipFilename = tbZipFilename.Text;
 				config.AddDateToFilename = cbAddDateToZip.Checked;
 			}
@@ -156,6 +164,9 @@ namespace Bummer.Schedules.Controls {
 			cbAddDateToZip.Visible = cbCompress.Checked;
 			label6.Visible = cbCompress.Checked;
 			label7.Visible = cbCompress.Checked;
+			label5.Visible = cbCompress.Checked;
+			tbLocalTempDir.Visible = cbCompress.Checked;
+			btnBrowseForLocalTemp.Visible = cbCompress.Checked;
 		}
 
 		private void btnBrowseForLocalTemp_Click( object sender, EventArgs e ) {

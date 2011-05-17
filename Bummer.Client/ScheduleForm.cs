@@ -7,6 +7,7 @@ using Bummer.Common;
 namespace Bummer.Client {
 	public partial class ScheduleForm : Form {
 		//private IBackupSchedule job;
+		private IBackupTarget target;
 
 		#region internal BackupScheduleWrapper Job
 		/// <summary>
@@ -20,6 +21,7 @@ namespace Bummer.Client {
 		}
 		private BackupScheduleWrapper _job;
 		#endregion
+
 		#region public ScheduleForm( BackupScheduleWrapper job )
 		/// <summary>
 		/// Initializes a new instance of the <b>ScheduleForm</b> class.
@@ -166,7 +168,7 @@ namespace Bummer.Client {
 				return;
 			}
 			if( cbJobType.SelectedIndex < 0 ) {
-				MessageBox.Show( "You have to specify a type", "Specify type", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+				MessageBox.Show( "You have to specify a job type", "Specify job type", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
 				e.Cancel = true;
 				return;
 			}
@@ -175,15 +177,22 @@ namespace Bummer.Client {
 				e.Cancel = true;
 				return;
 			}
-			int interval = (int)nuInterval.Value;
-			if( interval <= 0 ) {
-				MessageBox.Show( "You have to specify an interval larger than 0", "Specify interval", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+			if( cbTargetType.SelectedIndex < 0 ) {
+				MessageBox.Show( "You have to specify a target type", "Specify target type", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
 				e.Cancel = true;
 				return;
 			}
+			//int interval = (int)nuInterval.Value;
+			//if( interval <= 0 ) {
+			//    MessageBox.Show( "You have to specify an interval larger than 0", "Specify interval", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+			//    e.Cancel = true;
+			//    return;
+			//}
 			string config;
+			string targetConfig;
 			try {
 				config = Job.Job.SaveConfiguration();
+				targetConfig = target.SaveConfiguration();
 			} catch( Exception ex ) {
 				MessageBox.Show( ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
 				e.Cancel = true;
@@ -194,8 +203,9 @@ namespace Bummer.Client {
 			PlugWrapper pw = (PlugWrapper)cbJobType.SelectedItem;
 			Job.JobType = pw.job.GetType().FullName;
 			Job.JobConfiguration = config;
+			Job.TargetConfiguration = targetConfig;
 			Job.IntervalType = (SchduleIntervalTypes)cbIntervalType.SelectedItem;
-			Job.Interval = (int)nuInterval.Value;
+			Job.Interval = 1;// (int)nuInterval.Value;
 			Job.StartTime = dpStartTime.Value;
 			Job.PreCommands = null;
 			if( lvPreCommands.Items.Count > 0 ) {
@@ -548,7 +558,8 @@ namespace Bummer.Client {
 			}
 			Job.TargetType = tw.job.GetType().FullName;
 			tbTargetDescription.Text = tw.job.Description;
-			tw.job.InitiateConfiguration( pnlTargetConfig, Job.TargetConfiguration );
+			target = tw.job;
+			target.InitiateConfiguration( pnlTargetConfig, Job.TargetConfiguration );
 		}
 	}
 }

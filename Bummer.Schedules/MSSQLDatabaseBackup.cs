@@ -32,8 +32,7 @@ namespace Bummer.Schedules {
 		public string Description {
 			get {
 				return _decription ?? (_decription=@"Backup one or mote Microsoft SQL Server Databases.
-The databases can be located on the same machine or a remote server, as long as it is reachable from the current computer.
-Backups can be stored in a specified directory, or be uploaded to an FTP-server.");
+The databases can be located on the same machine or a remote server, as long as it can be reached current computer.");
 			}
 		}
 		private string _decription;

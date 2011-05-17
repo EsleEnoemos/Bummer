@@ -7,7 +7,7 @@ using Bummer.Common;
 using Bummer.Schedules.Controls;
 
 namespace Bummer.Schedules {
-	public class HTTPUploader : IBackupTarget {
+	public class HTTPTarget : IBackupTarget {
 		private WWWConfig config;
 		private WWWConfigSelector gui;
 
@@ -39,7 +39,7 @@ Supports HTTPS with self-signed certificates";
 		}
 
 		public IBackupTarget Prepare( string configuration ) {
-			return new HTTPUploader {
+			return new HTTPTarget {
 				config = WWWConfig.Load( configuration )
 			};
 		}

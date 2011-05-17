@@ -118,6 +118,7 @@ namespace Bummer.Common {
 			}
 			set {
 				_targetType = value;
+				_target = null;
 			}
 		}
 		private string _targetType;
@@ -243,7 +244,7 @@ namespace Bummer.Common {
 				if( _target == null && TargetType != null ) {
 					foreach( IBackupTarget tp in Configuration.TargetPlugins ) {
 						if( string.Equals( tp.GetType().FullName, TargetType ) ) {
-							_target = tp;
+							_target = tp.Prepare( TargetConfiguration );
 							break;
 						}
 					}
@@ -343,7 +344,7 @@ namespace Bummer.Common {
 			}
 			using( DBCommand cmd = Configuration.GetCommand() ) {
 				if( ID <= 0 ) {
-					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, JobConfiguration, TargetType, TargetConfiguration PreCommands, PostCommands, IntervalType, Interval, StartTime ) VALUES( @Name, @CreatedDate, @JobType, @JobConfiguration, @TargetType, @TargetConfiguration, @PreCommands, @PostCommands, @IntervalType, @Interval, @StartTime );";
+					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, JobConfiguration, TargetType, TargetConfiguration, PreCommands, PostCommands, IntervalType, Interval, StartTime ) VALUES( @Name, @CreatedDate, @JobType, @JobConfiguration, @TargetType, @TargetConfiguration, @PreCommands, @PostCommands, @IntervalType, @Interval, @StartTime );";
 					cmd.AddWithValue( "@Name", Name );
 					cmd.AddWithValue( "@CreatedDate", CreatedDate );
 					cmd.AddWithValue( "@JobType", JobType );
@@ -370,7 +371,7 @@ TargetType = @TargetType,
 TargetConfiguration = @TargetConfiguration,
 IntervalType = @IntervalType,
 Interval = @Interval,
-StartTime = @StartTime,
+StartTime = @StartTime
 WHERE
 Schedule_ID = @Schedule_ID";
 					cmd.AddWithValue( "@Name", Name );

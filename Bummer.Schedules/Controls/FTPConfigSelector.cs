@@ -30,12 +30,12 @@ namespace Bummer.Schedules.Controls {
 			}
 		}
 
-		#region public FTPConfigSelector( FTPUploader.FTPConfig config )
+		#region public FTPConfigSelector( FTPTarget.FTPConfig config )
 		/// <summary>
 		/// Initializes a new instance of the <b>FTPConfigSelector</b> class.
 		/// </summary>
 		/// <param name="config"></param>
-		public FTPConfigSelector( FTPUploader.FTPConfig config ) {
+		public FTPConfigSelector( FTPTarget.FTPConfig config ) {
 			InitializeComponent();
 			if( config != null ) {
 				tbServer.Text = config.Server;
@@ -43,6 +43,10 @@ namespace Bummer.Schedules.Controls {
 				tbPassword.Text = config.Password;
 				tbRemoteDir.Text = config.RemoteDirectory;
 				tbPort.Text = config.Port > 0 ? config.Port.ToString() : "";
+				cbUseSSL.Checked = config.UseSSL;
+				cbIgnoreSSLErrors.Checked = config.IgnoreSSLErrors;
+				cbIgnoreSSLErrors.Visible = config.UseSSL;
+				cbPassive.Checked = config.Passive;
 			}
 		}
 		#endregion
@@ -56,13 +60,13 @@ namespace Bummer.Schedules.Controls {
 		}
 		#endregion
 
-		#region public FTPUploader.FTPConfig Save()
+		#region public FTPTarget.FTPConfig Save()
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public FTPUploader.FTPConfig Save() {
-			FTPUploader.FTPConfig config = new FTPUploader.FTPConfig();
+		public FTPTarget.FTPConfig Save() {
+			FTPTarget.FTPConfig config = new FTPTarget.FTPConfig();
 			if( string.IsNullOrEmpty( Server ) ) {
 				throw new Exception( "You have to specify an FTP server" );
 			}
@@ -84,8 +88,14 @@ namespace Bummer.Schedules.Controls {
 				throw new Exception( "Port must have a value between 1 and {0}".FillBlanks( ushort.MaxValue ) );
 			}
 			config.Port = p;
+			config.UseSSL = cbUseSSL.Checked;
+			config.Passive = cbPassive.Checked;
 			return config;
 		}
 		#endregion
+
+		private void cbUseSSL_CheckedChanged( object sender, EventArgs e ) {
+			cbIgnoreSSLErrors.Visible = cbUseSSL.Checked;
+		}
 	}
 }

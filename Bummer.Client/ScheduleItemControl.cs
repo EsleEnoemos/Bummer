@@ -29,8 +29,8 @@ namespace Bummer.Client {
 			} else if( wasRunning ) {
 				wasRunning = true;
 				job.ReFresh();
-				lblLastStarted.Text = job.LastStarted.HasValue ? job.LastStarted.Value.ToString( "yyyy:MM:dd HH:mm" ) : "Never";
-				lblLastFinished.Text = job.LastFinished.HasValue ? job.LastFinished.Value.ToString( "yyyy:MM:dd HH:mm" ) : "Never";
+				lblLastStarted.Text = job.LastStarted.HasValue ? job.LastStarted.Value.ToString( "yyyy:MM:dd HH:mm:ss" ) : "Never";
+				lblLastFinished.Text = job.LastFinished.HasValue ? job.LastFinished.Value.ToString( "yyyy:MM:dd HH:mm:ss" ) : "Never";
 				if( job.Logs.Count > 0 ) {
 					ScheduleJobLog log = job.Logs[ 0 ];
 					textBox1.Text = log.Entry;
@@ -52,13 +52,14 @@ namespace Bummer.Client {
 		private void ScheduleItemControl_Load( object sender, EventArgs e ) {
 			lblName.Text = job.Name;
 			lblType.Text = job.Job.Name;
+			lblTarget.Text = job.Target.Name;
 			lblLastStarted.Text = "Never";
 			if( job.LastStarted.HasValue ) {
-				lblLastStarted.Text = job.LastStarted.Value.ToString( "yyyy:MM:dd HH:mm" );
+				lblLastStarted.Text = job.LastStarted.Value.ToString( "yyyy:MM:dd HH:mm:ss" );
 			}
 			lblLastFinished.Text = "Never";
 			if( job.LastFinished.HasValue ) {
-				lblLastFinished.Text = job.LastFinished.Value.ToString( "yyyy:MM:dd HH:mm" );
+				lblLastFinished.Text = job.LastFinished.Value.ToString( "yyyy:MM:dd HH:mm:ss" );
 			}
 			if( job.Logs.Count > 0 ) {
 				ScheduleJobLog log = job.Logs[ 0 ];

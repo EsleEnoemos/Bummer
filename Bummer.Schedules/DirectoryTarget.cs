@@ -62,5 +62,9 @@ namespace Bummer.Schedules {
 			}
 			File.Copy( file.FullName, targetFile, true );
 		}
+
+		public void Dispose() {
+			
+		}
 	}
 }

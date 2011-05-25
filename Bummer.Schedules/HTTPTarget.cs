@@ -47,6 +47,9 @@ Supports HTTPS with self-signed certificates";
 		public void Store( FileInfo file, string relativePath ) {
 			throw new NotImplementedException();
 		}
+		public void Dispose() {
+			throw new NotImplementedException();
+		}
 
 		public class WWWConfig {
 			#region private static XmlSerializer Serializer
@@ -64,6 +67,7 @@ Supports HTTPS with self-signed certificates";
 			public string URL;
 			public string Username;
 			public string Password;
+			public bool IgnoreSSLErrors;
 
 			#region public static WWWConfig Load( string configuration )
 			/// <summary>

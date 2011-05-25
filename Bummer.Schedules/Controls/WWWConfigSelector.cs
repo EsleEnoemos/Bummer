@@ -9,6 +9,7 @@ namespace Bummer.Schedules.Controls {
 				tbURL.Text = config.URL;
 				tbUsername.Text = config.Username;
 				tbPassword.Text = config.Password;
+				cbIgnoreSSLErrors.Checked = config.IgnoreSSLErrors;
 			}
 		}
 		public WWWConfigSelector()
@@ -26,6 +27,7 @@ namespace Bummer.Schedules.Controls {
 			config.URL = tbURL.Text;
 			config.Username = tbUsername.Text;
 			config.Password = tbPassword.Text;
+			config.IgnoreSSLErrors = cbIgnoreSSLErrors.Checked;
 			return config;
 		}
 	}

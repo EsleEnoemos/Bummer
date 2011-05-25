@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Bummer.Common {
@@ -7,7 +8,7 @@ namespace Bummer.Common {
 	/// The purpose of a IBackupTarget is to store a file.
 	/// Storage can be a directory, but can also be a FTP-server etc.
 	/// </summary>
-	public interface IBackupTarget {
+	public interface IBackupTarget : IDisposable {
 		/// <summary>
 		/// A descriptive name of the target (e.g. Directory if the target saves files to a directory)
 		/// </summary>

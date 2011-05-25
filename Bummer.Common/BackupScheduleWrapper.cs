@@ -448,6 +448,8 @@ Schedule_ID = @Schedule_ID";
 			} catch( Exception ex ) {
 				success = false;
 				message = ex.Message;
+			} finally {
+				Target.Dispose();
 			}
 			using( DBCommand cmd = Configuration.GetCommand() ) {
 				DateTime now = DateTime.Now;

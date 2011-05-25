@@ -48,10 +48,10 @@ Any directories specified in the remote path will be created.
 Are you sure you want to continue?", "Continue?",MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2 ) != DialogResult.Yes ) {
 					return;
 				}
-				FTPTarget t = new FTPTarget() {config = conf};
+				FTPTarget t = new FTPTarget{config = conf};
 				DirectoryInfo temp = new DirectoryInfo( Configuration.DataDirectory.FullName );
 				tempFile = temp.FullName + "\\FTPUploadTest.txt";
-				File.AppendAllText( tempFile, "Testfile for FTP Upload" );
+				File.AppendAllText( tempFile, "Testfile for BUMmer FTP Upload" );
 				t.Store( new FileInfo( tempFile ), "" );
 			} catch( Exception ex ) {
 				MessageBox.Show( ex.Message );
@@ -162,9 +162,12 @@ Are you sure you want to continue?", "Continue?",MessageBoxButtons.YesNo, Messag
 				if( currentDir.Contains( "//" ) ) {
 					currentDir = currentDir.Replace( "//", "/" );
 				}
-				MakeDir( url + currentDir );
+				if( !existingPaths.ContainsKey( currentDir ) ) {
+					MakeDir( url + currentDir );
+					existingPaths[ currentDir ] = null;
+				}
 			}
-
+			existingPaths[ path ] = null;
 			//WebRequestMethods.Ftp.ListDirectory
 		}
 		private void MakeDir( string url ) {
@@ -190,7 +193,9 @@ Are you sure you want to continue?", "Continue?",MessageBoxButtons.YesNo, Messag
 				}
 			}
 		}
-
+		public void Dispose() {
+			
+		}
 		public class FTPConfig {
 			#region private static XmlSerializer Serializer
 			/// <summary>

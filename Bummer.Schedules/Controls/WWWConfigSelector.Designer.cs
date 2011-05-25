@@ -29,6 +29,7 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.tbURL = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.cbIgnoreSSLErrors = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// tbPassword
@@ -85,10 +86,21 @@
 			this.label2.TabIndex = 14;
 			this.label2.Text = "URL";
 			// 
+			// cbIgnoreSSLErrors
+			// 
+			this.cbIgnoreSSLErrors.AutoSize = true;
+			this.cbIgnoreSSLErrors.Location = new System.Drawing.Point(8, 84);
+			this.cbIgnoreSSLErrors.Name = "cbIgnoreSSLErrors";
+			this.cbIgnoreSSLErrors.Size = new System.Drawing.Size(344, 17);
+			this.cbIgnoreSSLErrors.TabIndex = 21;
+			this.cbIgnoreSSLErrors.Text = "Ignore certificate errors (if the site uses a self signed SSL-certificate)";
+			this.cbIgnoreSSLErrors.UseVisualStyleBackColor = true;
+			// 
 			// WWWConfigSelector
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.cbIgnoreSSLErrors);
 			this.Controls.Add(this.tbPassword);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.tbUsername);
@@ -96,7 +108,7 @@
 			this.Controls.Add(this.tbURL);
 			this.Controls.Add(this.label2);
 			this.Name = "WWWConfigSelector";
-			this.Size = new System.Drawing.Size(376, 84);
+			this.Size = new System.Drawing.Size(376, 113);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -110,5 +122,6 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox tbURL;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.CheckBox cbIgnoreSSLErrors;
 	}
 }

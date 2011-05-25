@@ -1,0 +1,9 @@
+D:\GIT\Bummer\StartSoft\bin\Release\Starksoft.Net.Ftp.XML
+D:\GIT\Bummer\StartSoft\bin\Release\Starksoft.Net.Ftp.dll
+D:\GIT\Bummer\StartSoft\bin\Release\Starksoft.Net.Ftp.pdb
+D:\GIT\Bummer\StartSoft\bin\Release\Starksoft.Net.Proxy.dll
+D:\GIT\Bummer\StartSoft\bin\Release\Starksoft.Net.Proxy.pdb
+D:\GIT\Bummer\StartSoft\bin\Release\Starksoft.Net.Proxy.xml
+D:\GIT\Bummer\StartSoft\obj\Release\ResolveAssemblyReference.cache
+D:\GIT\Bummer\StartSoft\obj\Release\Starksoft.Net.Ftp.dll
+D:\GIT\Bummer\StartSoft\obj\Release\Starksoft.Net.Ftp.pdb

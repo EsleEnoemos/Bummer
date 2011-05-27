@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bummer.ServiceInstaller", "
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BummerInstallation", "BummerInstallation\BummerInstallation.vdproj", "{C4F26958-19E0-41AF-AC8A-3D7459C446CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicAuth", "BasicAuth\BasicAuth.csproj", "{E7125BFA-8AF1-4E62-A557-A79581644177}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -226,6 +228,31 @@ Global
 		{C4F26958-19E0-41AF-AC8A-3D7459C446CB}.SingleImage|Any CPU.ActiveCfg = Release
 		{C4F26958-19E0-41AF-AC8A-3D7459C446CB}.SingleImage|Mixed Platforms.ActiveCfg = Release
 		{C4F26958-19E0-41AF-AC8A-3D7459C446CB}.SingleImage|x86.ActiveCfg = Release
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.CD_ROM|x86.ActiveCfg = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.Release|x86.ActiveCfg = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
+		{E7125BFA-8AF1-4E62-A557-A79581644177}.SingleImage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

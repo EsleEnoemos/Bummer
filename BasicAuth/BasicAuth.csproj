@@ -40,7 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicAuthenticationModule.cs" />
-    <Compile Include="Interfaces.cs" />
+    <Compile Include="BasicAuthProvider.cs" />
+    <Compile Include="BasicUser.cs" />
+    <Compile Include="IAuthProvider.cs" />
+    <Compile Include="IBasicUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

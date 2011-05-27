@@ -165,6 +165,7 @@ namespace Bummer.Common {
 		public static DirectoryInfo DataDirectory {
 			get {
 				if( _dataDirectory == null ) {
+					//string fp = Environment.GetFolderPath( Environment.SpecialFolder.ApplicationData );
 					DirectoryInfo d = new DirectoryInfo( Environment.GetFolderPath( Environment.SpecialFolder.CommonApplicationData ) );
 					_dataDirectory = new DirectoryInfo( string.Format( "{0}\\SomeoneElse\\Bummer", d.FullName ) );
 					if( !Directory.Exists( _dataDirectory.FullName ) ) {

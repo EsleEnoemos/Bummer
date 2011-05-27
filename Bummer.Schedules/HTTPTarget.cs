@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.IO;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using Bummer.Common;
+using Bummer.Schedules.Classes.HTTP;
 using Bummer.Schedules.Controls;
 
 namespace Bummer.Schedules {
@@ -20,7 +23,8 @@ namespace Bummer.Schedules {
 		public string Description {
 			get {
 				return @"Upload files to a web (HTTP/HTTPS) server.
-Supports HTTPS with self-signed certificates";
+Supports HTTPS with self-signed certificates.
+Authenication is supported with Basic Authenication";
 			}
 		}
 
@@ -45,10 +49,21 @@ Supports HTTPS with self-signed certificates";
 		}
 
 		public void Store( FileInfo file, string relativePath ) {
-			throw new NotImplementedException();
+			HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create( config.URL );
+			if( !string.IsNullOrEmpty( config.Username ) ) {
+				req.Credentials = new NetworkCredential( config.Username, config.Password );
+			}
+			if( config.IgnoreSSLErrors ) {
+				ServicePointManager.ServerCertificateValidationCallback = ( sender, certificate, chain, policyErrors ) => true;
+			}
+			UploadFile uf = new UploadFile( file.FullName );
+			NameValueCollection nvc = new NameValueCollection();
+			nvc.Add( "file", file.Name );
+			nvc.Add( "RelativePath", relativePath );
+			HttpUploadHelper.Upload( req, new[] { uf }, nvc );
 		}
 		public void Dispose() {
-			throw new NotImplementedException();
+			
 		}
 
 		public class WWWConfig {

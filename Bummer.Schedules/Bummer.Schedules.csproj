@@ -57,6 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\HTTP\HttpUploadHelper.cs" />
+    <Compile Include="Classes\HTTP\MimePart.cs" />
+    <Compile Include="Classes\HTTP\StreamMimePart.cs" />
+    <Compile Include="Classes\HTTP\StringMimePart.cs" />
+    <Compile Include="Classes\HTTP\UploadFile.cs" />
     <Compile Include="Controls\FileBackupConfigGUI.cs">
       <SubType>UserControl</SubType>
     </Compile>

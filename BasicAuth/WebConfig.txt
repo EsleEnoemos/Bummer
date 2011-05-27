@@ -1,0 +1,16 @@
+﻿<configuration>
+	<appSettings>
+		<add key="CustomAuthenticationProvider" value="FA.MyAuthProvider, FA"/>
+	</appSettings>
+	<system.web>
+		<authentication mode="None" />
+		<authorization>
+			<deny users="?" />
+		</authorization>
+	</system.web>
+	<system.webServer>
+		<modules>
+			<add name="BasicAuthModule" type="BasicAuth.BasicAuthenticationModule"/>
+		</modules>
+	</system.webServer>
+</configuration>

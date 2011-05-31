@@ -378,6 +378,7 @@ Schedule_ID = @Schedule_ID";
 				cmd.ExecuteNonQuery();
 				cmd.CommandText = "DELETE FROM ScheduleLogs WHERE Schedule_ID = {0}".FillBlanks( ID );
 			}
+			Configuration.ReloadService();
 		}
 		#endregion
 

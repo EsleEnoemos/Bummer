@@ -69,7 +69,7 @@ namespace Bummer.Service {
 		}
 		protected override void OnCustomCommand( int command ) {
 			base.OnCustomCommand( command );
-			Logger.Log( "Comman recieved ({0})", LogStatuses.Message );
+			Logger.Log( "Command recieved ({0})".FillBlanks( command ), LogStatuses.Message );
 			if( command == Configuration.ReLoadSchedulesCommand ) {
 				if( scheduler != null ) {
 					scheduler.Shutdown( false );

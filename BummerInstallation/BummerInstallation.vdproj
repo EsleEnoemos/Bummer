@@ -46,6 +46,12 @@
         "Entry"
         {
         "MsmKey" = "8:_446E8214C17D192FC18F6136BA6E1EDB"
+        "OwnerKey" = "8:_CFBD9B01D7894DA4A17172BC66C49A6E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_446E8214C17D192FC18F6136BA6E1EDB"
         "OwnerKey" = "8:_CA55C9FA0C304858AE096FD8DB3DDCBC"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -319,7 +325,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_853795F4_CEDB_4491_ABE5_1754583D07A1"
             "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
+            "CustomActionData" = "8:UN=[USERNAME]"
             }
         }
         "DefaultFeature"
@@ -649,7 +655,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BUMmer"
         "ProductCode" = "8:{B29CA581-CF45-4F88-85EE-F73A049CE386}"
-        "PackageCode" = "8:{DEDF61DE-A832-449D-A19C-1E6A243E47FB}"
+        "PackageCode" = "8:{4C8063F1-B1F9-40D8-937E-22D3160C4097}"
         "UpgradeCode" = "8:{C0AE34FC-D3B9-49A4-AAA3-CF3500D89D00}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

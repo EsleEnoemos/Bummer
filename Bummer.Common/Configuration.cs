@@ -12,7 +12,7 @@ namespace Bummer.Common {
 		/// <summary>
 		/// Gets the ReLoadSchedulesCommand of the <see cref="Bummer.Common.Configuration"/>
 		/// </summary>
-		internal const int ReLoadSchedulesCommand = 42; // the answer to everything :-)
+		internal const int ReLoadSchedulesCommand = 150; // a value between 128 and 256
 		#endregion
 		#region internal static List<IBackupSchedule> JobPlugins
 		/// <summary>

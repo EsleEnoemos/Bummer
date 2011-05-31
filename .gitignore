@@ -51,3 +51,4 @@ BasicAuth/obj/*
 Bummer.Client/bin/*
 QTest/bin/*
 QTest/obj/*
+Bummer.ServiceInstaller/bin/*

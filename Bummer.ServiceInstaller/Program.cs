@@ -36,7 +36,11 @@ namespace Bummer.ServiceInstaller {
 		private static DirectoryInfo _dataDirectory;
 		#endregion
 		static void Main( string[] args ) {
-
+			//IDictionary environmentVariables = Environment.GetEnvironmentVariables();
+			//foreach( DictionaryEntry de in environmentVariables ) {
+			//    Console.WriteLine( "  {0} = {1}", de.Key, de.Value );
+			//}
+			//Console.ReadKey();
 			Log( "Start" );
 			if( args == null || args.Length < 1 ) {
 				Log( "No args" );
@@ -150,6 +154,7 @@ namespace Bummer.ServiceInstaller {
 			/// </summary>
 			public void Install() {
 				try {
+					Process startServiceProcess = null;
 					Log( "Install starting" );
 					DirectoryInfo installDir = GetInstallPath();
 					if( installDir == null ) {
@@ -170,13 +175,10 @@ namespace Bummer.ServiceInstaller {
 							if( sys.Exists ) {
 								FileInfo net = new FileInfo( sys.FullName + "\\net.exe" );
 								if( net.Exists ) {
-									p = new Process();
-									p.StartInfo = new ProcessStartInfo( net.FullName, "start BummerService" );
-									p.StartInfo.CreateNoWindow = true;
-									p.StartInfo.UseShellExecute = false;
-									Console.WriteLine( "Starting service..." );
-									p.Start();
-									p.WaitForExit();
+									startServiceProcess = new Process();
+									startServiceProcess.StartInfo = new ProcessStartInfo( net.FullName, "start BummerService" );
+									startServiceProcess.StartInfo.CreateNoWindow = true;
+									startServiceProcess.StartInfo.UseShellExecute = false;
 								}
 							}
 						}
@@ -204,6 +206,16 @@ namespace Bummer.ServiceInstaller {
 						Log( "EXE does not exist" );
 					}
 					Log( "After shortcut" );
+					if( startServiceProcess != null ) {
+						// This will create the database file before the service kicks in and creates it.
+						// Since the service runns as Network Service, there might be problems with file permissions for the user when adding schedules
+						try {
+							Configuration.CreateDBFileAndSetPermissions();
+						} catch {}
+						Console.WriteLine( "Starting service..." );
+						startServiceProcess.Start();
+						startServiceProcess.WaitForExit();
+					}
 				} catch( Exception ex ) {
 					Log( "Install error: " + ex.Message );
 					//Log( "OnAfterInstall exception: " + ex.Message );
@@ -282,6 +294,7 @@ namespace Bummer.ServiceInstaller {
 			/// <param name="shortCutName"></param>
 			/// <param name="description"></param>
 			private void CreateShortcut( FileInfo target, string folderName, string shortCutName, string description ) {
+				
 				Log( "Start CreateShortcut" );
 				try {
 					DirectoryInfo startMenu = new DirectoryInfo( Environment.GetFolderPath( Environment.SpecialFolder.StartMenu ) );

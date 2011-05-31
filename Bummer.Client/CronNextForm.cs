@@ -23,7 +23,7 @@ namespace Bummer.Client {
 							break;
 						}
 						dt = next.Value;
-						listView1.Items.Add( string.Format( "{0} (UTC)", dt.ToString( "yyyy-MM-dd HH:mm:ss" ) ) );
+						listView1.Items.Add( dt.ToLocalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
 					}
 					listView1.AutoResizeColumns( ColumnHeaderAutoResizeStyle.ColumnContent );
 				} catch {}

@@ -76,7 +76,7 @@ namespace Bummer.Client {
 		private void checkForUpdatesToolStripMenuItem_Click( object sender, EventArgs e ) {
 			//List<Module> mods = new List<Module>();
 			//mods.Add( new Module() {Assembly="myass", Filename="myfile", Name="myname",Type="mytype",Version="myver"} );
-			XmlSerializer ser = new XmlSerializer( typeof( ModuleList ) );
+			//XmlSerializer ser = new XmlSerializer( typeof( ModuleList ) );
 			//StringWriter sw = new StringWriter();
 			//ser.Serialize( sw, mods );
 			WebRequest wr = WebRequest.Create( "http://products.someone-else.com/Bummer/package.xml" );

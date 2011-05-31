@@ -32,6 +32,8 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.scheduleTab = new System.Windows.Forms.TabPage();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.lblNextStart = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
 			this.btnRemoveDates = new System.Windows.Forms.Button();
 			this.btnAddDates = new System.Windows.Forms.Button();
 			this.lvSelectedDates = new System.Windows.Forms.ListView();
@@ -106,12 +108,9 @@
 			this.lvPreCommands = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.label3 = new System.Windows.Forms.Label();
-			this.lblNextStart = new System.Windows.Forms.Label();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-			this.label4 = new System.Windows.Forms.Label();
 			this.tabControl1.SuspendLayout();
 			this.scheduleTab.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -195,7 +194,6 @@
 			// 
 			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox3.Controls.Add(this.label4);
 			this.groupBox3.Controls.Add(this.lblNextStart);
 			this.groupBox3.Controls.Add(this.label3);
 			this.groupBox3.Controls.Add(this.btnRemoveDates);
@@ -235,9 +233,31 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Repetition";
 			// 
+			// lblNextStart
+			// 
+			this.lblNextStart.AutoSize = true;
+			this.lblNextStart.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.lblNextStart.ForeColor = System.Drawing.Color.Blue;
+			this.lblNextStart.Location = new System.Drawing.Point(65, 441);
+			this.lblNextStart.Name = "lblNextStart";
+			this.lblNextStart.Size = new System.Drawing.Size(52, 13);
+			this.lblNextStart.TabIndex = 41;
+			this.lblNextStart.Text = "Next start";
+			this.toolTip1.SetToolTip(this.lblNextStart, "Click to view next 10 execution dates");
+			this.lblNextStart.Click += new System.EventHandler(this.lblNextStart_Click);
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(12, 441);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(52, 13);
+			this.label3.TabIndex = 40;
+			this.label3.Text = "Next start";
+			// 
 			// btnRemoveDates
 			// 
-			this.btnRemoveDates.Location = new System.Drawing.Point(280, 406);
+			this.btnRemoveDates.Location = new System.Drawing.Point(280, 398);
 			this.btnRemoveDates.Name = "btnRemoveDates";
 			this.btnRemoveDates.Size = new System.Drawing.Size(75, 23);
 			this.btnRemoveDates.TabIndex = 39;
@@ -248,7 +268,7 @@
 			// 
 			// btnAddDates
 			// 
-			this.btnAddDates.Location = new System.Drawing.Point(280, 377);
+			this.btnAddDates.Location = new System.Drawing.Point(280, 369);
 			this.btnAddDates.Name = "btnAddDates";
 			this.btnAddDates.Size = new System.Drawing.Size(75, 23);
 			this.btnAddDates.TabIndex = 38;
@@ -264,7 +284,7 @@
 			this.lvSelectedDates.FullRowSelect = true;
 			this.lvSelectedDates.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvSelectedDates.HideSelection = false;
-			this.lvSelectedDates.Location = new System.Drawing.Point(368, 377);
+			this.lvSelectedDates.Location = new System.Drawing.Point(368, 369);
 			this.lvSelectedDates.Name = "lvSelectedDates";
 			this.lvSelectedDates.Size = new System.Drawing.Size(206, 62);
 			this.lvSelectedDates.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -279,7 +299,7 @@
 			this.lvNotSelectedDates.FullRowSelect = true;
 			this.lvNotSelectedDates.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvNotSelectedDates.HideSelection = false;
-			this.lvNotSelectedDates.Location = new System.Drawing.Point(68, 377);
+			this.lvNotSelectedDates.Location = new System.Drawing.Point(68, 369);
 			this.lvNotSelectedDates.Name = "lvNotSelectedDates";
 			this.lvNotSelectedDates.Size = new System.Drawing.Size(206, 62);
 			this.lvNotSelectedDates.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -290,7 +310,7 @@
 			// label12
 			// 
 			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(12, 377);
+			this.label12.Location = new System.Drawing.Point(12, 369);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(35, 13);
 			this.label12.TabIndex = 35;
@@ -298,7 +318,7 @@
 			// 
 			// btnRemoveMonths
 			// 
-			this.btnRemoveMonths.Location = new System.Drawing.Point(280, 338);
+			this.btnRemoveMonths.Location = new System.Drawing.Point(280, 330);
 			this.btnRemoveMonths.Name = "btnRemoveMonths";
 			this.btnRemoveMonths.Size = new System.Drawing.Size(75, 23);
 			this.btnRemoveMonths.TabIndex = 34;
@@ -309,7 +329,7 @@
 			// 
 			// btnAddMonths
 			// 
-			this.btnAddMonths.Location = new System.Drawing.Point(280, 309);
+			this.btnAddMonths.Location = new System.Drawing.Point(280, 301);
 			this.btnAddMonths.Name = "btnAddMonths";
 			this.btnAddMonths.Size = new System.Drawing.Size(75, 23);
 			this.btnAddMonths.TabIndex = 33;
@@ -325,7 +345,7 @@
 			this.lvSelectedMonths.FullRowSelect = true;
 			this.lvSelectedMonths.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvSelectedMonths.HideSelection = false;
-			this.lvSelectedMonths.Location = new System.Drawing.Point(368, 309);
+			this.lvSelectedMonths.Location = new System.Drawing.Point(368, 301);
 			this.lvSelectedMonths.Name = "lvSelectedMonths";
 			this.lvSelectedMonths.Size = new System.Drawing.Size(206, 62);
 			this.lvSelectedMonths.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -344,7 +364,7 @@
 			this.lvNotSelectedMonths.FullRowSelect = true;
 			this.lvNotSelectedMonths.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvNotSelectedMonths.HideSelection = false;
-			this.lvNotSelectedMonths.Location = new System.Drawing.Point(68, 309);
+			this.lvNotSelectedMonths.Location = new System.Drawing.Point(68, 301);
 			this.lvNotSelectedMonths.Name = "lvNotSelectedMonths";
 			this.lvNotSelectedMonths.Size = new System.Drawing.Size(206, 62);
 			this.lvNotSelectedMonths.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -359,7 +379,7 @@
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(12, 309);
+			this.label11.Location = new System.Drawing.Point(12, 301);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(42, 13);
 			this.label11.TabIndex = 30;
@@ -367,7 +387,7 @@
 			// 
 			// btnRemoveDays
 			// 
-			this.btnRemoveDays.Location = new System.Drawing.Point(280, 270);
+			this.btnRemoveDays.Location = new System.Drawing.Point(280, 262);
 			this.btnRemoveDays.Name = "btnRemoveDays";
 			this.btnRemoveDays.Size = new System.Drawing.Size(75, 23);
 			this.btnRemoveDays.TabIndex = 29;
@@ -378,7 +398,7 @@
 			// 
 			// btnAddDays
 			// 
-			this.btnAddDays.Location = new System.Drawing.Point(280, 241);
+			this.btnAddDays.Location = new System.Drawing.Point(280, 233);
 			this.btnAddDays.Name = "btnAddDays";
 			this.btnAddDays.Size = new System.Drawing.Size(75, 23);
 			this.btnAddDays.TabIndex = 28;
@@ -394,7 +414,7 @@
 			this.lvSelectedDays.FullRowSelect = true;
 			this.lvSelectedDays.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvSelectedDays.HideSelection = false;
-			this.lvSelectedDays.Location = new System.Drawing.Point(368, 241);
+			this.lvSelectedDays.Location = new System.Drawing.Point(368, 233);
 			this.lvSelectedDays.Name = "lvSelectedDays";
 			this.lvSelectedDays.Size = new System.Drawing.Size(206, 62);
 			this.lvSelectedDays.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -409,7 +429,7 @@
 			this.lvNotSelectedDays.FullRowSelect = true;
 			this.lvNotSelectedDays.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvNotSelectedDays.HideSelection = false;
-			this.lvNotSelectedDays.Location = new System.Drawing.Point(68, 241);
+			this.lvNotSelectedDays.Location = new System.Drawing.Point(68, 233);
 			this.lvNotSelectedDays.Name = "lvNotSelectedDays";
 			this.lvNotSelectedDays.Size = new System.Drawing.Size(206, 62);
 			this.lvNotSelectedDays.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -420,7 +440,7 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(12, 241);
+			this.label10.Location = new System.Drawing.Point(12, 233);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(31, 13);
 			this.label10.TabIndex = 25;
@@ -428,7 +448,7 @@
 			// 
 			// btnRemoveHours
 			// 
-			this.btnRemoveHours.Location = new System.Drawing.Point(280, 202);
+			this.btnRemoveHours.Location = new System.Drawing.Point(280, 194);
 			this.btnRemoveHours.Name = "btnRemoveHours";
 			this.btnRemoveHours.Size = new System.Drawing.Size(75, 23);
 			this.btnRemoveHours.TabIndex = 24;
@@ -439,7 +459,7 @@
 			// 
 			// btnAddHours
 			// 
-			this.btnAddHours.Location = new System.Drawing.Point(280, 173);
+			this.btnAddHours.Location = new System.Drawing.Point(280, 165);
 			this.btnAddHours.Name = "btnAddHours";
 			this.btnAddHours.Size = new System.Drawing.Size(75, 23);
 			this.btnAddHours.TabIndex = 23;
@@ -455,7 +475,7 @@
 			this.lvSelectedHours.FullRowSelect = true;
 			this.lvSelectedHours.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvSelectedHours.HideSelection = false;
-			this.lvSelectedHours.Location = new System.Drawing.Point(368, 173);
+			this.lvSelectedHours.Location = new System.Drawing.Point(368, 165);
 			this.lvSelectedHours.Name = "lvSelectedHours";
 			this.lvSelectedHours.Size = new System.Drawing.Size(206, 62);
 			this.lvSelectedHours.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -470,7 +490,7 @@
 			this.lvNotSelectedHours.FullRowSelect = true;
 			this.lvNotSelectedHours.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvNotSelectedHours.HideSelection = false;
-			this.lvNotSelectedHours.Location = new System.Drawing.Point(68, 173);
+			this.lvNotSelectedHours.Location = new System.Drawing.Point(68, 165);
 			this.lvNotSelectedHours.Name = "lvNotSelectedHours";
 			this.lvNotSelectedHours.Size = new System.Drawing.Size(206, 62);
 			this.lvNotSelectedHours.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -481,7 +501,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(12, 173);
+			this.label8.Location = new System.Drawing.Point(12, 165);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(35, 13);
 			this.label8.TabIndex = 20;
@@ -489,7 +509,7 @@
 			// 
 			// btnRemoveMinutes
 			// 
-			this.btnRemoveMinutes.Location = new System.Drawing.Point(280, 134);
+			this.btnRemoveMinutes.Location = new System.Drawing.Point(280, 126);
 			this.btnRemoveMinutes.Name = "btnRemoveMinutes";
 			this.btnRemoveMinutes.Size = new System.Drawing.Size(75, 23);
 			this.btnRemoveMinutes.TabIndex = 19;
@@ -500,7 +520,7 @@
 			// 
 			// btnAddMinutes
 			// 
-			this.btnAddMinutes.Location = new System.Drawing.Point(280, 105);
+			this.btnAddMinutes.Location = new System.Drawing.Point(280, 97);
 			this.btnAddMinutes.Name = "btnAddMinutes";
 			this.btnAddMinutes.Size = new System.Drawing.Size(75, 23);
 			this.btnAddMinutes.TabIndex = 18;
@@ -516,7 +536,7 @@
 			this.lvSelectedMinutes.FullRowSelect = true;
 			this.lvSelectedMinutes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvSelectedMinutes.HideSelection = false;
-			this.lvSelectedMinutes.Location = new System.Drawing.Point(368, 105);
+			this.lvSelectedMinutes.Location = new System.Drawing.Point(368, 97);
 			this.lvSelectedMinutes.Name = "lvSelectedMinutes";
 			this.lvSelectedMinutes.Size = new System.Drawing.Size(206, 62);
 			this.lvSelectedMinutes.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -531,7 +551,7 @@
 			this.lvNotSelectedMinutes.FullRowSelect = true;
 			this.lvNotSelectedMinutes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvNotSelectedMinutes.HideSelection = false;
-			this.lvNotSelectedMinutes.Location = new System.Drawing.Point(68, 105);
+			this.lvNotSelectedMinutes.Location = new System.Drawing.Point(68, 97);
 			this.lvNotSelectedMinutes.Name = "lvNotSelectedMinutes";
 			this.lvNotSelectedMinutes.Size = new System.Drawing.Size(206, 62);
 			this.lvNotSelectedMinutes.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -542,7 +562,7 @@
 			// label14
 			// 
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(12, 105);
+			this.label14.Location = new System.Drawing.Point(12, 97);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(44, 13);
 			this.label14.TabIndex = 15;
@@ -550,7 +570,7 @@
 			// 
 			// btnRemoveSeconds
 			// 
-			this.btnRemoveSeconds.Location = new System.Drawing.Point(280, 66);
+			this.btnRemoveSeconds.Location = new System.Drawing.Point(280, 58);
 			this.btnRemoveSeconds.Name = "btnRemoveSeconds";
 			this.btnRemoveSeconds.Size = new System.Drawing.Size(75, 23);
 			this.btnRemoveSeconds.TabIndex = 14;
@@ -561,7 +581,7 @@
 			// 
 			// btnAddSeconds
 			// 
-			this.btnAddSeconds.Location = new System.Drawing.Point(280, 37);
+			this.btnAddSeconds.Location = new System.Drawing.Point(280, 29);
 			this.btnAddSeconds.Name = "btnAddSeconds";
 			this.btnAddSeconds.Size = new System.Drawing.Size(75, 23);
 			this.btnAddSeconds.TabIndex = 13;
@@ -577,7 +597,7 @@
 			this.lvSelectedSeconds.FullRowSelect = true;
 			this.lvSelectedSeconds.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvSelectedSeconds.HideSelection = false;
-			this.lvSelectedSeconds.Location = new System.Drawing.Point(368, 37);
+			this.lvSelectedSeconds.Location = new System.Drawing.Point(368, 29);
 			this.lvSelectedSeconds.Name = "lvSelectedSeconds";
 			this.lvSelectedSeconds.Size = new System.Drawing.Size(206, 62);
 			this.lvSelectedSeconds.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -592,7 +612,7 @@
 			this.lvNotSelectedSeconds.FullRowSelect = true;
 			this.lvNotSelectedSeconds.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lvNotSelectedSeconds.HideSelection = false;
-			this.lvNotSelectedSeconds.Location = new System.Drawing.Point(68, 37);
+			this.lvNotSelectedSeconds.Location = new System.Drawing.Point(68, 29);
 			this.lvNotSelectedSeconds.Name = "lvNotSelectedSeconds";
 			this.lvNotSelectedSeconds.Size = new System.Drawing.Size(206, 62);
 			this.lvNotSelectedSeconds.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -603,7 +623,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(12, 37);
+			this.label7.Location = new System.Drawing.Point(12, 29);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(49, 13);
 			this.label7.TabIndex = 0;
@@ -617,7 +637,7 @@
 			this.jobTab.Controls.Add(this.label2);
 			this.jobTab.Location = new System.Drawing.Point(4, 22);
 			this.jobTab.Name = "jobTab";
-			this.jobTab.Size = new System.Drawing.Size(616, 461);
+			this.jobTab.Size = new System.Drawing.Size(616, 514);
 			this.jobTab.TabIndex = 2;
 			this.jobTab.Text = "Job";
 			this.jobTab.UseVisualStyleBackColor = true;
@@ -677,7 +697,7 @@
 			this.tagetTab.Controls.Add(this.label5);
 			this.tagetTab.Location = new System.Drawing.Point(4, 22);
 			this.tagetTab.Name = "tagetTab";
-			this.tagetTab.Size = new System.Drawing.Size(616, 482);
+			this.tagetTab.Size = new System.Drawing.Size(616, 514);
 			this.tagetTab.TabIndex = 3;
 			this.tagetTab.Text = "Taget";
 			this.tagetTab.UseVisualStyleBackColor = true;
@@ -739,7 +759,7 @@
 			this.prePostCommandTab.Location = new System.Drawing.Point(4, 22);
 			this.prePostCommandTab.Name = "prePostCommandTab";
 			this.prePostCommandTab.Padding = new System.Windows.Forms.Padding(3);
-			this.prePostCommandTab.Size = new System.Drawing.Size(616, 527);
+			this.prePostCommandTab.Size = new System.Drawing.Size(616, 514);
 			this.prePostCommandTab.TabIndex = 1;
 			this.prePostCommandTab.Text = "Pre- post commands";
 			this.prePostCommandTab.UseVisualStyleBackColor = true;
@@ -985,28 +1005,6 @@
 			this.columnHeader2.Text = "Arguments";
 			this.columnHeader2.Width = 260;
 			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(12, 449);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(52, 13);
-			this.label3.TabIndex = 40;
-			this.label3.Text = "Next start";
-			// 
-			// lblNextStart
-			// 
-			this.lblNextStart.AutoSize = true;
-			this.lblNextStart.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.lblNextStart.ForeColor = System.Drawing.Color.Blue;
-			this.lblNextStart.Location = new System.Drawing.Point(65, 449);
-			this.lblNextStart.Name = "lblNextStart";
-			this.lblNextStart.Size = new System.Drawing.Size(52, 13);
-			this.lblNextStart.TabIndex = 41;
-			this.lblNextStart.Text = "Next start";
-			this.toolTip1.SetToolTip(this.lblNextStart, "Click to view next 10 execution dates");
-			this.lblNextStart.Click += new System.EventHandler(this.lblNextStart_Click);
-			// 
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1021,17 +1019,6 @@
 			// 
 			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
 			this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.ForeColor = System.Drawing.Color.Red;
-			this.label4.Location = new System.Drawing.Point(6, 16);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(266, 13);
-			this.label4.TabIndex = 42;
-			this.label4.Text = "Repetition times are selected in UTC-format!!!";
 			// 
 			// ScheduleForm
 			// 
@@ -1159,6 +1146,5 @@
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.StatusStrip statusStrip1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-		private System.Windows.Forms.Label label4;
 	}
 }

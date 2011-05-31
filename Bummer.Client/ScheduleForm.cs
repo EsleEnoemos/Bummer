@@ -219,7 +219,8 @@ namespace Bummer.Client {
 		}
 
 		private void timer_Tick( object sender, EventArgs e ) {
-			toolStripStatusLabel1.Text = string.Format( "Current time is {0} (UTC)", DateTime.Now.ToUniversalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
+			//DateTime now = DateTime.Now;
+			//toolStripStatusLabel1.Text = string.Format( "Current time is: {0} (UTC), {1} (Local)", now.ToUniversalTime().ToString( "yyyy-MM-dd HH:mm:ss" ), now.ToString( "yyyy-MM-dd HH:mm:ss" ) );
 		}
 
 		private string BuildCronString() {
@@ -289,7 +290,8 @@ namespace Bummer.Client {
 				CronExpression ce = new CronExpression( cs );
 				DateTime? next = ce.GetNextValidTimeAfter( Job.LastFinished.HasValue ? Job.LastFinished.Value.ToUniversalTime() : DateTime.Now.ToUniversalTime() );
 				if( next.HasValue ) {
-					lblNextStart.Text = string.Format( "{0} (UTC)", next.Value.ToString( "yyyy-MM-dd HH:mm:ss" ) );
+					//lblNextStart.Text = string.Format( "{0} (UTC), {1} (Local)", next.Value.ToString( "yyyy-MM-dd HH:mm:ss" ), next.Value.ToLocalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
+					lblNextStart.Text = string.Format( "{0}", next.Value.ToLocalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
 				}
 			} catch {}
 		}

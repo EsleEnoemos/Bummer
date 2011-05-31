@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Bummer.Common;
 using Bummer.ScheduleRunner;
+using Quartz;
 
 namespace Bummer.Client {
 	public partial class ScheduleItemControl : UserControl {
@@ -31,6 +32,7 @@ namespace Bummer.Client {
 				job.ReFresh();
 				lblLastStarted.Text = job.LastStarted.HasValue ? job.LastStarted.Value.ToString( "yyyy:MM:dd HH:mm:ss" ) : "Never";
 				lblLastFinished.Text = job.LastFinished.HasValue ? job.LastFinished.Value.ToString( "yyyy:MM:dd HH:mm:ss" ) : "Never";
+				lblNextStart.Text = "";
 				if( job.Logs.Count > 0 ) {
 					ScheduleJobLog log = job.Logs[ 0 ];
 					textBox1.Text = log.Entry;
@@ -38,11 +40,23 @@ namespace Bummer.Client {
 					textBox1.Select( 0, 0 );
 				}
 			}
+			UpdateNext();
 			btnRunJob.Enabled = !isRunning;
 			btnEdit.Enabled = !isRunning;
 			btnDelete.Enabled = !isRunning;
 			lblLastResult.Visible = !isRunning;
 			lblIsRunning.Visible = isRunning;
+		}
+		private void UpdateNext() {
+			try {
+				CronExpression ce = new CronExpression( job.CronConfig );
+				DateTime? next = null;
+				next = ce.GetNextValidTimeAfter( job.LastFinished.HasValue ? job.LastFinished.Value : DateTime.Now );
+				if( next.HasValue ) {
+					lblNextStart.Text = next.Value.ToString( "yyyy:MM:dd HH:mm:ss" );
+				}
+			} catch {
+			}
 		}
 		void ScheduleItemControl_Disposed( object sender, EventArgs e ) {
 			timer.Stop();
@@ -61,6 +75,7 @@ namespace Bummer.Client {
 			if( job.LastFinished.HasValue ) {
 				lblLastFinished.Text = job.LastFinished.Value.ToString( "yyyy:MM:dd HH:mm:ss" );
 			}
+			UpdateNext();
 			if( job.Logs.Count > 0 ) {
 				ScheduleJobLog log = job.Logs[ 0 ];
 				textBox1.Text = log.Entry;

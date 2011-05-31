@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Bummer.Common;
+using Quartz;
 
 namespace Bummer.Client {
 	public partial class ScheduleForm : Form {
 		//private IBackupSchedule job;
 		private IBackupTarget target;
+		private Timer timer;
 
 		#region internal BackupScheduleWrapper Job
 		/// <summary>
@@ -30,6 +32,10 @@ namespace Bummer.Client {
 		public ScheduleForm( BackupScheduleWrapper job ) {
 			InitializeComponent();
 			_job = job.Clone();
+			timer = new Timer();
+			timer.Interval = 1000;
+			timer.Tick += timer_Tick;
+			timer.Start();
 		}
 		#endregion
 		#region public ScheduleForm()
@@ -49,21 +55,120 @@ namespace Bummer.Client {
 		/// <param name="e">The <see cref="EventArgs"/> of the event.</param>
 		private void ScheduleForm_Load( object sender, EventArgs e ) {
 			tbName.Text = Job.Name;
-			nuInterval.Value = Job.Interval;
-			dpStartTime.Value = new DateTime( 2000, 1, 1, Job.StartTime.Hour, Job.StartTime.Minute, 0 );
-			Array arr = Enum.GetValues( typeof( SchduleIntervalTypes ) );
-			int ind = -1;
-			for( int i = 0; i < arr.Length; i++ ) {
-				SchduleIntervalTypes st = (SchduleIntervalTypes)arr.GetValue( i );
-				cbIntervalType.Items.Add( st );
-				if( st == Job.IntervalType ) {
-					ind = i;
+			CronExpression ce;
+			try {
+				ce = new CronExpression( Job.CronConfig );
+			} catch {
+				ce = new CronExpression( "* * * * * ?" );
+			}
+			//CronExpression ce = new CronExpression( "5 * * * * ?" );
+			for( int i = 0; i < 60; i++ ) {
+				ListViewItem li = lvNotSelectedSeconds.Items.Add( i < 10 ? "0{0}".FillBlanks( i ) : i.ToString() );
+				li.Tag = i.ToString();
+				if( ce.seconds.Count < 61 && ce.seconds.Contains( i ) ) {
+					li.Selected = true;
 				}
 			}
-			if( ind > -1 ) {
-				cbIntervalType.SelectedIndex = ind;
+			if( lvNotSelectedSeconds.SelectedItems.Count > 0 ) {
+				MoveListViewItems( lvNotSelectedSeconds, lvSelectedSeconds );
 			}
-			ind = -1;
+			for( int i = 0; i < 60; i++ ) {
+				ListViewItem li = lvNotSelectedMinutes.Items.Add( i < 10 ? "0{0}".FillBlanks( i ) : i.ToString() );
+				li.Tag = i.ToString();
+				if( ce.minutes.Count < 61 && ce.minutes.Contains( i ) ) {
+					li.Selected = true;
+				}
+			}
+			if( lvNotSelectedMinutes.SelectedItems.Count > 0 ) {
+				MoveListViewItems( lvNotSelectedMinutes, lvSelectedMinutes );
+			}
+			for( int i = 0; i < 24; i++ ) {
+				ListViewItem li = lvNotSelectedHours.Items.Add( i < 10 ? "0{0}".FillBlanks( i ) : i.ToString() );
+				li.Tag = i.ToString();
+				if( ce.hours.Count < 25 && ce.hours.Contains( i ) ) {
+					li.Selected = true;
+				}
+			}
+			if( lvNotSelectedHours.SelectedItems.Count > 0 ) {
+				MoveListViewItems( lvNotSelectedHours, lvSelectedHours );
+			}
+			for( int i = 1; i < 32; i++ ) {
+				ListViewItem li = lvNotSelectedDates.Items.Add( i < 10 ? "0{0}".FillBlanks( i ) : i.ToString() );
+				li.Tag = i.ToString();
+				if( ce.daysOfMonth.Count < 32 && ce.daysOfMonth.Contains( i ) ) {
+					li.Selected = true;
+				}
+			}
+			if( lvNotSelectedDates.SelectedItems.Count > 0 ) {
+				MoveListViewItems( lvNotSelectedDates, lvSelectedDates );
+			}
+			Array arr = Enum.GetValues( typeof( DayOfWeek ) );
+			for( int i = 0; i < arr.Length; i++ ) {
+				DayOfWeek d = (DayOfWeek)arr.GetValue( i );
+				int iv = (int)d + 1;
+				ListViewItem li = lvNotSelectedDays.Items.Add( d.ToString() );
+				li.Tag = iv.ToString();
+				if( ce.daysOfWeek.Count > 0 && ce.daysOfWeek.Contains( iv ) ) {
+					li.Selected = true;
+				}
+			}
+			if( lvNotSelectedDays.SelectedItems.Count > 0 ) {
+				MoveListViewItems( lvNotSelectedDays, lvSelectedDays );
+			}
+			lvNotSelectedDays.ListViewItemSorter = new NumberLIComparer();
+			lvNotSelectedDays.Sort();
+
+			lvNotSelectedMonths.Items.Add( "January" ).Tag = 1.ToString();
+			lvNotSelectedMonths.Items.Add( "February" ).Tag = 2.ToString();
+			lvNotSelectedMonths.Items.Add( "Mars" ).Tag = 3.ToString();
+			lvNotSelectedMonths.Items.Add( "April" ).Tag = 4.ToString();
+			lvNotSelectedMonths.Items.Add( "May" ).Tag = 5.ToString();
+			lvNotSelectedMonths.Items.Add( "June" ).Tag = 6.ToString();
+			lvNotSelectedMonths.Items.Add( "July" ).Tag = 7.ToString();
+			lvNotSelectedMonths.Items.Add( "August" ).Tag = 8.ToString();
+			lvNotSelectedMonths.Items.Add( "September" ).Tag = 9.ToString();
+			lvNotSelectedMonths.Items.Add( "October" ).Tag = 10.ToString();
+			lvNotSelectedMonths.Items.Add( "November" ).Tag = 11.ToString();
+			lvNotSelectedMonths.Items.Add( "December" ).Tag = 12.ToString();
+			if( ce.months.Count < 13 ) {
+				for( int i = 0; i < lvNotSelectedMonths.Items.Count; i++ ) {
+					ListViewItem li = lvNotSelectedMonths.Items[ i ];
+					int m = int.Parse( li.Tag.ToString() );
+					if( ce.months.Contains( m ) ) {
+						li.Selected = true;
+					}
+				}
+				MoveListViewItems( lvNotSelectedMonths, lvSelectedMonths );
+			}
+			lvNotSelectedMonths.ListViewItemSorter = new NumberLIComparer();
+			lvNotSelectedMonths.Sort();
+
+
+			for( int i = 0; i < groupBox3.Controls.Count; i++ ) {
+				Control c = groupBox3.Controls[ i ];
+				if( !(c is ListView) ) {
+					continue;
+				}
+				ListView lv = (ListView)c;
+				lv.Columns[ 0 ].Width = 150;
+			}
+
+
+			//nuInterval.Value = Job.Interval;
+			//dpStartTime.Value = new DateTime( 2000, 1, 1, Job.StartTime.Hour, Job.StartTime.Minute, 0 );
+			//arr = Enum.GetValues( typeof( SchduleIntervalTypes ) );
+			//int ind = -1;
+			//for( int i = 0; i < arr.Length; i++ ) {
+			//    SchduleIntervalTypes st = (SchduleIntervalTypes)arr.GetValue( i );
+			//    cbIntervalType.Items.Add( st );
+			//    if( st == Job.IntervalType ) {
+			//        ind = i;
+			//    }
+			//}
+			//if( ind > -1 ) {
+			//    cbIntervalType.SelectedIndex = ind;
+			//}
+			int ind = -1;
 			for( int i = 0; i < Configuration.JobPlugins.Count; i++ ) {
 				IBackupSchedule plug = Configuration.JobPlugins[ i ];
 				cbJobType.Items.Add( new PlugWrapper( plug ) );
@@ -101,16 +206,94 @@ namespace Bummer.Client {
 			}
 			ind = -1;
 			for( int i = 0; i < Configuration.TargetPlugins.Count; i++ ) {
-				IBackupTarget target = Configuration.TargetPlugins[ i ];
-				cbTargetType.Items.Add( new TargetWrapper( target ) );
-				if( string.Equals( target.GetType().FullName, Job.TargetType ) ) {
+				IBackupTarget tt = Configuration.TargetPlugins[ i ];
+				cbTargetType.Items.Add( new TargetWrapper( tt ) );
+				if( string.Equals( tt.GetType().FullName, Job.TargetType ) ) {
 					ind = i;
 				}
 			}
 			if( ind > -1 ) {
 				cbTargetType.SelectedIndex = ind;
 			}
+			UpdateNext();
 		}
+
+		private void timer_Tick( object sender, EventArgs e ) {
+			toolStripStatusLabel1.Text = string.Format( "Current time is {0} (UTC)", DateTime.Now.ToUniversalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
+		}
+
+		private string BuildCronString() {
+			
+			List<string> cron = new List<string>();
+			if( lvSelectedSeconds.Items.Count > 0 ) {
+				List<string> tmp = new List<string>();
+				foreach( ListViewItem li in lvSelectedSeconds.Items ) {
+					tmp.Add( li.Tag.ToString() );
+				}
+				cron.Add( tmp.ToString( "," ) );
+			} else {
+				cron.Add( "*" );
+			}
+			if( lvSelectedMinutes.Items.Count > 0 ) {
+				List<string> tmp = new List<string>();
+				foreach( ListViewItem li in lvSelectedMinutes.Items ) {
+					tmp.Add( li.Tag.ToString() );
+				}
+				cron.Add( tmp.ToString( "," ) );
+			} else {
+				cron.Add( "*" );
+			}
+			if( lvSelectedHours.Items.Count > 0 ) {
+				List<string> tmp = new List<string>();
+				foreach( ListViewItem li in lvSelectedHours.Items ) {
+					tmp.Add( li.Tag.ToString() );
+				}
+				cron.Add( tmp.ToString( "," ) );
+			} else {
+				cron.Add( "*" );
+			}
+			if( lvSelectedDates.Items.Count > 0 ) {
+				List<string> tmp = new List<string>();
+				foreach( ListViewItem li in lvSelectedDates.Items ) {
+					tmp.Add( li.Tag.ToString() );
+				}
+				cron.Add( tmp.ToString( "," ) );
+			} else {
+				cron.Add( lvSelectedDays.Items.Count > 0 ? "?" : "*" );
+			}
+
+			if( lvSelectedMonths.Items.Count > 0 ) {
+				List<string> tmp = new List<string>();
+				foreach( ListViewItem li in lvSelectedMonths.Items ) {
+					tmp.Add( li.Tag.ToString() );
+				}
+				cron.Add( tmp.ToString( "," ) );
+			} else {
+				cron.Add( "*" );
+			}
+			if( lvSelectedDays.Items.Count > 0 ) {
+				List<string> tmp = new List<string>();
+				foreach( ListViewItem li in lvSelectedDays.Items ) {
+					tmp.Add( li.Tag.ToString() );
+				}
+				cron.Add( tmp.ToString( "," ) );
+			} else {
+				cron.Add( "?" );
+			}
+			return cron.ToString( " " );
+		}
+		private void UpdateNext() {
+			lblNextStart.Text = "Never";
+			try {
+				string cs = BuildCronString();
+				CronExpression ce = new CronExpression( cs );
+				DateTime? next = ce.GetNextValidTimeAfter( Job.LastFinished.HasValue ? Job.LastFinished.Value.ToUniversalTime() : DateTime.Now.ToUniversalTime() );
+				if( next.HasValue ) {
+					lblNextStart.Text = string.Format( "{0} (UTC)", next.Value.ToString( "yyyy-MM-dd HH:mm:ss" ) );
+				}
+			} catch {}
+		}
+
 		#endregion
 
 		private class PlugWrapper {
@@ -160,6 +343,23 @@ namespace Bummer.Client {
 		/// <param name="e">The <see cref="FormClosingEventArgs"/> of the event.</param>
 		private void ScheduleForm_FormClosing( object sender, FormClosingEventArgs e ) {
 			if( DialogResult != DialogResult.OK ) {
+				timer.Stop();
+				timer.Dispose();
+				return;
+			}
+			string cronString = BuildCronString();
+			try {
+				CronExpression ce = new CronExpression( cronString );
+				DateTime? next = ce.GetNextValidTimeAfter( DateTime.Now );
+				if( !next.HasValue ) {
+					MessageBox.Show( "You have to select repetitions for the job" );
+				}
+			} catch( Exception ex ) {
+				MessageBox.Show( "Repetition error{0}{1}".FillBlanks( Environment.NewLine, ex.Message ), "Repetition error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+				e.Cancel = true;
+				return;
+			}
+			if( DialogResult != DialogResult.OK ) {
 				return;
 			}
 			if( string.IsNullOrEmpty( tbName.Text ) ) {
@@ -172,22 +372,11 @@ namespace Bummer.Client {
 				e.Cancel = true;
 				return;
 			}
-			if( cbIntervalType.SelectedIndex < 0 ) {
-				MessageBox.Show( "You have to specify an interval type", "Specify interval type", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
-				e.Cancel = true;
-				return;
-			}
 			if( cbTargetType.SelectedIndex < 0 ) {
 				MessageBox.Show( "You have to specify a target type", "Specify target type", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
 				e.Cancel = true;
 				return;
 			}
-			//int interval = (int)nuInterval.Value;
-			//if( interval <= 0 ) {
-			//    MessageBox.Show( "You have to specify an interval larger than 0", "Specify interval", MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
-			//    e.Cancel = true;
-			//    return;
-			//}
 			string config;
 			string targetConfig;
 			try {
@@ -204,9 +393,7 @@ namespace Bummer.Client {
 			Job.JobType = pw.job.GetType().FullName;
 			Job.JobConfiguration = config;
 			Job.TargetConfiguration = targetConfig;
-			Job.IntervalType = (SchduleIntervalTypes)cbIntervalType.SelectedItem;
-			Job.Interval = 1;// (int)nuInterval.Value;
-			Job.StartTime = dpStartTime.Value;
+			Job.CronConfig = cronString;
 			Job.PreCommands = null;
 			if( lvPreCommands.Items.Count > 0 ) {
 				List<string> list = new List<string>();
@@ -223,6 +410,8 @@ namespace Bummer.Client {
 				}
 				Job.PostCommands = list.ToString( Environment.NewLine );
 			}
+			timer.Stop();
+			timer.Dispose();
 		}
 		#endregion
 
@@ -550,6 +739,18 @@ namespace Bummer.Client {
 		}
 		#endregion
 
+		private void MoveListViewItems( ListView from, ListView to ) {
+			to.ListViewItemSorter = null;
+			while( from.SelectedItems.Count > 0 ) {
+				ListViewItem li = from.SelectedItems[ 0 ];
+				ListViewItem newLi = to.Items.Add( li.Text ); //.Tag = li.Tag;
+				newLi.Tag = li.Tag;
+				from.Items.RemoveAt( li.Index );
+			}
+			to.ListViewItemSorter = new NumberLIComparer();
+			to.Sort();
+		}
+
 		private void cbTargetType_SelectedIndexChanged( object sender, EventArgs e ) {
 			TargetWrapper tw = cbTargetType.SelectedItem as TargetWrapper;
 			pnlTargetConfig.Controls.Clear();
@@ -560,6 +761,44 @@ namespace Bummer.Client {
 			tbTargetDescription.Text = tw.job.Description;
 			target = tw.job;
 			target.InitiateConfiguration( pnlTargetConfig, Job.TargetConfiguration );
+		}
+
+		private void MoveItemsClick( object sender, EventArgs e ) {
+			Button btn = sender as Button;
+			if( btn == null ) {
+				return;
+			}
+			if( btn.Tag == null ) {
+				return;
+			}
+			string[] lists = btn.Tag.ToString().Split( '|' );
+			if( lists.Length != 2 ) {
+				return;
+			}
+			ListView from = groupBox3.Controls[ lists[ 0 ] ] as ListView;
+			ListView to = groupBox3.Controls[ lists[ 1 ] ] as ListView;
+			MoveListViewItems( from, to );
+			UpdateNext();
+		}
+
+		private class NumberLIComparer : IComparer {
+			public int Compare( object x, object y ) {
+				if( x != null && y != null && x is ListViewItem && y is ListViewItem ) {
+					return Compare( (ListViewItem)x, (ListViewItem)y );
+				}
+				return 0;
+			}
+			private int Compare( ListViewItem x, ListViewItem y ) {
+				int xi;
+				int.TryParse( x.Tag as string, out xi );
+				int yi;
+				int.TryParse( y.Tag as string, out yi );
+				return xi.CompareTo( yi );
+			}
+		}
+
+		private void lblNextStart_Click( object sender, EventArgs e ) {
+			(new CronNextForm( BuildCronString(), Job.LastFinished )).ShowDialog( this );
 		}
 	}
 }

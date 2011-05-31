@@ -4,37 +4,16 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Reflection;
+using System.ServiceProcess;
 
 namespace Bummer.Common {
-	#region public enum SchduleIntervalTypes
-	/// <summary>
-	/// Defines the different types of intervals that a schedule can be configured to run with
-	/// </summary>
-	public enum SchduleIntervalTypes {
-		/// <summary>
-		/// The schedule is set with minute interval
-		/// </summary>
-		//Minute = 1,
-		/// <summary>
-		/// The schedule is set with hour interval
-		/// </summary>
-		//Hour = 2,
-		/// <summary>
-		/// The schedule is set with day interval
-		/// </summary>
-		Day = 3,
-		/// <summary>
-		/// The schedule is set with week interval
-		/// </summary>
-		Week = 4,
-		/// <summary>
-		/// The schedule is set with month interval
-		/// </summary>
-		Month = 5
-	}
-	#endregion
-
 	public static class Configuration {
+		#region internal const int ReLoadSchedulesCommand
+		/// <summary>
+		/// Gets the ReLoadSchedulesCommand of the <see cref="Bummer.Common.Configuration"/>
+		/// </summary>
+		internal const int ReLoadSchedulesCommand = 42; // the answer to everything :-)
+		#endregion
 		#region internal static List<IBackupSchedule> JobPlugins
 		/// <summary>
 		/// Gets the <see cref="IBackupSchedule"/> of the Configuration
@@ -197,7 +176,7 @@ namespace Bummer.Common {
 			using( DBCommand cmd = GetCommand() ) {
 				cmd.CommandText = "SELECT * FROM Schedules";
 				while( cmd.Read() ) {
-					list.Add( new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "JobConfiguration" ), cmd.GetString( "TargetType" ), cmd.GetString( "TargetConfiguration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) ) );
+					list.Add( new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "JobConfiguration" ), cmd.GetString( "TargetType" ), cmd.GetString( "TargetConfiguration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), cmd.GetString( "CronConfig" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) ) );
 				}
 				if( list.Count > 1 ) {
 					list.Sort( delegate( BackupScheduleWrapper x, BackupScheduleWrapper y ) {
@@ -218,7 +197,7 @@ namespace Bummer.Common {
 			using( DBCommand cmd = GetCommand() ) {
 				cmd.CommandText = "SELECT * FROM Schedules WHERE Schedule_ID = {0}".FillBlanks( id );
 				while( cmd.Read() ) {
-					return new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "JobConfiguration" ), cmd.GetString( "TargetType" ), cmd.GetString( "TargetConfiguration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), (SchduleIntervalTypes)cmd.GetInt( "IntervalType" ), cmd.GetInt( "Interval" ), cmd.GetDateTime( "StartTime" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) );
+					return new BackupScheduleWrapper( cmd.GetInt( "Schedule_ID" ), cmd.GetString( "Name" ), cmd.GetDateTime( "CreatedDate" ), cmd.GetString( "JobType" ), cmd.GetString( "JobConfiguration" ), cmd.GetString( "TargetType" ), cmd.GetString( "TargetConfiguration" ), cmd.GetString( "PreCommands" ), cmd.GetString( "PostCommands" ), cmd.GetString( "CronConfig" ), cmd.GetNullableDateTime( "LastStarted" ), cmd.GetNullableDateTime( "LastFinished" ) );
 				}
 			}
 			return null;
@@ -238,5 +217,12 @@ namespace Bummer.Common {
 			return new DBCommand( new SQLiteConnection( cb.ToString() ), CommandType.Text );
 		}
 		#endregion
+		internal static void ReloadService() {
+			try {
+				ServiceController service = new ServiceController( "BummerService" );
+				service.ExecuteCommand( ReLoadSchedulesCommand );
+				//service.Status == ServiceControllerStatus.Running
+			} catch {}
+		}
 	}
 }

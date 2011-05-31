@@ -59,6 +59,7 @@
 			this.btnOpenCommand.TabIndex = 2;
 			this.btnOpenCommand.Text = "...";
 			this.btnOpenCommand.UseVisualStyleBackColor = true;
+			this.btnOpenCommand.Click += new System.EventHandler(this.btnOpenCommand_Click);
 			// 
 			// tbArgs
 			// 

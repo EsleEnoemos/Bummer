@@ -138,50 +138,20 @@ namespace Bummer.Common {
 		}
 		private string _targetConfiguration;
 		#endregion
-		#region public SchduleIntervalTypes IntervalType
+		#region public string CronConfig
 		/// <summary>
-		/// Get/Sets the IntervalType of the BackupScheduleWrapper
+		/// Get/Sets the CronConfig of the BackupScheduleWrapper
 		/// </summary>
 		/// <value></value>
-		public SchduleIntervalTypes IntervalType {
+		public string CronConfig {
 			get {
-				return _intervalType;
+				return _cronConfig;
 			}
 			set {
-				_intervalType = value;
+				_cronConfig = value;
 			}
 		}
-		private SchduleIntervalTypes _intervalType;
-		#endregion
-		#region public int Interval
-		/// <summary>
-		/// Get/Sets the Interval of the BackupScheduleWrapper
-		/// </summary>
-		/// <value></value>
-		public int Interval {
-			get {
-				return _interval;
-			}
-			set {
-				_interval = value;
-			}
-		}
-		private int _interval;
-		#endregion
-		#region public DateTime StartTime
-		/// <summary>
-		/// Get/Sets the StartTime of the BackupScheduleWrapper
-		/// </summary>
-		/// <value></value>
-		public DateTime StartTime {
-			get {
-				return _startTime;
-			}
-			set {
-				_startTime = value;
-			}
-		}
-		private DateTime _startTime;
+		private string _cronConfig;
 		#endregion
 		#region public DateTime? LastStarted
 		/// <summary>
@@ -267,7 +237,7 @@ namespace Bummer.Common {
 		private List<ScheduleJobLog> _logs;
 		#endregion
 
-		#region public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string jobConfiguration, string targetType, string targetConfiguration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startTime, DateTime? lastStarted, DateTime? lastFinished )
+		#region public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string jobConfiguration, string targetType, string targetConfiguration, string preCommands, string postCommands, string cronConfig, DateTime? lastStarted, DateTime? lastFinished )
 		/// <summary>
 		/// Initializes a new instance of the <b>BackupScheduleWrapper</b> class.
 		/// </summary>
@@ -280,12 +250,10 @@ namespace Bummer.Common {
 		/// <param name="targetConfiguration"></param>
 		/// <param name="preCommands"></param>
 		/// <param name="postCommands"></param>
-		/// <param name="intervalType"></param>
-		/// <param name="interval"></param>
-		/// <param name="startTime"></param>
+		/// <param name="cronConfig"></param>
 		/// <param name="lastStarted"></param>
 		/// <param name="lastFinished"></param>
-		public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string jobConfiguration, string targetType, string targetConfiguration, string preCommands, string postCommands, SchduleIntervalTypes intervalType, int interval, DateTime startTime, DateTime? lastStarted, DateTime? lastFinished ) {
+		public BackupScheduleWrapper( int id, string name, DateTime createdDate, string jobType, string jobConfiguration, string targetType, string targetConfiguration, string preCommands, string postCommands, string cronConfig, DateTime? lastStarted, DateTime? lastFinished ) {
 			_iD = id;
 			_name = name;
 			_createdDate = createdDate;
@@ -295,9 +263,7 @@ namespace Bummer.Common {
 			_jobConfiguration = jobConfiguration;
 			_targetType = targetType;
 			_targetConfiguration = targetConfiguration;
-			_intervalType = intervalType;
-			_interval = interval;
-			_startTime = startTime;
+			_cronConfig = cronConfig;
 			_lastStarted = lastStarted;
 			_lastFinished = lastFinished;
 		}
@@ -316,7 +282,7 @@ namespace Bummer.Common {
 		/// </summary>
 		/// <returns>A new object that is a copy of this instance.</returns>
 		internal BackupScheduleWrapper Clone() {
-			return new BackupScheduleWrapper( ID, Name, CreatedDate, JobType, JobConfiguration, TargetType, TargetConfiguration, PreCommands, PostCommands, IntervalType, Interval, StartTime, LastStarted, LastFinished );
+			return new BackupScheduleWrapper( ID, Name, CreatedDate, JobType, JobConfiguration, TargetType, TargetConfiguration, PreCommands, PostCommands, CronConfig, LastStarted, LastFinished );
 		}
 		#endregion
 
@@ -344,7 +310,7 @@ namespace Bummer.Common {
 			}
 			using( DBCommand cmd = Configuration.GetCommand() ) {
 				if( ID <= 0 ) {
-					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, JobConfiguration, TargetType, TargetConfiguration, PreCommands, PostCommands, IntervalType, Interval, StartTime ) VALUES( @Name, @CreatedDate, @JobType, @JobConfiguration, @TargetType, @TargetConfiguration, @PreCommands, @PostCommands, @IntervalType, @Interval, @StartTime );";
+					cmd.CommandText = "INSERT INTO Schedules( Name, CreatedDate, JobType, JobConfiguration, TargetType, TargetConfiguration, PreCommands, PostCommands, CronConfig ) VALUES( @Name, @CreatedDate, @JobType, @JobConfiguration, @TargetType, @TargetConfiguration, @PreCommands, @PostCommands, @CronConfig );";
 					cmd.AddWithValue( "@Name", Name );
 					cmd.AddWithValue( "@CreatedDate", CreatedDate );
 					cmd.AddWithValue( "@JobType", JobType );
@@ -353,9 +319,7 @@ namespace Bummer.Common {
 					cmd.AddWithValue( "@TargetConfiguration", TargetConfiguration );
 					cmd.AddWithValue( "@PreCommands", NZ( PreCommands ) );
 					cmd.AddWithValue( "@PostCommands", NZ( PostCommands ) );
-					cmd.AddWithValue( "@IntervalType", (int)IntervalType );
-					cmd.AddWithValue( "@Interval", Interval );
-					cmd.AddWithValue( "@StartTime", StartTime );
+					cmd.AddWithValue( "@CronConfig", CronConfig );
 					cmd.ExecuteNonQuery();
 					ID = cmd.GetLastAutoIncrement();
 				} else {
@@ -369,9 +333,7 @@ PostCommands = @PostCommands,
 JobConfiguration = @JobConfiguration,
 TargetType = @TargetType,
 TargetConfiguration = @TargetConfiguration,
-IntervalType = @IntervalType,
-Interval = @Interval,
-StartTime = @StartTime
+CronConfig = @CronConfig
 WHERE
 Schedule_ID = @Schedule_ID";
 					cmd.AddWithValue( "@Name", Name );
@@ -381,13 +343,12 @@ Schedule_ID = @Schedule_ID";
 					cmd.AddWithValue( "@JobConfiguration", JobConfiguration );
 					cmd.AddWithValue( "@TargetType", TargetType );
 					cmd.AddWithValue( "@TargetConfiguration", TargetConfiguration );
-					cmd.AddWithValue( "@IntervalType", (int)IntervalType );
-					cmd.AddWithValue( "@Interval", Interval );
-					cmd.AddWithValue( "@StartTime", StartTime );
+					cmd.AddWithValue( "@CronConfig", CronConfig );
 					cmd.AddWithValue( "@Schedule_ID", ID );
 					cmd.ExecuteNonQuery();
 				}
 			}
+			Configuration.ReloadService();
 		}
 		#endregion
 		#region private static object NZ( string that )

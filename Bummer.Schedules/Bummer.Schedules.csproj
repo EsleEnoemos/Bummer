@@ -137,7 +137,6 @@
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetPath)" "C:\ProgramData\SomeoneElse\Bummer\Plugins"
 copy /Y "$(TargetDir)Ionic.Zip.dll" "C:\ProgramData\SomeoneElse\Bummer\Plugins"
-copy /Y "D:\GIT\Bummer\StarkSoft\obj\Debug\*.dll" "C:\ProgramData\SomeoneElse\Bummer\Plugins"
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

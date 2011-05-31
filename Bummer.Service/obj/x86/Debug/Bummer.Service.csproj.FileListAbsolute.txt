@@ -12,3 +12,7 @@ D:\GIT\Bummer\Bummer.Service\bin\Debug\Bummer.ScheduleRunner.pdb
 D:\GIT\Bummer\Bummer.Service\obj\x86\Debug\Bummer.Service.ProjectInstaller.resources
 D:\GIT\Bummer\Bummer.Service\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\GIT\Bummer\Bummer.Service\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\GIT\Bummer\Bummer.Service\bin\Debug\Quartz.dll
+D:\GIT\Bummer\Bummer.Service\bin\Debug\Common.Logging.dll
+D:\GIT\Bummer\Bummer.Service\bin\Debug\Quartz.xml
+D:\GIT\Bummer\Bummer.Service\obj\x86\Debug\Bummer.Service.BummerService.resources

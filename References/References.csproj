@@ -51,14 +51,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Common.Logging.dll" />
     <Content Include="Ionic.Zip.dll" />
     <Content Include="Ionic.Zip.XML" />
-    <Content Include="Starksoft.Net.Ftp.dll" />
-    <Content Include="Starksoft.Net.Ftp.pdb" />
-    <Content Include="Starksoft.Net.Ftp.XML" />
-    <Content Include="Starksoft.Net.Proxy.dll" />
-    <Content Include="Starksoft.Net.Proxy.pdb" />
-    <Content Include="Starksoft.Net.Proxy.xml" />
+    <Content Include="Quartz.dll" />
+    <Content Include="Quartz.xml" />
     <Content Include="System.Data.SQLite.DLL" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

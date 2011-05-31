@@ -39,6 +39,8 @@
 			this.lblIsRunning = new System.Windows.Forms.Label();
 			this.lblTarget = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
+			this.lblNextStart = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -131,7 +133,7 @@
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ReadOnly = true;
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBox1.Size = new System.Drawing.Size(331, 80);
+			this.textBox1.Size = new System.Drawing.Size(331, 102);
 			this.textBox1.TabIndex = 9;
 			this.textBox1.TabStop = false;
 			// 
@@ -201,12 +203,32 @@
 			this.label5.TabIndex = 14;
 			this.label5.Text = "Target";
 			// 
+			// lblNextStart
+			// 
+			this.lblNextStart.AutoSize = true;
+			this.lblNextStart.Location = new System.Drawing.Point(86, 115);
+			this.lblNextStart.Name = "lblNextStart";
+			this.lblNextStart.Size = new System.Drawing.Size(35, 13);
+			this.lblNextStart.TabIndex = 17;
+			this.lblNextStart.Text = "Name";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(4, 115);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(47, 13);
+			this.label7.TabIndex = 16;
+			this.label7.Text = "Next run";
+			// 
 			// ScheduleItemControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.Controls.Add(this.lblNextStart);
+			this.Controls.Add(this.label7);
 			this.Controls.Add(this.lblTarget);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.btnRunJob);
@@ -224,7 +246,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.lblIsRunning);
 			this.Name = "ScheduleItemControl";
-			this.Size = new System.Drawing.Size(617, 114);
+			this.Size = new System.Drawing.Size(617, 137);
 			this.Load += new System.EventHandler(this.ScheduleItemControl_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -249,5 +271,7 @@
 		private System.Windows.Forms.Label lblIsRunning;
 		private System.Windows.Forms.Label lblTarget;
 		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label lblNextStart;
+		private System.Windows.Forms.Label label7;
 	}
 }

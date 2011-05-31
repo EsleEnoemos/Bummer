@@ -53,5 +53,13 @@ namespace Bummer.Client {
 				return;
 			}
 		}
+
+		private void btnOpenCommand_Click( object sender, EventArgs e ) {
+			OpenFileDialog of = new OpenFileDialog{FileName=tbCommand.Text,CheckFileExists=true,AutoUpgradeEnabled=true};
+			if( of.ShowDialog(this) != DialogResult.OK ) {
+				return;
+			}
+			tbCommand.Text = of.FileName;
+		}
 	}
 }

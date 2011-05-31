@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -11,7 +10,6 @@ using Ionic.Zip;
 
 namespace Bummer.Schedules {
 	public class MSSQLDatabaseBackup : IBackupSchedule {
-		private bool? passive;
 		private MSSQLDatabaseBackupConfigGUI gui;
 		#region public string Name
 		/// <summary>

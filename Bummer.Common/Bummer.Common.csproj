@@ -46,6 +46,7 @@
     <Reference Include="System.Data.SQLite">
       <HintPath>..\References\System.Data.SQLite.DLL</HintPath>
     </Reference>
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />

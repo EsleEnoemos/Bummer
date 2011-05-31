@@ -1,88 +1,143 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ServiceProcess;
-using System.Timers;
 using Bummer.Common;
 using Bummer.ScheduleRunner;
+using Quartz;
+using Quartz.Impl;
 
 namespace Bummer.Service {
+	internal enum LogStatuses {
+		Unknown = 0,
+		Message = 1,
+		Error = 2,
+		Startup = 3,
+		Reload = 4,
+		Shutdown = 5,
+		Stop = 6,
+		Continue = 7,
+		Pause = 8,
+		Execute = 9
+	}
 	partial class BummerService : ServiceBase {
-		Timer timer;
+		private bool running;
+		IScheduler scheduler;
+
 		public BummerService() {
 			InitializeComponent();
 		}
 
 		protected override void OnStart( string[] args ) {
-			timer = new Timer( 30000 );
-			timer.AutoReset = true;
-			timer.Enabled = true;
-			timer.Elapsed += timer_Elapsed;
-			timer.Start();
+			running = true;
+			Logger.Log( "Starting", LogStatuses.Startup );
+			LoadSchedules( LogStatuses.Startup );
 		}
-
-		void timer_Elapsed( object sender, ElapsedEventArgs e ) {
-			if( timer == null ) {
+		private void LoadSchedules( LogStatuses status ) {
+			Logger.Log( "Loading schedules", status );
+			if( !running ) {
+				Logger.Log( "Loading schedules aborted. Service is not started.", status );
 				return;
 			}
-			List<BackupScheduleWrapper> schedules = Configuration.GetSchedules();
-			foreach( BackupScheduleWrapper schedule in schedules ) {
-				if( !schedule.LastStarted.HasValue ) {
-					ScheduleJobSpawner.SpawAndRun( schedule );
-					continue;
+			try {
+				StdSchedulerFactory schedulerFactory = new StdSchedulerFactory();
+				scheduler = schedulerFactory.GetScheduler();
+				List<BackupScheduleWrapper> jobs = Configuration.GetSchedules();
+				foreach( BackupScheduleWrapper bj in jobs ) {
+					JobDetail job = new JobDetail( bj.ID.ToString(), "group1", typeof(MyJobClass) );
+					try {
+						CronTrigger trigger = new CronTrigger( "trigger {0}".FillBlanks( bj.ID ), "group1", bj.ID.ToString(), "group1", bj.CronConfig );
+						scheduler.AddJob( job, true );
+						scheduler.ScheduleJob( trigger );
+						Logger.Log( string.Format( "Job {0} ({1}) added to schedule", bj.ID, bj.Name ), LogStatuses.Message );
+					} catch( Exception ex ) {
+						Logger.Log( string.Format( "Error adding job {0} ({1}) to schedule: {2}", bj.ID, bj.Name, ex.Message ), LogStatuses.Error );
+					}
 				}
-				if( schedule.Interval <= 0 ) {
-					continue;
-				}
-				DateTime startTime = schedule.StartTime;
-				DateTime now = DateTime.Now;
-				if( now.Hour != startTime.Hour ) {
-					continue;
-				}
-				if( now.Minute < startTime.Minute ) {
-					continue;
-				}
-				DateTime next = schedule.LastStarted.Value;
-				switch( schedule.IntervalType ) {
-					//case SchduleIntervalTypes.Minute:
-					//    next = next.AddMinutes( schedule.Interval );
-					//    break;
-					//case SchduleIntervalTypes.Hour:
-					//    next = next.AddHours( schedule.Interval );
-					//    break;
-					case SchduleIntervalTypes.Day:
-						next = next.AddDays( schedule.Interval );
-						break;
-					case SchduleIntervalTypes.Week:
-						next = next.AddDays( 7 * schedule.Interval );
-						break;
-					case SchduleIntervalTypes.Month:
-						next = next.AddMonths( schedule.Interval );
-						break;
-					default:
-						continue;
-				}
-				if( DateTime.Now > next ) {
-					ScheduleJobSpawner.SpawAndRun( schedule );
-				}
+				scheduler.Start();
+			} catch( Exception oEx ) {
+				Logger.Log( string.Format( "Error scheduling jobs: {0}", oEx.Message ), LogStatuses.Error );
 			}
 		}
-		//private bool StartTimeOK( DateTime startFrom, DateTime startTo ) {
-		//    if( startFrom.Hour == startTo.Hour && startFrom.Minute == startTo.Minute ) {
-		//        return true;
-		//    }
-		//    DateTime start = DateTime.Now.AddHours( startFrom.Hour ).AddMinutes( startFrom.Minute );
-		//    DateTime stop = DateTime.Now.AddHours( startTo.Hour ).AddMinutes( startTo.Minute );
-		//    if( startFrom.Hour > startTo.Hour ) {
-		//        stop = stop.AddDays( 1 );
-		//    }
-		//    DateTime now = DateTime.Now;
-		//    return now >= start && now <= stop;
-		//}
-
+		protected override void OnShutdown() {
+			running = false;
+			base.OnShutdown();
+			Logger.Log( "Shutting down", LogStatuses.Shutdown );
+			if( scheduler != null ) {
+				scheduler.Shutdown( false );
+				scheduler = null;
+			}
+		}
+		protected override void OnCustomCommand( int command ) {
+			base.OnCustomCommand( command );
+			Logger.Log( "Comman recieved ({0})", LogStatuses.Message );
+			if( command == Configuration.ReLoadSchedulesCommand ) {
+				if( scheduler != null ) {
+					scheduler.Shutdown( false );
+					scheduler = null;
+				}
+				LoadSchedules( LogStatuses.Reload );
+			}
+		}
 		protected override void OnStop() {
-			timer.Stop();
-			timer.Dispose();
-			timer = null;
+			running = false;
+			Logger.Log( "Stopping", LogStatuses.Stop );
+			if( scheduler != null ) {
+				scheduler.Shutdown( false );
+				scheduler = null;
+			}
+		}
+		protected override void OnPause() {
+			running = false;
+			base.OnPause();
+			Logger.Log( "Continue", LogStatuses.Pause );
+			if( scheduler != null ) {
+				scheduler.Shutdown( false );
+				scheduler = null;
+			}
+		}
+		protected override void OnContinue() {
+			running = true;
+			base.OnContinue();
+			Logger.Log( "Continue", LogStatuses.Continue );
+			LoadSchedules( LogStatuses.Continue );
+		}
+	}
+	public class MyJobClass : IJob {
+		public void Execute( JobExecutionContext context ) {
+			int jobID;
+			if( !int.TryParse( context.JobDetail.Name, out jobID ) ) {
+				Logger.Log( "Error getting ID for job to execute", LogStatuses.Error );
+				return;
+			}
+			BackupScheduleWrapper schedule = Configuration.GetSchedule( jobID );
+			if( schedule == null ) {
+				Logger.Log( "Error getting Schedule for {0}".FillBlanks( jobID ), LogStatuses.Error );
+				return;
+			}
+			Logger.Log( "Running schedule {0}".FillBlanks( schedule.Name ), LogStatuses.Execute );
+			ScheduleJobSpawner.SpawAndRun( schedule );
+		}
+	}
+	internal static class Logger {
+		private static string LogDir {
+			get {
+				return _logDir ?? (_logDir = Configuration.DataDirectory.FullName + "\\ServiceLogs");
+			}
+		}
+		private static string _logDir;
+		static Logger() {
+			try {
+				if( !System.IO.Directory.Exists( LogDir ) ) {
+					System.IO.Directory.CreateDirectory( LogDir );
+				}
+			} catch {}
+		}
+
+		internal static void Log( string message, LogStatuses status ) {
+			string logFile = string.Format( "{0}\\{1}.log", LogDir, DateTime.Now.ToString( "yyyy-MM-dd" ) );
+			try {
+				System.IO.File.AppendAllText( logFile, string.Format( "{0}\t{1}\t{2}{3}", DateTime.Now.ToString( "yyyy-MM-dd HH:mm:ss" ), status, message, Environment.NewLine ) );
+			} catch {}
 		}
 	}
 }

@@ -1118,9 +1118,7 @@ namespace Bummer.Common {
 [JobConfiguration] VARCHAR(8000) NULL,
 [TargetType] VARCHAR(1000) NOT NULL,
 [TargetConfiguration] VARCHAR(8000) NULL,
-[IntervalType] INT NOT NULL,
-[Interval] INT NOT NULL,
-[StartTime] DATE NOT NULL,
+[CronConfig] VARCHAR(500) NOT NULL,
 [LastStarted] DATE NULL,
 [LastFinished] DATE NULL
 );";

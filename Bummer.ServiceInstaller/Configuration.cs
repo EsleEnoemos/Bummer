@@ -43,6 +43,9 @@ namespace Bummer.ServiceInstaller {
 		internal static void CreateDBFileAndSetPermissions() {
 			DBCommand cmd = GetCommand();
 			SQLiteConnectionStringBuilder cb = new SQLiteConnectionStringBuilder( cmd.Con.ConnectionString );
+			if( Environment.OSVersion.Version.Major < 6 ) { // can't get this to work on XP...
+				return;
+			}
 			FileInfo file = new FileInfo( cb.DataSource );
 			FileSecurity permissions = file.GetAccessControl();
 			string domain = Environment.GetEnvironmentVariable( "USERDOMAIN" );

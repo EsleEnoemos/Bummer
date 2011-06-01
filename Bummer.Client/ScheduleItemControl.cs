@@ -52,7 +52,7 @@ namespace Bummer.Client {
 				CronExpression ce = new CronExpression( job.CronConfig );
 				DateTime? next = ce.GetNextValidTimeAfter( job.LastFinished.HasValue ? job.LastFinished.Value.ToUniversalTime() : DateTime.Now.ToUniversalTime() );
 				if( next.HasValue ) {
-					lblNextStart.Text = string.Format( "{0} (Local)", next.Value.ToLocalTime().ToString( "yyyy:MM:dd HH:mm:ss" ) );
+					lblNextStart.Text = next.Value.ToLocalTime().ToString( "yyyy:MM:dd HH:mm:ss" );
 				}
 			} catch {
 			}

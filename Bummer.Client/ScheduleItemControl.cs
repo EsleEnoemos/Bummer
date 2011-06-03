@@ -48,6 +48,14 @@ namespace Bummer.Client {
 			lblIsRunning.Visible = isRunning;
 		}
 		private void UpdateNext() {
+			if( !Configuration.IsServiceRunning() ) {
+				if( !string.Equals( lblNextStart.Text, "Service is not running" ) ) {
+					lblNextStart.ForeColor = Color.Red;
+					lblNextStart.Text = "Service is not running";
+				}
+				return;
+			}
+			lblNextStart.ForeColor = SystemColors.ControlText;
 			try {
 				CronExpression ce = new CronExpression( job.CronConfig );
 				DateTime? next = ce.GetNextValidTimeAfter( job.LastFinished.HasValue ? job.LastFinished.Value.ToUniversalTime() : DateTime.Now.ToUniversalTime() );

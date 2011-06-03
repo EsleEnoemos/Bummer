@@ -224,5 +224,13 @@ namespace Bummer.Common {
 				//service.Status == ServiceControllerStatus.Running
 			} catch {}
 		}
+		internal static bool IsServiceRunning() {
+			try {
+				ServiceController service = new ServiceController( "BummerService" );
+				return service.Status == ServiceControllerStatus.Running;
+			} catch {
+			}
+			return false;
+		}
 	}
 }

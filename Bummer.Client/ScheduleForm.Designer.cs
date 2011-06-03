@@ -144,7 +144,7 @@
 			// 
 			this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.btnSave.Location = new System.Drawing.Point(456, 549);
+			this.btnSave.Location = new System.Drawing.Point(456, 567);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
 			this.btnSave.TabIndex = 7;
@@ -155,7 +155,7 @@
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(537, 549);
+			this.btnCancel.Location = new System.Drawing.Point(537, 567);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 8;
@@ -174,7 +174,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(1, 3);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(624, 540);
+			this.tabControl1.Size = new System.Drawing.Size(624, 558);
 			this.tabControl1.TabIndex = 20;
 			// 
 			// scheduleTab
@@ -759,7 +759,7 @@
 			this.prePostCommandTab.Location = new System.Drawing.Point(4, 22);
 			this.prePostCommandTab.Name = "prePostCommandTab";
 			this.prePostCommandTab.Padding = new System.Windows.Forms.Padding(3);
-			this.prePostCommandTab.Size = new System.Drawing.Size(616, 514);
+			this.prePostCommandTab.Size = new System.Drawing.Size(616, 532);
 			this.prePostCommandTab.TabIndex = 1;
 			this.prePostCommandTab.Text = "Pre- post commands";
 			this.prePostCommandTab.UseVisualStyleBackColor = true;
@@ -798,8 +798,7 @@
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox2.Controls.Add(this.btnEditPostCommand);
 			this.groupBox2.Controls.Add(this.btnMoveDownPostCommand);
@@ -1009,7 +1008,7 @@
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 575);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 593);
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(624, 22);
 			this.statusStrip1.TabIndex = 21;
@@ -1026,13 +1025,13 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(624, 597);
+			this.ClientSize = new System.Drawing.Size(624, 615);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnSave);
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(640, 635);
+			this.MinimumSize = new System.Drawing.Size(640, 653);
 			this.Name = "ScheduleForm";
 			this.ShowInTaskbar = false;
 			this.Text = "ScheduleForm";

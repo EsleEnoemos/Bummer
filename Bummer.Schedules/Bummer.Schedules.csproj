@@ -103,6 +103,8 @@
     <Compile Include="FTPTarget.cs" />
     <Compile Include="HTTPTarget.cs" />
     <Compile Include="MSSQLDatabaseBackup.cs" />
+    <Compile Include="NullSchedule.cs" />
+    <Compile Include="NullTarget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared.cs" />
     <Compile Include="SQLLocalBackup.cs" />

@@ -33,14 +33,15 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.lblLastResult = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.btnRunJob = new System.Windows.Forms.Button();
-			this.btnDelete = new System.Windows.Forms.Button();
-			this.btnEdit = new System.Windows.Forms.Button();
 			this.lblIsRunning = new System.Windows.Forms.Label();
 			this.lblTarget = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.lblNextStart = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
+			this.btnViewLog = new System.Windows.Forms.Button();
+			this.btnRunJob = new System.Windows.Forms.Button();
+			this.btnDelete = new System.Windows.Forms.Button();
+			this.btnEdit = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -137,43 +138,6 @@
 			this.textBox1.TabIndex = 9;
 			this.textBox1.TabStop = false;
 			// 
-			// btnRunJob
-			// 
-			this.btnRunJob.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRunJob.Image = global::Bummer.Client.Properties.Resources.Run;
-			this.btnRunJob.Location = new System.Drawing.Point(529, -1);
-			this.btnRunJob.Name = "btnRunJob";
-			this.btnRunJob.Size = new System.Drawing.Size(24, 24);
-			this.btnRunJob.TabIndex = 0;
-			this.btnRunJob.Text = "...";
-			this.btnRunJob.UseVisualStyleBackColor = true;
-			this.btnRunJob.Click += new System.EventHandler(this.btnRunJob_Click);
-			// 
-			// btnDelete
-			// 
-			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnDelete.BackgroundImage = global::Bummer.Client.Properties.Resources.Delete;
-			this.btnDelete.Image = global::Bummer.Client.Properties.Resources.Delete;
-			this.btnDelete.Location = new System.Drawing.Point(589, -1);
-			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Size = new System.Drawing.Size(24, 24);
-			this.btnDelete.TabIndex = 2;
-			this.btnDelete.Text = "...";
-			this.btnDelete.UseVisualStyleBackColor = true;
-			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-			// 
-			// btnEdit
-			// 
-			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnEdit.Image = global::Bummer.Client.Properties.Resources.Edit;
-			this.btnEdit.Location = new System.Drawing.Point(559, -1);
-			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(24, 24);
-			this.btnEdit.TabIndex = 1;
-			this.btnEdit.Text = "...";
-			this.btnEdit.UseVisualStyleBackColor = true;
-			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-			// 
 			// lblIsRunning
 			// 
 			this.lblIsRunning.AutoSize = true;
@@ -221,12 +185,63 @@
 			this.label7.TabIndex = 16;
 			this.label7.Text = "Next run";
 			// 
+			// btnViewLog
+			// 
+			this.btnViewLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnViewLog.BackgroundImage = global::Bummer.Client.Properties.Resources.Log;
+			this.btnViewLog.Image = global::Bummer.Client.Properties.Resources.Log;
+			this.btnViewLog.Location = new System.Drawing.Point(590, -2);
+			this.btnViewLog.Name = "btnViewLog";
+			this.btnViewLog.Size = new System.Drawing.Size(24, 24);
+			this.btnViewLog.TabIndex = 18;
+			this.btnViewLog.Text = "...";
+			this.btnViewLog.UseVisualStyleBackColor = true;
+			this.btnViewLog.Click += new System.EventHandler(this.btnViewLog_Click);
+			// 
+			// btnRunJob
+			// 
+			this.btnRunJob.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRunJob.Image = global::Bummer.Client.Properties.Resources.Run;
+			this.btnRunJob.Location = new System.Drawing.Point(500, -2);
+			this.btnRunJob.Name = "btnRunJob";
+			this.btnRunJob.Size = new System.Drawing.Size(24, 24);
+			this.btnRunJob.TabIndex = 0;
+			this.btnRunJob.Text = "...";
+			this.btnRunJob.UseVisualStyleBackColor = true;
+			this.btnRunJob.Click += new System.EventHandler(this.btnRunJob_Click);
+			// 
+			// btnDelete
+			// 
+			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnDelete.BackgroundImage = global::Bummer.Client.Properties.Resources.Delete;
+			this.btnDelete.Image = global::Bummer.Client.Properties.Resources.Delete;
+			this.btnDelete.Location = new System.Drawing.Point(560, -2);
+			this.btnDelete.Name = "btnDelete";
+			this.btnDelete.Size = new System.Drawing.Size(24, 24);
+			this.btnDelete.TabIndex = 2;
+			this.btnDelete.Text = "...";
+			this.btnDelete.UseVisualStyleBackColor = true;
+			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+			// 
+			// btnEdit
+			// 
+			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnEdit.Image = global::Bummer.Client.Properties.Resources.Edit;
+			this.btnEdit.Location = new System.Drawing.Point(530, -2);
+			this.btnEdit.Name = "btnEdit";
+			this.btnEdit.Size = new System.Drawing.Size(24, 24);
+			this.btnEdit.TabIndex = 1;
+			this.btnEdit.Text = "...";
+			this.btnEdit.UseVisualStyleBackColor = true;
+			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			// 
 			// ScheduleItemControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.Controls.Add(this.btnViewLog);
 			this.Controls.Add(this.lblNextStart);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.lblTarget);
@@ -273,5 +288,6 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label lblNextStart;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Button btnViewLog;
 	}
 }

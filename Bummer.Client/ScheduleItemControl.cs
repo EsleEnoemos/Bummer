@@ -46,6 +46,7 @@ namespace Bummer.Client {
 			btnDelete.Enabled = !isRunning;
 			lblLastResult.Visible = !isRunning;
 			lblIsRunning.Visible = isRunning;
+			btnViewLog.Enabled = !isRunning && job.Logs.Count > 0;
 		}
 		private void UpdateNext() {
 			//string snr = null;
@@ -150,6 +151,10 @@ namespace Bummer.Client {
 			//} finally {
 			//    Enabled = true;
 			//}
+		}
+
+		private void btnViewLog_Click( object sender, EventArgs e ) {
+			new LogViewerForm( job ).ShowDialog( this );
 		}
 	}
 }

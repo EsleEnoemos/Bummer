@@ -48,19 +48,32 @@ namespace Bummer.Client {
 			lblIsRunning.Visible = isRunning;
 		}
 		private void UpdateNext() {
+			//string snr = null;
 			if( !Configuration.IsServiceRunning() ) {
-				if( !string.Equals( lblNextStart.Text, "Service is not running" ) ) {
-					lblNextStart.ForeColor = Color.Red;
-					lblNextStart.Text = "Service is not running";
-				}
-				return;
+				lblNextStart.ForeColor = Color.Red;
+				//if( !string.Equals( lblNextStart.Text, "Service is not running" ) ) {
+				//    lblNextStart.ForeColor = Color.Red;
+				//    //snr = "Service is not running";
+				//}
+			} else {
+				lblNextStart.ForeColor = SystemColors.ControlText;
 			}
-			lblNextStart.ForeColor = SystemColors.ControlText;
 			try {
 				CronExpression ce = new CronExpression( job.CronConfig );
 				DateTime? next = ce.GetNextValidTimeAfter( job.LastFinished.HasValue ? job.LastFinished.Value.ToUniversalTime() : DateTime.Now.ToUniversalTime() );
 				if( next.HasValue ) {
-					lblNextStart.Text = next.Value.ToLocalTime().ToString( "yyyy:MM:dd HH:mm:ss" );
+					string ts = next.Value.ToLocalTime().ToString( "yyyy:MM:dd HH:mm:ss" );
+					DateTime lt = next.Value.ToLocalTime();
+					if( DateTime.Now > lt ) {
+						next = ce.GetNextValidTimeAfter( DateTime.Now.ToUniversalTime() );
+						if( next.HasValue ) {
+							ts = next.Value.ToLocalTime().ToString( "yyyy:MM:dd HH:mm:ss" );
+						}
+					} 
+					//if( snr != null ) {
+					//    ts += " ({0})".FillBlanks( snr );
+					//}
+					lblNextStart.Text = ts;
 				}
 			} catch {
 			}

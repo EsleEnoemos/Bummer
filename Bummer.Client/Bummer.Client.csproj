@@ -67,6 +67,12 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdvancedCRONControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancedCRONControl.Designer.cs">
+      <DependentUpon>AdvancedCRONControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommandDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ICRONControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScheduleForm.cs">
@@ -99,8 +106,17 @@
     <Compile Include="ScheduleItemControl.Designer.cs">
       <DependentUpon>ScheduleItemControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SimpleCRONControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimpleCRONControl.Designer.cs">
+      <DependentUpon>SimpleCRONControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancedCRONControl.resx">
+      <DependentUpon>AdvancedCRONControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CommandDialog.resx">
       <DependentUpon>CommandDialog.cs</DependentUpon>
@@ -126,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleItemControl.resx">
       <DependentUpon>ScheduleItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleCRONControl.resx">
+      <DependentUpon>SimpleCRONControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

@@ -10,6 +10,8 @@ namespace Bummer.Client {
 		//private IBackupSchedule job;
 		private IBackupTarget target;
 		private Timer timer;
+		ICRONControl cronControl;
+		bool isLoaded = false;
 
 		#region internal BackupScheduleWrapper Job
 		/// <summary>
@@ -55,119 +57,30 @@ namespace Bummer.Client {
 		/// <param name="e">The <see cref="EventArgs"/> of the event.</param>
 		private void ScheduleForm_Load( object sender, EventArgs e ) {
 			tbName.Text = Job.Name;
-			CronExpression ce;
-			try {
-				ce = new CronExpression( Job.CronConfig );
-			} catch {
-				ce = new CronExpression( "* * * * * ?" );
-			}
-			//CronExpression ce = new CronExpression( "5 * * * * ?" );
-			for( int i = 0; i < 60; i++ ) {
-				ListViewItem li = lvNotSelectedSeconds.Items.Add( i < 10 ? "0{0}".FillBlanks( i ) : i.ToString() );
-				li.Tag = i.ToString();
-				if( ce.seconds.Count < 61 && ce.seconds.Contains( i ) ) {
-					li.Selected = true;
-				}
-			}
-			if( lvNotSelectedSeconds.SelectedItems.Count > 0 ) {
-				MoveListViewItems( lvNotSelectedSeconds, lvSelectedSeconds );
-			}
-			for( int i = 0; i < 60; i++ ) {
-				ListViewItem li = lvNotSelectedMinutes.Items.Add( i < 10 ? "0{0}".FillBlanks( i ) : i.ToString() );
-				li.Tag = i.ToString();
-				if( ce.minutes.Count < 61 && ce.minutes.Contains( i ) ) {
-					li.Selected = true;
-				}
-			}
-			if( lvNotSelectedMinutes.SelectedItems.Count > 0 ) {
-				MoveListViewItems( lvNotSelectedMinutes, lvSelectedMinutes );
-			}
-			for( int i = 0; i < 24; i++ ) {
-				ListViewItem li = lvNotSelectedHours.Items.Add( i < 10 ? "0{0}".FillBlanks( i ) : i.ToString() );
-				li.Tag = i.ToString();
-				if( ce.hours.Count < 25 && ce.hours.Contains( i ) ) {
-					li.Selected = true;
-				}
-			}
-			if( lvNotSelectedHours.SelectedItems.Count > 0 ) {
-				MoveListViewItems( lvNotSelectedHours, lvSelectedHours );
-			}
-			for( int i = 1; i < 32; i++ ) {
-				ListViewItem li = lvNotSelectedDates.Items.Add( i < 10 ? "0{0}".FillBlanks( i ) : i.ToString() );
-				li.Tag = i.ToString();
-				if( ce.daysOfMonth.Count < 32 && ce.daysOfMonth.Contains( i ) ) {
-					li.Selected = true;
-				}
-			}
-			if( lvNotSelectedDates.SelectedItems.Count > 0 ) {
-				MoveListViewItems( lvNotSelectedDates, lvSelectedDates );
-			}
-			Array arr = Enum.GetValues( typeof( DayOfWeek ) );
-			for( int i = 0; i < arr.Length; i++ ) {
-				DayOfWeek d = (DayOfWeek)arr.GetValue( i );
-				int iv = (int)d + 1;
-				ListViewItem li = lvNotSelectedDays.Items.Add( d.ToString() );
-				li.Tag = iv.ToString();
-				if( ce.daysOfWeek.Count > 0 && ce.daysOfWeek.Contains( iv ) ) {
-					li.Selected = true;
-				}
-			}
-			if( lvNotSelectedDays.SelectedItems.Count > 0 ) {
-				MoveListViewItems( lvNotSelectedDays, lvSelectedDays );
-			}
-			lvNotSelectedDays.ListViewItemSorter = new NumberLIComparer();
-			lvNotSelectedDays.Sort();
-
-			lvNotSelectedMonths.Items.Add( "January" ).Tag = 1.ToString();
-			lvNotSelectedMonths.Items.Add( "February" ).Tag = 2.ToString();
-			lvNotSelectedMonths.Items.Add( "Mars" ).Tag = 3.ToString();
-			lvNotSelectedMonths.Items.Add( "April" ).Tag = 4.ToString();
-			lvNotSelectedMonths.Items.Add( "May" ).Tag = 5.ToString();
-			lvNotSelectedMonths.Items.Add( "June" ).Tag = 6.ToString();
-			lvNotSelectedMonths.Items.Add( "July" ).Tag = 7.ToString();
-			lvNotSelectedMonths.Items.Add( "August" ).Tag = 8.ToString();
-			lvNotSelectedMonths.Items.Add( "September" ).Tag = 9.ToString();
-			lvNotSelectedMonths.Items.Add( "October" ).Tag = 10.ToString();
-			lvNotSelectedMonths.Items.Add( "November" ).Tag = 11.ToString();
-			lvNotSelectedMonths.Items.Add( "December" ).Tag = 12.ToString();
-			if( ce.months.Count < 13 ) {
-				for( int i = 0; i < lvNotSelectedMonths.Items.Count; i++ ) {
-					ListViewItem li = lvNotSelectedMonths.Items[ i ];
-					int m = int.Parse( li.Tag.ToString() );
-					if( ce.months.Contains( m ) ) {
-						li.Selected = true;
+			if( string.IsNullOrEmpty( Job.CronConfig ) ) {
+				SimpleCRONControl cc = new SimpleCRONControl();
+				cronControl = cc;
+				pnlCron.Controls.Add( cc );
+			} else {
+				try {
+					CronExpression ce = new CronExpression( Job.CronConfig );
+					if( ce.seconds.Count == 1 ) {
+						SimpleCRONControl cc = new SimpleCRONControl( Job.CronConfig );
+						cronControl = cc;
+						pnlCron.Controls.Add( cc );
+					} else {
+						AdvancedCRONControl cc = new AdvancedCRONControl( Job.CronConfig );
+						cronControl = cc;
+						pnlCron.Controls.Add( cc );
 					}
+				} catch {
+					SimpleCRONControl cc = new SimpleCRONControl();
+					cronControl = cc;
+					pnlCron.Controls.Add( cc );
 				}
-				MoveListViewItems( lvNotSelectedMonths, lvSelectedMonths );
 			}
-			lvNotSelectedMonths.ListViewItemSorter = new NumberLIComparer();
-			lvNotSelectedMonths.Sort();
-
-
-			for( int i = 0; i < groupBox3.Controls.Count; i++ ) {
-				Control c = groupBox3.Controls[ i ];
-				if( !(c is ListView) ) {
-					continue;
-				}
-				ListView lv = (ListView)c;
-				lv.Columns[ 0 ].Width = 150;
-			}
-
-
-			//nuInterval.Value = Job.Interval;
-			//dpStartTime.Value = new DateTime( 2000, 1, 1, Job.StartTime.Hour, Job.StartTime.Minute, 0 );
-			//arr = Enum.GetValues( typeof( SchduleIntervalTypes ) );
-			//int ind = -1;
-			//for( int i = 0; i < arr.Length; i++ ) {
-			//    SchduleIntervalTypes st = (SchduleIntervalTypes)arr.GetValue( i );
-			//    cbIntervalType.Items.Add( st );
-			//    if( st == Job.IntervalType ) {
-			//        ind = i;
-			//    }
-			//}
-			//if( ind > -1 ) {
-			//    cbIntervalType.SelectedIndex = ind;
-			//}
+			cbScheduleType.SelectedIndex = cronControl is AdvancedCRONControl ? 0 : 1;
+			cronControl.SelectionChanged += cronControl_SelectionChanged;
 			int ind = -1;
 			for( int i = 0; i < Configuration.JobPlugins.Count; i++ ) {
 				IBackupSchedule plug = Configuration.JobPlugins[ i ];
@@ -216,6 +129,11 @@ namespace Bummer.Client {
 				cbTargetType.SelectedIndex = ind;
 			}
 			UpdateNext();
+			isLoaded = true;
+		}
+
+		void cronControl_SelectionChanged( object sender, EventArgs e ) {
+			UpdateNext();
 		}
 
 		private void timer_Tick( object sender, EventArgs e ) {
@@ -223,75 +141,23 @@ namespace Bummer.Client {
 			//toolStripStatusLabel1.Text = string.Format( "Current time is: {0} (UTC), {1} (Local)", now.ToUniversalTime().ToString( "yyyy-MM-dd HH:mm:ss" ), now.ToString( "yyyy-MM-dd HH:mm:ss" ) );
 		}
 
-		private string BuildCronString() {
-			
-			List<string> cron = new List<string>();
-			if( lvSelectedSeconds.Items.Count > 0 ) {
-				List<string> tmp = new List<string>();
-				foreach( ListViewItem li in lvSelectedSeconds.Items ) {
-					tmp.Add( li.Tag.ToString() );
-				}
-				cron.Add( tmp.ToString( "," ) );
-			} else {
-				cron.Add( "*" );
-			}
-			if( lvSelectedMinutes.Items.Count > 0 ) {
-				List<string> tmp = new List<string>();
-				foreach( ListViewItem li in lvSelectedMinutes.Items ) {
-					tmp.Add( li.Tag.ToString() );
-				}
-				cron.Add( tmp.ToString( "," ) );
-			} else {
-				cron.Add( "*" );
-			}
-			if( lvSelectedHours.Items.Count > 0 ) {
-				List<string> tmp = new List<string>();
-				foreach( ListViewItem li in lvSelectedHours.Items ) {
-					tmp.Add( li.Tag.ToString() );
-				}
-				cron.Add( tmp.ToString( "," ) );
-			} else {
-				cron.Add( "*" );
-			}
-			if( lvSelectedDates.Items.Count > 0 ) {
-				List<string> tmp = new List<string>();
-				foreach( ListViewItem li in lvSelectedDates.Items ) {
-					tmp.Add( li.Tag.ToString() );
-				}
-				cron.Add( tmp.ToString( "," ) );
-			} else {
-				cron.Add( lvSelectedDays.Items.Count > 0 ? "?" : "*" );
-			}
-
-			if( lvSelectedMonths.Items.Count > 0 ) {
-				List<string> tmp = new List<string>();
-				foreach( ListViewItem li in lvSelectedMonths.Items ) {
-					tmp.Add( li.Tag.ToString() );
-				}
-				cron.Add( tmp.ToString( "," ) );
-			} else {
-				cron.Add( "*" );
-			}
-			if( lvSelectedDays.Items.Count > 0 ) {
-				List<string> tmp = new List<string>();
-				foreach( ListViewItem li in lvSelectedDays.Items ) {
-					tmp.Add( li.Tag.ToString() );
-				}
-				cron.Add( tmp.ToString( "," ) );
-			} else {
-				cron.Add( "?" );
-			}
-			return cron.ToString( " " );
-		}
 		private void UpdateNext() {
 			lblNextStart.Text = "Never";
 			try {
-				string cs = BuildCronString();
+				string cs = cronControl.CRONString;
 				CronExpression ce = new CronExpression( cs );
 				DateTime? next = ce.GetNextValidTimeAfter( Job.LastFinished.HasValue ? Job.LastFinished.Value.ToUniversalTime() : DateTime.Now.ToUniversalTime() );
 				if( next.HasValue ) {
 					//lblNextStart.Text = string.Format( "{0} (UTC), {1} (Local)", next.Value.ToString( "yyyy-MM-dd HH:mm:ss" ), next.Value.ToLocalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
-					lblNextStart.Text = string.Format( "{0}", next.Value.ToLocalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
+					DateTime lt = next.Value.ToLocalTime();
+					if( DateTime.Now > lt ) {
+						next = ce.GetNextValidTimeAfter( DateTime.Now.ToUniversalTime() );
+						if( next.HasValue ) {
+							lblNextStart.Text = string.Format( "{0}", next.Value.ToLocalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
+						}
+					} else {
+						lblNextStart.Text = string.Format( "{0}", next.Value.ToLocalTime().ToString( "yyyy-MM-dd HH:mm:ss" ) );
+					}
 				}
 			} catch {}
 		}
@@ -349,8 +215,9 @@ namespace Bummer.Client {
 				timer.Dispose();
 				return;
 			}
-			string cronString = BuildCronString();
+			string cronString;
 			try {
+				cronString = cronControl.CRONString;
 				CronExpression ce = new CronExpression( cronString );
 				DateTime? next = ce.GetNextValidTimeAfter( DateTime.Now );
 				if( !next.HasValue ) {
@@ -741,18 +608,6 @@ namespace Bummer.Client {
 		}
 		#endregion
 
-		private void MoveListViewItems( ListView from, ListView to ) {
-			to.ListViewItemSorter = null;
-			while( from.SelectedItems.Count > 0 ) {
-				ListViewItem li = from.SelectedItems[ 0 ];
-				ListViewItem newLi = to.Items.Add( li.Text ); //.Tag = li.Tag;
-				newLi.Tag = li.Tag;
-				from.Items.RemoveAt( li.Index );
-			}
-			to.ListViewItemSorter = new NumberLIComparer();
-			to.Sort();
-		}
-
 		private void cbTargetType_SelectedIndexChanged( object sender, EventArgs e ) {
 			TargetWrapper tw = cbTargetType.SelectedItem as TargetWrapper;
 			pnlTargetConfig.Controls.Clear();
@@ -765,42 +620,29 @@ namespace Bummer.Client {
 			target.InitiateConfiguration( pnlTargetConfig, Job.TargetConfiguration );
 		}
 
-		private void MoveItemsClick( object sender, EventArgs e ) {
-			Button btn = sender as Button;
-			if( btn == null ) {
-				return;
-			}
-			if( btn.Tag == null ) {
-				return;
-			}
-			string[] lists = btn.Tag.ToString().Split( '|' );
-			if( lists.Length != 2 ) {
-				return;
-			}
-			ListView from = groupBox3.Controls[ lists[ 0 ] ] as ListView;
-			ListView to = groupBox3.Controls[ lists[ 1 ] ] as ListView;
-			MoveListViewItems( from, to );
-			UpdateNext();
-		}
-
-		private class NumberLIComparer : IComparer {
-			public int Compare( object x, object y ) {
-				if( x != null && y != null && x is ListViewItem && y is ListViewItem ) {
-					return Compare( (ListViewItem)x, (ListViewItem)y );
-				}
-				return 0;
-			}
-			private int Compare( ListViewItem x, ListViewItem y ) {
-				int xi;
-				int.TryParse( x.Tag as string, out xi );
-				int yi;
-				int.TryParse( y.Tag as string, out yi );
-				return xi.CompareTo( yi );
-			}
-		}
 
 		private void lblNextStart_Click( object sender, EventArgs e ) {
-			(new CronNextForm( BuildCronString(), Job.LastFinished )).ShowDialog( this );
+			(new CronNextForm( cronControl.CRONString, Job.LastFinished )).ShowDialog( this );
+		}
+
+		private void cbScheduleType_SelectedIndexChanged( object sender, EventArgs e ) {
+			if( !isLoaded ) {
+				return;
+			}
+			string cs = Job.CronConfig;
+			if( string.IsNullOrEmpty( cs ) ) {
+				cs = cronControl.CRONString;
+			}
+			cronControl.SelectionChanged -= cronControl_SelectionChanged;
+			((Control)cronControl).Dispose();
+			if( cronControl is AdvancedCRONControl ) {
+				cronControl = new SimpleCRONControl( cs );
+			} else {
+				cronControl = new AdvancedCRONControl( cs );
+			}
+			cronControl.SelectionChanged += cronControl_SelectionChanged;
+			pnlCron.Controls.Clear();
+			pnlCron.Controls.Add( (Control)cronControl );
 		}
 	}
 }

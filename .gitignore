@@ -54,3 +54,4 @@ QTest/obj/*
 Bummer.ServiceInstaller/bin/*
 Bummer.ServiceInstaller/bin/Debug/Interop.IWshRuntimeLibrary.dll
 Bummer.ServiceInstaller/bin/*
+Bummer.ServiceInstaller/bin/Debug/Interop.*

@@ -46,7 +46,7 @@ namespace Bummer.Client {
 			btnDelete.Enabled = !isRunning;
 			lblLastResult.Visible = !isRunning;
 			lblIsRunning.Visible = isRunning;
-			btnViewLog.Enabled = !isRunning && job.Logs.Count > 0;
+			btnViewLog.Enabled = job.Logs.Count > 0;
 		}
 		private void UpdateNext() {
 			//string snr = null;

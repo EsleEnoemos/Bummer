@@ -20,6 +20,7 @@ namespace Bummer.Client {
 				lvc.Dock = DockStyle.Top;
 				panel1.Controls.Add( lvc );
 			}
+			toolStripStatusLabel1.Text = "{0} items in log".FillBlanks( job.Logs.Count );
 		}
 	}
 }

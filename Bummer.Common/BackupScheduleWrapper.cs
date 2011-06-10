@@ -409,7 +409,7 @@ Schedule_ID = @Schedule_ID";
 				}
 			} catch( Exception ex ) {
 				success = false;
-				message = ex.Message;
+				message = "{0}{1}{2}".FillBlanks( ex.Message, Environment.NewLine, ex.StackTrace );
 			} finally {
 				Target.Dispose();
 			}

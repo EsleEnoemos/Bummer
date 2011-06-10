@@ -42,6 +42,7 @@ namespace Bummer.Schedules.Controls {
 			tbRemoteTempDir.Text = Config.RemoteTempDir;
 			cbCompress.Checked = Config.CompressFiles;
 			cbAddDateToFilename.Checked = Config.AddDateToFilename;
+			tbLocalTempDir.Text = Config.LocalTempDirectory;
 			RefreshDatabases();
 		}
 		#endregion
@@ -70,6 +71,10 @@ namespace Bummer.Schedules.Controls {
 					throw new Exception( "You have to specify a remote TEMP-directory" );
 				}
 				config.RemoteTempDir = tbRemoteTempDir.Text;
+			}
+			config.LocalTempDirectory = tbLocalTempDir.Text;
+			if( string.IsNullOrEmpty( config.LocalTempDirectory ) ) {
+				throw new Exception( "You have to specify a local TEMP-directory" );
 			}
 			config.Databases = new List<string>();
 			foreach( string db in cblDatabases.CheckedItems ) {

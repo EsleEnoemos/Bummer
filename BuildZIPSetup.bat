@@ -1,0 +1,3 @@
+DEL "D:\GIT\Bummer\Bummer.zip"
+"D:\GIT\Bummer\References\Zipper.exe" -p=ClientAndService "D:\GIT\Bummer\Bummer.zip" "D:\GIT\Bummer\Bummer.Client\bin\Debug\Bummer.Client.exe" "D:\GIT\Bummer\Bummer.Client\bin\Debug\Bummer.Client.exe.config" "D:\GIT\Bummer\Bummer.Client\bin\Debug\Bummer.Common.dll" "D:\GIT\Bummer\Bummer.Client\bin\Debug\Bummer.ScheduleRunner.exe" "D:\GIT\Bummer\Bummer.Service\bin\Debug\Bummer.Service.exe" "D:\GIT\Bummer\Bummer.Service\bin\Debug\Bummer.Service.exe.config" "D:\GIT\Bummer\Bummer.Service\bin\Debug\Bummer.Service.exe.config"
+"D:\GIT\Bummer\References\Zipper.exe" -p=Plugins "D:\GIT\Bummer\Bummer.zip" "D:\GIT\Bummer\Bummer.Schedules\bin\Debug\Bummer.Schedules.dll" "D:\GIT\Bummer\Bummer.Schedules\bin\Debug\Bummer.Schedules.pdb"

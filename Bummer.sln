@@ -21,6 +21,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicAuth", "BasicAuth\Basi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QTest", "QTest\QTest.csproj", "{56C5351C-8FF8-4F3E-A0C9-57068F584227}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stuff", "Stuff", "{32C2E1EE-DD6E-467C-9A04-B64D39B1F456}"
+	ProjectSection(SolutionItems) = preProject
+		BuildZIPSetup.bat = BuildZIPSetup.bat
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zipper", "Zipper\Zipper.csproj", "{4E5273C5-D830-41CD-AA1A-64C48301622B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -280,6 +287,31 @@ Global
 		{56C5351C-8FF8-4F3E-A0C9-57068F584227}.SingleImage|Mixed Platforms.Build.0 = Release|x86
 		{56C5351C-8FF8-4F3E-A0C9-57068F584227}.SingleImage|x86.ActiveCfg = Release|x86
 		{56C5351C-8FF8-4F3E-A0C9-57068F584227}.SingleImage|x86.Build.0 = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.CD_ROM|Any CPU.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.CD_ROM|Mixed Platforms.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.CD_ROM|Mixed Platforms.Build.0 = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.CD_ROM|x86.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.CD_ROM|x86.Build.0 = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Debug|x86.ActiveCfg = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Debug|x86.Build.0 = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.DVD-5|Any CPU.ActiveCfg = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.DVD-5|Mixed Platforms.ActiveCfg = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.DVD-5|Mixed Platforms.Build.0 = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.DVD-5|x86.ActiveCfg = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.DVD-5|x86.Build.0 = Debug|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Release|Any CPU.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Release|Mixed Platforms.Build.0 = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Release|x86.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.Release|x86.Build.0 = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.SingleImage|Any CPU.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.SingleImage|Mixed Platforms.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.SingleImage|Mixed Platforms.Build.0 = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.SingleImage|x86.ActiveCfg = Release|x86
+		{4E5273C5-D830-41CD-AA1A-64C48301622B}.SingleImage|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1084,7 +1084,11 @@ namespace Bummer.Common {
 		/// <param name="filename"></param>
 		/// <returns></returns>
 		internal static DBCommand Create( string filename ) {
-			return Create( filename, CommandType.Text );
+			try {
+				return Create( filename, CommandType.Text );
+			} catch {
+				return null;
+			}
 		}
 		#endregion
 		#region internal static DBCommand Create( string filename, CommandType commandType )

@@ -205,7 +205,11 @@ namespace Bummer.ServiceInstaller {
 					} else {
 						Log( "EXE does not exist" );
 					}
-					Log( "After shortcut" );
+					string systrayEXE = string.Format( "{0}\\Bummer.SysTray.exe", installDir.FullName );
+					if( File.Exists( systrayEXE ) ) {
+						CreateAutostartShortcut( new FileInfo( systrayEXE ), "BUMmer System Tray Icon", "BUMmer System Tray Icon for easy access to BUMmer configuration, information, etc." );
+					}
+					Log( "After shortcuts" );
 					if( startServiceProcess != null ) {
 						// This will create the database file before the service kicks in and creates it.
 						// Since the service runns as Network Service, there might be problems with file permissions for the user when adding schedules
@@ -215,6 +219,9 @@ namespace Bummer.ServiceInstaller {
 						Console.WriteLine( "Starting service..." );
 						startServiceProcess.Start();
 						startServiceProcess.WaitForExit();
+					}
+					if( File.Exists( systrayEXE ) ) {
+						Process.Start( systrayEXE );
 					}
 				} catch( Exception ex ) {
 					Log( "Install error: " + ex.Message );
@@ -244,6 +251,13 @@ namespace Bummer.ServiceInstaller {
 						p.Start();
 						p.WaitForExit();
 					}
+					Process[] sysTrayProcess = Process.GetProcessesByName( "Bummer.SysTray" );
+					if( sysTrayProcess.Length > 0 ) {
+						try {
+							Console.WriteLine( "Stopping system tray icon..." );
+							sysTrayProcess[ 0 ].Kill();
+						} catch {}
+					}
 					SetTitle( "Removing plugins" );
 					DirectoryInfo pluginsDir = new DirectoryInfo( DataDirectory.FullName + "\\Plugins" );
 					if( Directory.Exists( pluginsDir.FullName ) ) {
@@ -257,6 +271,7 @@ namespace Bummer.ServiceInstaller {
 						DataDirectory.Delete( true );
 					}
 					RemoveShortcut( "Someone Else", "BUMmer Client"  );
+					RemoveAutostartShortcut( "BUMmer System Tray Icon" );
 				} catch( Exception ex ) {
 					Log( "Remove error: " + ex.Message );
 				}
@@ -285,6 +300,52 @@ namespace Bummer.ServiceInstaller {
 				}
 			}
 			#endregion
+			#region private void CreateAutostartShortcut( FileInfo target, string shortCutName, string description )
+			/// <summary>
+			/// 
+			/// </summary>
+			/// <param name="target"></param>
+			/// <param name="shortCutName"></param>
+			/// <param name="description"></param>
+			private void CreateAutostartShortcut( FileInfo target, string shortCutName, string description ) {
+				Log( "Start CreateAutostartShortcut" );
+				try {
+					DirectoryInfo startMenu = new DirectoryInfo( Environment.GetFolderPath( Environment.SpecialFolder.Startup ) );
+					Log( "CreateAutostartShortcut startmenu " + startMenu.FullName );
+					if( !Directory.Exists( startMenu.FullName ) ) {
+						Log( "CreateShortcut no startmenu, aborting" );
+						return;
+					}
+					DirectoryInfo shortCutFolder = startMenu;
+					Log( "CreateShortcut shortcut folder " + shortCutFolder.FullName );
+					if( !Directory.Exists( shortCutFolder.FullName ) ) {
+						Log( "CreateShortcut creating folder " + shortCutFolder.FullName );
+						Directory.CreateDirectory( shortCutFolder.FullName );
+					}
+					FileInfo lnk = new FileInfo( string.Format( "{0}\\{1}", shortCutFolder.FullName, shortCutName ) );
+					if( !string.Equals( ".lnk", lnk.Extension, StringComparison.OrdinalIgnoreCase ) ) {
+						lnk = new FileInfo( string.Format( "{0}\\{1}.lnk", shortCutFolder.FullName, shortCutName ) );
+					}
+					Log( "CreateShortcut link " + lnk.FullName );
+					if( File.Exists( lnk.FullName ) ) {
+						File.Delete( lnk.FullName );
+					}
+					Log( "CreateShortcut before shell" );
+					WshShellClass shell = new WshShellClass();
+					Log( "CreateShortcut before creating shortcut object" );
+					IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut( lnk.FullName );
+					Log( "CreateShortcut before setting shortcut properties" );
+					shortcut.TargetPath = target.FullName;
+					shortcut.Description = description;
+					shortcut.IconLocation = string.Format( "{0},0", target.FullName );
+					Log( "CreateShortcut before save" );
+					shortcut.Save();
+				} catch( Exception ex ) {
+					Log( "Error creating shortcut: " + ex.Message );
+				}
+				Log( "End CreateShortcut" );
+			}
+			#endregion
 			#region private void CreateShortcut( FileInfo target, string folderName, string shortCutName, string description )
 			/// <summary>
 			/// 
@@ -294,7 +355,6 @@ namespace Bummer.ServiceInstaller {
 			/// <param name="shortCutName"></param>
 			/// <param name="description"></param>
 			private void CreateShortcut( FileInfo target, string folderName, string shortCutName, string description ) {
-				
 				Log( "Start CreateShortcut" );
 				try {
 					DirectoryInfo startMenu = new DirectoryInfo( Environment.GetFolderPath( Environment.SpecialFolder.StartMenu ) );
@@ -365,6 +425,29 @@ namespace Bummer.ServiceInstaller {
 					return;
 				}
 				shortCutFolder.Delete( true );
+			}
+			#endregion
+			#region private void RemoveAutostartShortcut( string shortCutName )
+			/// <summary>
+			/// 
+			/// </summary>
+			/// <param name="shortCutName"></param>
+			private void RemoveAutostartShortcut( string shortCutName ) {
+				DirectoryInfo startMenu = new DirectoryInfo( Environment.GetFolderPath( Environment.SpecialFolder.Startup ) );
+				if( !Directory.Exists( startMenu.FullName ) ) {
+					return;
+				}
+				DirectoryInfo shortCutFolder = startMenu;
+				if( !Directory.Exists( shortCutFolder.FullName ) ) {
+					return;
+				}
+				FileInfo lnk = new FileInfo( string.Format( "{0}\\{1}", shortCutFolder.FullName, shortCutName ) );
+				if( !string.Equals( ".lnk", lnk.Extension, StringComparison.OrdinalIgnoreCase ) ) {
+					lnk = new FileInfo( string.Format( "{0}\\{1}.lnk", shortCutFolder.FullName, shortCutName ) );
+				}
+				if( File.Exists( lnk.FullName ) ) {
+					File.Delete( lnk.FullName );
+				}
 			}
 			#endregion
 		}

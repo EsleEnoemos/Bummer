@@ -46,6 +46,12 @@
         "Entry"
         {
         "MsmKey" = "8:_446E8214C17D192FC18F6136BA6E1EDB"
+        "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_446E8214C17D192FC18F6136BA6E1EDB"
         "OwnerKey" = "8:_CFBD9B01D7894DA4A17172BC66C49A6E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -82,6 +88,12 @@
         "Entry"
         {
         "MsmKey" = "8:_7D09101B4FE9610FAA1FEB09443AA6F5"
+        "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7D09101B4FE9610FAA1FEB09443AA6F5"
         "OwnerKey" = "8:_CA55C9FA0C304858AE096FD8DB3DDCBC"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -95,6 +107,12 @@
         {
         "MsmKey" = "8:_B30B99D261A1E679B236BD554AA671E2"
         "OwnerKey" = "8:_3FA83E7AF41A48C4A8ACB63EE6AC2DD4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -119,6 +137,12 @@
         {
         "MsmKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
         "OwnerKey" = "8:_3FA83E7AF41A48C4A8ACB63EE6AC2DD4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
+        "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -155,6 +179,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9BB1696481DF40E8BD6206E6D518C3D1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -655,7 +685,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BUMmer"
         "ProductCode" = "8:{B29CA581-CF45-4F88-85EE-F73A049CE386}"
-        "PackageCode" = "8:{7BCE4C0D-7D6C-4630-8DBA-1E10195B4140}"
+        "PackageCode" = "8:{7DB4F856-2169-46B4-85C7-2A1D80D56D05}"
         "UpgradeCode" = "8:{C0AE34FC-D3B9-49A4-AAA3-CF3500D89D00}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1225,6 +1255,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{65366FCE-13B4-476C-85FF-927714CFDB74}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C0C4970D53C74FFDA440086CBA452C9E"
+            {
+            "SourcePath" = "8:..\\Bummer.SysTray\\obj\\x86\\Debug\\Bummer.SysTray.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A7932C2766294E28BBC265F8B9B2637F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{982B9E11-310A-46AE-B99B-003359F7DAD9}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

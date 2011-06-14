@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle( "Bummer.Common" )]
+[assembly: AssemblyTitle( "Bummer.SysTray" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "Microsoft" )]
-[assembly: AssemblyProduct( "Bummer.Common" )]
+[assembly: AssemblyProduct( "Bummer.SysTray" )]
 [assembly: AssemblyCopyright( "Copyright © Microsoft 2011" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible( false )]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid( "ec357c21-e160-4e07-aa7b-ed4a27aae160" )]
+[assembly: Guid( "5a4ff213-be0d-406d-8fb2-4d31eb54fd13" )]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -34,7 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion( "1.0.0.0" )]
 [assembly: AssemblyFileVersion( "1.0.0.0" )]
-[assembly: InternalsVisibleTo( "Bummer.Client" )]
-[assembly: InternalsVisibleTo( "Bummer.Service" )]
-[assembly: InternalsVisibleTo( "Bummer.ScheduleRunner" )]
-[assembly: InternalsVisibleTo( "Bummer.SysTray" )]

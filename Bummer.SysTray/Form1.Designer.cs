@@ -34,11 +34,8 @@
 			this.notifyIcon1.BalloonTipText = "Det var ju roligt";
 			this.notifyIcon1.BalloonTipTitle = "Hej hopp i skogen";
 			this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+			this.notifyIcon1.Text = "BUMmer";
 			this.notifyIcon1.Visible = true;
-			this.notifyIcon1.BalloonTipClicked += new System.EventHandler(this.notifyIcon1_BalloonTipClicked);
-			this.notifyIcon1.BalloonTipClosed += new System.EventHandler(this.notifyIcon1_BalloonTipClosed);
-			this.notifyIcon1.BalloonTipShown += new System.EventHandler(this.notifyIcon1_BalloonTipShown);
-			this.notifyIcon1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseMove);
 			// 
 			// Form1
 			// 

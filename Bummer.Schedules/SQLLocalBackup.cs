@@ -26,7 +26,15 @@ namespace Bummer.Schedules {
 		/// <param name="Adatabasename"></param>
 		public SQLLocalBackup( string Aaddress, string Auser, string Apass, string Adatabasename ) {
 			try {
-				con = new SqlConnection( String.Format( "Data Source={0};Initial Catalog={1};User Id={2};Password={3};", Aaddress, Adatabasename, Auser, Apass ) );
+				SqlConnectionStringBuilder cb = new SqlConnectionStringBuilder();
+				cb.DataSource = Aaddress;
+				cb.InitialCatalog = Adatabasename;
+				cb.UserID = Auser;
+				cb.Password = Apass;
+				cb.ConnectTimeout = 240;
+				//con = new SqlConnection( String.Format( "Data Source={0};Initial Catalog={1};User Id={2};Password={3};", Aaddress, Adatabasename, Auser, Apass ) );
+				con = new SqlConnection( cb.ToString() );
+	
 				con.Open();
 				_address = Aaddress;
 				_user = Auser;

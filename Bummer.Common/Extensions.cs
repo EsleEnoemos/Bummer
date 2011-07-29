@@ -101,5 +101,8 @@ namespace Bummer.Common {
 			}
 		}
 		#endregion
+		public static string IfNotNullElse( this string ths, string otherwise ) {
+			return string.IsNullOrEmpty( ths ) ? otherwise : ths;
+		}
 	}
 }

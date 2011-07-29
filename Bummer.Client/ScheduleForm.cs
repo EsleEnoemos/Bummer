@@ -18,7 +18,7 @@ namespace Bummer.Client {
 		/// Gets the Job of the ScheduleForm
 		/// </summary>
 		/// <value></value>
-		internal BackupScheduleWrapper Job {
+		public BackupScheduleWrapper Job {
 			get {
 				return _job;
 			}
@@ -57,27 +57,14 @@ namespace Bummer.Client {
 		/// <param name="e">The <see cref="EventArgs"/> of the event.</param>
 		private void ScheduleForm_Load( object sender, EventArgs e ) {
 			tbName.Text = Job.Name;
-			if( string.IsNullOrEmpty( Job.CronConfig ) ) {
+			try {
+				AdvancedCRONControl cc = new AdvancedCRONControl( Job.CronConfig );
+				cronControl = cc;
+				pnlCron.Controls.Add( cc );
+			} catch {
 				SimpleCRONControl cc = new SimpleCRONControl();
 				cronControl = cc;
 				pnlCron.Controls.Add( cc );
-			} else {
-				try {
-					CronExpression ce = new CronExpression( Job.CronConfig );
-					if( ce.seconds.Count == 1 ) {
-						SimpleCRONControl cc = new SimpleCRONControl( Job.CronConfig );
-						cronControl = cc;
-						pnlCron.Controls.Add( cc );
-					} else {
-						AdvancedCRONControl cc = new AdvancedCRONControl( Job.CronConfig );
-						cronControl = cc;
-						pnlCron.Controls.Add( cc );
-					}
-				} catch {
-					SimpleCRONControl cc = new SimpleCRONControl();
-					cronControl = cc;
-					pnlCron.Controls.Add( cc );
-				}
 			}
 			cbScheduleType.SelectedIndex = cronControl is AdvancedCRONControl ? 0 : 1;
 			cronControl.SelectionChanged += cronControl_SelectionChanged;

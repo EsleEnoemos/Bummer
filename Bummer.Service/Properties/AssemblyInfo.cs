@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle( "Bummer.Service" )]
-[assembly: AssemblyDescription( "" )]
+[assembly: AssemblyDescription( "Service for running BUMmer schedules" )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "Microsoft" )]
+[assembly: AssemblyCompany( "Someone Else Inc." )]
 [assembly: AssemblyProduct( "Bummer.Service" )]
-[assembly: AssemblyCopyright( "Copyright © Microsoft 2011" )]
+[assembly: AssemblyCopyright( "Copyright © Someone Else 2011" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 

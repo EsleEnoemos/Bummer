@@ -137,6 +137,7 @@
 			this.textBox1.Size = new System.Drawing.Size(331, 102);
 			this.textBox1.TabIndex = 9;
 			this.textBox1.TabStop = false;
+			this.textBox1.WordWrap = false;
 			// 
 			// lblIsRunning
 			// 

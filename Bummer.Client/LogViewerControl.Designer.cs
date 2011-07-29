@@ -24,7 +24,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -36,27 +36,26 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "label1";
 			// 
-			// textBox1
+			// label2
 			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(123, 1);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.ReadOnly = true;
-			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBox1.Size = new System.Drawing.Size(443, 149);
-			this.textBox1.TabIndex = 1;
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(137, 4);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(31, 13);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Entry";
 			// 
 			// LogViewerControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.textBox1);
+			this.AutoScroll = true;
+			this.AutoSize = true;
+			this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Name = "LogViewerControl";
-			this.Size = new System.Drawing.Size(569, 150);
+			this.Size = new System.Drawing.Size(567, 51);
 			this.Load += new System.EventHandler(this.LogViewerControl_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -66,6 +65,6 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Label label2;
 	}
 }

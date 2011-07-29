@@ -37,6 +37,9 @@
     <ApplicationIcon>Drive-Backup.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Quartz">
+      <HintPath>..\References\Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -81,6 +84,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bummer.Client\Bummer.Client.csproj">
+      <Project>{D4FE840E-14C9-4EBC-AEAF-99AF526769A6}</Project>
+      <Name>Bummer.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bummer.Common\Bummer.Common.csproj">
       <Project>{23120D68-66AE-4165-B345-0A4A2326A0E9}</Project>
       <Name>Bummer.Common</Name>

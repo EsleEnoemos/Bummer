@@ -32,6 +32,8 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.scheduleTab = new System.Windows.Forms.TabPage();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.cbScheduleType = new System.Windows.Forms.ComboBox();
+			this.pnlCron = new System.Windows.Forms.Panel();
 			this.lblNextStart = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.jobTab = new System.Windows.Forms.TabPage();
@@ -69,8 +71,6 @@
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-			this.pnlCron = new System.Windows.Forms.Panel();
-			this.cbScheduleType = new System.Windows.Forms.ComboBox();
 			this.tabControl1.SuspendLayout();
 			this.scheduleTab.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -165,6 +165,30 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Repetition";
 			// 
+			// cbScheduleType
+			// 
+			this.cbScheduleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbScheduleType.FormattingEnabled = true;
+			this.cbScheduleType.Items.AddRange(new object[] {
+            "Advanced scheduing",
+            "Simple scheduling"});
+			this.cbScheduleType.Location = new System.Drawing.Point(6, 441);
+			this.cbScheduleType.Name = "cbScheduleType";
+			this.cbScheduleType.Size = new System.Drawing.Size(196, 21);
+			this.cbScheduleType.TabIndex = 43;
+			this.cbScheduleType.SelectedIndexChanged += new System.EventHandler(this.cbScheduleType_SelectedIndexChanged);
+			// 
+			// pnlCron
+			// 
+			this.pnlCron.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnlCron.BackColor = System.Drawing.Color.Transparent;
+			this.pnlCron.Location = new System.Drawing.Point(6, 13);
+			this.pnlCron.Name = "pnlCron";
+			this.pnlCron.Size = new System.Drawing.Size(580, 422);
+			this.pnlCron.TabIndex = 42;
+			// 
 			// lblNextStart
 			// 
 			this.lblNextStart.AutoSize = true;
@@ -195,7 +219,7 @@
 			this.jobTab.Controls.Add(this.label2);
 			this.jobTab.Location = new System.Drawing.Point(4, 22);
 			this.jobTab.Name = "jobTab";
-			this.jobTab.Size = new System.Drawing.Size(616, 532);
+			this.jobTab.Size = new System.Drawing.Size(616, 563);
 			this.jobTab.TabIndex = 2;
 			this.jobTab.Text = "Job";
 			this.jobTab.UseVisualStyleBackColor = true;
@@ -255,7 +279,7 @@
 			this.tagetTab.Controls.Add(this.label5);
 			this.tagetTab.Location = new System.Drawing.Point(4, 22);
 			this.tagetTab.Name = "tagetTab";
-			this.tagetTab.Size = new System.Drawing.Size(616, 532);
+			this.tagetTab.Size = new System.Drawing.Size(616, 563);
 			this.tagetTab.TabIndex = 3;
 			this.tagetTab.Text = "Taget";
 			this.tagetTab.UseVisualStyleBackColor = true;
@@ -317,7 +341,7 @@
 			this.prePostCommandTab.Location = new System.Drawing.Point(4, 22);
 			this.prePostCommandTab.Name = "prePostCommandTab";
 			this.prePostCommandTab.Padding = new System.Windows.Forms.Padding(3);
-			this.prePostCommandTab.Size = new System.Drawing.Size(616, 532);
+			this.prePostCommandTab.Size = new System.Drawing.Size(616, 563);
 			this.prePostCommandTab.TabIndex = 1;
 			this.prePostCommandTab.Text = "Pre- post commands";
 			this.prePostCommandTab.UseVisualStyleBackColor = true;
@@ -577,30 +601,6 @@
 			this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
 			this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
 			// 
-			// pnlCron
-			// 
-			this.pnlCron.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pnlCron.BackColor = System.Drawing.Color.Transparent;
-			this.pnlCron.Location = new System.Drawing.Point(6, 13);
-			this.pnlCron.Name = "pnlCron";
-			this.pnlCron.Size = new System.Drawing.Size(580, 422);
-			this.pnlCron.TabIndex = 42;
-			// 
-			// cbScheduleType
-			// 
-			this.cbScheduleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbScheduleType.FormattingEnabled = true;
-			this.cbScheduleType.Items.AddRange(new object[] {
-            "Advanced scheduing",
-            "Simple scheduling"});
-			this.cbScheduleType.Location = new System.Drawing.Point(6, 441);
-			this.cbScheduleType.Name = "cbScheduleType";
-			this.cbScheduleType.Size = new System.Drawing.Size(196, 21);
-			this.cbScheduleType.TabIndex = 43;
-			this.cbScheduleType.SelectedIndexChanged += new System.EventHandler(this.cbScheduleType_SelectedIndexChanged);
-			// 
 			// ScheduleForm
 			// 
 			this.AcceptButton = this.btnSave;
@@ -612,11 +612,12 @@
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnSave);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(640, 653);
+			this.MinimumSize = new System.Drawing.Size(640, 660);
 			this.Name = "ScheduleForm";
 			this.ShowInTaskbar = false;
-			this.Text = "ScheduleForm";
+			this.Text = "Schedule Settings";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScheduleForm_FormClosing);
 			this.Load += new System.EventHandler(this.ScheduleForm_Load);
 			this.tabControl1.ResumeLayout(false);

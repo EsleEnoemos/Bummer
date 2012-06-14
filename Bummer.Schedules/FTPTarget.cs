@@ -13,6 +13,7 @@ namespace Bummer.Schedules {
 		private FTPConfig config;
 		private FTPConfigSelector gui;
 		private Hashtable existingPaths = new Hashtable();
+		private const int MAX_RETRIES = 3;
 
 		public string Name {
 			get {
@@ -77,65 +78,80 @@ Are you sure you want to continue?", "Continue?",MessageBoxButtons.YesNo, Messag
 		/// <summary>
 		/// 
 		/// </summary>
+		/// <remarks>
+		///		2012-06-14, Jakob Adolfsson, added a retry-loop if an exception occures.
+		/// </remarks>
 		/// <param name="file"></param>
 		/// <param name="relativePath"></param>
 		public void Store( FileInfo file, string relativePath ) {
-			if( !string.IsNullOrEmpty( relativePath ) && relativePath.Contains( "\\" ) ) {
-				relativePath = relativePath.Replace( "\\", "/" );
-			}
-			string url = config.Server;
-			if( !url.Contains( "://" ) ) {
-				url = "ftp://{0}".FillBlanks( url );
-			}
-			url = "{0}:{1}".FillBlanks( url, config.Port );
+			int retries = 0;
+			while( retries < 3 ) {
+				retries++;
+				try {
+					if( !string.IsNullOrEmpty( relativePath ) && relativePath.Contains( "\\" ) ) {
+						relativePath = relativePath.Replace( "\\", "/" );
+					}
+					string url = config.Server;
+					if( !url.Contains( "://" ) ) {
+						url = "ftp://{0}".FillBlanks( url );
+					}
+					url = "{0}:{1}".FillBlanks( url, config.Port );
 
-			if( !string.IsNullOrEmpty( config.RemoteDirectory ) ) {
-				string rd = config.RemoteDirectory;
-				if( !rd.StartsWith( "/" ) ) {
-					rd = "/{0}".FillBlanks( rd );
-				}
-				url = "{0}{1}".FillBlanks( url, rd );
-			}
+					if( !string.IsNullOrEmpty( config.RemoteDirectory ) ) {
+						string rd = config.RemoteDirectory;
+						if( !rd.StartsWith( "/" ) ) {
+							rd = "/{0}".FillBlanks( rd );
+						}
+						url = "{0}{1}".FillBlanks( url, rd );
+					}
 
-			if( !string.IsNullOrEmpty( relativePath ) ) {
-				string rd = relativePath;
-				if( !rd.StartsWith( "/" ) ) {
-					rd = "/{0}".FillBlanks( rd );
+					if( !string.IsNullOrEmpty( relativePath ) ) {
+						string rd = relativePath;
+						if( !rd.StartsWith( "/" ) ) {
+							rd = "/{0}".FillBlanks( rd );
+						}
+						url = "{0}{1}".FillBlanks( url, rd );
+					}
+					if( !url.EndsWith( "/" ) ) {
+						url = "{0}/".FillBlanks( url );
+					}
+					CheckFTPPath( url );
+					url = "{0}{1}".FillBlanks( url, file.Name );
+					FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create( url );
+					req.Credentials = new NetworkCredential( config.Username, config.Password );
+					req.KeepAlive = false;
+					req.Method = WebRequestMethods.Ftp.UploadFile;
+					req.UseBinary = true;
+					req.ContentLength = file.Length;
+					req.UsePassive = config.Passive;
+					req.EnableSsl = config.UseSSL;
+					if( config.UseSSL && config.IgnoreSSLErrors ) {
+						ServicePointManager.ServerCertificateValidationCallback = ( sender, certificate, chain, policyErrors ) => true;
+					}
+					const int buffSize = 1024*1024;
+					byte[] bytes = new byte[buffSize];
+					Stream outStream = req.GetRequestStream();
+					if( outStream == null ) {
+						throw new Exception( "Unable to upload file to FTP-server" );
+					}
+					FileStream fs = file.OpenRead();
+					int read;
+					while( (read = fs.Read( bytes, 0, buffSize )) > 0 ) {
+						outStream.Write( bytes, 0, read );
+					}
+					outStream.Flush();
+					outStream.Close();
+					outStream.Dispose();
+					fs.Close();
+					fs.Dispose();
+					return;
+				} catch {
+					if( retries >= MAX_RETRIES ) {
+						throw;
+					}
+					System.Threading.Thread.Sleep( 10000 * retries );
 				}
-				url = "{0}{1}".FillBlanks( url, rd );
 			}
-			if( !url.EndsWith( "/" ) ) {
-				url = "{0}/".FillBlanks( url );
-			}
-			CheckFTPPath( url );
-			url = "{0}{1}".FillBlanks( url, file.Name );
-			FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create( url );
-			req.Credentials = new NetworkCredential( config.Username, config.Password );
-			req.KeepAlive = false;
-			req.Method = WebRequestMethods.Ftp.UploadFile;
-			req.UseBinary = true;
-			req.ContentLength = file.Length;
-			req.UsePassive = config.Passive;
-			req.EnableSsl = config.UseSSL;
-			if( config.UseSSL && config.IgnoreSSLErrors ) {
-				ServicePointManager.ServerCertificateValidationCallback = ( sender, certificate, chain, policyErrors ) => true;
-			}
-			const int buffSize = 1024 * 1024;
-			byte[] bytes = new byte[ buffSize ];
-			Stream outStream = req.GetRequestStream();
-			if( outStream == null ) {
-				throw new Exception( "Unable to upload file to FTP-server" );
-			}
-			FileStream fs = file.OpenRead();
-			int read;
-			while( (read = fs.Read( bytes, 0, buffSize )) > 0 ) {
-				outStream.Write( bytes, 0, read );
-			}
-			outStream.Flush();
-			outStream.Close();
-			outStream.Dispose();
-			fs.Close();
-			fs.Dispose();
 		}
 		#endregion
 		private void CheckFTPPath( string uploadURL ) {
@@ -183,8 +199,7 @@ Are you sure you want to continue?", "Continue?",MessageBoxButtons.YesNo, Messag
 				if( config.UseSSL && config.IgnoreSSLErrors ) {
 					ServicePointManager.ServerCertificateValidationCallback = ( sender, certificate, chain, policyErrors ) => true;
 				}
-				FtpWebResponse res = (FtpWebResponse)req.GetResponse();
-				if( res != null ) {
+				using( FtpWebResponse res = (FtpWebResponse)req.GetResponse() ) {
 					res.Close();
 				}
 			} catch( WebException ex ) {

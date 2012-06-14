@@ -132,47 +132,6 @@ namespace Bummer.Client {
 		}
 		#endregion
 
-		#region private void checkForUpdatesToolStripMenuItem_Click( object sender, EventArgs e )
-		/// <summary>
-		/// This method is called when the checkForUpdatesToolStripMenuItem's Click event has been fired.
-		/// </summary>
-		/// <param name="sender">The <see cref="object"/> that fired the event.</param>
-		/// <param name="e">The <see cref="EventArgs"/> of the event.</param>
-		private void checkForUpdatesToolStripMenuItem_Click( object sender, EventArgs e ) {
-			//List<Module> mods = new List<Module>();
-			//mods.Add( new Module() {Assembly="myass", Filename="myfile", Name="myname",Type="mytype",Version="myver"} );
-			//XmlSerializer ser = new XmlSerializer( typeof( ModuleList ) );
-			//StringWriter sw = new StringWriter();
-			//ser.Serialize( sw, mods );
-			WebRequest wr = WebRequest.Create( "http://products.someone-else.com/Bummer/package.xml" );
-			try {
-				using( WebResponse res = wr.GetResponse() ) {
-					if( res == null ) {
-						return;
-					}
-					ModuleList modules = ModuleList.Load( res.GetResponseStream() );
-					//Stream s = res.GetResponseStream();
-					//if( s == null ) {
-					//    return;
-					//}
-					//StreamReader sr = new StreamReader( s );
-					//string text = sr.ReadToEnd();
-					//StringReader ss = new StringReader( text );
-					//ModuleList list = (ModuleList)ser.Deserialize( ss );
-
-				}
-			} catch( WebException ex ) {
-				MessageBox.Show( "Error checking for updates: {0}".FillBlanks( ex.Message ) );
-				if( ex.Response != null ) {
-					ex.Response.Close();
-				}
-			} catch( Exception ex ) {
-				MessageBox.Show( "Error checking for updates: {0}".FillBlanks( ex.Message ) );
-			}
-			MessageBox.Show( "Still working on this..." );
-		}
-		#endregion
-
 		[XmlType( TypeName = "Modules" )]
 		public class ModuleList : List<Module> {
 			#region private static XmlSerializer Serializer
@@ -209,6 +168,11 @@ namespace Bummer.Client {
 			public string Version;
 			[XmlAttribute("url")]
 			public string DownloadURL;
+		}
+
+		private void settingsToolStripMenuItem_Click( object sender, EventArgs e ) {
+			SettingsDialog sd = new SettingsDialog();
+			sd.ShowDialog( this );
 		}
 	}
 }

@@ -118,11 +118,24 @@
     <Compile Include="ScheduleItemControl.Designer.cs">
       <DependentUpon>ScheduleItemControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsDialog.Designer.cs">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimpleCRONControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SimpleCRONControl.Designer.cs">
       <DependentUpon>SimpleCRONControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateInfo.cs" />
+    <Compile Include="UpdateInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UpdateInfoControl.Designer.cs">
+      <DependentUpon>UpdateInfoControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
@@ -161,8 +174,14 @@
     <EmbeddedResource Include="ScheduleItemControl.resx">
       <DependentUpon>ScheduleItemControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SettingsDialog.resx">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SimpleCRONControl.resx">
       <DependentUpon>SimpleCRONControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateInfoControl.resx">
+      <DependentUpon>UpdateInfoControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -184,6 +203,14 @@
       <Project>{253955C6-154C-4A48-ABBF-02CEB98D3351}</Project>
       <Name>Bummer.ScheduleRunner</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bummer.UpdateChecker\Bummer.UpdateChecker.csproj">
+      <Project>{AFAE5DBA-8E48-48DF-9163-83F186AFC561}</Project>
+      <Name>Bummer.UpdateChecker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bummer.Updater\Bummer.Updater.csproj">
+      <Project>{BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC}</Project>
+      <Name>Bummer.Updater</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Delete.png" />
@@ -199,6 +226,12 @@
     <None Include="Resources\Log.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetPath)" "D:\GIT\Bummer\ProgDir"
+copy /Y "$(TargetPath).config" "D:\GIT\Bummer\ProgDir"
+copy /Y "D:\GIT\Bummer\References\Quartz.dll" "D:\GIT\Bummer\ProgDir"
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

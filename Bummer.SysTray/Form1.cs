@@ -54,11 +54,17 @@ namespace Bummer.SysTray {
 			schedulesMenu = em;
 			cm.MenuItems.Add( 2, em );
 			cm.MenuItems.Add( 3, new MenuItem( "-" ) );
+			cm.MenuItems.Add( 4, new MenuItem( "Settings...", ShowSettings ) );
+			cm.MenuItems.Add( 5, new MenuItem( "-" ) );
 			cm.Popup += ContextMenuShow;
 			notifyIcon1.ContextMenu = cm;
 		}
 		#endregion
 
+		void ShowSettings( object sender, EventArgs e ) {
+			SettingsDialog sd = new SettingsDialog();
+			sd.ShowDialog( this );
+		}
 
 		#region void openClientMenu_Click( object sender, EventArgs e )
 		/// <summary>

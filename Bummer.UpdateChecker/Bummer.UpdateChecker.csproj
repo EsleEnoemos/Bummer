@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{253955C6-154C-4A48-ABBF-02CEB98D3351}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{AFAE5DBA-8E48-48DF-9163-83F186AFC561}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bummer.ScheduleRunner</RootNamespace>
-    <AssemblyName>Bummer.ScheduleRunner</AssemblyName>
+    <RootNamespace>Bummer.UpdateChecker</RootNamespace>
+    <AssemblyName>Bummer.UpdateChecker</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdaterChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bummer.Common\Bummer.Common.csproj">
@@ -52,13 +55,9 @@
       <Name>Bummer.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetPath)" "D:\GIT\Bummer\ProgDir"
-copy /Y "$(TargetPath).config" "D:\GIT\Bummer\ProgDir"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetPath)" "D:\GIT\Bummer\ProgDir"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

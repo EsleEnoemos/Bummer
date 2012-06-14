@@ -1,0 +1,7 @@
+D:\GIT\Bummer\Bummer.Updater\bin\Debug\Bummer.Updater.exe
+D:\GIT\Bummer\Bummer.Updater\bin\Debug\Bummer.Updater.pdb
+D:\GIT\Bummer\Bummer.Updater\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\GIT\Bummer\Bummer.Updater\obj\x86\Debug\Bummer.Updater.exe
+D:\GIT\Bummer\Bummer.Updater\obj\x86\Debug\Bummer.Updater.pdb
+D:\GIT\Bummer\Bummer.Updater\bin\Debug\Ionic.Zip.dll
+D:\GIT\Bummer\Bummer.Updater\bin\Debug\Ionic.Zip.xml

@@ -1,0 +1,8 @@
+D:\GIT\Bummer\Bummer.UpdateChecker\bin\Debug\Bummer.UpdateChecker.dll
+D:\GIT\Bummer\Bummer.UpdateChecker\bin\Debug\Bummer.UpdateChecker.pdb
+D:\GIT\Bummer\Bummer.UpdateChecker\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\GIT\Bummer\Bummer.UpdateChecker\obj\x86\Debug\Bummer.UpdateChecker.dll
+D:\GIT\Bummer\Bummer.UpdateChecker\obj\x86\Debug\Bummer.UpdateChecker.pdb
+D:\GIT\Bummer\Bummer.UpdateChecker\bin\Debug\Bummer.Common.dll
+D:\GIT\Bummer\Bummer.UpdateChecker\bin\Debug\System.Data.SQLite.dll
+D:\GIT\Bummer\Bummer.UpdateChecker\bin\Debug\Bummer.Common.pdb

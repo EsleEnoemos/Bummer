@@ -1,0 +1,2034 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">False</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="4E5273C5-D830-41CD-AA1A-64C48301622B/f:Program.cs" caret="108" fromTop="6" />
+      <File id="23120D68-66AE-4165-B345-0A4A2326A0E9/d:Properties/f:AssemblyInfo.cs" caret="1684" fromTop="39" />
+      <File id="23120D68-66AE-4165-B345-0A4A2326A0E9/f:BackupScheduleWrapper.cs" caret="153" fromTop="6" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:App.config" caret="164" fromTop="5" />
+      <File id="982B9E11-310A-46AE-B99B-003359F7DAD9/f:App.config" caret="180" fromTop="5" />
+      <File id="23120D68-66AE-4165-B345-0A4A2326A0E9/f:DBCommand.cs" caret="33288" fromTop="23" />
+      <File id="7065F8F6-D9A4-48A2-946C-CC50F84B3FAF/f:Program.cs" caret="1972" fromTop="28" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:ScheduleForm.cs" caret="23015" fromTop="37" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:AdvancedCRONControl.Designer.cs" caret="6813" fromTop="30" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:AdvancedCRONControl.cs" caret="819" fromTop="19" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:LogViewerControl.cs" caret="530" fromTop="19" />
+      <File id="A06C4E58-D972-4443-A26B-096F355776F6/f:SQLLocalBackup.cs" caret="1427" fromTop="36" />
+      <File id="A06C4E58-D972-4443-A26B-096F355776F6/f:MSSQLDatabaseBackup.cs" caret="2498" fromTop="22" />
+      <File id="982B9E11-310A-46AE-B99B-003359F7DAD9/f:Form1.Designer.cs" caret="1475" fromTop="30" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:CronNextForm.cs" caret="726" fromTop="20" />
+      <File id="32C2E1EE-DD6E-467C-9A04-B64D39B1F456/f:BuildZIPSetup.bat/l:D!?GIT?Bummer?BuildZIPSetup.bat" caret="0" fromTop="0" />
+      <File id="23120D68-66AE-4165-B345-0A4A2326A0E9/f:Extensions.cs" caret="3426" fromTop="15" />
+      <File id="982B9E11-310A-46AE-B99B-003359F7DAD9/f:Form1.cs" caret="2121" fromTop="38" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:app.manifest" caret="1379" fromTop="21" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:ScheduleItemControl.cs" caret="5277" fromTop="39" />
+      <File id="253955C6-154C-4A48-ABBF-02CEB98D3351/f:app.config" caret="0" fromTop="0" />
+      <File id="A06C4E58-D972-4443-A26B-096F355776F6/f:Shared.cs" caret="0" fromTop="0" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:Form1.cs" caret="5620" fromTop="30" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:UpdateInfoControl.cs" caret="664" fromTop="21" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:UpdateInfo.cs" caret="141" fromTop="6" />
+      <File id="D4FE840E-14C9-4EBC-AEAF-99AF526769A6/f:SettingsDialog.cs" caret="716" fromTop="19" />
+      <File id="AFAE5DBA-8E48-48DF-9163-83F186AFC561/f:UpdaterChecker.cs" caret="4505" fromTop="25" />
+      <File id="23120D68-66AE-4165-B345-0A4A2326A0E9/f:Configuration.cs" caret="5457" fromTop="14" />
+      <File id="23120D68-66AE-4165-B345-0A4A2326A0E9/f:IUpdateInfo.cs" caret="45" fromTop="1" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="2804" fromTop="22" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="13590" fromTop="36" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="5273" fromTop="12" />
+      <File id="AFAE5DBA-8E48-48DF-9163-83F186AFC561/f:UpdaterChecker.cs" caret="1905" fromTop="12" />
+      <File id="AFAE5DBA-8E48-48DF-9163-83F186AFC561/f:UpdaterChecker.cs" caret="3107" fromTop="27" />
+      <File id="AFAE5DBA-8E48-48DF-9163-83F186AFC561/f:UpdaterChecker.cs" caret="2463" fromTop="12" />
+      <File id="AFAE5DBA-8E48-48DF-9163-83F186AFC561/f:UpdaterChecker.cs" caret="4259" fromTop="29" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="14110" fromTop="31" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="14291" fromTop="38" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="7996" fromTop="38" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="13063" fromTop="59" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="11201" fromTop="17" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="11159" fromTop="15" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="11212" fromTop="18" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="11614" fromTop="35" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="9607" fromTop="19" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="2297" fromTop="19" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="2297" fromTop="19" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="3296" fromTop="30" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="10076" fromTop="30" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="8286" fromTop="14" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="3086" fromTop="20" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="13910" fromTop="47" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="13905" fromTop="16" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="3087" fromTop="33" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="197" fromTop="7" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="12057" fromTop="17" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="11796" fromTop="56" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="12222" fromTop="30" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="12238" fromTop="32" />
+      <File id="BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC/f:Program.cs" caret="12831" fromTop="46" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False" />
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="if" priority="339" />
+      <Item value="conf" priority="35" />
+      <Item value="null" priority="160" />
+      <Item value="Action`0" priority="0" />
+      <Item value="List" priority="25" />
+      <Item value="new" priority="248" />
+      <Item value="List&lt;string&gt;" priority="15" />
+      <Item value="internal" priority="18" />
+      <Item value="static" priority="48" />
+      <Item value="string" priority="303" />
+      <Item value="return" priority="191" />
+      <Item value="GetDatabases`0" priority="0" />
+      <Item value="tbServer" priority="0" />
+      <Item value="tbUsername" priority="3" />
+      <Item value="tbPassword" priority="2" />
+      <Item value="server" priority="1" />
+      <Item value="username" priority="7" />
+      <Item value="password" priority="1" />
+      <Item value="foreach" priority="63" />
+      <Item value="s" priority="23" />
+      <Item value="public" priority="131" />
+      <Item value="bool" priority="39" />
+      <Item value="this" priority="27" />
+      <Item value="params" priority="0" />
+      <Item value="ths" priority="7" />
+      <Item value="false" priority="45" />
+      <Item value="StringComparison`0" priority="2" />
+      <Item value="true" priority="71" />
+      <Item value="databases" priority="4" />
+      <Item value="in" priority="9" />
+      <Item value="remoteCleanupOK" priority="2" />
+      <Item value="else" priority="25" />
+      <Item value="StringBuilder`0" priority="1" />
+      <Item value="StringBuilder" priority="1" />
+      <Item value="sb" priority="3" />
+      <Item value="for" priority="8" />
+      <Item value="i" priority="30" />
+      <Item value="separator" priority="0" />
+      <Item value="config" priority="98" />
+      <Item value="cblDatabases" priority="2" />
+      <Item value="db" priority="1" />
+      <Item value="Config" priority="5" />
+      <Item value="cmd" priority="19" />
+      <Item value="SqlDataReader`0" priority="0" />
+      <Item value="reader" priority="5" />
+      <Item value="tbLocalTemp" priority="3" />
+      <Item value="FolderBrowserDialog`0" priority="1" />
+      <Item value="FolderBrowserDialog" priority="1" />
+      <Item value="fd" priority="4" />
+      <Item value="OK" priority="2" />
+      <Item value="fs" priority="5" />
+      <Item value="tbPort" priority="1" />
+      <Item value="int" priority="88" />
+      <Item value="p" priority="35" />
+      <Item value="short" priority="1" />
+      <Item value="textBox1" priority="7" />
+      <Item value="cbCompress" priority="6" />
+      <Item value="struct" priority="0" />
+      <Item value="BackupResult" priority="1" />
+      <Item value="Exception`0" priority="25" />
+      <Item value="Exception" priority="0" />
+      <Item value="ret" priority="5" />
+      <Item value="res" priority="16" />
+      <Item value="Directory" priority="4" />
+      <Item value="outputDir" priority="3" />
+      <Item value="private" priority="104" />
+      <Item value="void" priority="50" />
+      <Item value="ZipFile`0" priority="5" />
+      <Item value="filename" priority="11" />
+      <Item value="File`0" priority="38" />
+      <Item value="Ionic" priority="2" />
+      <Item value="Zip" priority="4" />
+      <Item value="ZipFile" priority="3" />
+      <Item value="zip" priority="9" />
+      <Item value="AsNecessary" priority="0" />
+      <Item value="FTP" priority="8" />
+      <Item value="FTPFile`0" priority="0" />
+      <Item value="System" priority="18" />
+      <Item value="Web" priority="3" />
+      <Item value="FtpWebRequest" priority="1" />
+      <Item value="req" priority="38" />
+      <Item value="url" priority="21" />
+      <Item value="rd" priority="8" />
+      <Item value="RowStyle`0" priority="1" />
+      <Item value="FileInfo`0" priority="25" />
+      <Item value="FileInfo" priority="19" />
+      <Item value="fi" priority="32" />
+      <Item value="byte" priority="3" />
+      <Item value="FileStream`0" priority="0" />
+      <Item value="Stream`0" priority="7" />
+      <Item value="while" priority="9" />
+      <Item value="read" priority="2" />
+      <Item value="bytes" priority="3" />
+      <Item value="buffSize" priority="1" />
+      <Item value="outStream" priority="5" />
+      <Item value="Uri`0" priority="5" />
+      <Item value="Uri" priority="4" />
+      <Item value="u" priority="4" />
+      <Item value="try" priority="49" />
+      <Item value="catch" priority="51" />
+      <Item value="ent" priority="0" />
+      <Item value="cbAddDateToFilename" priority="1" />
+      <Item value="addDateToFilename" priority="0" />
+      <Item value="ex" priority="28" />
+      <Item value="thr" priority="4" />
+      <Item value="fn" priority="2" />
+      <Item value="ml" priority="0" />
+      <Item value="passive" priority="2" />
+      <Item value="Job" priority="22" />
+      <Item value="cbJobType" priority="0" />
+      <Item value="ID" priority="2" />
+      <Item value="Configuration" priority="1" />
+      <Item value="Environment`0" priority="31" />
+      <Item value="_description" priority="0" />
+      <Item value="DBCommand`0" priority="4" />
+      <Item value="Data" priority="1" />
+      <Item value="SQLite" priority="0" />
+      <Item value="SQLiteConnectionStringBuilder`0" priority="1" />
+      <Item value="SQLiteConnectionStringBuilder" priority="1" />
+      <Item value="cb" priority="20" />
+      <Item value="sqLiteFile" priority="2" />
+      <Item value="SQLiteConnection`0" priority="1" />
+      <Item value="DBCommand" priority="0" />
+      <Item value="SQLiteConnection" priority="1" />
+      <Item value="tbDescription" priority="0" />
+      <Item value="pw" priority="0" />
+      <Item value="interface" priority="5" />
+      <Item value="Controls" priority="3" />
+      <Item value="IFTPConfig`0" priority="1" />
+      <Item value="enum" priority="2" />
+      <Item value="FileBackupConfigGUI`0" priority="2" />
+      <Item value="tbDirectory" priority="5" />
+      <Item value="btnRemoveFileType" priority="0" />
+      <Item value="lvFileTypes" priority="7" />
+      <Item value="cbBackupType" priority="2" />
+      <Item value="BackupTypes`0" priority="2" />
+      <Item value="ModifiedOnly" priority="0" />
+      <Item value="gui" priority="14" />
+      <Item value="FileBackupConfigGUI" priority="0" />
+      <Item value="FileBackupConfig`0" priority="3" />
+      <Item value="c" priority="14" />
+      <Item value="container" priority="3" />
+      <Item value="FileBackup`0" priority="0" />
+      <Item value="pnlSaveAsConfig" priority="0" />
+      <Item value="FileBackupConfig" priority="1" />
+      <Item value="ColumnHeaderAutoResizeStyle`0" priority="3" />
+      <Item value="cbSaveType" priority="8" />
+      <Item value="SaveAsTypes`0" priority="3" />
+      <Item value="selectedDirectory" priority="0" />
+      <Item value="title" priority="3" />
+      <Item value="Text" priority="9" />
+      <Item value="Value" priority="8" />
+      <Item value="DialogResult" priority="6" />
+      <Item value="e" priority="20" />
+      <Item value="MessageBox`0" priority="17" />
+      <Item value="InputDialog`0" priority="0" />
+      <Item value="InputDialog" priority="0" />
+      <Item value="id" priority="2" />
+      <Item value="DialogResult`0" priority="1" />
+      <Item value="FileTypeAdded`0" priority="0" />
+      <Item value="ListViewItem`0" priority="15" />
+      <Item value="li" priority="33" />
+      <Item value="that" priority="1" />
+      <Item value="OrdinalIgnoreCase" priority="2" />
+      <Item value="listView1_SelectedIndexChanged`0" priority="0" />
+      <Item value="switch" priority="3" />
+      <Item value="lblName" priority="0" />
+      <Item value="sf" priority="2" />
+      <Item value="job" priority="33" />
+      <Item value="class" priority="24" />
+      <Item value="BackupRunner`0" priority="1" />
+      <Item value="readonly" priority="1" />
+      <Item value="dbFile" priority="5" />
+      <Item value="Common" priority="5" />
+      <Item value="Configuration`0" priority="25" />
+      <Item value="jobID" priority="6" />
+      <Item value="All" priority="0" />
+      <Item value="CMD" priority="18" />
+      <Item value="IncludeFiletype`0" priority="2" />
+      <Item value="file" priority="28" />
+      <Item value="Hashtable" priority="1" />
+      <Item value="continue" priority="20" />
+      <Item value="ft" priority="0" />
+      <Item value="ext" priority="3" />
+      <Item value="_extensionHash" priority="0" />
+      <Item value="ExtensionHash" priority="1" />
+      <Item value="IEnumerable" priority="0" />
+      <Item value="DirectoryInfo`0" priority="23" />
+      <Item value="yield return" priority="2" />
+      <Item value="dir" priority="10" />
+      <Item value="GetFiles`0" priority="0" />
+      <Item value="Include`0" priority="0" />
+      <Item value="count" priority="2" />
+      <Item value="Run`0" priority="2" />
+      <Item value="DirectoryInfo" priority="22" />
+      <Item value="Add`0" priority="1" />
+      <Item value="backupDir" priority="0" />
+      <Item value="backupDirPath" priority="1" />
+      <Item value="path" priority="20" />
+      <Item value="tbZipFilename" priority="4" />
+      <Item value="cbAddDateToZip" priority="2" />
+      <Item value="zn" priority="3" />
+      <Item value="DateTime`0" priority="47" />
+      <Item value="FTPUploader`0" priority="2" />
+      <Item value="FTPUploader" priority="1" />
+      <Item value="UploadFile`0" priority="0" />
+      <Item value="remotePath" priority="0" />
+      <Item value="td" priority="10" />
+      <Item value="Directory`0" priority="37" />
+      <Item value="tn" priority="0" />
+      <Item value="Normal" priority="0" />
+      <Item value="_cMD" priority="3" />
+      <Item value="SetupDatabase`0" priority="0" />
+      <Item value="md" priority="0" />
+      <Item value="BackupRunner" priority="0" />
+      <Item value="br" priority="0" />
+      <Item value="using" priority="3" />
+      <Item value="con" priority="3" />
+      <Item value="currentReader" priority="5" />
+      <Item value="IDisposable`0" priority="1" />
+      <Item value="isDisposed" priority="3" />
+      <Item value="_zip" priority="3" />
+      <Item value="label6" priority="1" />
+      <Item value="_preCommands" priority="0" />
+      <Item value="preCommands" priority="0" />
+      <Item value="_postCommands" priority="0" />
+      <Item value="postCommands" priority="0" />
+      <Item value="PreCommands" priority="4" />
+      <Item value="PostCommands" priority="3" />
+      <Item value="RunCommands`0" priority="1" />
+      <Item value="commands" priority="7" />
+      <Item value="StringSplitOptions`0" priority="0" />
+      <Item value="btnRemovePreCommand" priority="0" />
+      <Item value="lvPreCommands" priority="16" />
+      <Item value="btnMoveUpPreCommand" priority="0" />
+      <Item value="btnMoveDownPreCommand" priority="0" />
+      <Item value="btnEditPreCommand" priority="0" />
+      <Item value="command" priority="8" />
+      <Item value="args" priority="9" />
+      <Item value="tbCommand" priority="3" />
+      <Item value="tbArgs" priority="1" />
+      <Item value="Command" priority="6" />
+      <Item value="Command`0" priority="2" />
+      <Item value="CommandDialog`0" priority="1" />
+      <Item value="CommandDialog" priority="0" />
+      <Item value="cd" priority="2" />
+      <Item value="nuInterval" priority="0" />
+      <Item value="CommandWrapper" priority="2" />
+      <Item value="Arguments" priority="3" />
+      <Item value="CommandWrapper`0" priority="8" />
+      <Item value="EditCommand`0" priority="1" />
+      <Item value="cw" priority="8" />
+      <Item value="FixLVSize`0" priority="1" />
+      <Item value="lv" priority="1" />
+      <Item value="list" priority="23" />
+      <Item value="List&lt;CommandWrapper&gt;" priority="0" />
+      <Item value="RemoveEmptyEntries" priority="3" />
+      <Item value="ca" priority="2" />
+      <Item value="Length" priority="10" />
+      <Item value="override" priority="11" />
+      <Item value="cmds" priority="0" />
+      <Item value="Process`0" priority="20" />
+      <Item value="object" priority="5" />
+      <Item value="IFormatProvider`0" priority="0" />
+      <Item value="DBNull`0" priority="0" />
+      <Item value="NZ`0" priority="2" />
+      <Item value="lvPostCommands" priority="5" />
+      <Item value="ScrollControlIntoView`0" priority="0" />
+      <Item value="Process" priority="4" />
+      <Item value="ProcessStartInfo" priority="4" />
+      <Item value="index" priority="2" />
+      <Item value="ind" priority="11" />
+      <Item value="is" priority="7" />
+      <Item value="Compare`0" priority="1" />
+      <Item value="ix" priority="0" />
+      <Item value="si" priority="13" />
+      <Item value="List&lt;ListViewItem&gt;" priority="0" />
+      <Item value="lvPreCommands_SelectedIndexChanged`0" priority="0" />
+      <Item value="EventArgs" priority="2" />
+      <Item value="sealed" priority="0" />
+      <Item value="BackupScheduleWrapper`0" priority="1" />
+      <Item value="processes" priority="1" />
+      <Item value="procName" priority="1" />
+      <Item value="typeof" priority="8" />
+      <Item value="ScheduleJobSpawner`0" priority="4" />
+      <Item value="t" priority="10" />
+      <Item value="binDir" priority="2" />
+      <Item value="targetDirectory" priority="2" />
+      <Item value="self" priority="2" />
+      <Item value="recursive" priority="2" />
+      <Item value="sub" priority="7" />
+      <Item value="exeName" priority="3" />
+      <Item value="ProcessStartInfo`0" priority="0" />
+      <Item value="sender" priority="3" />
+      <Item value="as" priority="7" />
+      <Item value="Delegate`0" priority="0" />
+      <Item value="Enabled" priority="0" />
+      <Item value="Disposed" priority="0" />
+      <Item value="Timer`0" priority="1" />
+      <Item value="timer" priority="19" />
+      <Item value="Timer" priority="2" />
+      <Item value="ScheduleRunner" priority="1" />
+      <Item value="btnRunJob" priority="1" />
+      <Item value="isRunning" priority="6" />
+      <Item value="btnEdit" priority="0" />
+      <Item value="btnDelete" priority="0" />
+      <Item value="lblLastStarted" priority="0" />
+      <Item value="lblIsRunning" priority="0" />
+      <Item value="x" priority="1" />
+      <Item value="_logs" priority="0" />
+      <Item value="rf" priority="2" />
+      <Item value="_lastStarted" priority="0" />
+      <Item value="_lastFinished" priority="0" />
+      <Item value="wasRunning" priority="2" />
+      <Item value="lblLastFinished" priority="0" />
+      <Item value="SystemColors`0" priority="1" />
+      <Item value="n" priority="6" />
+      <Item value="Console`0" priority="53" />
+      <Item value="sc" priority="4" />
+      <Item value="Thread`0" priority="1" />
+      <Item value="configFile" priority="1" />
+      <Item value="break" priority="5" />
+      <Item value="ComponentModel" priority="0" />
+      <Item value="Threading" priority="1" />
+      <Item value="schedule" priority="14" />
+      <Item value="next" priority="20" />
+      <Item value="case" priority="1" />
+      <Item value="RemoveService`0" priority="1" />
+      <Item value="InstallService`0" priority="0" />
+      <Item value="ServiceInstaller`0" priority="1" />
+      <Item value="message" priority="2" />
+      <Item value="Log`0" priority="31" />
+      <Item value="windir" priority="0" />
+      <Item value="netFolder" priority="0" />
+      <Item value="_installUtil" priority="0" />
+      <Item value="InstallUtil" priority="1" />
+      <Item value="installDir" priority="5" />
+      <Item value="pluginsDir" priority="8" />
+      <Item value="SetTitle`0" priority="5" />
+      <Item value="startFrom" priority="3" />
+      <Item value="startTo" priority="2" />
+      <Item value="StartTimeOK`0" priority="1" />
+      <Item value="now" priority="8" />
+      <Item value="start" priority="1" />
+      <Item value="stop" priority="3" />
+      <Item value="WshShellClass" priority="1" />
+      <Item value="ToString`0" priority="0" />
+      <Item value="IWshRuntimeLibrary" priority="0" />
+      <Item value="WshShellClass`0" priority="0" />
+      <Item value="shortcut" priority="6" />
+      <Item value="AttributeTargets`0" priority="0" />
+      <Item value="WshShortcut" priority="0" />
+      <Item value="startMenu" priority="3" />
+      <Item value="folderName" priority="1" />
+      <Item value="shortCutFolder" priority="9" />
+      <Item value="shortCutName" priority="0" />
+      <Item value="lnk" priority="4" />
+      <Item value="File" priority="6" />
+      <Item value="shell" priority="1" />
+      <Item value="target" priority="16" />
+      <Item value="description" priority="1" />
+      <Item value="clientEXE" priority="2" />
+      <Item value="CreateShortcut`0" priority="0" />
+      <Item value="IO" priority="4" />
+      <Item value="fileInfo" priority="0" />
+      <Item value="RemoveShortcut`0" priority="0" />
+      <Item value="dirName" priority="0" />
+      <Item value="tf" priority="2" />
+      <Item value="AlocalPath" priority="0" />
+      <Item value="remoteFilename" priority="0" />
+      <Item value="cbIsLocalServer" priority="2" />
+      <Item value="tbRemoteTempDir" priority="0" />
+      <Item value="remoteDir" priority="1" />
+      <Item value="_startTime" priority="0" />
+      <Item value="startTime" priority="2" />
+      <Item value="StartTime" priority="1" />
+      <Item value="HttpWebRequest`0" priority="0" />
+      <Item value="store" priority="1" />
+      <Item value="OpenFlags`0" priority="0" />
+      <Item value="cert" priority="2" />
+      <Item value="certificate" priority="1" />
+      <Item value="nisse`0" priority="0" />
+      <Item value="IHTTPConfig`0" priority="2" />
+      <Item value="EnumDescriptionAttribute`0" priority="2" />
+      <Item value="EnumDescription" priority="2" />
+      <Item value="_comment" priority="0" />
+      <Item value="comment" priority="3" />
+      <Item value="attr" priority="0" />
+      <Item value="ina" priority="1" />
+      <Item value="T`0" priority="0" />
+      <Item value="GetAttribute`1" priority="0" />
+      <Item value="att" priority="1" />
+      <Item value="toolTip1" priority="1" />
+      <Item value="pnlSaveAsDescription" priority="3" />
+      <Item value="st" priority="3" />
+      <Item value="desc" priority="1" />
+      <Item value="Label`0" priority="0" />
+      <Item value="Dock" priority="1" />
+      <Item value="Fill" priority="3" />
+      <Item value="TextBox`0" priority="0" />
+      <Item value="ScrollBars" priority="0" />
+      <Item value="Both" priority="0" />
+      <Item value="Width" priority="0" />
+      <Item value="Height" priority="1" />
+      <Item value="Anchor" priority="0" />
+      <Item value="Bottom" priority="0" />
+      <Item value="Multiline" priority="0" />
+      <Item value="FTPServer" priority="1" />
+      <Item value="value" priority="5" />
+      <Item value="FTPUsername" priority="1" />
+      <Item value="FTPPassword" priority="1" />
+      <Item value="FTPLocalTempDirectory" priority="1" />
+      <Item value="XmlSerializer" priority="2" />
+      <Item value="CNF`0" priority="4" />
+      <Item value="ser" priority="5" />
+      <Item value="double" priority="2" />
+      <Item value="CNF" priority="4" />
+      <Item value="Some`0" priority="1" />
+      <Item value="Name" priority="7" />
+      <Item value="XmlInclude" priority="0" />
+      <Item value="IXmlSerializable`0" priority="4" />
+      <Item value="Xml" priority="0" />
+      <Item value="Serialization" priority="0" />
+      <Item value="writer" priority="4" />
+      <Item value="XmlSerializable`0" priority="0" />
+      <Item value="virtual" priority="1" />
+      <Item value="D" priority="0" />
+      <Item value="d" priority="3" />
+      <Item value="Thing`0" priority="0" />
+      <Item value="finally" priority="4" />
+      <Item value="IBackupSchedule`0" priority="0" />
+      <Item value="IBackupTarget`0" priority="12" />
+      <Item value="List&lt;IBackupTarget&gt;" priority="0" />
+      <Item value="_targetType" priority="2" />
+      <Item value="tp" priority="1" />
+      <Item value="TargetType" priority="1" />
+      <Item value="_target" priority="1" />
+      <Item value="jobConfiguration" priority="0" />
+      <Item value="targetType" priority="0" />
+      <Item value="_targetConfiguration" priority="0" />
+      <Item value="targetConfiguration" priority="0" />
+      <Item value="TargetConfiguration" priority="1" />
+      <Item value="Target" priority="1" />
+      <Item value="FTPConfig`0" priority="5" />
+      <Item value="relativePath" priority="12" />
+      <Item value="FTPConfigSelector`0" priority="0" />
+      <Item value="configuration" priority="4" />
+      <Item value="configSelector" priority="2" />
+      <Item value="FTPConfigSelector" priority="0" />
+      <Item value="FTPConfig" priority="2" />
+      <Item value="tbLocalTempDir" priority="6" />
+      <Item value="Bummer" priority="1" />
+      <Item value="WWWConfig`0" priority="4" />
+      <Item value="WWWConfigSelector" priority="0" />
+      <Item value="WWWConfigSelector`0" priority="1" />
+      <Item value="WWWConfig" priority="0" />
+      <Item value="tbURL" priority="3" />
+      <Item value="ThreadExceptionDialog`0" priority="0" />
+      <Item value="HTTPUploader`0" priority="0" />
+      <Item value="cbTargetType" priority="3" />
+      <Item value="pnlTargetConfig" priority="1" />
+      <Item value="tbTargetDescription" priority="0" />
+      <Item value="directory" priority="0" />
+      <Item value="DirectoryConfigSelector" priority="0" />
+      <Item value="DirectoryTarget`0" priority="0" />
+      <Item value="baseDir" priority="5" />
+      <Item value="targetFile" priority="2" />
+      <Item value="lblTarget" priority="0" />
+      <Item value="targetConfig" priority="1" />
+      <Item value="label5" priority="0" />
+      <Item value="btnBrowseForLocalTemp" priority="0" />
+      <Item value="tw" priority="0" />
+      <Item value="tabControl1" priority="0" />
+      <Item value="isLoaded" priority="3" />
+      <Item value="cbUseSSL" priority="2" />
+      <Item value="cbPassive" priority="1" />
+      <Item value="CheckFTPPath`0" priority="0" />
+      <Item value="UriPartial`0" priority="0" />
+      <Item value="existingPaths" priority="3" />
+      <Item value="currentDir" priority="6" />
+      <Item value="segment" priority="7" />
+      <Item value="MakeDir`0" priority="0" />
+      <Item value="WebException`0" priority="3" />
+      <Item value="FtpWebResponse`0" priority="0" />
+      <Item value="YesNo" priority="0" />
+      <Item value="Question" priority="0" />
+      <Item value="Button2" priority="0" />
+      <Item value="FTPTarget`0" priority="0" />
+      <Item value="FTPTarget" priority="0" />
+      <Item value="tempFile" priority="5" />
+      <Item value="temp" priority="0" />
+      <Item value="cbIgnoreSSLErrors" priority="5" />
+      <Item value="ServicePointManager`0" priority="0" />
+      <Item value="Net" priority="2" />
+      <Item value="FtpClient" priority="3" />
+      <Item value="FtpClient`0" priority="2" />
+      <Item value="client" priority="18" />
+      <Item value="IPAddress" priority="0" />
+      <Item value="EndPoint`0" priority="0" />
+      <Item value="FTP_DLL" priority="0" />
+      <Item value="FTPFactory`0" priority="0" />
+      <Item value="FTPFactory" priority="0" />
+      <Item value="f" priority="0" />
+      <Item value="FtpLib" priority="1" />
+      <Item value="FtpConnection`0" priority="0" />
+      <Item value="FtpConnection" priority="0" />
+      <Item value="ftp" priority="0" />
+      <Item value="Extensions`0" priority="0" />
+      <Item value="Starksoft" priority="1" />
+      <Item value="Ftp" priority="1" />
+      <Item value="Ssl2Implicit" priority="0" />
+      <Item value="ConsoleColor`0" priority="0" />
+      <Item value="Yellow" priority="0" />
+      <Item value="oldColor" priority="0" />
+      <Item value="Create" priority="1" />
+      <Item value="cbSecurityProtocol" priority="3" />
+      <Item value="FtpSecurityProtocol`0" priority="5" />
+      <Item value="cbTransferMode" priority="2" />
+      <Item value="_fTP" priority="13" />
+      <Item value="Binary" priority="0" />
+      <Item value="Active" priority="0" />
+      <Item value="Array`0" priority="1" />
+      <Item value="Enum`0" priority="2" />
+      <Item value="List&lt;FtpSecurityProtocol&gt;" priority="0" />
+      <Item value="arr" priority="5" />
+      <Item value="AccessibilityNotifyClients`0" priority="0" />
+      <Item value="TransferMode`0" priority="1" />
+      <Item value="tm" priority="0" />
+      <Item value="ChangeDirectory`0" priority="0" />
+      <Item value="MakeDirectory`0" priority="0" />
+      <Item value="ResolveEventArgs`0" priority="0" />
+      <Item value="NetworkCredential`0" priority="1" />
+      <Item value="WebClient`0" priority="0" />
+      <Item value="WebClient" priority="0" />
+      <Item value="wc" priority="2" />
+      <Item value="UploadFile" priority="0" />
+      <Item value="HttpUploadHelper`0" priority="0" />
+      <Item value="NameValueCollection" priority="1" />
+      <Item value="nvc" priority="3" />
+      <Item value="OpenFileDialog`0" priority="0" />
+      <Item value="OpenFileDialog" priority="0" />
+      <Item value="FileName" priority="0" />
+      <Item value="CheckFileExists" priority="0" />
+      <Item value="AutoUpgradeEnabled" priority="0" />
+      <Item value="of" priority="1" />
+      <Item value="Quartz" priority="2" />
+      <Item value="Plugin" priority="0" />
+      <Item value="Management" priority="0" />
+      <Item value="Simpl" priority="0" />
+      <Item value="Util" priority="1" />
+      <Item value="FileUtil`0" priority="1" />
+      <Item value="FileUtil" priority="1" />
+      <Item value="schedFact" priority="0" />
+      <Item value="IJob`0" priority="0" />
+      <Item value="trigger" priority="6" />
+      <Item value="CronTrigger`0" priority="0" />
+      <Item value="CronExpression`0" priority="7" />
+      <Item value="CronExpression" priority="8" />
+      <Item value="Trigger`0" priority="1" />
+      <Item value="SimpleTrigger`0" priority="0" />
+      <Item value="SimpleTrigger" priority="0" />
+      <Item value="DateTime" priority="3" />
+      <Item value="dt" priority="5" />
+      <Item value="TimeSpan" priority="0" />
+      <Item value="scheduler" priority="7" />
+      <Item value="context" priority="2" />
+      <Item value="asdf" priority="2" />
+      <Item value="TimeSpan`0" priority="0" />
+      <Item value="Second" priority="3" />
+      <Item value="SecondCron`0" priority="0" />
+      <Item value="second" priority="0" />
+      <Item value="cbSeconds" priority="1" />
+      <Item value="ce" priority="37" />
+      <Item value="cbMinutes" priority="0" />
+      <Item value="text" priority="1" />
+      <Item value="lvNotSelectedSeconds" priority="2" />
+      <Item value="lvNotSelectedMinutes" priority="1" />
+      <Item value="lvNotSelectedHours" priority="0" />
+      <Item value="lvNotSelectedDays" priority="2" />
+      <Item value="DayOfWeek`0" priority="9" />
+      <Item value="Day`0" priority="0" />
+      <Item value="lvSelectedSeconds" priority="6" />
+      <Item value="lvNotSelectedMonths" priority="2" />
+      <Item value="lvNotSelectedDates" priority="0" />
+      <Item value="ListView`0" priority="5" />
+      <Item value="from" priority="1" />
+      <Item value="to" priority="2" />
+      <Item value="MoveListViewItems`0" priority="6" />
+      <Item value="Button`0" priority="1" />
+      <Item value="btn" priority="2" />
+      <Item value="lists" priority="2" />
+      <Item value="groupBox3" priority="1" />
+      <Item value="IComparer`0" priority="0" />
+      <Item value="xi" priority="0" />
+      <Item value="newLi" priority="0" />
+      <Item value="Control`0" priority="2" />
+      <Item value="cron" priority="5" />
+      <Item value="tmp" priority="1" />
+      <Item value="lvSelectedMinutes" priority="1" />
+      <Item value="lvSelectedHours" priority="1" />
+      <Item value="lvSelectedDates" priority="1" />
+      <Item value="lvSelectedMonths" priority="1" />
+      <Item value="lvSelectedDays" priority="1" />
+      <Item value="cronString" priority="10" />
+      <Item value="CronConfig" priority="1" />
+      <Item value="_cronConfig" priority="0" />
+      <Item value="cronConfig" priority="0" />
+      <Item value="lblNextStart" priority="5" />
+      <Item value="bj" priority="4" />
+      <Item value="schedulerFactory" priority="0" />
+      <Item value="const" priority="1" />
+      <Item value="Logger`0" priority="11" />
+      <Item value="logDir" priority="1" />
+      <Item value="_logDir" priority="0" />
+      <Item value="LogDir" priority="1" />
+      <Item value="logFile" priority="0" />
+      <Item value="LogStatuses`0" priority="4" />
+      <Item value="status" priority="1" />
+      <Item value="LoadSchedules`0" priority="2" />
+      <Item value="Startup" priority="0" />
+      <Item value="Message" priority="3" />
+      <Item value="oEx" priority="0" />
+      <Item value="Shutdown" priority="0" />
+      <Item value="Unknown" priority="0" />
+      <Item value="service" priority="10" />
+      <Item value="ReLoadSchedulesCommand" priority="0" />
+      <Item value="Running" priority="2" />
+      <Item value="base" priority="0" />
+      <Item value="running" priority="4" />
+      <Item value="OnStop`0" priority="0" />
+      <Item value="Continue" priority="0" />
+      <Item value="MoveItemsClick`0" priority="0" />
+      <Item value="BuildCronString`0" priority="5" />
+      <Item value="UpdateNext`0" priority="3" />
+      <Item value="StrongTypingException`0" priority="0" />
+      <Item value="DateTimePicker`0" priority="0" />
+      <Item value="lastFinished" priority="2" />
+      <Item value="listView1" priority="1" />
+      <Item value="CronNextForm`0" priority="0" />
+      <Item value="Error" priority="0" />
+      <Item value="Execute" priority="0" />
+      <Item value="startServiceProcess" priority="0" />
+      <Item value="GetCommand`0" priority="0" />
+      <Item value="permissions" priority="4" />
+      <Item value="IdentityReference`0" priority="1" />
+      <Item value="NTAccount`0" priority="0" />
+      <Item value="NTAccount" priority="0" />
+      <Item value="cu" priority="8" />
+      <Item value="WindowsIdentity" priority="2" />
+      <Item value="environmentVariable" priority="0" />
+      <Item value="Install" priority="0" />
+      <Item value="InstallContext`0" priority="0" />
+      <Item value="InstallContext" priority="0" />
+      <Item value="Installer`0" priority="0" />
+      <Item value="Installer" priority="0" />
+      <Item value="EnvironmentVariableTarget`0" priority="0" />
+      <Item value="domain" priority="6" />
+      <Item value="IIdentity`0" priority="0" />
+      <Item value="FileSystemAccessRule" priority="0" />
+      <Item value="FullControl" priority="0" />
+      <Item value="None" priority="1" />
+      <Item value="AccessControlType`0" priority="0" />
+      <Item value="webBrowser1" priority="3" />
+      <Item value="About`0" priority="0" />
+      <Item value="Close`0" priority="1" />
+      <Item value="WebRequest`0" priority="0" />
+      <Item value="WebResponse`0" priority="0" />
+      <Item value="wr" priority="1" />
+      <Item value="StreamReader`0" priority="0" />
+      <Item value="StreamReader" priority="0" />
+      <Item value="sr" priority="0" />
+      <Item value="XmlAttribute" priority="5" />
+      <Item value="XmlSerializer`0" priority="1" />
+      <Item value="Module`0" priority="2" />
+      <Item value="StringReader`0" priority="0" />
+      <Item value="StringReader" priority="0" />
+      <Item value="List&lt;Module&gt;" priority="0" />
+      <Item value="mods" priority="0" />
+      <Item value="Module" priority="0" />
+      <Item value="Assembly" priority="0" />
+      <Item value="Filename" priority="0" />
+      <Item value="Type" priority="0" />
+      <Item value="Version" priority="2" />
+      <Item value="StringWriter`0" priority="0" />
+      <Item value="StringWriter" priority="0" />
+      <Item value="sw" priority="0" />
+      <Item value="ModuleList`0" priority="5" />
+      <Item value="_serializer" priority="0" />
+      <Item value="Serializer" priority="0" />
+      <Item value="finalUsername" priority="4" />
+      <Item value="WindowsPrincipal`0" priority="0" />
+      <Item value="wp" priority="0" />
+      <Item value="WindowsPrincipal" priority="0" />
+      <Item value="NullTarget`0" priority="0" />
+      <Item value="serviceStatusLabel" priority="1" />
+      <Item value="Color`0" priority="2" />
+      <Item value="de" priority="1" />
+      <Item value="DirectoryEntry`0" priority="2" />
+      <Item value="EnumChildren`0" priority="0" />
+      <Item value="member" priority="0" />
+      <Item value="child" priority="0" />
+      <Item value="_cRONString" priority="2" />
+      <Item value="days" priority="4" />
+      <Item value="checkedListBox1" priority="5" />
+      <Item value="dow" priority="2" />
+      <Item value="ischecked" priority="1" />
+      <Item value="date" priority="2" />
+      <Item value="dateTimePicker1" priority="3" />
+      <Item value="event" priority="0" />
+      <Item value="InitCron`0" priority="2" />
+      <Item value="CRONString" priority="0" />
+      <Item value="OnSelectionChanged`0" priority="3" />
+      <Item value="ICRONControl`0" priority="1" />
+      <Item value="cronControl" priority="12" />
+      <Item value="snr" priority="3" />
+      <Item value="ts" priority="1" />
+      <Item value="SimpleCRONControl`0" priority="1" />
+      <Item value="pnlCron" priority="2" />
+      <Item value="cc" priority="0" />
+      <Item value="AdvancedCRONControl`0" priority="3" />
+      <Item value="cbScheduleType" priority="0" />
+      <Item value="groupBox1" priority="1" />
+      <Item value="CheckBox`0" priority="3" />
+      <Item value="List&lt;DayOfWeek&gt;" priority="0" />
+      <Item value="GetCheckedDays`0" priority="0" />
+      <Item value="CheckBox" priority="0" />
+      <Item value="lt" priority="1" />
+      <Item value="btnViewLog" priority="0" />
+      <Item value="log" priority="6" />
+      <Item value="label1" priority="3" />
+      <Item value="ForeColor" priority="0" />
+      <Item value="LogViewerControl`0" priority="0" />
+      <Item value="LogViewerControl" priority="0" />
+      <Item value="scheduleJobLog" priority="0" />
+      <Item value="lvc" priority="2" />
+      <Item value="Top" priority="1" />
+      <Item value="LogViewerForm`0" priority="0" />
+      <Item value="panel1" priority="2" />
+      <Item value="last" priority="5" />
+      <Item value="SpawnLogger`0" priority="0" />
+      <Item value="ShowUsage`0" priority="2" />
+      <Item value="arg" priority="2" />
+      <Item value="rp" priority="0" />
+      <Item value="filesIndex" priority="1" />
+      <Item value="files" priority="0" />
+      <Item value="Hide`0" priority="1" />
+      <Item value="Visible" priority="0" />
+      <Item value="notifyIcon1" priority="15" />
+      <Item value="baloonVisible" priority="2" />
+      <Item value="ContextMenu" priority="1" />
+      <Item value="cm" priority="6" />
+      <Item value="MenuItem" priority="7" />
+      <Item value="em" priority="2" />
+      <Item value="Application`0" priority="1" />
+      <Item value="ApplicationExitCall" priority="0" />
+      <Item value="MenuItem`0" priority="8" />
+      <Item value="openClientMenu" priority="4" />
+      <Item value="AppDir" priority="0" />
+      <Item value="msg" priority="2" />
+      <Item value="runningCheckInProgress" priority="0" />
+      <Item value="systrayEXE" priority="3" />
+      <Item value="CreateAutostartShortcut`0" priority="0" />
+      <Item value="RemoveAutostartShortcut`0" priority="0" />
+      <Item value="sysTrayProcess" priority="2" />
+      <Item value="tbSeconds" priority="1" />
+      <Item value="parts" priority="5" />
+      <Item value="tbMinutes" priority="1" />
+      <Item value="tbHours" priority="1" />
+      <Item value="tbMonths" priority="1" />
+      <Item value="tbDates" priority="1" />
+      <Item value="otherwise" priority="0" />
+      <Item value="tbDays" priority="0" />
+      <Item value="SelectionChanged" priority="1" />
+      <Item value="Diagnostics" priority="0" />
+      <Item value="label2" priority="1" />
+      <Item value="Font" priority="0" />
+      <Item value="Bold" priority="0" />
+      <Item value="SqlConnectionStringBuilder`0" priority="0" />
+      <Item value="SqlConnectionStringBuilder" priority="0" />
+      <Item value="Aaddress" priority="0" />
+      <Item value="Adatabasename" priority="0" />
+      <Item value="Auser" priority="0" />
+      <Item value="Apass" priority="0" />
+      <Item value="EntryPointNotFoundException`0" priority="0" />
+      <Item value="tryf" priority="0" />
+      <Item value="schedulesMenu" priority="5" />
+      <Item value="lastRun" priority="0" />
+      <Item value="mi" priority="1" />
+      <Item value="GetNextRun`0" priority="0" />
+      <Item value="ScheduleForm" priority="0" />
+      <Item value="Reflection" priority="0" />
+      <Item value="Assembly`0" priority="1" />
+      <Item value="UpdaterChecker`0" priority="1" />
+      <Item value="ass" priority="1" />
+      <Item value="IUpdateInfo`0" priority="3" />
+      <Item value="ui" priority="3" />
+      <Item value="type" priority="8" />
+      <Item value="GetUpdateInfos`0" priority="2" />
+      <Item value="pluginDir" priority="0" />
+      <Item value="ShowSettings`0" priority="0" />
+      <Item value="UpdaterChecker" priority="0" />
+      <Item value="uc" priority="0" />
+      <Item value="urls" priority="0" />
+      <Item value="SettingsDialog`0" priority="1" />
+      <Item value="SettingsDialog" priority="1" />
+      <Item value="sd" priority="2" />
+      <Item value="Tuple" priority="0" />
+      <Item value="Version`0" priority="8" />
+      <Item value="Tuple&lt;string,Version&gt;" priority="0" />
+      <Item value="updateInfo" priority="3" />
+      <Item value="wex" priority="4" />
+      <Item value="XmlDocument" priority="0" />
+      <Item value="doc" priority="2" />
+      <Item value="v" priority="2" />
+      <Item value="XmlNode`0" priority="2" />
+      <Item value="node" priority="2" />
+      <Item value="vn" priority="1" />
+      <Item value="out" priority="0" />
+      <Item value="Update`0" priority="2" />
+      <Item value="Update" priority="0" />
+      <Item value="CurrentVersion" priority="0" />
+      <Item value="NewVersion" priority="0" />
+      <Item value="Description" priority="1" />
+      <Item value="DownloadURL" priority="0" />
+      <Item value="dn" priority="1" />
+      <Item value="vd" priority="1" />
+      <Item value="str" priority="0" />
+      <Item value="UpdateChecker" priority="0" />
+      <Item value="updates" priority="4" />
+      <Item value="pnlAvailableUpdates" priority="2" />
+      <Item value="update" priority="7" />
+      <Item value="lblCurrentVersion" priority="0" />
+      <Item value="lblAvailableVersion" priority="0" />
+      <Item value="lblDescription" priority="0" />
+      <Item value="UpdateInfoControl`0" priority="0" />
+      <Item value="btnApplyUpdates" priority="0" />
+      <Item value="btnCheckForUpdates" priority="0" />
+      <Item value="exe" priority="0" />
+      <Item value="processName" priority="3" />
+      <Item value="process" priority="0" />
+      <Item value="StopProcess`0" priority="1" />
+      <Item value="DataDirectory" priority="2" />
+      <Item value="_tempDir" priority="0" />
+      <Item value="TempDir" priority="3" />
+      <Item value="rs" priority="1" />
+      <Item value="DownloadUpdates`0" priority="0" />
+      <Item value="OverwriteSilently" priority="1" />
+      <Item value="_programDir" priority="1" />
+      <Item value="Updater" priority="0" />
+      <Item value="Program`0" priority="0" />
+      <Item value="CopyContent`0" priority="1" />
+      <Item value="ProgramDir" priority="1" />
+      <Item value="targetDir" priority="0" />
+      <Item value="sourceDir" priority="0" />
+      <Item value="serviceWasRunning" priority="1" />
+      <Item value="sysTrayWasRunning" priority="0" />
+      <Item value="source" priority="4" />
+      <Item value="nf" priority="0" />
+      <Item value="FileAttributes`0" priority="0" />
+      <Item value="updaterProcesses" priority="0" />
+      <Item value="lblModule" priority="0" />
+      <Item value="Inf`0" priority="1" />
+      <Item value="name" priority="0" />
+      <Item value="version" priority="0" />
+      <Item value="URL" priority="0" />
+      <Item value="ModuleName" priority="0" />
+      <Item value="AutoSize" priority="0" />
+      <Item value="Print`0" priority="7" />
+      <Item value="ContinueAfterKey`0" priority="1" />
+      <Item value="ExTest`0" priority="0" />
+      <Item value="Type`0" priority="1" />
+      <Item value="IsIUpdateInfo`0" priority="0" />
+      <Item value="inst" priority="1" />
+      <Item value="pi" priority="0" />
+      <Item value="Default" priority="0" />
+      <Item value="Binder`0" priority="0" />
+      <Item value="GetDownloadURL`0" priority="0" />
+      <Item value="hold" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.MSSQLDatabaseBackup+MSSQLDatabaseBackupConfig">
+      <Item value="Databases" priority="5" />
+      <Item value="Server" priority="0" />
+      <Item value="Username" priority="0" />
+      <Item value="Password" priority="0" />
+      <Item value="Database" priority="0" />
+      <Item value="FTPLocalTempDirectory" priority="1" />
+      <Item value="FTPPort" priority="3" />
+      <Item value="CompressFiles" priority="2" />
+      <Item value="SaveToDir" priority="2" />
+      <Item value="SaveAs" priority="1" />
+      <Item value="FTPServer" priority="0" />
+      <Item value="FTPRemoteDirectory" priority="1" />
+      <Item value="FTPUsername" priority="0" />
+      <Item value="FTPPassword" priority="0" />
+      <Item value="AddDateToFilename" priority="2" />
+      <Item value="IsLocalServer" priority="3" />
+      <Item value="RemoteTempDir" priority="1" />
+      <Item value="LocalTempDirectory" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Count" priority="11" />
+      <Item value="Add`0" priority="18" />
+      <Item value="ToString`0" priority="7" />
+      <Item value="ToArray`0" priority="0" />
+      <Item value="Insert`0" priority="0" />
+      <Item value="AddRange`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TextBox">
+      <Item value="Text" priority="52" />
+      <Item value="Select`0" priority="2" />
+      <Item value="Enabled" priority="0" />
+      <Item value="Visible" priority="2" />
+      <Item value="ForeColor" priority="0" />
+      <Item value="SelectAll`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.Controls.MSSQLDatabaseBackupConfigGUI">
+      <Item value="GetDatabases`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Equals`0" priority="2" />
+      <Item value="FillBlanks`0" priority="52" />
+      <Item value="ToString`0" priority="0" />
+      <Item value="EqualsAny`0" priority="0" />
+      <Item value="Contains`0" priority="8" />
+      <Item value="StartsWith`0" priority="5" />
+      <Item value="EndsWith`0" priority="3" />
+      <Item value="ToLower`0" priority="5" />
+      <Item value="Replace`0" priority="7" />
+      <Item value="Split`0" priority="8" />
+      <Item value="Trim`0" priority="0" />
+      <Item value="Substring`0" priority="4" />
+      <Item value="Length" priority="0" />
+      <Item value="IfNotNullElse`0" priority="1" />
+      <Item value="LastIndexOf`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Equals`0" priority="8" />
+      <Item value="IsNullOrEmpty`0" priority="43" />
+      <Item value="Format`0" priority="32" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.StringComparison">
+      <Item value="OrdinalIgnoreCase" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="ToString`0" priority="1" />
+      <Item value="Append`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.CheckedListBox">
+      <Item value="Items" priority="2" />
+      <Item value="CheckedItems" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlCommand">
+      <Item value="ExecuteReader`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlDataReader">
+      <Item value="GetBytes`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.FolderBrowserDialog">
+      <Item value="SelectedPath" priority="3" />
+      <Item value="ShowDialog`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.Controls.MSSQLDatabaseBackupConfigGUIFTPSelector">
+      <Item value="LocalTemp" priority="1" />
+      <Item value="Port" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="ToString`0" priority="10" />
+      <Item value="CompareTo`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="TryParse`0" priority="4" />
+      <Item value="Parse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int16">
+      <Item value="MaxValue" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.CheckBox">
+      <Item value="Checked" priority="23" />
+      <Item value="Enabled" priority="0" />
+      <Item value="Visible" priority="2" />
+      <Item value="Tag" priority="1" />
+      <Item value="CheckedChanged" priority="0" />
+      <Item value="Text" priority="0" />
+      <Item value="Top" priority="0" />
+      <Item value="Left" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.MSSQLDatabaseBackup+BackupResult">
+      <Item value="CleanupOK" priority="2" />
+      <Item value="OutputFilename" priority="7" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.File">
+      <Item value="Exists`0" priority="18" />
+      <Item value="Delete`0" priority="9" />
+      <Item value="Copy`0" priority="3" />
+      <Item value="SetAttributes`0" priority="1" />
+      <Item value="AppendAllText`0" priority="2" />
+      <Item value="OpenWrite`0" priority="1" />
+      <Item value="OpenRead`0" priority="0" />
+      <Item value="AppendText`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Ionic.Zip.ZipFile">
+      <Item value="AddFile`0" priority="2" />
+      <Item value="Save`0" priority="2" />
+      <Item value="UseZip64WhenSaving" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+      <Item value="Name" priority="1" />
+      <Item value="ZipError" priority="0" />
+      <Item value="ExtractAll`0" priority="0" />
+      <Item value="ExtractExistingFile" priority="0" />
+      <Item value="FlattenFoldersOnExtract" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Net.FtpWebRequest">
+      <Item value="Create`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.FileInfo">
+      <Item value="Name" priority="8" />
+      <Item value="Length" priority="4" />
+      <Item value="OpenRead`0" priority="0" />
+      <Item value="FullName" priority="28" />
+      <Item value="Extension" priority="2" />
+      <Item value="DirectoryName" priority="4" />
+      <Item value="LastWriteTime" priority="6" />
+      <Item value="CopyTo`0" priority="3" />
+      <Item value="Directory" priority="5" />
+      <Item value="GetAccessControl`0" priority="0" />
+      <Item value="SetAccessControl`0" priority="0" />
+      <Item value="Exists" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.FtpWebRequest">
+      <Item value="KeepAlive" priority="0" />
+      <Item value="UseBinary" priority="0" />
+      <Item value="ContentLength" priority="0" />
+      <Item value="GetRequestStream`0" priority="0" />
+      <Item value="EnableSsl" priority="2" />
+      <Item value="UsePassive" priority="4" />
+      <Item value="RequestUri" priority="0" />
+      <Item value="GetResponse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.FileStream">
+      <Item value="Read`0" priority="0" />
+      <Item value="Close`0" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.Stream">
+      <Item value="Write`0" priority="1" />
+      <Item value="Flush`0" priority="2" />
+      <Item value="Close`0" priority="3" />
+      <Item value="Dispose`0" priority="3" />
+      <Item value="Read`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Exception">
+      <Item value="Message" priority="22" />
+      <Item value="StackTrace" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Nullable`1">
+      <Item value="HasValue" priority="15" />
+      <Item value="Value" priority="11" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Common.BackupScheduleWrapper">
+      <Item value="ID" priority="9" />
+      <Item value="Job" priority="0" />
+      <Item value="Name" priority="10" />
+      <Item value="PreCommands" priority="3" />
+      <Item value="PostCommands" priority="2" />
+      <Item value="_lastFinished" priority="0" />
+      <Item value="ReFresh`0" priority="0" />
+      <Item value="LastFinished" priority="6" />
+      <Item value="LastStarted" priority="5" />
+      <Item value="Execute`0" priority="0" />
+      <Item value="IntervalType" priority="0" />
+      <Item value="Interval" priority="1" />
+      <Item value="StartFromTime" priority="1" />
+      <Item value="StartToTime" priority="0" />
+      <Item value="StartTime" priority="1" />
+      <Item value="TargetType" priority="1" />
+      <Item value="TargetConfiguration" priority="1" />
+      <Item value="Target" priority="1" />
+      <Item value="CronConfig" priority="8" />
+      <Item value="Logs" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ComboBox">
+      <Item value="Enabled" priority="0" />
+      <Item value="Items" priority="10" />
+      <Item value="SelectedIndex" priority="6" />
+      <Item value="SelectedItem" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Common.IBackupSchedule">
+      <Item value="Delete`0" priority="0" />
+      <Item value="Description" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Common.DBCommand">
+      <Item value="CommandText" priority="4" />
+      <Item value="ExecuteReader`0" priority="0" />
+      <Item value="Read`0" priority="0" />
+      <Item value="ExecuteNonQuery`0" priority="3" />
+      <Item value="ClearParameters`0" priority="1" />
+      <Item value="AddWithValue`0" priority="7" />
+      <Item value="GetDateTime`0" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+      <Item value="GetString`0" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Environment">
+      <Item value="NewLine" priority="12" />
+      <Item value="GetFolderPath`0" priority="1" />
+      <Item value="SpecialFolder`0" priority="1" />
+      <Item value="UserName" priority="1" />
+      <Item value="GetEnvironmentVariables`0" priority="2" />
+      <Item value="GetEnvironmentVariable`0" priority="3" />
+      <Item value="UserDomainName" priority="1" />
+      <Item value="OSVersion" priority="0" />
+      <Item value="MachineName" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SQLite.SQLiteConnectionStringBuilder">
+      <Item value="DataSource" priority="2" />
+      <Item value="FailIfMissing" priority="1" />
+      <Item value="ConnectionString" priority="0" />
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Data.SQLite.SQLiteConnection">
+      <Item value="CreateFile`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Data.CommandType">
+      <Item value="Text" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.ScheduleForm+PlugWrapper">
+      <Item value="job" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.FileBackup+FileBackupConfig">
+      <Item value="Directory" priority="3" />
+      <Item value="CompressFiles" priority="3" />
+      <Item value="BackupType" priority="2" />
+      <Item value="Filetypes" priority="3" />
+      <Item value="SaveAs" priority="4" />
+      <Item value="SaveToDir" priority="2" />
+      <Item value="ZipFilename" priority="2" />
+      <Item value="AddDateToFilename" priority="2" />
+      <Item value="FTPLocalTempDirectory" priority="0" />
+      <Item value="FTPRemoteDirectory" priority="0" />
+      <Item value="RemotePath" priority="0" />
+      <Item value="LocalTempDirectory" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Button">
+      <Item value="Enabled" priority="8" />
+      <Item value="Click" priority="0" />
+      <Item value="Tag" priority="1" />
+      <Item value="Visible" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListView">
+      <Item value="SelectedItems" priority="13" />
+      <Item value="Items" priority="25" />
+      <Item value="AutoResizeColumns`0" priority="3" />
+      <Item value="ListViewItemSorter" priority="4" />
+      <Item value="Sort`0" priority="3" />
+      <Item value="Columns" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListView+SelectedListViewItemCollection">
+      <Item value="Count" priority="9" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ComboBox+ObjectCollection">
+      <Item value="Add`0" priority="9" />
+      <Item value="Clear`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.BackupTypes">
+      <Item value="ModifiedOnly" priority="0" />
+      <Item value="All" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.FileBackup+FileBackupConfig">
+      <Item value="Load`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Control">
+      <Item value="Controls" priority="3" />
+      <Item value="Dispose`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Control+ControlCollection">
+      <Item value="Add`0" priority="10" />
+      <Item value="Clear`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.FileBackup">
+      <Item value="FileBackupConfig`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListView+ListViewItemCollection">
+      <Item value="Add`0" priority="9" />
+      <Item value="Remove`0" priority="1" />
+      <Item value="Count" priority="6" />
+      <Item value="RemoveAt`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.ColumnHeaderAutoResizeStyle">
+      <Item value="ColumnContent" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.SaveAsTypes">
+      <Item value="Directory" priority="0" />
+      <Item value="FTP" priority="0" />
+      <Item value="WWW" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.Controls.FileBackupConfigGUI">
+      <Item value="config" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.Controls.InputDialog">
+      <Item value="title" priority="0" />
+      <Item value="ShowDialog`0" priority="0" />
+      <Item value="Value" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.FormClosingEventArgs">
+      <Item value="Cancel" priority="3" />
+      <Item value="CloseReason" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBox">
+      <Item value="Show`0" priority="17" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.DialogResult">
+      <Item value="OK" priority="0" />
+      <Item value="Yes" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListViewItem">
+      <Item value="Text" priority="5" />
+      <Item value="SubItems" priority="4" />
+      <Item value="Index" priority="6" />
+      <Item value="Tag" priority="22" />
+      <Item value="Selected" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Label">
+      <Item value="Text" priority="13" />
+      <Item value="Visible" priority="3" />
+      <Item value="Enabled" priority="0" />
+      <Item value="ForeColor" priority="0" />
+      <Item value="Height" priority="0" />
+      <Item value="Font" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.ScheduleForm">
+      <Item value="Job" priority="1" />
+      <Item value="ShowInTaskbar" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.FileBackup+BackupRunner">
+      <Item value="config" priority="0" />
+      <Item value="Run`0" priority="0" />
+      <Item value="target" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Common.Configuration">
+      <Item value="DataDirectory" priority="5" />
+      <Item value="CreateDBCommand`0" priority="0" />
+      <Item value="GetSchedules`0" priority="4" />
+      <Item value="GetSchedule`0" priority="3" />
+      <Item value="TargetPlugins" priority="1" />
+      <Item value="ReLoadSchedulesCommand" priority="1" />
+      <Item value="ReloadService`0" priority="1" />
+      <Item value="IsServiceRunning`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.DirectoryInfo">
+      <Item value="FullName" priority="56" />
+      <Item value="GetFiles`0" priority="10" />
+      <Item value="GetDirectories`0" priority="2" />
+      <Item value="Copy`0" priority="1" />
+      <Item value="Name" priority="2" />
+      <Item value="Exists" priority="1" />
+      <Item value="Delete`0" priority="4" />
+      <Item value="CopyContent`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Hashtable">
+      <Item value="ContainsKey`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DateTime">
+      <Item value="Now" priority="23" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.DateTime">
+      <Item value="ToString`0" priority="9" />
+      <Item value="AddMinutes`0" priority="3" />
+      <Item value="AddHours`0" priority="1" />
+      <Item value="AddDays`0" priority="2" />
+      <Item value="AddMonths`0" priority="0" />
+      <Item value="Hour" priority="6" />
+      <Item value="Minute" priority="7" />
+      <Item value="Year" priority="2" />
+      <Item value="Month" priority="1" />
+      <Item value="Day" priority="1" />
+      <Item value="AddSeconds`0" priority="0" />
+      <Item value="ToFileTimeUtc`0" priority="1" />
+      <Item value="ToLocalTime`0" priority="7" />
+      <Item value="ToUniversalTime`0" priority="7" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.Controls.IFTPConfig">
+      <Item value="FTPRemoteDirectory" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.FTPUploader">
+      <Item value="UploadFile`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Directory">
+      <Item value="Exists`0" priority="16" />
+      <Item value="CreateDirectory`0" priority="11" />
+      <Item value="Delete`0" priority="4" />
+      <Item value="GetFiles`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.FileBackup+BackupRunner">
+      <Item value="Cleanup`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SQLite.SQLiteCommand">
+      <Item value="CommandText" priority="0" />
+      <Item value="ExecuteNonQuery`0" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SQLite.SQLiteConnection">
+      <Item value="Open`0" priority="0" />
+      <Item value="Clone`0" priority="0" />
+      <Item value="Close`0" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+      <Item value="ConnectionString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SQLite.SQLiteDataReader">
+      <Item value="IsClosed" priority="0" />
+      <Item value="Close`0" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.StringSplitOptions">
+      <Item value="RemoveEmptyEntries" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.CommandDialog">
+      <Item value="command" priority="0" />
+      <Item value="args" priority="0" />
+      <Item value="ShowDialog`0" priority="0" />
+      <Item value="Command" priority="0" />
+      <Item value="Arguments" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DialogResult">
+      <Item value="OK" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.ScheduleForm+CommandWrapper">
+      <Item value="Command" priority="2" />
+      <Item value="Arguments" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListViewItem+ListViewSubItemCollection">
+      <Item value="Add`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListViewItem+ListViewSubItem">
+      <Item value="Text" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Common.CommandWrapper">
+      <Item value="Parse`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Diagnostics.Process">
+      <Item value="Start`0" priority="6" />
+      <Item value="GetProcessesByName`0" priority="4" />
+      <Item value="GetCurrentProcess`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Common.CommandWrapper">
+      <Item value="Command" priority="2" />
+      <Item value="Arguments" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DBNull">
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Common.BackupScheduleWrapper">
+      <Item value="RunCommands`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Diagnostics.Process">
+      <Item value="StartInfo" priority="11" />
+      <Item value="Start`0" priority="3" />
+      <Item value="WaitForExit`0" priority="0" />
+      <Item value="Exited" priority="0" />
+      <Item value="EnableRaisingEvents" priority="0" />
+      <Item value="ProcessName" priority="1" />
+      <Item value="Kill`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Diagnostics.ProcessStartInfo">
+      <Item value="CreateNoWindow" priority="0" />
+      <Item value="UseShellExecute" priority="0" />
+      <Item value="FileName" priority="3" />
+      <Item value="Arguments" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="Assembly" priority="7" />
+      <Item value="FullName" priority="2" />
+      <Item value="Name" priority="2" />
+      <Item value="GetInterfaces`0" priority="1" />
+      <Item value="GetProperty`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.Assembly">
+      <Item value="Location" priority="1" />
+      <Item value="GetReferencedAssemblies`0" priority="0" />
+      <Item value="GetName`0" priority="1" />
+      <Item value="CreateInstance`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.ScheduleRunner.ScheduleJobSpawner">
+      <Item value="SpawAndRun`0" priority="3" />
+      <Item value="IsJobRunning`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Timer">
+      <Item value="Interval" priority="0" />
+      <Item value="Tick" priority="1" />
+      <Item value="Stop`0" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+      <Item value="Start`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Threading.Thread">
+      <Item value="Sleep`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="WriteLine`0" priority="39" />
+      <Item value="Error" priority="0" />
+      <Item value="Title" priority="0" />
+      <Item value="ReadKey`0" priority="9" />
+      <Item value="Write`0" priority="3" />
+      <Item value="ForegroundColor" priority="1" />
+      <Item value="ReadLine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Timers.Timer">
+      <Item value="Stop`0" priority="0" />
+      <Item value="AutoReset" priority="0" />
+      <Item value="Dispose`0" priority="1" />
+      <Item value="Enabled" priority="0" />
+      <Item value="Elapsed" priority="0" />
+      <Item value="Start`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.ServiceInstaller.Program+ServiceInstaller">
+      <Item value="Remove`0" priority="0" />
+      <Item value="Install`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Application">
+      <Item value="ExecutablePath" priority="0" />
+      <Item value="LocalUserAppDataPath" priority="1" />
+      <Item value="Exit`0" priority="0" />
+      <Item value="StartupPath" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Environment+SpecialFolder">
+      <Item value="StartMenu" priority="0" />
+      <Item value="LocalApplicationData" priority="0" />
+      <Item value="ApplicationData" priority="0" />
+      <Item value="Startup" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:IWshRuntimeLibrary.IWshShortcut">
+      <Item value="TargetPath" priority="0" />
+      <Item value="Description" priority="0" />
+      <Item value="IconLocation" priority="0" />
+      <Item value="Save`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Net.HttpWebRequest">
+      <Item value="Create`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.WebRequest">
+      <Item value="GetResponse`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Security.Cryptography.X509Certificates.X509Store">
+      <Item value="Open`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Security.Cryptography.X509Certificates.OpenFlags">
+      <Item value="ReadOnly" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Security.Cryptography.X509Certificates.StoreName">
+      <Item value="TrustedPublisher" priority="0" />
+      <Item value="My" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Security.Cryptography.X509Certificates.StoreLocation">
+      <Item value="LocalMachine" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Security.Cryptography.X509Certificates.X509Certificate2">
+      <Item value="FriendlyName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Security.Cryptography.X509Certificates.X509Certificate">
+      <Item value="CreateFromCertFile`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.EnumDescriptionAttribute">
+      <Item value="Description" priority="1" />
+      <Item value="Comment" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolTip">
+      <Item value="SetToolTip`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Panel">
+      <Item value="Controls" priority="6" />
+      <Item value="Width" priority="0" />
+      <Item value="Height" priority="0" />
+      <Item value="ScrollControlIntoView`0" priority="0" />
+      <Item value="Text" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.SaveAsTypes">
+      <Item value="InternalDescription`1" priority="0" />
+      <Item value="InternalComment`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.AnchorStyles">
+      <Item value="Top" priority="0" />
+      <Item value="Left" priority="0" />
+      <Item value="Right" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.Serialization.XmlSerializer">
+      <Item value="Serialize`0" priority="1" />
+      <Item value="Deserialize`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ConfigSaveTest.CNF">
+      <Item value="First" priority="0" />
+      <Item value="Second" priority="0" />
+      <Item value="Save`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.XmlReader">
+      <Item value="GetAttribute`0" priority="1" />
+      <Item value="ReadElementString`0" priority="0" />
+      <Item value="ReadElementContentAsDouble`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.XmlWriter">
+      <Item value="WriteAttributes`0" priority="0" />
+      <Item value="WriteAttributeString`0" priority="0" />
+      <Item value="WriteElementString`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Double">
+      <Item value="TryParse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Double">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@ConfigSaveTest.CNF">
+      <Item value="Load`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Common.IBackupTarget">
+      <Item value="GetType`0" priority="1" />
+      <Item value="Store`0" priority="3" />
+      <Item value="Name" priority="0" />
+      <Item value="SaveConfiguration`0" priority="0" />
+      <Item value="Prepare`0" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.FTPUploader+FTPConfig">
+      <Item value="Load`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.Controls.FTPConfigSelector">
+      <Item value="Dock" priority="0" />
+      <Item value="btnTestSettings" priority="0" />
+      <Item value="Save`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.FTPUploader+FTPConfig">
+      <Item value="Save`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.HTTPUploader+WWWConfig">
+      <Item value="Load`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.Controls.WWWConfigSelector">
+      <Item value="Dock" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.HTTPUploader+WWWConfig">
+      <Item value="URL" priority="1" />
+      <Item value="Username" priority="1" />
+      <Item value="Password" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.Controls.DirectoryConfigSelector">
+      <Item value="Directory" priority="1" />
+      <Item value="Dock" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.ScheduleForm+TargetWrapper">
+      <Item value="job" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TabControl">
+      <Item value="TabPages" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.FTPTarget+FTPConfig">
+      <Item value="UseSSL" priority="4" />
+      <Item value="Passive" priority="2" />
+      <Item value="RemoteDirectory" priority="3" />
+      <Item value="IgnoreSSLErrors" priority="2" />
+      <Item value="FtpSecurityProtocol" priority="2" />
+      <Item value="TransferMode" priority="2" />
+      <Item value="Server" priority="0" />
+      <Item value="Port" priority="0" />
+      <Item value="Username" priority="0" />
+      <Item value="Password" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Net.WebRequestMethods+Ftp">
+      <Item value="ListDirectory" priority="0" />
+      <Item value="MakeDirectory" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Uri">
+      <Item value="GetLeftPart`0" priority="0" />
+      <Item value="PathAndQuery" priority="0" />
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.WebException">
+      <Item value="Response" priority="9" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.WebResponse">
+      <Item value="Close`0" priority="6" />
+      <Item value="GetResponseStream`0" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.FtpWebResponse">
+      <Item value="Close`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.FTPTarget">
+      <Item value="Store`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Net.ServicePointManager">
+      <Item value="ServerCertificateValidationCallback" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.FtpClient.FtpClient">
+      <Item value="Connect`0" priority="0" />
+      <Item value="Server" priority="0" />
+      <Item value="Port" priority="0" />
+      <Item value="Username" priority="0" />
+      <Item value="Password" priority="0" />
+      <Item value="GetListing`0" priority="0" />
+      <Item value="UseSsl" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.FtpClient.FtpListItem">
+      <Item value="Name" priority="0" />
+      <Item value="Size" priority="0" />
+      <Item value="Type" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Starksoft.Net.Ftp.FtpSecurityProtocol">
+      <Item value="Tls1Explicit" priority="0" />
+      <Item value="None" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Starksoft.Net.Ftp.FtpClient">
+      <Item value="Open`0" priority="1" />
+      <Item value="GetDirList`0" priority="0" />
+      <Item value="ValidateServerCertificate" priority="1" />
+      <Item value="Exists`0" priority="3" />
+      <Item value="PutFile`0" priority="1" />
+      <Item value="FileTransferType" priority="0" />
+      <Item value="DataTransferMode" priority="0" />
+      <Item value="SecurityProtocol" priority="0" />
+      <Item value="Close`0" priority="0" />
+      <Item value="Dispose`0" priority="0" />
+      <Item value="ChangeDirectory`0" priority="3" />
+      <Item value="MakeDirectory`0" priority="1" />
+      <Item value="GetWorkingDirectory`0" priority="0" />
+      <Item value="CreateAndChangeDirectory`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Starksoft.Net.Ftp.FtpItem">
+      <Item value="Name" priority="1" />
+      <Item value="ItemType" priority="1" />
+      <Item value="Size" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Starksoft.Net.Ftp.ValidateServerCertificateEventArgs">
+      <Item value="IsCertificateValid" priority="1" />
+      <Item value="PolicyErrors" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Schedules.HTTPTarget+WWWConfig">
+      <Item value="IgnoreSSLErrors" priority="2" />
+      <Item value="URL" priority="2" />
+      <Item value="Username" priority="2" />
+      <Item value="Password" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Enum">
+      <Item value="GetValues`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Array">
+      <Item value="Length" priority="3" />
+      <Item value="GetValue`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.HttpWebRequest">
+      <Item value="Credentials" priority="0" />
+      <Item value="Method" priority="0" />
+      <Item value="ContentType" priority="0" />
+      <Item value="GetResponse`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.WebClient">
+      <Item value="BaseAddress" priority="0" />
+      <Item value="Credentials" priority="0" />
+      <Item value="UploadFile`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Schedules.Classes.HTTP.HttpUploadHelper">
+      <Item value="Upload`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Specialized.NameValueCollection">
+      <Item value="Add`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.OpenFileDialog">
+      <Item value="ShowDialog`0" priority="0" />
+      <Item value="FileName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Quartz.ISchedulerFactory">
+      <Item value="GetScheduler`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Quartz.SimpleTrigger">
+      <Item value="JobName" priority="0" />
+      <Item value="Group" priority="1" />
+      <Item value="JobGroup" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Quartz.IScheduler">
+      <Item value="Start`0" priority="1" />
+      <Item value="Shutdown`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Quartz.SimpleTrigger">
+      <Item value="RepeatIndefinitely" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Quartz.CronExpression">
+      <Item value="years" priority="0" />
+      <Item value="GetNextValidTimeAfter`0" priority="5" />
+      <Item value="seconds" priority="4" />
+      <Item value="minutes" priority="4" />
+      <Item value="hours" priority="3" />
+      <Item value="daysOfMonth" priority="1" />
+      <Item value="daysOfWeek" priority="2" />
+      <Item value="months" priority="1" />
+      <Item value="CronExpressionString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DayOfWeek">
+      <Item value="Monday" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.DayOfWeek">
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="ToString`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.GroupBox">
+      <Item value="Controls" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ColumnHeader">
+      <Item value="Width" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Quartz.JobExecutionContext">
+      <Item value="JobDetail" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Quartz.JobDetail">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Service.LogStatuses">
+      <Item value="Startup" priority="0" />
+      <Item value="Reload" priority="0" />
+      <Item value="Error" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Service.Logger">
+      <Item value="Log`0" priority="9" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceProcess.ServiceController">
+      <Item value="ExecuteCommand`0" priority="0" />
+      <Item value="Status" priority="4" />
+      <Item value="Stop`0" priority="0" />
+      <Item value="Start`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Quartz.Collection.TreeSet">
+      <Item value="Count" priority="8" />
+      <Item value="Contains`0" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.CronNextForm">
+      <Item value="cronString" priority="0" />
+      <Item value="lastFinished" priority="0" />
+      <Item value="ShowDialog`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStripStatusLabel">
+      <Item value="Text" priority="3" />
+      <Item value="ForeColor" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.ServiceInstaller.Configuration">
+      <Item value="GetCommand`0" priority="0" />
+      <Item value="CreateDBFileAndSetPermissions`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.ServiceInstaller.DBCommand">
+      <Item value="Con" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Security.Principal.WindowsIdentity">
+      <Item value="GetCurrent`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Security.AccessControl.FileSecurity">
+      <Item value="SetOwner`0" priority="0" />
+      <Item value="AddAccessRule`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Security.Principal.WindowsIdentity">
+      <Item value="User" priority="2" />
+      <Item value="Name" priority="0" />
+      <Item value="Groups" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Configuration.Install.Installer">
+      <Item value="Context" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Security.AccessControl.AccessControlType">
+      <Item value="Allow" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.WebBrowser">
+      <Item value="DocumentText" priority="0" />
+      <Item value="StatusText" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.About">
+      <Item value="ShowDialog`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.WebBrowserNavigatingEventArgs">
+      <Item value="Cancel" priority="0" />
+      <Item value="Url" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.CancelEventArgs">
+      <Item value="Cancel" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Net.WebRequest">
+      <Item value="Create`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.StreamReader">
+      <Item value="ReadToEnd`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.Client.Form1+ModuleList">
+      <Item value="Load`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.OperatingSystem">
+      <Item value="Version" priority="0" />
+      <Item value="VersionString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Version">
+      <Item value="Major" priority="1" />
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.Color">
+      <Item value="Red" priority="2" />
+      <Item value="Black" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.DirectoryServices.DirectoryEntry">
+      <Item value="Children" priority="1" />
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Management.ManagementObject">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.CheckedListBox+ObjectCollection">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DateTimePicker">
+      <Item value="Value" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.ICRONControl">
+      <Item value="CRONString" priority="3" />
+      <Item value="SelectionChanged" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.LogViewerForm">
+      <Item value="job" priority="0" />
+      <Item value="ShowDialog`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.LogViewerControl">
+      <Item value="log" priority="0" />
+      <Item value="Dock" priority="0" />
+      <Item value="Focus`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Common.ScheduleJobLog">
+      <Item value="Date" priority="0" />
+      <Item value="Success" priority="0" />
+      <Item value="Entry" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.DockStyle">
+      <Item value="Bottom" priority="0" />
+      <Item value="Top" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.ScheduleRunner.SpawnLogger">
+      <Item value="Log`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Boolean">
+      <Item value="CompareTo`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Ionic.Zip.ZipErrorEventArgs">
+      <Item value="Cancel" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.NotifyIcon">
+      <Item value="Text" priority="1" />
+      <Item value="MouseMove" priority="0" />
+      <Item value="ShowBalloonTip`0" priority="0" />
+      <Item value="ContextMenu" priority="2" />
+      <Item value="BalloonTipClicked" priority="0" />
+      <Item value="BalloonTipTitle" priority="0" />
+      <Item value="BalloonTipText" priority="0" />
+      <Item value="Icon" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ContextMenu">
+      <Item value="MenuItems" priority="2" />
+      <Item value="Popup" priority="1" />
+      <Item value="Show`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Menu+MenuItemCollection">
+      <Item value="Add`0" priority="5" />
+      <Item value="Clear`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.MenuItem">
+      <Item value="Click" priority="3" />
+      <Item value="Enabled" priority="3" />
+      <Item value="MenuItems" priority="2" />
+      <Item value="Tag" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ComponentModel.CancelEventArgs">
+      <Item value="Empty" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.EventHandler">
+      <Item value="Invoke`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Font">
+      <Item value="Style" priority="0" />
+      <Item value="Bold" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.SqlClient.SqlConnectionStringBuilder">
+      <Item value="DataSource" priority="0" />
+      <Item value="InitialCatalog" priority="0" />
+      <Item value="UserID" priority="0" />
+      <Item value="Password" priority="0" />
+      <Item value="ConnectTimeout" priority="0" />
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Reflection.Assembly">
+      <Item value="GetCallingAssembly`0" priority="0" />
+      <Item value="GetAssembly`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Common.IUpdateInfo">
+      <Item value="UpdateInfoURL" priority="1" />
+      <Item value="GetType`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.UpdateChecker.UpdaterChecker">
+      <Item value="CheckForUpdatesAndDownloadPackages`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.SettingsDialog">
+      <Item value="ShowDialog`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.AssemblyName">
+      <Item value="Version" priority="0" />
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Tuple`2">
+      <Item value="Item1" priority="0" />
+      <Item value="Item2" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.XmlDocument">
+      <Item value="Load`0" priority="0" />
+      <Item value="FirstChild" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Xml.XmlNode">
+      <Item value="ChildNodes" priority="0" />
+      <Item value="SelectSingleNode`0" priority="2" />
+      <Item value="InnerText" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Version">
+      <Item value="TryParse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Bummer.UpdateChecker.UpdaterChecker">
+      <Item value="CheckForUpdatesAndDownloadPackages`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.Client.UpdateInfoControl">
+      <Item value="update" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.UpdateChecker.Update">
+      <Item value="CurrentVersion" priority="0" />
+      <Item value="NewVersion" priority="0" />
+      <Item value="Description" priority="0" />
+      <Item value="DownloadURL" priority="1" />
+      <Item value="ModuleName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.FileAttributes">
+      <Item value="Normal" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Bummer.UpdateChecker.UpdaterChecker+Inf">
+      <Item value="URL" priority="0" />
+      <Item value="Version" priority="1" />
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.PropertyInfo">
+      <Item value="GetValue`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Globalization.CultureInfo">
+      <Item value="CurrentCulture" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

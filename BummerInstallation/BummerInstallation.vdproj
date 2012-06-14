@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0C64C5FEE9A945669D8D8A4888D9E02B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3FA83E7AF41A48C4A8ACB63EE6AC2DD4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -28,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_411137C9E8F011CE4C0BC4F16B87E43D"
-        "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "OwnerKey" = "8:_CA55C9FA0C304858AE096FD8DB3DDCBC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_411137C9E8F011CE4C0BC4F16B87E43D"
-        "OwnerKey" = "8:_CA55C9FA0C304858AE096FD8DB3DDCBC"
+        "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -47,6 +53,12 @@
         {
         "MsmKey" = "8:_446E8214C17D192FC18F6136BA6E1EDB"
         "OwnerKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_446E8214C17D192FC18F6136BA6E1EDB"
+        "OwnerKey" = "8:_EE18782E8CCE43848E1FF1E94DF512E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -87,6 +99,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_65D07C17841907F6EF1C18CDFFC11804"
+        "OwnerKey" = "8:_DDEFA03BFFAC9B97FEEF7AC0E93DC081"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_65D07C17841907F6EF1C18CDFFC11804"
+        "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7D09101B4FE9610FAA1FEB09443AA6F5"
         "OwnerKey" = "8:_9BB1696481DF40E8BD6206E6D518C3D1"
         "MsmSig" = "8:_UNDEFINED"
@@ -101,6 +125,12 @@
         {
         "MsmKey" = "8:_7D09101B4FE9610FAA1FEB09443AA6F5"
         "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7D09101B4FE9610FAA1FEB09443AA6F5"
+        "OwnerKey" = "8:_DDEFA03BFFAC9B97FEEF7AC0E93DC081"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -141,8 +171,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DDEFA03BFFAC9B97FEEF7AC0E93DC081"
+        "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
         "OwnerKey" = "8:_3FA83E7AF41A48C4A8ACB63EE6AC2DD4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
+        "OwnerKey" = "8:_EE18782E8CCE43848E1FF1E94DF512E4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
+        "OwnerKey" = "8:_F831ACEC968BB9999804CC5F217FBB7D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -155,6 +203,18 @@
         {
         "MsmKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
         "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
+        "OwnerKey" = "8:_DDEFA03BFFAC9B97FEEF7AC0E93DC081"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DF9BE11026E08421F0E53D644967E8CF"
+        "OwnerKey" = "8:_65D07C17841907F6EF1C18CDFFC11804"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -178,12 +238,30 @@
         "Entry"
         {
         "MsmKey" = "8:_EA2FF34F5666EFCB0146C4FA3222DF89"
+        "OwnerKey" = "8:_CA55C9FA0C304858AE096FD8DB3DDCBC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EA2FF34F5666EFCB0146C4FA3222DF89"
         "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EA2FF34F5666EFCB0146C4FA3222DF89"
+        "OwnerKey" = "8:_DDEFA03BFFAC9B97FEEF7AC0E93DC081"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EE18782E8CCE43848E1FF1E94DF512E4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F831ACEC968BB9999804CC5F217FBB7D"
         "OwnerKey" = "8:_CA55C9FA0C304858AE096FD8DB3DDCBC"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -191,6 +269,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9BB1696481DF40E8BD6206E6D518C3D1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0C64C5FEE9A945669D8D8A4888D9E02B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EE18782E8CCE43848E1FF1E94DF512E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,7 +304,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F831ACEC968BB9999804CC5F217FBB7D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C0C4970D53C74FFDA440086CBA452C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DDEFA03BFFAC9B97FEEF7AC0E93DC081"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_65D07C17841907F6EF1C18CDFFC11804"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -485,6 +593,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_65D07C17841907F6EF1C18CDFFC11804"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Bummer.UpdateChecker, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_65D07C17841907F6EF1C18CDFFC11804"
+                    {
+                    "Name" = "8:Bummer.UpdateChecker.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Bummer.UpdateChecker.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A7932C2766294E28BBC265F8B9B2637F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7D09101B4FE9610FAA1FEB09443AA6F5"
             {
             "AssemblyRegister" = "3:1"
@@ -567,6 +706,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DDEFA03BFFAC9B97FEEF7AC0E93DC081"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Bummer.Client, Version=1.0.0.1, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_DDEFA03BFFAC9B97FEEF7AC0E93DC081"
+                    {
+                    "Name" = "8:Bummer.Client.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Bummer.Client.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A7932C2766294E28BBC265F8B9B2637F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DF9BE11026E08421F0E53D644967E8CF"
             {
             "AssemblyRegister" = "3:1"
@@ -612,6 +782,37 @@
                     }
                 }
             "SourcePath" = "8:Quartz.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A7932C2766294E28BBC265F8B9B2637F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F831ACEC968BB9999804CC5F217FBB7D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Bummer.UpdateChecker, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_F831ACEC968BB9999804CC5F217FBB7D"
+                    {
+                    "Name" = "8:Bummer.UpdateChecker.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Bummer.UpdateChecker.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A7932C2766294E28BBC265F8B9B2637F"
@@ -697,7 +898,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BUMmer"
         "ProductCode" = "8:{B29CA581-CF45-4F88-85EE-F73A049CE386}"
-        "PackageCode" = "8:{5F1C3B06-5450-4860-A852-0A4267DA6491}"
+        "PackageCode" = "8:{EDE5E62F-882D-4D19-9F4E-C06251F3FC25}"
         "UpgradeCode" = "8:{C0AE34FC-D3B9-49A4-AAA3-CF3500D89D00}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1216,6 +1417,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0C64C5FEE9A945669D8D8A4888D9E02B"
+            {
+            "SourcePath" = "8:..\\Bummer.Updater\\obj\\x86\\Debug\\Bummer.Updater.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A7932C2766294E28BBC265F8B9B2637F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{BF232578-65BB-4EAA-ADCF-CB72D0B3EBDC}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3FA83E7AF41A48C4A8ACB63EE6AC2DD4"
             {
             "SourcePath" = "8:..\\Bummer.Schedules\\obj\\Debug\\Bummer.Schedules.dll"
@@ -1351,6 +1580,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{7065F8F6-D9A4-48A2-946C-CC50F84B3FAF}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EE18782E8CCE43848E1FF1E94DF512E4"
+            {
+            "SourcePath" = "8:..\\Bummer.UpdateChecker\\obj\\x86\\Debug\\Bummer.UpdateChecker.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A7932C2766294E28BBC265F8B9B2637F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{AFAE5DBA-8E48-48DF-9163-83F186AFC561}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

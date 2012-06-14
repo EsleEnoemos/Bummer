@@ -1,0 +1,7 @@
+D:\GIT\Bummer\Zipper\bin\Debug\Zipper.exe
+D:\GIT\Bummer\Zipper\bin\Debug\Zipper.pdb
+D:\GIT\Bummer\Zipper\bin\Debug\Ionic.Zip.dll
+D:\GIT\Bummer\Zipper\bin\Debug\Ionic.Zip.xml
+D:\GIT\Bummer\Zipper\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\GIT\Bummer\Zipper\obj\x86\Debug\Zipper.exe
+D:\GIT\Bummer\Zipper\obj\x86\Debug\Zipper.pdb
